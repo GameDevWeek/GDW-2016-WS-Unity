@@ -4,9 +4,10 @@ using UnityEngine;
 
 /// <summary>
 /// <para>Used if frequent creation/destruction of game objects is required. Example: particle effects </para> 
-/// Note: You have to reset the state of the object when it is destroyed/created yourself. Often you don't need to do it at all.
+/// <para>Note: You have to reset the state of the object when it is destroyed/created yourself. Often you don't need to do it at all.</para>
+/// <para>Note: Make sure the Spawner is called first in the script execution order.</para>
 /// </summary>
-public class Spawner : MonoBehaviour {
+public sealed class Spawner : MonoBehaviour {
     [System.Serializable]
     public class SpawnSample {
         [Tooltip("The prefab that is to be spawned.")]
@@ -16,23 +17,52 @@ public class Spawner : MonoBehaviour {
         public bool allowPoolGrowth = true;
     }
 
-    private static Dictionary<string, GameObjectPool> m_goPools = new Dictionary<string, GameObjectPool>();
-    private static Dictionary<GameObject, GameObjectPool> m_goPoolsByObject = new Dictionary<GameObject, GameObjectPool>();
+    private Dictionary<string, GameObjectPool> m_goPools = new Dictionary<string, GameObjectPool>();
+    private Dictionary<GameObject, GameObjectPool> m_goPoolsByObject = new Dictionary<GameObject, GameObjectPool>();
 
     [SerializeField]
     private List<SpawnSample> m_samples = new List<SpawnSample>();
     [SerializeField]
-    private static int m_defaultPreloadSize = 100;
+    private int m_defaultPreloadSize = 100;
+
+    private static Spawner m_instance = null;
 
     public List<SpawnSample> samples {
         get { return m_samples; }
     }
 
+    private static Dictionary<string, GameObjectPool> goPools {
+        get {
+            return m_instance.m_goPools;
+        }
+    }
+
+    private static Dictionary<GameObject, GameObjectPool> goPoolsByObject {
+        get {
+            return m_instance.m_goPoolsByObject;
+        }
+    }
+
     // For editor purposes: all pools are children of "Pools"
-    private static GameObject m_poolsGameObject;
+    private GameObject m_poolsGameObject;
+
+    public static Spawner instance {
+        get {
+            return m_instance;
+        }
+    }
+
+    private void OnDestroy() {
+        m_instance = null;
+    }
 
     private void Awake() {
         m_poolsGameObject = new GameObject("Pools");
+        m_poolsGameObject.transform.parent = transform;
+
+        if (FindObjectsOfType<Spawner>().Length > 1) {
+            Debug.LogError("Do not create more than one Spawner instance.");
+        }
 
         m_goPools.Clear();
         m_goPoolsByObject.Clear();
@@ -51,13 +81,17 @@ public class Spawner : MonoBehaviour {
             }
             m_goPools.Add(sample.prefab.name, pool);
         }
+
+        m_instance = this;
     }
 
     private static GameObject SpawnInternal(string name) {
         GameObjectPool pool = null;
-        if (m_goPools.TryGetValue(name, out pool)) {
+        if (m_instance.m_goPools.TryGetValue(name, out pool)) {
             var go = pool.Create();
-            m_goPoolsByObject.Add(go, pool);
+            if (go != null) {
+                goPoolsByObject.Add(go, pool);
+            }
             return go;
         }
 
@@ -68,20 +102,21 @@ public class Spawner : MonoBehaviour {
     /// <para>Make sure to call DeSpawn if the object isn't needed anymore. </para> 
     /// </summary>
     public static GameObject Spawn(GameObject prefab) {
+        Debug.Assert(prefab, "The requested prefab is null.");
         GameObject go = SpawnInternal(prefab.name);
         if (go == null) {
             // Create a pool for the prefab
             Debug.Log("Consider preloading the pool of objects for " + prefab.name + ".");
-            var pool = new GameObjectPool(prefab, m_defaultPreloadSize);
+            var pool = new GameObjectPool(prefab, m_instance.m_defaultPreloadSize);
 
-            if (m_poolsGameObject) {
-                pool.gameObject.transform.parent = m_poolsGameObject.transform;
+            if (m_instance.m_poolsGameObject) {
+                pool.gameObject.transform.parent = m_instance.m_poolsGameObject.transform;
             }
 
-            m_goPools.Add(prefab.name, pool);
+            goPools.Add(prefab.name, pool);
 
             go = pool.Create();
-            m_goPoolsByObject.Add(go, pool);
+            goPoolsByObject.Add(go, pool);
         }
 
         return go;
@@ -157,11 +192,11 @@ public class Spawner : MonoBehaviour {
     /// </summary>
     public static GameObject Spawn(string name, Vector3 position, Quaternion rotation) {
         GameObjectPool pool = null;
-        if (m_goPools.TryGetValue(name, out pool)) {
+        if (goPools.TryGetValue(name, out pool)) {
             var go = pool.Create();
             go.transform.position = position;
             go.transform.rotation = rotation;
-            m_goPoolsByObject.Add(go, pool);
+            goPoolsByObject.Add(go, pool);
             return go;
         }
 
@@ -173,22 +208,22 @@ public class Spawner : MonoBehaviour {
     /// <para>The object will be despawned automatically after the specified lifetime and after particle death (if true). </para> 
     /// </summary>
     public static GameObject Spawn(string name, float lifetimeInSeconds, bool waitForParticleDeath = true) {
-        return Spawn(name, lifetimeInSeconds, Vector3.zero, Quaternion.identity, waitForParticleDeath);
+        return Spawn(name, Vector3.zero, Quaternion.identity, lifetimeInSeconds, waitForParticleDeath);
     }
 
     /// <summary>
     /// <para>The object will be despawned automatically after the specified lifetime and after particle death (if true). </para> 
     /// </summary>
-    public static GameObject Spawn(string name, float lifetimeInSeconds, Vector3 position, bool waitForParticleDeath = true) {
-        return Spawn(name, lifetimeInSeconds, position, Quaternion.identity, waitForParticleDeath);
+    public static GameObject Spawn(string name, Vector3 position, float lifetimeInSeconds, bool waitForParticleDeath = true) {
+        return Spawn(name, position, Quaternion.identity, lifetimeInSeconds, waitForParticleDeath);
     }
 
     /// <summary>
     /// <para>The object will be despawned automatically after the specified lifetime and after particle death (if true). </para> 
     /// </summary>
-    public static GameObject Spawn(string name, float lifetimeInSeconds, Vector3 position, Quaternion rotation, bool waitForParticleDeath = true) {
+    public static GameObject Spawn(string name, Vector3 position, Quaternion rotation, float lifetimeInSeconds, bool waitForParticleDeath = true) {
         GameObjectPool pool = null;
-        if (m_goPools.TryGetValue(name, out pool)) {
+        if (goPools.TryGetValue(name, out pool)) {
             var go = pool.Create();
             go.transform.position = position;
             go.transform.rotation = rotation;
@@ -204,9 +239,9 @@ public class Spawner : MonoBehaviour {
         Debug.Assert(go != null, "GameObject should not be null.");
 
         GameObjectPool pool = null;
-        if (m_goPoolsByObject.TryGetValue(go, out pool)) {
+        if (goPoolsByObject.TryGetValue(go, out pool)) {
             pool.Free(go, afterSeconds, waitForParticleDeath);
-            m_goPoolsByObject.Remove(go);
+            goPoolsByObject.Remove(go);
         }
 
         Debug.Assert(pool != null, "Could not despawn game object " + go.name);
