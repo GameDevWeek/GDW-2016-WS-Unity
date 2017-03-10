@@ -36,3 +36,15 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+
+
+# OS Generated
+
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trahes
+Icon?
+ehtumbs.db
+Thumbs.db
