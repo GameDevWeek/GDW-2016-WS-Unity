@@ -53,11 +53,9 @@ public class SpawnerInspector : Editor {
             // Number of active and total number of available spawned objects
             GameObjectPool pool;
             if( m_goPools.TryGetValue(name, out pool)) {
-                EditorGUILayout.HelpBox(pool.numActive + "/" + pool.elements.Count, MessageType.None);
+                EditorGUILayout.Space();
+                EditorGUILayout.LabelField(pool.numActive + "/" + pool.elements.Count, GUI.skin.GetStyle("HelpBox"));
             }
-
-            //EditorGUILayout.HelpBox(pool.numActive + "/" + pool.elements.Count, MessageType.Info);
-            //GUILayout.(pool.numActive + "/" + pool.elements.Count);
 
             bool removed = false;
             if (GUILayout.Button("X", GUILayout.Width(30.0f)) && 
@@ -80,7 +78,9 @@ public class SpawnerInspector : Editor {
         }
 
         if (GUILayout.Button("Add")) {
-            list.Add(new Spawner.SpawnSample());
+            var sample = new Spawner.SpawnSample();
+            sample.preloadSize = m_defaultPreloadSize.intValue;
+            list.Add(sample);
             m_foldoutToggle.Add(false);
         }
 
