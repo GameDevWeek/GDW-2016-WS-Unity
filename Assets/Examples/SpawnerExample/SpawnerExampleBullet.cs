@@ -24,3 +24,4 @@ public class SpawnerExampleBullet : MonoBehaviour {
         m_hitSomething = true;
     }
 }
+
