@@ -22,7 +22,7 @@ public abstract class AbstractCamera : MonoBehaviour {
     protected Rigidbody targetRigidbody;
 
 
-    protected virtual void Start() {
+    protected virtual void Awake() {
         // if auto targeting is used, find the object tagged "Player"
         // any class inheriting from this should call base.Start() to perform this action!
         if (m_autoTargetPlayer && m_target == null) {
