@@ -61,8 +61,8 @@ public abstract class AbstractSpringCamera : AbstractCamera {
         get { return m_cameraDestination; }
     }
 
-    override protected void Start() {
-        base.Start();
+	override protected void Awake() {
+		base.Awake();
         m_actualDistance = m_distance;
 
         if (m_defaultExcludeFromWallClipTag != "" && !m_excludeFromWallClipTags.Contains(m_defaultExcludeFromWallClipTag))

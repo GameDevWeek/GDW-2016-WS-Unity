@@ -3,8 +3,8 @@ using System.Collections;
 using System;
 
 public class SpringConstrainedCamera : AbstractSpringCamera {
-    override protected void Start() {
-        base.Start();
+    override protected void Awake() {
+		base.Awake();
         m_cameraDestination = transform.position;
         m_targetPos = m_target.position + m_targetOffset;
 
