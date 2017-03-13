@@ -29,8 +29,7 @@ public class CamouflageController : MonoBehaviour
 
 	    if (Input.GetButtonDown("Camouflage"))
 	    {
-            bool result = ToggleCamouflageMode();
-            Debug.Log(result ? "camouflage on" : "camouflage off");
+            ToggleCamouflageMode();
 	    }
 
     }
@@ -41,20 +40,15 @@ public class CamouflageController : MonoBehaviour
     /// <returns>true if camouflage mode is now active</returns>
     public bool ToggleCamouflageMode()
     {
-        bool result = CamouflageModeActive ? ExitCamouflageMode() : EnterCamouflageMode();
-        if (result) CamouflageModeActive = !CamouflageModeActive;
+        if (CamouflageModeActive)
+        {
+            ExitCamouflageMode();
+        }
+        else
+        { 
+            EnterCamouflageMode();
+        }
         return CamouflageModeActive;
-    }
-
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <returns>true if mode could be applied</returns>
-    public bool ExitCamouflageMode()
-    {
-
-
-        return true;
     }
 
     /// <summary>
@@ -65,9 +59,19 @@ public class CamouflageController : MonoBehaviour
     {
         if (!CamouflagePossible())   return false;
 
+        // TODO Methode "TarnenStarten"
 
-
+        CamouflageModeActive = true;
+        Debug.Log("camouflage on");
         return true;
+    }
+    
+    public void ExitCamouflageMode()
+    {
+        // TODO Methode "TarnenBeenden"
+
+        CamouflageModeActive = false;
+        Debug.Log("camouflage off");
     }
 
     private bool CamouflagePossible()
@@ -85,16 +89,22 @@ public class CamouflageController : MonoBehaviour
     {
         if (PEDESTAL_TAG == coll.tag && !_pedestalsInRange.Contains(coll))
         {
-
             _pedestalsInRange.Add(coll);
             Debug.Log("pedestal enter");
+
+
         }
         if (MOUSE_TAG == coll.tag && !_miceInRange.Contains(coll))
         {
-
             _miceInRange.Add(coll);
-            // TODO Methode "ElefantErschrecktSich"
             Debug.Log("mouse enter");
+
+            if (CamouflageModeActive)
+            {
+                ExitCamouflageMode();
+            }
+
+            // TODO Methode "ElefantErschrecktSich"
         }
 
 
