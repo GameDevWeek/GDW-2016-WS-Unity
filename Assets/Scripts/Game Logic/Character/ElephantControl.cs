@@ -16,12 +16,15 @@ public class ElephantControl : MonoBehaviour {
 
     private Vector3 m_sprintDirection;
 
-    [SerializeField]
-    private bool m_mouseMovement = true;
+    public bool m_useController = false;
+
     private bool m_sprinting = false;
+    private bool m_sprintJustStarted = false;
+    private bool m_sprintJustEnded = false;
 
     private void Start() {
         m_sprintCooldown.End();
+        m_sprintDurationAfterSprintStopped.End();
 
         // get the transform of the main camera
         if (Camera.main != null) {
@@ -36,15 +39,11 @@ public class ElephantControl : MonoBehaviour {
         m_character = GetComponent<ElephantMovement>();
     }
 
-    // Fixed update is called in sync with physics
-    private void FixedUpdate() {
-        m_sprintCooldown.Update(Time.fixedDeltaTime);
-        m_sprintDurationAfterSprintStopped.Update(Time.fixedDeltaTime);
-
+    private void HandleControllerMovement() {
         // read inputs
         float h = CrossPlatformInputManager.GetAxis("Horizontal");
         float v = CrossPlatformInputManager.GetAxis("Vertical");
-        bool crouch = Input.GetKey(KeyCode.C);
+        bool crouch = CrossPlatformInputManager.GetButton("Stealth");
 
         // calculate move direction to pass to character
         if (m_cam != null) {
@@ -56,51 +55,75 @@ public class ElephantControl : MonoBehaviour {
             m_move = v * Vector3.forward + h * Vector3.right;
         }
 
+        if (m_move.magnitude > 0.001f) {
+            UpdateSprint(m_move);
+        } else {
+            UpdateSprint(transform.forward);
+        }
+        
+        if (!m_sprinting && m_sprintDurationAfterSprintStopped.IsOver()) {
+            m_character.Move(m_move, crouch);
+            m_character.LookTowards(m_move);
+        }
+    }
+
+    private void HandleMouseKeyboardMovement() {
+        m_move = Vector3.zero;
+        bool crouch = CrossPlatformInputManager.GetButton("Stealth");
+
         Vector2 mp = Input.mousePosition;
         var screenLookDir = (new Vector2(Screen.width, Screen.height) * 0.5f - mp).normalized;
         var desiredLookDir = new Vector3(-screenLookDir.x, 0.0f, -screenLookDir.y);
-        
-        if (m_mouseMovement && Input.GetMouseButton(0)) {
+
+        if (Input.GetMouseButton(0)) {
             m_move = desiredLookDir;
         }
 
-        if (!m_sprinting) {
-            if (m_mouseMovement) {
-                m_character.LookTowards(desiredLookDir);
-            } else {
-                m_character.LookTowards(m_move);
-            }
+        UpdateSprint(desiredLookDir);
+
+        if (!m_sprinting && m_sprintDurationAfterSprintStopped.IsOver()) {
+            m_character.LookTowards(desiredLookDir);
+            m_character.Move(m_move, crouch);
         }
+    }
+
+    private void UpdateSprint(Vector3 direction) {
+        bool sprint = Input.GetButton("Sprint");
+        m_sprintJustStarted = !m_sprinting && sprint;
+        m_sprintJustEnded = m_sprinting && !sprint;
+        m_sprinting = sprint;
 
         if (m_sprintCooldown.IsOver() || !m_sprintDurationAfterSprintStopped.IsOver()) {
-            bool sprint = Input.GetButton("Jump");
-            bool sprintJustStarted = !m_sprinting && sprint;
-            bool sprintJustStopped = m_sprinting && !sprint;
-            m_sprinting = sprint;
-
-            if (sprintJustStopped) {
+            if (m_sprintJustEnded) {
                 m_sprintCooldown.Start();
                 m_sprintDurationAfterSprintStopped.Start();
             }
 
-            if (sprintJustStarted) {
-                m_sprintDirection = desiredLookDir;
+            if (m_sprintJustStarted) {
+                m_sprintDirection = direction;
 
                 if (Camera.main.GetComponent<CameraShake>()) {
                     Camera.main.GetComponent<CameraShake>().Shake();
                 }
             }
 
-            if (sprint && m_sprintCooldown.IsOver() || !m_sprintDurationAfterSprintStopped.IsOver()) {
+            if (m_sprinting && m_sprintCooldown.IsOver() || !m_sprintDurationAfterSprintStopped.IsOver()) {
                 m_character.LookTowards(m_sprintDirection);
 
                 float t = m_sprintDurationAfterSprintStopped.IsOver() ? 0.0f : m_sprintDurationAfterSprintStopped.progress;
                 m_character.Sprint(transform.forward, t);
-            } else {
-                m_character.Move(m_move, crouch);
             }
+        }
+    }
+
+    private void FixedUpdate() {
+        m_sprintCooldown.Update(Time.fixedDeltaTime);
+        m_sprintDurationAfterSprintStopped.Update(Time.fixedDeltaTime);
+
+        if (m_useController) {
+            HandleControllerMovement();
         } else {
-            m_character.Move(m_move, crouch);
+            HandleMouseKeyboardMovement();
         }
     }
 

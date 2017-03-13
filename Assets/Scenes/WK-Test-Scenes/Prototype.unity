@@ -3179,6 +3179,16 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: -0.11041513
       objectReference: {fileID: 0}
+    - target: {fileID: 95187426006961964, guid: 4f0fe6c325c762947a707a726a5f6992,
+        type: 2}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 96b90df0149a06745bc2d9a1d7bb39fc, type: 2}
+    - target: {fileID: 114492403891872936, guid: 4f0fe6c325c762947a707a726a5f6992,
+        type: 2}
+      propertyPath: m_sprintCooldown.m_timeInSeconds
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4f0fe6c325c762947a707a726a5f6992, type: 2}
   m_IsPrefabParent: 0
@@ -8374,7 +8384,7 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1332133727}
-  m_LocalRotation: {x: 0.53267515, y: 0.07034045, z: 0.83613265, w: -0.11041513}
+  m_LocalRotation: {x: 0.5326752, y: 0.070340455, z: 0.83613276, w: -0.110415146}
   m_LocalPosition: {x: 0.000022271464, y: -0.00006150465, z: 0.026027026}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
