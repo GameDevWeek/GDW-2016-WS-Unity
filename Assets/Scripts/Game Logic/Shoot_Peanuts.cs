@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class Shoot_Peanuts : MonoBehaviour
 {
-    public GameObject m_peanutAsset;
+    public GameObject m_peanutPrefab;
     public float m_velocity;
     public int m_lifeSpan;
     public Vector3 m_offset;
     public bool m_destroy_Peanut_On_Collison;
+ 
     
 
     private Rigidbody peanutRigidbody;
@@ -18,14 +19,14 @@ public class Shoot_Peanuts : MonoBehaviour
     void Start ()
     {
 
-        peanutRigidbody = m_peanutAsset.GetComponent<Rigidbody>();
+        peanutRigidbody = m_peanutPrefab.GetComponent<Rigidbody>();
     }
 	
 	// Update is called once per frame
 	void Update () {
 
         //for testing
-        if (Input.GetKeyDown(KeyCode.J))
+        if (Input.GetMouseButtonDown(1))
         {
             Fire();
         }
@@ -39,9 +40,8 @@ public class Shoot_Peanuts : MonoBehaviour
 
         //Instantiate a clone of the given asset
         GameObject clone;
-        clone = (GameObject)Instantiate(m_peanutAsset, offsetPosition, transform.rotation);
-        clone.AddComponent<Peanut_Script>();
-        clone.GetComponent<Peanut_Script>().destroyOnCollision = m_destroy_Peanut_On_Collison;
+        clone = (GameObject)Instantiate(m_peanutPrefab, offsetPosition, transform.rotation);
+      
 
         //set the velocity of the clone
         clone.GetComponent<Rigidbody>().velocity = transform.TransformDirection(Vector3.forward * m_velocity);
