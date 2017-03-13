@@ -4,14 +4,30 @@ using UnityEngine;
 
 public class Peanut_Script : MonoBehaviour
 {
+    private bool m_destroyOnCollision;
+    public bool destroyOnCollision
+    {
+        get { return m_destroyOnCollision; }
+        set { m_destroyOnCollision = value; }
+    }
 
-    public bool destroyOnCollision;
     private bool callNoiseEmitterFlag=true;
+    private GameObject m_playerGameObject;
+    private NoiseSource m_noiseSource;
+    
+   
 	// Use this for initialization
-	void Start () {
-		
+    void Start () {
 
-	}
+        //Find Gameobject of the player
+        m_playerGameObject= GameObject.FindGameObjectWithTag("Player");
+        //Set the projectile physics to ignore the player collision
+        Physics.IgnoreCollision(GetComponent<Collider>(), m_playerGameObject.GetComponent<Collider>());
+
+        m_noiseSource = GetComponent<NoiseSource>();
+
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -29,12 +45,14 @@ public class Peanut_Script : MonoBehaviour
             if (collision.gameObject.tag != "Player")
             {
                 //todo: call noise emitter here
-                Debug.Log("HIT and The script works: " + this.name);
+                Debug.Log("The script works: " + this.name);
 
-
-                if (destroyOnCollision)
-                    DestroyObject(this.gameObject);
+               
+                m_noiseSource.Play();
             }
+
+            if (m_destroyOnCollision)
+                DestroyObject(this.gameObject);
         }
     }
 }
