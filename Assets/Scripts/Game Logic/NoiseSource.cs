@@ -44,8 +44,4 @@ public class NoiseSource : MonoBehaviour {
     void Start() {
         m_audioSource = GetComponent<AudioSource>();
     }
-
-    void Update() {
-        Play();
-    }
 }
