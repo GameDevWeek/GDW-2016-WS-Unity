@@ -58,7 +58,7 @@ public class PatrolState : IEnemyState
         if (Physics.Raycast(enemy.eyes.transform.position, boundPoints[0] - enemy.eyes.transform.position, out boundsHit, enemy.sightRange) &&
             Physics.Raycast(enemy.eyes.transform.position, boundPoints[1] - enemy.eyes.transform.position, out boundsHit1, enemy.sightRange) &&
             Physics.Raycast(enemy.eyes.transform.position, boundPoints[2] - enemy.eyes.transform.position, out boundsHit2, enemy.sightRange))
-            Debug.Log(boundsHit.transform.gameObject);
+            //Debug.Log(boundsHit.transform.gameObject);
             if (boundsHit.collider.CompareTag("Player") == PlayerActor.Instance.transform)
             {
                 enemy.chaseTarget = boundsHit.transform;
