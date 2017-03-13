@@ -2,18 +2,27 @@ using System;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 
-[RequireComponent(typeof(Elephant))]
+[RequireComponent(typeof(ElephantMovement))]
 public class ElephantControl : MonoBehaviour {
-    private Elephant m_character; // A reference to the ThirdPersonCharacter on the object
+    private ElephantMovement m_character; // A reference to the ThirdPersonCharacter on the object
     private Transform m_cam;                  // A reference to the main camera in the scenes transform
     private Vector3 m_camForward;             // The current forward direction of the camera
     private Vector3 m_move;
-    private bool m_jump;                      // the world-relative desired move direction, calculated from the camForward and user input.
+
+    [SerializeField]
+    private Cooldown m_sprintCooldown = new Cooldown(2.0f);
+    [SerializeField]
+    private Cooldown m_sprintDurationAfterSprintStopped = new Cooldown(0.5f);
+
+    private Vector3 m_sprintDirection;
 
     [SerializeField]
     private bool m_mouseMovement = true;
+    private bool m_sprinting = false;
 
     private void Start() {
+        m_sprintCooldown.End();
+
         // get the transform of the main camera
         if (Camera.main != null) {
             m_cam = Camera.main.transform;
@@ -24,22 +33,14 @@ public class ElephantControl : MonoBehaviour {
         }
 
         // get the third person character ( this should never be null due to require component )
-        m_character = GetComponent<Elephant>();
+        m_character = GetComponent<ElephantMovement>();
     }
-
-
-    private void Update() {
-        if (!m_jump) {
-            m_jump = CrossPlatformInputManager.GetButtonDown("Jump");
-            if (m_jump) {
-                Camera.main.GetComponent<CameraShake>().Shake();
-            }
-        }
-    }
-
 
     // Fixed update is called in sync with physics
     private void FixedUpdate() {
+        m_sprintCooldown.Update(Time.fixedDeltaTime);
+        m_sprintDurationAfterSprintStopped.Update(Time.fixedDeltaTime);
+
         // read inputs
         float h = CrossPlatformInputManager.GetAxis("Horizontal");
         float v = CrossPlatformInputManager.GetAxis("Vertical");
@@ -54,22 +55,58 @@ public class ElephantControl : MonoBehaviour {
             // we use world-relative directions in the case of no main camera
             m_move = v * Vector3.forward + h * Vector3.right;
         }
-#if !MOBILE_INPUT
-        // walk speed multiplier
-        if (Input.GetKey(KeyCode.LeftShift)) m_move *= 0.5f;
-#endif
 
         Vector2 mp = Input.mousePosition;
         var screenLookDir = (new Vector2(Screen.width, Screen.height) * 0.5f - mp).normalized;
-        var lookDir = new Vector3(-screenLookDir.x, 0.0f, -screenLookDir.y);
-        m_character.LookTowards(lookDir);
-
+        var desiredLookDir = new Vector3(-screenLookDir.x, 0.0f, -screenLookDir.y);
+        
         if (m_mouseMovement && Input.GetMouseButton(0)) {
-            m_move = lookDir;
+            m_move = desiredLookDir;
         }
 
-        // pass all parameters to the character control script
-        m_character.Move(m_move, crouch, m_jump);
-        m_jump = false;
+        if (!m_sprinting) {
+            if (m_mouseMovement) {
+                m_character.LookTowards(desiredLookDir);
+            } else {
+                m_character.LookTowards(m_move);
+            }
+        }
+
+        if (m_sprintCooldown.IsOver() || !m_sprintDurationAfterSprintStopped.IsOver()) {
+            bool sprint = Input.GetButton("Jump");
+            bool sprintJustStarted = !m_sprinting && sprint;
+            bool sprintJustStopped = m_sprinting && !sprint;
+            m_sprinting = sprint;
+
+            if (sprintJustStopped) {
+                m_sprintCooldown.Start();
+                m_sprintDurationAfterSprintStopped.Start();
+            }
+
+            if (sprintJustStarted) {
+                m_sprintDirection = desiredLookDir;
+
+                if (Camera.main.GetComponent<CameraShake>()) {
+                    Camera.main.GetComponent<CameraShake>().Shake();
+                }
+            }
+
+            if (sprint && m_sprintCooldown.IsOver() || !m_sprintDurationAfterSprintStopped.IsOver()) {
+                m_character.LookTowards(m_sprintDirection);
+
+                float t = m_sprintDurationAfterSprintStopped.IsOver() ? 0.0f : m_sprintDurationAfterSprintStopped.progress;
+                m_character.Sprint(transform.forward, t);
+            } else {
+                m_character.Move(m_move, crouch);
+            }
+        } else {
+            m_character.Move(m_move, crouch);
+        }
+    }
+
+    public Cooldown sprintCooldown {
+        get {
+            return m_sprintCooldown;
+        }
     }
 }
