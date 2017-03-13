@@ -1,20 +1,16 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class GrabController : MonoBehaviour
 {
-    public const string JADE_ELEPHANT_TAG = "JadeElephant";
+    public EventHandler<OnScoredEventArgs> OnScored;
 
-    private Collider _grabbableInRange;
-
-    // Use this for initialization
-    void Start () {
-		
-	}
+    private Collectable _collectableInRange;
 	
 	// Update is called once per frame
-	void Update ()
+	private void Update ()
     {
         if (Input.GetButtonDown("Grab"))
         {
@@ -25,39 +21,61 @@ public class GrabController : MonoBehaviour
 
     public void Grab()
     {
-        if (_grabbableInRange == null) return;
-
-        if (_grabbableInRange.tag == JADE_ELEPHANT_TAG)
+        if (_collectableInRange == null) return;
+        
+        if (OnScored != null)
         {
-            DestroyImmediate(_grabbableInRange.gameObject);
-            _grabbableInRange = null;
-
-            // TODO Methode "ScoreErhoehen"
-            Debug.Log("Score++");
-        }
-    }
-
-    void OnTriggerEnter(Collider coll)
-    {
-        if (JADE_ELEPHANT_TAG == coll.tag)
-        {
-            _grabbableInRange = coll;
-            Debug.Log("grabbable enter");
-
-
+            OnScored.Invoke(this, new OnScoredEventArgs(_collectableInRange));
         }
 
+        DestroyImmediate(_collectableInRange.gameObject);
+        _collectableInRange = null;
+        //Debug.Log("Score++");
+    }
+
+    private void OnTriggerEnter(Collider coll)
+    {
+        Collectable collectable = coll.gameObject.GetComponent<Collectable>();
+
+        if (collectable != null)
+        {
+            _collectableInRange = collectable;
+            //Debug.Log("grabbable enter");
+
+        }
+
 
     }
 
-    void OnTriggerExit(Collider coll)
+    private void OnTriggerExit(Collider coll)
     {
-        if (JADE_ELEPHANT_TAG == coll.tag && _grabbableInRange == coll)
+        Collectable collectable = coll.gameObject.GetComponent<Collectable>();
+
+        if (collectable != null && _collectableInRange == coll)
         {
-            _grabbableInRange = null;
+            _collectableInRange = null;
             Debug.Log("grabbable exit");
+
         }
 
 
+    }
+
+    public class OnScoredEventArgs : EventArgs
+    {
+        public string CollectedObject { get; private set; }
+        public int ScoreValue { get; private set; }
+
+        public OnScoredEventArgs(string name, int scoreValue)
+        {
+            CollectedObject = name;
+            ScoreValue = scoreValue;
+        }
+
+        public OnScoredEventArgs(Collectable collectable)
+        {
+            CollectedObject = collectable.Name;
+            ScoreValue = collectable.ScoreValue;
+        }
     }
 }

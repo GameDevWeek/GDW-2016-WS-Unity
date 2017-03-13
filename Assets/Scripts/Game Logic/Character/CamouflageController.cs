@@ -1,31 +1,36 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class CamouflageController : MonoBehaviour
 {
 
-    public const string PEDESTAL_TAG = "Pedestal";
-    public const string MOUSE_TAG = "Mouse";
+    public EventHandler<EventArgs> OnElephantShocked;
+
+    public EventHandler<EventArgs> OnElephantEntersCamouflageMode;
+    public EventHandler<EventArgs> OnElephantExitsCamouflageMode;
+
+    [SerializeField]
+    private string _pedestalTag;
+    [SerializeField]
+    private string _mouseTag;
 
     private List<Collider> _pedestalsInRange;
     private List<Collider> _miceInRange;
 
     public bool CamouflageModeActive { get; private set; }
 
-    void Awake()
+    private void Awake()
     {
         _pedestalsInRange = new List<Collider>();
         _miceInRange = new List<Collider>();
     }
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    // Update is called once per frame
+    private void Update () {
 
 	    if (Input.GetButtonDown("Camouflage"))
 	    {
@@ -46,7 +51,7 @@ public class CamouflageController : MonoBehaviour
         }
         else
         { 
-            EnterCamouflageMode();
+            TryEnterCamouflageMode();
         }
         return CamouflageModeActive;
     }
@@ -55,23 +60,29 @@ public class CamouflageController : MonoBehaviour
     /// 
     /// </summary>
     /// <returns>true if mode could be applied</returns>
-    public bool EnterCamouflageMode()
+    public bool TryEnterCamouflageMode()
     {
         if (!CamouflagePossible())   return false;
 
-        // TODO Methode "TarnenStarten"
+        if (OnElephantEntersCamouflageMode != null)
+        {
+            OnElephantEntersCamouflageMode.Invoke(this, new EventArgs());
+        }
 
         CamouflageModeActive = true;
-        Debug.Log("camouflage on");
+        //Debug.Log("camouflage on");
         return true;
     }
     
     public void ExitCamouflageMode()
     {
-        // TODO Methode "TarnenBeenden"
+        if (OnElephantExitsCamouflageMode != null)
+        {
+            OnElephantExitsCamouflageMode(this, new EventArgs());
+        }
 
         CamouflageModeActive = false;
-        Debug.Log("camouflage off");
+        //Debug.Log("camouflage off");
     }
 
     private bool CamouflagePossible()
@@ -85,43 +96,46 @@ public class CamouflageController : MonoBehaviour
         return false;
     }
 
-    void OnTriggerEnter(Collider coll)
+    private void OnTriggerEnter(Collider coll)
     {
         
-        if (PEDESTAL_TAG == coll.tag && !_pedestalsInRange.Contains(coll))
+        if (_pedestalTag == coll.tag && !_pedestalsInRange.Contains(coll))
         {
             _pedestalsInRange.Add(coll);
-            Debug.Log("pedestal enter");
+            //Debug.Log("pedestal enter");
 
 
         }
-        if (MOUSE_TAG == coll.tag && !_miceInRange.Contains(coll))
+        if (_mouseTag == coll.tag && !_miceInRange.Contains(coll))
         {
             _miceInRange.Add(coll);
-            Debug.Log("mouse enter");
+            //Debug.Log("mouse enter");
 
             if (CamouflageModeActive)
             {
                 ExitCamouflageMode();
             }
 
-            // TODO Methode "ElefantErschrecktSich"
+            if (OnElephantShocked != null)
+            {
+                OnElephantShocked.Invoke(this, new EventArgs());
+            }
         }
 
 
     }
 
-    void OnTriggerExit(Collider coll)
+    private void OnTriggerExit(Collider coll)
     {
-        if (PEDESTAL_TAG == coll.tag)
+        if (_pedestalTag == coll.tag)
         {
             _pedestalsInRange.Remove(coll);
-            Debug.Log("pedestal exit");
+            //Debug.Log("pedestal exit");
         }
-        if (MOUSE_TAG == coll.tag)
+        if (_mouseTag == coll.tag)
         {
             _miceInRange.Remove(coll);
-            Debug.Log("mouse exit");
+            //Debug.Log("mouse exit");
         }
 
 
