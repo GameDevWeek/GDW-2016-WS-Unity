@@ -82,12 +82,12 @@ public sealed class ShelfActor : MonoBehaviour {
         Gizmos.DrawSphere(hingePosition-hingeXTranslation, 0.1f);
 
         var pos = new Vector3(transform.position.x, collider.bounds.size.x / 2, transform.position.z);
-        var x_translatioin = transform.right * (collider.bounds.size.z / 2 + collider.bounds.size.x/2); // TODO: change to right
+        var x_translatioin = transform.right * (collider.bounds.size.y / 2 + collider.bounds.size.x/2); // TODO: change to right
 
         if(forward)
-            Gizmos.DrawWireCube(pos + x_translatioin, new Vector3(collider.bounds.size.z, collider.bounds.size.x, collider.bounds.size.y));
+            Gizmos.DrawWireCube(pos + x_translatioin, new Vector3(collider.bounds.size.y, collider.bounds.size.x, collider.bounds.size.z));
         if(backward)
-            Gizmos.DrawWireCube(pos - x_translatioin, new Vector3(collider.bounds.size.z, collider.bounds.size.x, collider.bounds.size.y));
+            Gizmos.DrawWireCube(pos - x_translatioin, new Vector3(collider.bounds.size.y, collider.bounds.size.x, collider.bounds.size.z));
     }
     #endif
 
