@@ -38,11 +38,11 @@ public class WantedLevel : MonoBehaviour {
             m_currentAttention += m_amountOfGuardsSeeingMe * m_attentionDelta * Time.deltaTime;
 
             if (m_currentAlertStage == 0 && m_currentAttention >= m_minAttentionAlarm1)
-                RaiseAlarmToStage1();
+                RaiseAlarmToStage(1);
             else if (m_currentAlertStage == 1 && m_currentAttention >= m_minAttentionAlarm2)
-                RaiseAlarmToStage2();
+                RaiseAlarmToStage(2);
             else if (m_currentAlertStage == 2 && m_currentAttention >= m_minAttentionAlarm3)
-                RaiseAlarmToStage3();
+                RaiseAlarmToStage(3);
         }
         // Not in sight of an enemy
         else
@@ -50,12 +50,12 @@ public class WantedLevel : MonoBehaviour {
             m_currentAttention -= m_attentionDelta * Time.deltaTime;
 
             if (m_currentAlertStage == 1 && m_currentAttention < m_minAttentionAlarm1)
-                LowerAlarmToStage0();
+                LowerAlarmToStage(0);
             else if (m_currentAlertStage == 2 && m_currentAttention < m_minAttentionAlarm2)
-                LowerAlarmToStage1();
+                LowerAlarmToStage(1);
             // only possible if AlertStage3 is not instant GameOver
             else if (m_currentAlertStage == 3 && m_currentAttention < m_minAttentionAlarm3)
-                LowerAlarmToStage2();
+                LowerAlarmToStage(2);
             
             // minimum attention of 0
             if (m_currentAttention < 0f)
@@ -65,42 +65,30 @@ public class WantedLevel : MonoBehaviour {
         }
 	}
 
-    private void RaiseAlarmToStage1()
+    private void RaiseAlarmToStage(int stage)
     {
-        m_currentAlertStage = 1;
-        //TODO AI&UI
+        //Can raise to stage 1-3
+        if (stage < 1 || stage > 3)
+            return;
+
+        m_currentAlertStage = stage;
+
+        if(m_currentAlertStage == 3)
+        {
+            //TODO GameOver
+        }
+
+        //TODO AI & UI
     }
 
-    private void RaiseAlarmToStage2()
+    private void LowerAlarmToStage(int stage)
     {
-        m_currentAlertStage = 2;
-        //TODO AI&UI
-    }
+        //Can lower to stage 0-2
+        if (stage < 0 || stage > 2)
+            return;
+        m_currentAlertStage = stage;
 
-    private void RaiseAlarmToStage3()
-    {
-        m_currentAlertStage = 3;
-        //TODO AI&UI
-
-        //TODO GameOver
-    }
-
-    private void LowerAlarmToStage0()
-    {
-        m_currentAlertStage = 0;
-        //TODO AI&UI
-    }
-
-    private void LowerAlarmToStage1()
-    {
-        m_currentAlertStage = 0;
-        //TODO AI&UI
-    }
-
-    private void LowerAlarmToStage2()
-    {
-        m_currentAlertStage = 0;
-        //TODO AI&UI
+        //TODO AI & UI
     }
 
     private bool IsInSightOfEnemy()
@@ -108,7 +96,7 @@ public class WantedLevel : MonoBehaviour {
         return m_amountOfGuardsSeeingMe > 0;
     }
 
-    //TODO Check if the guard has already increased the amount
+    //TODO Check if the guard has already altered the amount
     public void PlayerIsInSightOfGuard(bool isInSight)
     {
         if (isInSight)
