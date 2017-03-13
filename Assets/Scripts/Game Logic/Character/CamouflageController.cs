@@ -87,6 +87,7 @@ public class CamouflageController : MonoBehaviour
 
     void OnTriggerEnter(Collider coll)
     {
+        
         if (PEDESTAL_TAG == coll.tag && !_pedestalsInRange.Contains(coll))
         {
             _pedestalsInRange.Add(coll);
