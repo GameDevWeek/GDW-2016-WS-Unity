@@ -22,6 +22,15 @@ public class Cooldown {
 
     }
 
+    /**
+    * <summary>Cooldown-progress in [0,1].</summary>
+    */
+    public float progress {
+        get {
+            return Mathf.Clamp((m_timeInSeconds - m_timeLeftInSeconds) / m_timeInSeconds, 0.0f, 1.0f);
+        }
+    }
+
     public Cooldown(float timeInSeconds) {
         m_timeInSeconds = timeInSeconds;
         m_timeLeftInSeconds = m_timeInSeconds;
