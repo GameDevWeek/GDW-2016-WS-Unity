@@ -2,22 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Camera))]
 public class TopDownCamera : AbstractCamera {
 
 	[SerializeField]
-	private Vector2 m_noFollowDistance = new Vector2(1, 1);
+	private Vector2 m_noFollowDistance = new Vector2(0.75f, 0.75f);
 
 	[SerializeField]
-	private float m_stopFollowDistance = 0.25f;
+	private float m_stopFollowDistance = 0.5f;
 
 	[SerializeField]
-	private Vector3 m_offset = new Vector3(0,8,-1);
+	private Vector3 m_offset = new Vector3(0,10,-1);
 
 	[SerializeField]
 	private Vector3 m_targetOffset = new Vector3(0,0,0);
 
 	[SerializeField]
-	protected float m_springConstant = 50.0f;
+	protected float m_springConstant = 20.0f;
 
 	[SerializeField]
 	protected float m_lookAheadFactor = 1.0f;
@@ -41,12 +42,10 @@ public class TopDownCamera : AbstractCamera {
 	}
 
 	protected override void FollowTarget(float deltaTime) {
-		var realPos = m_targetedPosition;
 		var realTarget = Target.position + m_targetOffset;
+		var screenTarget = GetComponent<Camera> ().WorldToViewportPoint (realTarget)*2f - new Vector3(1,1,1);
 
-		var diff = new Vector2(realTarget.x-realPos.x, realTarget.z-realPos.z);
-
-		if (m_moving || (Mathf.Abs (diff.x) > m_noFollowDistance.x || Mathf.Abs (diff.y) > m_noFollowDistance.y)) {
+		if (m_moving || Mathf.Abs(screenTarget.x) >= m_noFollowDistance.x || Mathf.Abs (screenTarget.y) > m_noFollowDistance.y) {
 			if (m_lookAheadFactor > 0f) {
 				var rigidBody = Target.GetComponent<Rigidbody> ();
 				if (rigidBody != null) {
@@ -59,7 +58,8 @@ public class TopDownCamera : AbstractCamera {
 				}
 			}
 
-			m_moving = Mathf.Sqrt (diff.x * diff.x + diff.y * diff.y) > m_stopFollowDistance;
+			var diff = realTarget - m_targetedPosition;
+			m_moving = Mathf.Abs(diff.x*diff.x + diff.y*diff.y) > m_stopFollowDistance;
 			m_lastTarget = realTarget;
 		}
 
