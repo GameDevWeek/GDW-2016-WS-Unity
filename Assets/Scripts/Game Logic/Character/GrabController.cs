@@ -8,16 +8,6 @@ public class GrabController : MonoBehaviour
     public EventHandler<OnScoredEventArgs> OnScored;
 
     private Collectable _collectableInRange;
-	
-	// Update is called once per frame
-	private void Update ()
-    {
-        if (Input.GetButtonDown("Grab"))
-        {
-            Grab();
-        }
-
-    }
 
     public void Grab()
     {
@@ -30,7 +20,6 @@ public class GrabController : MonoBehaviour
 
         DestroyImmediate(_collectableInRange.gameObject);
         _collectableInRange = null;
-        //Debug.Log("Score++");
     }
 
     private void OnTriggerEnter(Collider coll)
@@ -40,8 +29,6 @@ public class GrabController : MonoBehaviour
         if (collectable != null)
         {
             _collectableInRange = collectable;
-            //Debug.Log("grabbable enter");
-
         }
 
 
@@ -54,8 +41,6 @@ public class GrabController : MonoBehaviour
         if (collectable != null && _collectableInRange == coll)
         {
             _collectableInRange = null;
-            Debug.Log("grabbable exit");
-
         }
 
 

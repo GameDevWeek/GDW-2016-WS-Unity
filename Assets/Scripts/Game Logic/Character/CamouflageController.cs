@@ -29,16 +29,6 @@ public class CamouflageController : MonoBehaviour
         _miceInRange = new List<Collider>();
     }
 
-    // Update is called once per frame
-    private void Update () {
-
-	    if (Input.GetButtonDown("Camouflage"))
-	    {
-            ToggleCamouflageMode();
-	    }
-
-    }
-
     /// <summary>
     /// 
     /// </summary>
@@ -70,7 +60,6 @@ public class CamouflageController : MonoBehaviour
         }
 
         CamouflageModeActive = true;
-        //Debug.Log("camouflage on");
         return true;
     }
     
@@ -82,7 +71,6 @@ public class CamouflageController : MonoBehaviour
         }
 
         CamouflageModeActive = false;
-        //Debug.Log("camouflage off");
     }
 
     private bool CamouflagePossible()
@@ -102,14 +90,10 @@ public class CamouflageController : MonoBehaviour
         if (_pedestalTag == coll.tag && !_pedestalsInRange.Contains(coll))
         {
             _pedestalsInRange.Add(coll);
-            //Debug.Log("pedestal enter");
-
-
         }
         if (_mouseTag == coll.tag && !_miceInRange.Contains(coll))
         {
             _miceInRange.Add(coll);
-            //Debug.Log("mouse enter");
 
             if (CamouflageModeActive)
             {
@@ -127,15 +111,13 @@ public class CamouflageController : MonoBehaviour
 
     private void OnTriggerExit(Collider coll)
     {
-        if (_pedestalTag == coll.tag)
+        if (_pedestalTag == coll.tag && _pedestalsInRange.Contains(coll))
         {
             _pedestalsInRange.Remove(coll);
-            //Debug.Log("pedestal exit");
         }
-        if (_mouseTag == coll.tag)
+        if (_mouseTag == coll.tag && _miceInRange.Contains(coll))
         {
             _miceInRange.Remove(coll);
-            //Debug.Log("mouse exit");
         }
 
 
