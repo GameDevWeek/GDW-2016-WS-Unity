@@ -45,7 +45,7 @@ public class Peanut_Script : MonoBehaviour
             if (collision.gameObject.tag != "Player")
             {
                 //todo: call noise emitter here
-                Debug.Log("The script works: " + this.name);
+               // Debug.Log("The script works: " + this.name);
 
                
                 m_noiseSource.Play();
