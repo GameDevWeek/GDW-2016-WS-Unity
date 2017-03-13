@@ -5,15 +5,18 @@ using UnityEngine;
 public class CamouflageController : MonoBehaviour
 {
 
-    private string PEDESTAL_TAG = "Pedestal";
+    public const string PEDESTAL_TAG = "Pedestal";
+    public const string MOUSE_TAG = "Mouse";
 
-    private List<Collider> _activePedestal;
+    private List<Collider> _pedestalsInRange;
+    private List<Collider> _miceInRange;
 
     public bool CamouflageModeActive { get; private set; }
 
     void Awake()
     {
-        _activePedestal = new List<Collider>();
+        _pedestalsInRange = new List<Collider>();
+        _miceInRange = new List<Collider>();
     }
 
 	// Use this for initialization
@@ -49,8 +52,6 @@ public class CamouflageController : MonoBehaviour
     /// <returns>true if mode could be applied</returns>
     public bool ExitCamouflageMode()
     {
-        if (_activePedestal == null) return false;
-
 
 
         return true;
@@ -62,19 +63,38 @@ public class CamouflageController : MonoBehaviour
     /// <returns>true if mode could be applied</returns>
     public bool EnterCamouflageMode()
     {
-        if (_activePedestal.Count == 0)   return false;
+        if (!CamouflagePossible())   return false;
 
 
 
         return true;
     }
 
+    private bool CamouflagePossible()
+    {
+        if (_pedestalsInRange.Count > 0 
+            && _miceInRange.Count == 0)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
     void OnTriggerEnter(Collider coll)
     {
-        if (PEDESTAL_TAG == coll.tag)
+        if (PEDESTAL_TAG == coll.tag && !_pedestalsInRange.Contains(coll))
         {
-            _activePedestal.Add(coll);
-            Debug.Log("enter");
+
+            _pedestalsInRange.Add(coll);
+            Debug.Log("pedestal enter");
+        }
+        if (MOUSE_TAG == coll.tag && !_miceInRange.Contains(coll))
+        {
+
+            _miceInRange.Add(coll);
+            // TODO Methode "ElefantErschrecktSich"
+            Debug.Log("mouse enter");
         }
 
 
@@ -84,8 +104,13 @@ public class CamouflageController : MonoBehaviour
     {
         if (PEDESTAL_TAG == coll.tag)
         {
-            _activePedestal.Remove(coll);
-            Debug.Log("exit");
+            _pedestalsInRange.Remove(coll);
+            Debug.Log("pedestal exit");
+        }
+        if (MOUSE_TAG == coll.tag)
+        {
+            _miceInRange.Remove(coll);
+            Debug.Log("mouse exit");
         }
 
 
