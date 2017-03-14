@@ -2321,6 +2321,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _pedestalTag: Pedestal
   _mouseTag: Mouse
+  _camouflageMaxDurationMS: 5000
 --- !u!114 &414742846
 MonoBehaviour:
   m_ObjectHideFlags: 0

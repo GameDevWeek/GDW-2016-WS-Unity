@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using Assets.Scripts.K.I_;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -8,7 +7,10 @@ public class StatePatternEnemy : MonoBehaviour {
     public float searchingTurnSpeed = 120f;
     public float searchingDuration = 4f;
     public float sightRange = 20f;
-    public Transform[] wayPoints;
+
+    public Waypoints wayPoints;
+    public int currentWaypoint;
+
     public Transform eyes;
     public Vector3 offset = new Vector3(0, .5f, 0);  //Damit man nicht auf die Schuhe des Spielers schaut
     public MeshRenderer meshRendererFlag;
