@@ -26,8 +26,6 @@ public class ElephantControl : MonoBehaviour {
     private bool m_sprinting = false;
     private bool m_sprintJustStarted = false;
     private bool m_sprintJustEnded = false;
-    private bool m_mouseMoving = false;
-    private Vector3 m_lastMousePos;
 
     [SerializeField]
     private float m_walkRadius = 0.4f;
@@ -89,7 +87,8 @@ public class ElephantControl : MonoBehaviour {
     private Vector3 desiredMouseLookDelta {
         get {
             Vector2 mp = Input.mousePosition;
-            var screenLookDelta = (new Vector2(Screen.width, Screen.height) * 0.5f - mp);
+            Vector2 center = Camera.main.WorldToScreenPoint(transform.position);
+            var screenLookDelta = (center - mp);
             var desiredLookDelta = new Vector3(-screenLookDelta.x, 0.0f, -screenLookDelta.y);
             desiredLookDelta /= Screen.height * 0.5f;
 
@@ -151,10 +150,6 @@ public class ElephantControl : MonoBehaviour {
     }
 
     private void FixedUpdate() {
-        var curMousePos = Input.mousePosition;
-        var mouseDelta = m_lastMousePos - curMousePos;
-        m_mouseMoving = mouseDelta.magnitude >= Mathf.Epsilon;
-
         m_sprintCooldown.Update(Time.fixedDeltaTime);
         m_sprintDurationAfterSprintStopped.Update(Time.fixedDeltaTime);
 
@@ -170,8 +165,6 @@ public class ElephantControl : MonoBehaviour {
                 HandleMouseKeyboardMovement();
                 break;
         }
-
-        m_lastMousePos = Input.mousePosition;
     }
 
     private void HandleAiming() {

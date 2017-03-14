@@ -2,13 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Animator))]
 public class FootSound : MonoBehaviour {
 
-    public AudioClip FootLeft, FootRight;
+    [System.Serializable]
+    public struct FootSoundPair
+    {
+        [TagSelector]
+        public string GroundTag;
+        public AudioClip FootLeft, FootRight;
+    }
+
+
+    public FootSoundPair[] FootSoundPairs;
 
     private AudioSource m_SourceLeft;
     private AudioSource m_SourceRight;
     private Animator m_Animator;
+    private AudioClip CurrentFootLeft, CurrentFootRight;
 
     private void Start()
     {
@@ -24,7 +35,7 @@ public class FootSound : MonoBehaviour {
         {
             float forwardPower = m_Animator.GetFloat("Forward"); //Value 0-1
             m_SourceLeft.volume = 1 * forwardPower;
-            m_SourceLeft.PlayOneShot(FootLeft, intensity);
+            m_SourceLeft.PlayOneShot(CurrentFootLeft, intensity);
         }
     }
 
@@ -34,7 +45,20 @@ public class FootSound : MonoBehaviour {
         if (!m_SourceRight.isPlaying) {
             float forwardPower = m_Animator.GetFloat("Forward"); //Value 0-1
             m_SourceRight.volume = 1 * forwardPower;
-            m_SourceRight.PlayOneShot(FootRight, intensity);
+            m_SourceRight.PlayOneShot(CurrentFootRight, intensity);
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        foreach (FootSoundPair fsp in FootSoundPairs)
+        {
+            if (fsp.GroundTag == collision.gameObject.tag)
+            {
+                CurrentFootLeft = fsp.FootLeft;
+                CurrentFootRight = fsp.FootRight;
+                return;
+            }
         }
     }
 }
