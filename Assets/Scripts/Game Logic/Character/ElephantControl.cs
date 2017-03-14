@@ -160,7 +160,11 @@ public class ElephantControl : MonoBehaviour {
 
         switch (controlsMode) {
             case ControlsMode.Controller:
-                HandleControllerMovement();
+                if (Input.GetMouseButton(1)) {
+                    HandleAiming();
+                } else {
+                    HandleControllerMovement();
+                }
                 break;
             case ControlsMode.KeyboardMouse:
                 HandleMouseKeyboardMovement();
@@ -168,6 +172,11 @@ public class ElephantControl : MonoBehaviour {
         }
 
         m_lastMousePos = Input.mousePosition;
+    }
+
+    private void HandleAiming() {
+        m_character.Move(Vector3.zero, false);
+        m_character.LookTowards(desiredMouseLookDir);
     }
 
     public Cooldown sprintCooldown {
