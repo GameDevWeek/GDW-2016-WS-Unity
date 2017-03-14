@@ -26,6 +26,9 @@ public class TopDownCamera : AbstractCamera {
 	[SerializeField]
 	protected float m_minLookAheadVelocity = 1.0f;
 
+	[SerializeField]
+	protected float m_LerpFactor = 10.0f;
+
 	private bool m_moving = true;
 
 	private Vector2 m_velocity;
@@ -36,14 +39,21 @@ public class TopDownCamera : AbstractCamera {
 
 	private HashSet<CameraAttractor> m_activeAttractors = new HashSet<CameraAttractor>();
 
+	private Camera m_camera;
+
 	public Vector3 FocusPoint {
 		get { return m_targetedPosition; }
 	}
 
 	protected override void Awake () {
 		base.Awake ();
+
+		m_camera = GetComponent<Camera> ();
+
 		if (Target != null) {
 			m_targetedPosition = Target.position;
+			transform.position = m_targetedPosition + m_offset;
+			transform.LookAt (transform.position - m_offset);
 		}
 	}
 
@@ -55,41 +65,81 @@ public class TopDownCamera : AbstractCamera {
 		}
 
 		Vector3 position = Target.position + m_targetOffset;
+		if (m_lookAheadFactor > 0f) {
+			var rigidBody = Target.GetComponent<Rigidbody> ();
+			if (rigidBody != null) {
+				if ((rigidBody.velocity.x * rigidBody.velocity.x + rigidBody.velocity.y * rigidBody.velocity.y) >= m_minLookAheadVelocity) {
+					position.x += rigidBody.velocity.x * m_lookAheadFactor;
+					position.z += rigidBody.velocity.z * m_lookAheadFactor;
+				}
+			}
+		}
 
 		foreach (var a in m_activeAttractors) {
 			if(a.IsActive())
 				position = Vector3.Lerp(position, a.transform.position, a.LerpFactor() * a.Influence());
 		}
 
-		// TODO m_activeAttractors
 		return position;
 	}
 
 	protected override void FollowTarget(float deltaTime) {
 		var realTarget = GetTargetPosition();
-		var screenTarget = GetComponent<Camera> ().WorldToViewportPoint (realTarget)*2f - new Vector3(1,1,1);
+		var screenTarget = m_camera.WorldToViewportPoint (realTarget)*2f - new Vector3(1,1,1);
 
 		if (m_moving || Mathf.Abs(screenTarget.x) >= m_noFollowDistance.x || Mathf.Abs (screenTarget.y) > m_noFollowDistance.y) {
-			if (m_lookAheadFactor > 0f) {
-				var rigidBody = Target.GetComponent<Rigidbody> ();
-				if (rigidBody != null) {
-					if (Mathf.Abs (rigidBody.velocity.x) > m_minLookAheadVelocity) {
-						realTarget.x += rigidBody.velocity.x * m_lookAheadFactor;
-					}
-					if (Mathf.Abs (rigidBody.velocity.z) > m_minLookAheadVelocity) {
-						realTarget.z += rigidBody.velocity.z * m_lookAheadFactor;
-					}
-				}
-			}
-
 			var diff = realTarget - m_targetedPosition;
 			m_moving = Mathf.Abs(diff.x*diff.x + diff.y*diff.y) > m_stopFollowDistance;
 			m_lastTarget = realTarget;
 		}
 
 		UpdatePosition (m_lastTarget, deltaTime);
-		transform.position = Vector3.Lerp(transform.position, m_targetedPosition + m_offset, 10f*Time.deltaTime);
+
+		transform.position = Vector3.Lerp(transform.position, m_targetedPosition + m_offset, m_LerpFactor*deltaTime);
+		LimitPosition ();
+
 		transform.LookAt (transform.position - m_offset);
+	}
+
+	private Vector3 ViewportToWorldPos(float x, float y) {
+		Plane plane = new Plane( Vector3.up,  new Vector3(0,m_targetedPosition.y,0) );
+		Ray ray = m_camera.ViewportPointToRay(new Vector3(x,y,0f));
+		float distance;
+		plane.Raycast(ray, out distance);
+		return ray.GetPoint(distance);
+	}
+
+	private void LimitPosition() {
+		var topCenterCam = ViewportToWorldPos (0.5f,1);
+		var bottomRightCam = ViewportToWorldPos (1,0);
+		var bottomLeftCam = ViewportToWorldPos (0,0);
+
+		var p = transform.position;
+
+		foreach (var room in GameObject.FindObjectsOfType<CameraRoom>()) {
+			if (!room.IsInside (Target.position + m_targetOffset)) {
+				continue;
+			}
+
+			var leftOver   = bottomLeftCam.x < room.Left;
+			var rightOver  = bottomRightCam.x > room.Right;
+			var topOver    = topCenterCam.z > room.Top;
+			var bottomOver = bottomRightCam.z < room.Bottom;
+
+			if (leftOver && !rightOver) {
+				p.x += room.Left - bottomLeftCam.x;
+			} else if (rightOver && !leftOver && (bottomRightCam.x - bottomLeftCam.x) < room.Width*1.5f) {
+				p.x += room.Right - bottomRightCam.x;
+			}
+
+			if (bottomOver && !topOver) {
+				p.z += room.Bottom - bottomRightCam.z;
+			} else if (topOver && !bottomOver && (topCenterCam.z - bottomRightCam.z) < room.Height*1.5f) {
+				p.z += room.Top - topCenterCam.z;
+			}
+		}
+
+		transform.position = p;
 	}
 
 	private void UpdatePosition(Vector3 target, float deltaTime) {
