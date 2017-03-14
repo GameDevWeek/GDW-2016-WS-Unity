@@ -4,7 +4,6 @@ using UnityEditor;
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
-[RequireComponent(typeof(ParticleSystem))]
 public class NoiseSource : MonoBehaviour {
     [SerializeField]
     private float m_affectedRange = 3.0f;
@@ -15,7 +14,7 @@ public class NoiseSource : MonoBehaviour {
 
     private AudioSource m_audioSource;
 
-    private ParticleSystem m_particleSystem;
+    private SoundParticlePool m_particlePool;
 
     public float affectedRange {
         get { return m_affectedRange; }
@@ -31,7 +30,7 @@ public class NoiseSource : MonoBehaviour {
     }
 
     public void Play() {
-        m_particleSystem.Play();
+        m_particlePool.Play(transform.position, m_affectedRange);
 
         AudioClip clip = m_audioSource.clip;
         if (m_audioClips.Length > 0) {
@@ -50,6 +49,6 @@ public class NoiseSource : MonoBehaviour {
 
     void Start() {
         m_audioSource = GetComponent<AudioSource>();
-        m_particleSystem = GetComponent<ParticleSystem>();
+        m_particlePool = SoundParticlePool.Instance;
     }
 }
