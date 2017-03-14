@@ -1,13 +1,18 @@
 using System;
+using UnityEditor;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 
 [RequireComponent(typeof(ElephantMovement))]
 public class ElephantControl : MonoBehaviour {
+    public enum ControlsMode {
+        Controller,
+        KeyboardMouse
+    }
+
     private ElephantMovement m_character; // A reference to the ThirdPersonCharacter on the object
     private Transform m_cam;                  // A reference to the main camera in the scenes transform
     private Vector3 m_camForward;             // The current forward direction of the camera
-    private Vector3 m_move;
 
     [SerializeField]
     private Cooldown m_sprintCooldown = new Cooldown(2.0f);
@@ -16,11 +21,16 @@ public class ElephantControl : MonoBehaviour {
 
     private Vector3 m_sprintDirection;
 
-    public bool m_useController = false;
+    public ControlsMode controlsMode = ControlsMode.Controller;
 
     private bool m_sprinting = false;
     private bool m_sprintJustStarted = false;
     private bool m_sprintJustEnded = false;
+    private bool m_mouseMoving = false;
+    private Vector3 m_lastMousePos;
+
+    [SerializeField]
+    private float m_walkRadius = 0.4f;
 
     private void Start() {
         m_sprintCooldown.End();
@@ -39,51 +49,75 @@ public class ElephantControl : MonoBehaviour {
         m_character = GetComponent<ElephantMovement>();
     }
 
+    private bool IsCrouching() {
+        return CrossPlatformInputManager.GetButton("Stealth");
+    }
+
     private void HandleControllerMovement() {
-        // read inputs
-        float h = CrossPlatformInputManager.GetAxis("Horizontal");
-        float v = CrossPlatformInputManager.GetAxis("Vertical");
-        bool crouch = CrossPlatformInputManager.GetButton("Stealth");
+        var move = GetAxisMove();
 
-        // calculate move direction to pass to character
-        if (m_cam != null) {
-            // calculate camera relative direction to move:
-            m_camForward = Vector3.Scale(m_cam.forward, new Vector3(1, 0, 1)).normalized;
-            m_move = v * m_camForward + h * m_cam.right;
-        } else {
-            // we use world-relative directions in the case of no main camera
-            m_move = v * Vector3.forward + h * Vector3.right;
-        }
-
-        if (m_move.magnitude > 0.001f) {
-            UpdateSprint(m_move);
+        if (move.magnitude > 0.001f) {
+            UpdateSprint(move);
         } else {
             UpdateSprint(transform.forward);
         }
         
         if (!m_sprinting && m_sprintDurationAfterSprintStopped.IsOver()) {
-            m_character.Move(m_move, crouch);
-            m_character.LookTowards(m_move);
+            m_character.Move(move, IsCrouching());
+            m_character.LookTowards(move);
+        }
+    }
+
+    private Vector3 GetAxisMove() {
+        float h = CrossPlatformInputManager.GetAxis("Horizontal");
+        float v = CrossPlatformInputManager.GetAxis("Vertical");
+        Vector3 move;
+
+        // calculate move direction to pass to character
+        if (m_cam != null) {
+            // calculate camera relative direction to move:
+            m_camForward = Vector3.Scale(m_cam.forward, new Vector3(1, 0, 1)).normalized;
+            move = v * m_camForward + h * m_cam.right;
+        } else {
+            // we use world-relative directions in the case of no main camera
+            move = v * Vector3.forward + h * Vector3.right;
+        }
+
+        return move;
+    }
+
+    private Vector3 desiredMouseLookDelta {
+        get {
+            Vector2 mp = Input.mousePosition;
+            var screenLookDelta = (new Vector2(Screen.width, Screen.height) * 0.5f - mp);
+            var desiredLookDelta = new Vector3(-screenLookDelta.x, 0.0f, -screenLookDelta.y);
+            desiredLookDelta /= Screen.height * 0.5f;
+
+            return desiredLookDelta;
+        }
+    }
+
+    private Vector3 desiredMouseLookDir {
+        get {
+            return desiredMouseLookDelta.normalized;
         }
     }
 
     private void HandleMouseKeyboardMovement() {
-        m_move = Vector3.zero;
-        bool crouch = CrossPlatformInputManager.GetButton("Stealth");
-
-        Vector2 mp = Input.mousePosition;
-        var screenLookDir = (new Vector2(Screen.width, Screen.height) * 0.5f - mp).normalized;
-        var desiredLookDir = new Vector3(-screenLookDir.x, 0.0f, -screenLookDir.y);
+        var move = Vector3.zero;
 
         if (Input.GetMouseButton(0)) {
-            m_move = desiredLookDir;
+            move = desiredMouseLookDelta / m_walkRadius;
+            if (move.magnitude > 1.0f) {
+                move.Normalize();
+            }
         }
 
-        UpdateSprint(desiredLookDir);
+        UpdateSprint(desiredMouseLookDir);
 
         if (!m_sprinting && m_sprintDurationAfterSprintStopped.IsOver()) {
-            m_character.LookTowards(desiredLookDir);
-            m_character.Move(m_move, crouch);
+            m_character.LookTowards(desiredMouseLookDir);
+            m_character.Move(move, IsCrouching());
         }
     }
 
@@ -117,14 +151,23 @@ public class ElephantControl : MonoBehaviour {
     }
 
     private void FixedUpdate() {
+        var curMousePos = Input.mousePosition;
+        var mouseDelta = m_lastMousePos - curMousePos;
+        m_mouseMoving = mouseDelta.magnitude >= Mathf.Epsilon;
+
         m_sprintCooldown.Update(Time.fixedDeltaTime);
         m_sprintDurationAfterSprintStopped.Update(Time.fixedDeltaTime);
 
-        if (m_useController) {
-            HandleControllerMovement();
-        } else {
-            HandleMouseKeyboardMovement();
+        switch (controlsMode) {
+            case ControlsMode.Controller:
+                HandleControllerMovement();
+                break;
+            case ControlsMode.KeyboardMouse:
+                HandleMouseKeyboardMovement();
+                break;
         }
+
+        m_lastMousePos = Input.mousePosition;
     }
 
     public Cooldown sprintCooldown {
