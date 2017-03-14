@@ -1337,6 +1337,7 @@ GameObject:
   - component: {fileID: 114764687126675632}
   - component: {fileID: 114492403891872936}
   - component: {fileID: 114603409626044586}
+  - component: {fileID: 114479039289323150}
   m_Layer: 0
   m_Name: Body
   m_TagString: Player
@@ -3247,6 +3248,19 @@ MonoBehaviour:
   - {fileID: 136914511686124630}
   - {fileID: 136124570048849298}
   - {fileID: 136901738141764284}
+--- !u!114 &114479039289323150
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1862507879705588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25de4a18fa22eee4e9bd4b9bf04effbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FootLeft: {fileID: 8300000, guid: 42e65e088b3f4374e851b8dbd38f3df9, type: 3}
+  FootRight: {fileID: 8300000, guid: 42e65e088b3f4374e851b8dbd38f3df9, type: 3}
 --- !u!114 &114492403891872936
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3262,7 +3276,7 @@ MonoBehaviour:
     m_timeInSeconds: 0.5
   m_sprintDurationAfterSprintStopped:
     m_timeInSeconds: 0.5
-  useController: 1
+  controlsMode: 0
   m_walkRadius: 0.4
 --- !u!114 &114603409626044586
 MonoBehaviour:
