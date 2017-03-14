@@ -69,7 +69,7 @@ public class ElephantMovement : MonoBehaviour {
         dir = transform.InverseTransformDirection(dir);
         CheckGroundStatus();
         dir = Vector3.ProjectOnPlane(dir, m_groundNormal);
-        m_forwardAmount = dir.z;
+        m_forwardAmount = dir.z * speed;
 
         ScaleCapsuleForCrouching(crouch);
 
