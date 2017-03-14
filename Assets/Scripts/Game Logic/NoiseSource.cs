@@ -33,6 +33,8 @@ public class NoiseSource : MonoBehaviour {
             m_audioSource.clip = Util.RandomElement(m_audioClips);
         }
 
+        m_audioSource.Play();
+
         var colliders = Physics.OverlapSphere(transform.position, m_affectedRange, m_affectedLayer);
         foreach (var c in colliders) {
             if (c.GetComponent<INoiseListener>() != null) {
