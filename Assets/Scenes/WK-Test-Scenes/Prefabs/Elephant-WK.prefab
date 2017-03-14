@@ -3187,7 +3187,7 @@ Animator:
   m_GameObject: {fileID: 1862507879705588}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: b235179bd2a63d1468dd430670338c55, type: 3}
-  m_Controller: {fileID: 9100000, guid: e2cf68ff4b1ffda45a77f7307dd789b9, type: 2}
+  m_Controller: {fileID: 9100000, guid: 96b90df0149a06745bc2d9a1d7bb39fc, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -3259,10 +3259,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_sprintCooldown:
-    m_timeInSeconds: 2
+    m_timeInSeconds: 0.5
   m_sprintDurationAfterSprintStopped:
     m_timeInSeconds: 0.5
-  m_mouseMovement: 1
+  useController: 1
+  m_walkRadius: 0.4
 --- !u!114 &114603409626044586
 MonoBehaviour:
   m_ObjectHideFlags: 1
