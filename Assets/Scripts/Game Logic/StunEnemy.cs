@@ -21,7 +21,8 @@ public class StunEnemy : MonoBehaviour {
 
     public float HighOffeset = 0.0f;
 
-    public string TagToBeHitted = GameTag.Enemy;
+    [TagSelector]
+    public string TagToBeHitted;
 
     [SerializeField]
     private Cooldown m_cooldown = new Cooldown(0.5f);
