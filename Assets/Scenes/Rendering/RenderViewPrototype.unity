@@ -10260,6 +10260,7 @@ GameObject:
   - component: {fileID: 1967739150}
   - component: {fileID: 1967739149}
   - component: {fileID: 1967739148}
+  - component: {fileID: 1967739153}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -10285,6 +10286,7 @@ MonoBehaviour:
   playerTag: Player
   objectRadius: 0.5
   raycastOriginOffset: 0.35
+  fadeDuration: 0.25
 --- !u!23 &1967739149
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -10349,6 +10351,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1967739153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1967739147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 153d78d973e06fb4bb4b1908194ae678, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1972299371 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4457002849638692, guid: 6f76bf094d1a4d64782094e9b4bd5072,

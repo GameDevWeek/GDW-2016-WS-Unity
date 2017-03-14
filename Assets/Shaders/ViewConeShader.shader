@@ -81,7 +81,7 @@ Shader "Rendering/ViewCone" {
 					a = _MinAlpha;
 				}
 				fixed4 col = _Color;
-				col.a = a;
+				col.a *= a;
 				return col;
 			}
 			ENDCG
