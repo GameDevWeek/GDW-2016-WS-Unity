@@ -24,6 +24,7 @@ public class WaypointEditor : Editor {
     void OnSceneGUI(SceneView sceneView){
 
         var waypoints = target as Waypoints;
+        if(waypoints == null) return;
         var spoints = serializedObject.FindProperty("points");
 
         for (var i = 0; i < spoints.arraySize; ++i) {

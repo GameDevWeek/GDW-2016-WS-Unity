@@ -26,8 +26,8 @@ namespace Assets.Scripts.K.I_ {
     [CreateAssetMenu()]
     public class Waypoints : ScriptableObject {
 
-        public Vector3[] points;
-        public Pair[] pairs;
+        public Vector3[] points = new Vector3[0];
+        public Pair[] pairs = new Pair[0];
 
 
         public Vector3 GetNextPoint(int currentIndex, out int nextIndex) {
