@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 952d09221f5e54126bf0bc3386016bef, type: 3}
+  m_Name: New Waypoints
+  m_EditorClassIdentifier: 
+  points:
+  - {x: 2.900188, y: 0, z: 3.1586237}
+  - {x: 2.0553427, y: 0, z: -3.0185814}
+  - {x: -3.3339844, y: 0, z: -2.5283813}
+  - {x: -1.5908203, y: 0, z: -2.8171387}
+  - {x: -3.7216797, y: 0, z: 3.6713867}
+  pairs:
+  - First: 0
+    Second: 1
+  - First: 0
+    Second: 2
+  - First: 2
+    Second: 4
+  - First: 4
+    Second: 0
+  - First: 1
+    Second: 3
