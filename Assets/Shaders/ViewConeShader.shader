@@ -1,4 +1,6 @@
-﻿Shader "Rendering/ViewCone" {
+﻿// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+
+Shader "Rendering/ViewCone" {
 
 	Properties
 	{
@@ -54,7 +56,7 @@
 			{
 				v2f o;
 				o.vertex = UnityObjectToClipPos(v.vertex);
-				o.world_vertex = UnityObjectToViewPos(v.vertex.xyz);
+				o.world_vertex = mul(unity_ObjectToWorld, v.vertex).xyz;
 				return o;
 			}
 
