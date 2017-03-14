@@ -36,7 +36,12 @@ public class WaypointEditor : Editor {
             Handles.Label(new Vector3(pos.x, 0.5f, pos.z), "Point " + i);
 
             if (EditorGUI.EndChangeCheck()) {
-                pos.y = 0;
+                Ray ray = HandleUtility.GUIPointToWorldRay( Event.current.mousePosition );
+                var plane = new Plane(Vector3.up, Vector3.zero);
+                float f;
+                plane.Raycast(ray, out f);
+                pos = ray.GetPoint(f);
+
                 spoint.vector3Value = pos;
                 serializedObject.ApplyModifiedProperties();
             }
