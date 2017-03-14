@@ -29,8 +29,6 @@ public class TopDownCamera : AbstractCamera {
 	[SerializeField]
 	protected float m_LerpFactor = 10.0f;
 
-	private bool m_moving = true;
-
 	private Vector2 m_velocity;
 
 	private Vector3 m_targetedPosition;
@@ -40,6 +38,11 @@ public class TopDownCamera : AbstractCamera {
 	private HashSet<CameraAttractor> m_activeAttractors = new HashSet<CameraAttractor>();
 
 	private Camera m_camera;
+
+	private bool m_moving_up = false;
+	private bool m_moving_down = false;
+	private bool m_moving_left = false;
+	private bool m_moving_right = false;
 
 	public Vector3 FocusPoint {
 		get { return m_targetedPosition; }
@@ -51,7 +54,7 @@ public class TopDownCamera : AbstractCamera {
 		m_camera = GetComponent<Camera> ();
 
 		if (Target != null) {
-			m_targetedPosition = Target.position;
+			m_targetedPosition = m_lastTarget = Target.position;
 			transform.position = m_targetedPosition + m_offset;
 			transform.LookAt (transform.position - m_offset);
 		}
@@ -85,12 +88,23 @@ public class TopDownCamera : AbstractCamera {
 
 	protected override void FollowTarget(float deltaTime) {
 		var realTarget = GetTargetPosition();
+		var diff = realTarget - m_targetedPosition;
 		var screenTarget = m_camera.WorldToViewportPoint (realTarget)*2f - new Vector3(1,1,1);
 
-		if (m_moving || Mathf.Abs(screenTarget.x) >= m_noFollowDistance.x || Mathf.Abs (screenTarget.y) > m_noFollowDistance.y) {
-			var diff = realTarget - m_targetedPosition;
-			m_moving = Mathf.Abs(diff.x*diff.x + diff.y*diff.y) > m_stopFollowDistance;
-			m_lastTarget = realTarget;
+		if (m_moving_up || screenTarget.y >= m_noFollowDistance.y) {
+			m_moving_up = diff.y >= m_stopFollowDistance;
+			m_lastTarget.z = realTarget.z;
+		} else if (m_moving_down || screenTarget.y <= -m_noFollowDistance.y) {
+			m_moving_down = diff.y <= -m_stopFollowDistance;
+			m_lastTarget.z = realTarget.z;
+		}
+
+		if (m_moving_right || screenTarget.x >= m_noFollowDistance.x) {
+			m_moving_right = diff.x >= m_stopFollowDistance;
+			m_lastTarget.x = realTarget.x;
+		} else if (m_moving_left || screenTarget.x <= -m_noFollowDistance.x) {
+			m_moving_left = diff.x <= -m_stopFollowDistance;
+			m_lastTarget.x = realTarget.x;
 		}
 
 		UpdatePosition (m_lastTarget, deltaTime);
