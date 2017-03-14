@@ -9,16 +9,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 952d09221f5e54126bf0bc3386016bef, type: 3}
-  m_Name: DummyWaypoints
+  m_Name: AlertWaypoints
   m_EditorClassIdentifier: 
   points:
-  - {x: 17.019531, y: 0, z: -3.7392578}
-  - {x: 4.0463867, y: 0, z: -4.2978516}
-  - {x: -4.2836914, y: 0, z: -4.256836}
-  - {x: -4.072754, y: 0, z: 6.993164}
-  - {x: 11.126953, y: 0, z: 12.183594}
-  - {x: 11.922363, y: 0, z: 4.348633}
-  - {x: 4.572754, y: 0, z: 1.1064453}
+  - {x: 17.128693, y: 0, z: 1.7109375}
+  - {x: 10.714569, y: 0, z: -3.5185547}
+  - {x: 4.322113, y: 0, z: -3.225586}
+  - {x: 11.458893, y: 0, z: 8.248047}
   pairs:
   - First: 0
     Second: 1
@@ -27,10 +24,4 @@ MonoBehaviour:
   - First: 2
     Second: 3
   - First: 3
-    Second: 4
-  - First: 4
-    Second: 5
-  - First: 5
-    Second: 6
-  - First: 6
-    Second: 1
+    Second: 0
