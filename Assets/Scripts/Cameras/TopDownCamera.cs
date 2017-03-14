@@ -34,6 +34,12 @@ public class TopDownCamera : AbstractCamera {
 
 	private Vector3 m_lastTarget;
 
+	private HashSet<CameraAttractor> m_activeAttractors = new HashSet<CameraAttractor>();
+
+	public Vector3 FocusPoint {
+		get { return m_targetedPosition; }
+	}
+
 	protected override void Awake () {
 		base.Awake ();
 		if (Target != null) {
@@ -41,8 +47,26 @@ public class TopDownCamera : AbstractCamera {
 		}
 	}
 
+	private Vector3 GetTargetPosition() {
+		foreach (var a in m_activeAttractors) {
+			if (a.IsExclusive ()) {
+				return a.transform.position;
+			}
+		}
+
+		Vector3 position = Target.position + m_targetOffset;
+
+		foreach (var a in m_activeAttractors) {
+			if(a.IsActive())
+				position = Vector3.Lerp(position, a.transform.position, a.LerpFactor() * a.Influence());
+		}
+
+		// TODO m_activeAttractors
+		return position;
+	}
+
 	protected override void FollowTarget(float deltaTime) {
-		var realTarget = Target.position + m_targetOffset;
+		var realTarget = GetTargetPosition();
 		var screenTarget = GetComponent<Camera> ().WorldToViewportPoint (realTarget)*2f - new Vector3(1,1,1);
 
 		if (m_moving || Mathf.Abs(screenTarget.x) >= m_noFollowDistance.x || Mathf.Abs (screenTarget.y) > m_noFollowDistance.y) {
@@ -83,5 +107,12 @@ public class TopDownCamera : AbstractCamera {
 		var dampingAccel = -velocity * dampingCoefficient;
 
 		return deltaAccel + dampingAccel;
+	}
+
+	public void EnableAttractor(CameraAttractor a) {
+		m_activeAttractors.Add (a);
+	}
+	public void DisableAttractor(CameraAttractor a) {
+		m_activeAttractors.Remove (a);
 	}
 }
