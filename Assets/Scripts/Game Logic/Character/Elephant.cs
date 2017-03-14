@@ -1,8 +1,10 @@
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(CapsuleCollider))]
 [RequireComponent(typeof(Animator))]
+[Obsolete]
 public class Elephant : MonoBehaviour {
     [SerializeField]
     float m_movingTurnSpeed = 360;
