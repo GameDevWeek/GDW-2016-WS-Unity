@@ -88,8 +88,8 @@ public class TopDownCamera : AbstractCamera {
 		}
 
 		UpdatePosition (m_lastTarget, deltaTime);
-		transform.position = m_targetedPosition + m_offset;
-		transform.LookAt (m_targetedPosition);
+		transform.position = Vector3.Lerp(transform.position, m_targetedPosition + m_offset, 10f*Time.deltaTime);
+		transform.LookAt (transform.position - m_offset);
 	}
 
 	private void UpdatePosition(Vector3 target, float deltaTime) {

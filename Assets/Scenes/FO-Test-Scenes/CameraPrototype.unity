@@ -8439,7 +8439,7 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1332133727}
-  m_LocalRotation: {x: 0.53267515, y: 0.07034045, z: 0.83613265, w: -0.11041513}
+  m_LocalRotation: {x: 0.5326752, y: 0.070340455, z: 0.83613276, w: -0.110415146}
   m_LocalPosition: {x: 0.000022271464, y: -0.00006150465, z: 0.026027026}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -13090,9 +13090,9 @@ MonoBehaviour:
   m_target: {fileID: 0}
   m_autoTargetPlayer: 1
   m_updateType: 0
-  m_noFollowDistance: {x: 0.5, y: 0.5}
-  m_stopFollowDistance: 0.5
-  m_offset: {x: 0, y: 10, z: -1}
+  m_noFollowDistance: {x: 0.6, y: 0.6}
+  m_stopFollowDistance: 0.05
+  m_offset: {x: 0, y: 10, z: -3}
   m_targetOffset: {x: 0, y: 0, z: 0}
   m_springConstant: 20
   m_lookAheadFactor: 1
