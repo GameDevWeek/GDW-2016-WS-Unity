@@ -2610,19 +2610,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4621217980267006, guid: 4f0fe6c325c762947a707a726a5f6992, type: 2}
       propertyPath: m_LocalRotation.x
-      value: 0.53267515
+      value: 0.5326752
       objectReference: {fileID: 0}
     - target: {fileID: 4621217980267006, guid: 4f0fe6c325c762947a707a726a5f6992, type: 2}
       propertyPath: m_LocalRotation.y
-      value: 0.07034045
+      value: 0.070340455
       objectReference: {fileID: 0}
     - target: {fileID: 4621217980267006, guid: 4f0fe6c325c762947a707a726a5f6992, type: 2}
       propertyPath: m_LocalRotation.z
-      value: 0.83613265
+      value: 0.83613276
       objectReference: {fileID: 0}
     - target: {fileID: 4621217980267006, guid: 4f0fe6c325c762947a707a726a5f6992, type: 2}
       propertyPath: m_LocalRotation.w
-      value: -0.11041513
+      value: -0.110415146
       objectReference: {fileID: 0}
     - target: {fileID: 114643652694917460, guid: 4f0fe6c325c762947a707a726a5f6992,
         type: 2}
@@ -10042,7 +10042,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   searchingTurnSpeed: 120
   searchingDuration: 5
-  sightRange: 20
+  sightRange: 10
+  toleratedSightrange: 2
   wayPoints: {fileID: 11400000, guid: bea4d5db40e782245bfd1097877bd228, type: 2}
   currentWaypoint: 0
   eyes: {fileID: 1709878265}

@@ -10,8 +10,13 @@ public class CollectablesSave : Singleton<CollectablesSave>
 {
 
     public int m_peanuts;
-    public int m_miniJadeElephant;
-  
+    public int m_bronzeElephant;
+    public int m_silverElephant;
+    public int m_goldElephant;
+    public int m_score;
+    public int m_destroyedObjects;
+    public int m_highestAlarm;
+
     struct Collectables
     {
         int peanuts, miniJadeElephant;
@@ -31,18 +36,7 @@ public class CollectablesSave : Singleton<CollectablesSave>
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(1))
-        {
-            changePeanuts(-3);
-            changeMiniJadeElephant(-1);
-            Debug.Log("Peanuts: "+ m_peanuts + " MiniElephant: "+ m_miniJadeElephant);
-        }
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Debug.Log("Peanuts: " + m_peanuts + " MiniElephant: " + m_miniJadeElephant);
-        }
-
+       
     }
 
     public void changePeanuts(int p)
@@ -52,11 +46,40 @@ public class CollectablesSave : Singleton<CollectablesSave>
         
     }
 
-    public void changeMiniJadeElephant(int j)
+    public void changebronzeElephant(int e)
     {
-        m_miniJadeElephant += j;
+        m_bronzeElephant += e;
        
     }
 
-    
+    public void changeSilverElephant(int e)
+    {
+        m_silverElephant += e;
+
+    }
+
+    public void changeGoldElephant(int e)
+    {
+        m_goldElephant += e;
+
+    }
+
+    public void changeScore(int s)
+    {
+        m_score += s;
+
+    }
+
+    public void changedestroyedObjects(int d)
+    {
+        m_destroyedObjects += d;
+
+    }
+
+    public void changeHighestAlarm(int a)
+    {
+        m_highestAlarm += a;
+
+    }
+
 }
