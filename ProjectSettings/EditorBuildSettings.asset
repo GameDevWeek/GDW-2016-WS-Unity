@@ -6,12 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-<<<<<<< HEAD
     path: Assets/Scenes/WK-Test-Scenes/Prototype.unity
   - enabled: 1
     path: Assets/Scenes/MenuScreens/GameOver/GameOverScene.unity
-=======
-    path: Assets/Scenes/Max's Scene/Max's_Prototype.unity
-  - enabled: 1
-    path: Assets/Scenes/Max's Scene/Test_Levelchange.unity
->>>>>>> 9c8d99ba7e07f824862972edad108b9adf6bda1e
