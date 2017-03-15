@@ -71,8 +71,8 @@ public class AlertState : IEnemyState {
         if (Physics.Raycast(enemy.eyes.transform.position, enemy.eyes.transform.forward, out hit, enemy.sightRange) &&
             hit.collider.CompareTag("Player"))
         {
-            //enemy.chaseTarget = hit.transform;
-            enemy.targetPos = hit.transform.position;
+            enemy.chaseTarget = hit.transform;
+            //enemy.targetPos = hit.transform.position;
 
             enemy.navMeshAgent.SetDestination(enemy.targetPos);
             ToChaseState();
@@ -81,11 +81,6 @@ public class AlertState : IEnemyState {
 
     private void Search()
     {
-        if (enemy.currentState != enemy.alertState)
-        {
-            Debug.Log("I tried to search even though i changed my state");
-            return;
-        }
         enemy.meshRendererFlag.material.color = Color.yellow;  //Debugging tool
 
         if(enemy.navMeshAgent.remainingDistance < 1f) {

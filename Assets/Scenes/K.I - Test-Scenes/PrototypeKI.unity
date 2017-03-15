@@ -2356,6 +2356,23 @@ LineRenderer:
     alignment: 0
     textureMode: 0
   m_UseWorldSpace: 1
+--- !u!114 &414742845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 414742843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cbb56947ec8795429ae2909a055417a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_peanutPrefab: {fileID: 1364455282423766, guid: a96a1ecda421d4047a15276683edf721,
+    type: 2}
+  m_velocity: 15
+  m_lifeSpan: 3
+  m_offset: {x: 0, y: 1, z: 1}
+  m_destroy_Peanut_On_Collison: 0
 --- !u!4 &430849975 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4128965988225342, guid: e28623aa35849cc419ffd0b0186c7c9e,
@@ -10025,7 +10042,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   searchingTurnSpeed: 120
   searchingDuration: 5
-  sightRange: 100
+  sightRange: 20
   wayPoints: {fileID: 11400000, guid: bea4d5db40e782245bfd1097877bd228, type: 2}
   currentWaypoint: 0
   eyes: {fileID: 1709878265}
