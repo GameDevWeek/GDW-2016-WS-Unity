@@ -3447,19 +3447,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4621217980267006, guid: 4f0fe6c325c762947a707a726a5f6992, type: 2}
       propertyPath: m_LocalRotation.x
-      value: 0.5326752
+      value: 0.53267515
       objectReference: {fileID: 0}
     - target: {fileID: 4621217980267006, guid: 4f0fe6c325c762947a707a726a5f6992, type: 2}
       propertyPath: m_LocalRotation.y
-      value: 0.070340455
+      value: 0.07034045
       objectReference: {fileID: 0}
     - target: {fileID: 4621217980267006, guid: 4f0fe6c325c762947a707a726a5f6992, type: 2}
       propertyPath: m_LocalRotation.z
-      value: 0.83613276
+      value: 0.83613265
       objectReference: {fileID: 0}
     - target: {fileID: 4621217980267006, guid: 4f0fe6c325c762947a707a726a5f6992, type: 2}
       propertyPath: m_LocalRotation.w
-      value: -0.110415146
+      value: -0.11041513
       objectReference: {fileID: 0}
     - target: {fileID: 114643652694917460, guid: 4f0fe6c325c762947a707a726a5f6992,
         type: 2}
@@ -3473,6 +3473,10 @@ Prefab:
     - target: {fileID: 1172897429303506, guid: 4f0fe6c325c762947a707a726a5f6992, type: 2}
       propertyPath: m_TagString
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 4252296871927372, guid: 4f0fe6c325c762947a707a726a5f6992, type: 2}
+      propertyPath: m_RootOrder
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4f0fe6c325c762947a707a726a5f6992, type: 2}
@@ -4089,7 +4093,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb616939a656640428edf97314489652, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_time: 2
+  m_time: 0.1
   m_scene: {fileID: 102900000, guid: 76d8af74c9a82f640a669caa5ca15202, type: 3}
 --- !u!65 &576350077
 BoxCollider:
@@ -4101,7 +4105,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 3, y: 1, z: 3}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &576350078
 Transform:
@@ -8556,7 +8560,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_peanuts: 0
-  m_miniJadeElephant: 0
+  m_bronzeElephant: 0
+  m_silverElephant: 0
+  m_goldElephant: 0
+  m_score: 0
+  m_destroyedObjects: 0
+  m_highestAlarm: 0
 --- !u!4 &1299592338
 Transform:
   m_ObjectHideFlags: 0
@@ -8564,7 +8573,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1299592336}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 33.044975, y: -53.72372, z: 324.20963}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
