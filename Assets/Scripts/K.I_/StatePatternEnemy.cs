@@ -1,8 +1,9 @@
-﻿using Assets.Scripts.K.I_;
+﻿using System;
+using Assets.Scripts.K.I_;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class StatePatternEnemy : MonoBehaviour {
+public class StatePatternEnemy : MonoBehaviour, INoiseListener {
 
     public float searchingTurnSpeed = 120f;
     public float searchingDuration = 4f;
@@ -49,8 +50,21 @@ public class StatePatternEnemy : MonoBehaviour {
         currentState.OnTriggerEnter(other);
     }
 
-    public void HeardNoise()
+    public void GetToStageOne()
     {
+        searchingTurnSpeed = 150f;
+        sightRange = 30f;
+    }
 
+    public void GetToStageTwo()
+    {
+        searchingTurnSpeed = 160f;
+        sightRange = 40f;
+    }
+
+    public void Inform(NoiseSourceData data)
+    {
+        navMeshAgent.SetDestination(data.initialPosition);
+        navMeshAgent.Resume();
     }
 }
