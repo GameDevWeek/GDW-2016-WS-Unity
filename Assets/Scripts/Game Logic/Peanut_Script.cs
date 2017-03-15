@@ -22,7 +22,7 @@ public class Peanut_Script : MonoBehaviour
         //Find Gameobject of the player
         m_playerGameObject= GameObject.FindGameObjectWithTag("Player");
         //Set the projectile physics to ignore the player collision
-        Physics.IgnoreCollision(GetComponent<Collider>(), m_playerGameObject.GetComponent<Collider>());
+        //Physics.IgnoreCollision(GetComponent<Collider>(), m_playerGameObject.GetComponent<Collider>());
 
         m_noiseSource = GetComponent<NoiseSource>();
 

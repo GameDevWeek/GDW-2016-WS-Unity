@@ -15,6 +15,7 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
     public Transform eyes;
     public Vector3 offset = new Vector3(0, .5f, 0);  //Damit man nicht auf die Schuhe des Spielers schaut
     public MeshRenderer meshRendererFlag;
+   
 
 
     [HideInInspector] public Vector3 targetPos; 
@@ -50,21 +51,25 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
         currentState.OnTriggerEnter(other);
     }
 
-    public void GetToStageOne()
+    public void WantedLvlUp()
     {
-        searchingTurnSpeed = 150f;
-        sightRange = 30f;
+        searchingTurnSpeed += 20f;
+        sightRange += 10f;
     }
 
-    public void GetToStageTwo()
+    public void WantedLvlDown()
     {
-        searchingTurnSpeed = 160f;
-        sightRange = 40f;
+        searchingTurnSpeed -= 20f;
+        sightRange -= 10f;
     }
 
     public void Inform(NoiseSourceData data)
     {
-        navMeshAgent.SetDestination(data.initialPosition);
-        navMeshAgent.Resume();
+        if (currentState == patrolState)
+        {
+            navMeshAgent.SetDestination(data.initialPosition);
+            currentState = alertState;
+        }
+        
     }
 }
