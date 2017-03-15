@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Deprecated jetzt durch Spawner geloest
 public class SoundParticlePool : MonoBehaviour {
 
 	private static SoundParticlePool m_instance;

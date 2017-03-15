@@ -14,8 +14,6 @@ public class NoiseSource : MonoBehaviour {
 
     private AudioSource m_audioSource;
 
-    //private SoundParticlePool m_particlePool;
-
     public float affectedRange {
         get { return m_affectedRange; }
         set { m_affectedRange = value; }
@@ -34,8 +32,6 @@ public class NoiseSource : MonoBehaviour {
         particleSystem.GetComponent<ParticleSystem>().startLifetime = m_affectedRange / 10;
         global::Spawner.DeSpawn(particleSystem, m_affectedRange / 10);
 
-        //m_particlePool.Play(transform.position, m_affectedRange);
-        
         AudioClip clip = m_audioSource.clip;
         if (m_audioClips.Length > 0) {
             m_audioSource.clip = Util.RandomElement(m_audioClips);
@@ -52,6 +48,5 @@ public class NoiseSource : MonoBehaviour {
 
     void Start() {
         m_audioSource = GetComponent<AudioSource>();
-        //m_particlePool = SoundParticlePool.Instance;
     }
 }
