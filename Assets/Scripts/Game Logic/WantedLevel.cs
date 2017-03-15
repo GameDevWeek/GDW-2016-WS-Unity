@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class WantedLevel : Singleton<WantedLevel>
 {
@@ -30,6 +31,9 @@ public class WantedLevel : Singleton<WantedLevel>
     private float m_currentStagnationTime;
     // If the guards can't see the player and attention is still stagnating
     private bool m_attentionIsStagnating;
+
+    private float lastMax = -1;
+    public static event Action<float> newMaxLevel;
 
     // Use this for initialization
     void Start()
@@ -113,6 +117,13 @@ public class WantedLevel : Singleton<WantedLevel>
     {
         m_playerIsNotInGuardSight = false;
         m_currentAttention += Time.deltaTime * m_attentionDelta;
+
+        if(lastMax < m_currentAttention) {
+            lastMax = m_currentAttention;
+            if (newMaxLevel != null) newMaxLevel.Invoke(lastMax);
+        }
+
+
 
         // Check if attention is high enough to activate next alert stage
         if (m_currentAttention >= m_minAttentionAlarm3)

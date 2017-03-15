@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Peanut_Script : MonoBehaviour
-{
+public class Peanut_Script : MonoBehaviour {
+
     private bool m_destroyOnCollision;
     public bool destroyOnCollision
     {
