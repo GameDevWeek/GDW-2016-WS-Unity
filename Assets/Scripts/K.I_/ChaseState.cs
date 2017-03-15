@@ -66,7 +66,8 @@ public class ChaseState : IEnemyState
         Vector3 enemyToTarget = (enemy.chaseTarget.position + enemy.offset) - enemy.eyes.transform.position;
         if (Physics.Raycast(enemy.eyes.transform.position, enemyToTarget, out hit, enemy.sightRange) && hit.collider.CompareTag("Player"))
         {
-            enemy.chaseTarget = hit.transform;
+            //enemy.chaseTarget = hit.transform;
+            enemy.targetPos = hit.transform.position;
         }
         else
         {
@@ -77,7 +78,9 @@ public class ChaseState : IEnemyState
     private void Chase()
     {
         enemy.meshRendererFlag.material.color = Color.red;  //Debugging tool
-        enemy.navMeshAgent.destination = enemy.chaseTarget.position;
+        enemy.navMeshAgent.destination = enemy.targetPos;
         enemy.navMeshAgent.Resume();
+        Debug.Log("Test");
+
     }
 }

@@ -1,8 +1,9 @@
-﻿using Assets.Scripts.K.I_;
+﻿using System;
+using Assets.Scripts.K.I_;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class StatePatternEnemy : MonoBehaviour {
+public class StatePatternEnemy : MonoBehaviour, INoiseListener {
 
     public float searchingTurnSpeed = 120f;
     public float searchingDuration = 4f;
@@ -15,12 +16,15 @@ public class StatePatternEnemy : MonoBehaviour {
     public Vector3 offset = new Vector3(0, .5f, 0);  //Damit man nicht auf die Schuhe des Spielers schaut
     public MeshRenderer meshRendererFlag;
 
+
+    [HideInInspector] public Vector3 targetPos; 
     [HideInInspector] public Transform chaseTarget;
     [HideInInspector] public IEnemyState currentState;
     [HideInInspector] public ChaseState chaseState;
     [HideInInspector] public AlertState alertState;
     [HideInInspector] public PatrolState patrolState;
     [HideInInspector] public NavMeshAgent navMeshAgent;
+
 
     private void Awake()
     {
@@ -44,5 +48,23 @@ public class StatePatternEnemy : MonoBehaviour {
     private void OnTriggerEnter(Collider other)
     {
         currentState.OnTriggerEnter(other);
+    }
+
+    public void GetToStageOne()
+    {
+        searchingTurnSpeed = 150f;
+        sightRange = 30f;
+    }
+
+    public void GetToStageTwo()
+    {
+        searchingTurnSpeed = 160f;
+        sightRange = 40f;
+    }
+
+    public void Inform(NoiseSourceData data)
+    {
+        navMeshAgent.SetDestination(data.initialPosition);
+        navMeshAgent.Resume();
     }
 }
