@@ -47,7 +47,7 @@ public class ViewCone : MonoBehaviour {
         RaycastHit hit;
         for(int i = 0; i < nrOfRaycasts; ++i)
         {
-            float angle = ((90 - (fieldOfView * 0.5f) + ((float)i / nrOfRaycasts) * fieldOfView)) % 360;
+			float angle = ((90 - (fieldOfView * 0.5f) + ((float)i / (nrOfRaycasts-1)) * fieldOfView)) % 360;
             Vector2 localDirection = MathUtility.DegreeToVector2(angle, 1);
             Vector3 globalDirection = transform.TransformDirection(new Vector3(localDirection.x, 0, localDirection.y));
 
@@ -71,9 +71,9 @@ public class ViewCone : MonoBehaviour {
             triangles[i + 1] = j + 2;
             triangles[i + 2] = j + 1;
         }
-        triangles[triangles.Length - 3] = 0;
-        triangles[triangles.Length - 2] = 1;
-        triangles[triangles.Length - 1] = triangles.Length / 3 - 1;
+     //   triangles[triangles.Length - 3] = 0;
+     //   triangles[triangles.Length - 2] = 1;
+     //   triangles[triangles.Length - 1] = triangles.Length / 3 - 1;
         mesh.vertices = vertices;
         mesh.normals = normals;
         mesh.triangles = triangles;
