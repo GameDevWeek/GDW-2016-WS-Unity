@@ -28,7 +28,7 @@ public class NoiseSource : MonoBehaviour {
     }
 
     public void Play() {
-        var particleSystem = global::Spawner.Spawn("Sound Particle System",transform.position);
+        var particleSystem = global::Spawner.Spawn("Sound Particle System", transform.position, Quaternion.Euler(90, 0, -45));
         particleSystem.GetComponent<ParticleSystem>().startLifetime = m_affectedRange / 10;
         global::Spawner.DeSpawn(particleSystem, m_affectedRange / 10);
 
