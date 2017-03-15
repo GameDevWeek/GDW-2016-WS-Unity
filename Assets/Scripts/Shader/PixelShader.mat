@@ -24,8 +24,8 @@ Material:
     m_Floats:
     - first:
         name: _Pixels
-      second: 54
+      second: 13
     m_Colors:
     - first:
         name: _ScreenRes
-      second: {r: 1280, g: 800, b: 0, a: 0}
+      second: {r: 1920, g: 1080, b: 0, a: 0}

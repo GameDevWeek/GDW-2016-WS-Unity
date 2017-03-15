@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(FadeInOut))]
 public class HideOutOfPlayerRange : MonoBehaviour
 {
     [SerializeField]
@@ -14,16 +15,27 @@ public class HideOutOfPlayerRange : MonoBehaviour
     private float objectRadius = 0.5f;
     [SerializeField]
     private float raycastOriginOffset = 0.1f;
+    [SerializeField]
+    private float fadeDuration = 0.25f;
 
     private Renderer[] renderers;
+    private FadeInOut fadeComponent;
+
+    private Coroutine activeCoroutine;
 
     private void Start()
     {
         renderers = GetComponentsInChildren<Renderer>();
+        fadeComponent = GetComponent<FadeInOut>();
     }
 
     private void Update()
     {
+        if (activeCoroutine != null || renderers.Length == 0)
+        {
+            return;
+        }
+
         Vector3 playerPos = GameObject.FindGameObjectWithTag(playerTag).transform.position;
         Vector3 vectorToPlayer = (playerPos - transform.position);
         Vector3 directionToPlayer = vectorToPlayer.normalized;
@@ -42,9 +54,35 @@ public class HideOutOfPlayerRange : MonoBehaviour
         if (hit2.collider == null) Debug.DrawLine(startPosition - orthogonalVector * raycastOriginOffset, startPosition - orthogonalVector * raycastOriginOffset + rightRayDirection * vectorToPlayer.magnitude);
         else Debug.DrawLine(startPosition - orthogonalVector * raycastOriginOffset, hit2.point, Color.cyan);
         bool visible = isInDistance && !hitBoth;
-        for(int i = 0; i < renderers.Length; ++i)
+        if (visible && !renderers[0].enabled)
         {
-            renderers[i].enabled = visible;
+            activeCoroutine = StartCoroutine(Show());
         }
+        else if(!visible && renderers[0].enabled)
+        {
+            activeCoroutine = StartCoroutine(Hide());
+        }
+    }
+
+    private IEnumerator Show()
+    {
+        for (int i = 0; i < renderers.Length; ++i)
+        {
+            renderers[i].enabled = true;
+        }
+        fadeComponent.FadeIn(fadeDuration);
+        yield return new WaitForSeconds(fadeDuration);
+        activeCoroutine = null;
+    }
+
+    private IEnumerator Hide()
+    {
+        fadeComponent.FadeOut(fadeDuration);
+        yield return new WaitForSeconds(fadeDuration);
+        for (int i = 0; i < renderers.Length; ++i)
+        {
+            renderers[i].enabled = false;
+        }
+        activeCoroutine = null;
     }
 }

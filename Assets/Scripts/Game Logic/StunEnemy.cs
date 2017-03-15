@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class StunEnemy : MonoBehaviour {
 
@@ -23,7 +21,8 @@ public class StunEnemy : MonoBehaviour {
 
     public float HighOffeset = 0.0f;
 
-    public string TagToBeHitted = "Enemy";
+    [TagSelector]
+    public string TagToBeHitted;
 
     [SerializeField]
     private Cooldown m_cooldown = new Cooldown(0.5f);
