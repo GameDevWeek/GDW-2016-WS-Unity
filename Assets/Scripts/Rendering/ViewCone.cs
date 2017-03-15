@@ -16,6 +16,8 @@ public class ViewCone : MonoBehaviour {
     private int nrOfRaycasts = 90;
     [SerializeField]
     private float fieldOfView = 90;
+    [SerializeField]
+    private float collisionOffset = 0.05f;
 
     private LineRenderer2D lineRenderer;
     private MeshRenderer meshRenderer;
@@ -29,8 +31,8 @@ public class ViewCone : MonoBehaviour {
     private void Start()
     {
         vertices = new Vector3[nrOfRaycasts + 2];
-        normals = new Vector3[nrOfRaycasts + 1];
-        uv = new Vector2[nrOfRaycasts + 1];
+        normals = new Vector3[nrOfRaycasts + 2];
+        uv = new Vector2[nrOfRaycasts + 2];
         mesh = new Mesh();
         mesh.name = transform.parent.name + " ViewConeMesh";
         lineRenderer = GetComponentInChildren<LineRenderer2D>();
@@ -45,45 +47,29 @@ public class ViewCone : MonoBehaviour {
         {
             return;
         }
-
-        //Collider[] objectsInRange = Physics.OverlapSphere(transform.position, viewRadius, viewBlockingLayers);
         
         vertices[0] = Vector3.zero;
         vertices[vertices.Length - 1] = Vector3.zero;
         normals[0] = Vector3.up;
+        normals[normals.Length - 1] = Vector3.up;
         uv[0] = Vector3.zero;
+        uv[uv.Length - 1] = Vector3.zero;
 
         RaycastHit hit;
-        RaycastHit?[] hits = new RaycastHit?[nrOfRaycasts];
-
-        for (int i = 0; i < nrOfRaycasts; ++i)
-        {
-            float angle = ((90 - (fieldOfView * 0.5f) + ((float) i / nrOfRaycasts) * fieldOfView)) % 360;
-            Vector2 localDirection = MathUtility.DegreeToVector2(angle, 1);
-            Vector3 globalDirection = transform.TransformDirection(new Vector3(localDirection.x, 0, localDirection.y));
-
-            if (Physics.Raycast(transform.position, globalDirection, out hit, viewRadius, viewBlockingLayers))
-            {
-                hits[i] = hit;
-            }
-        }
 
         for (int i = 0; i < nrOfRaycasts; ++i)
         {
             float angle = ((90 - (fieldOfView * 0.5f) + ((float)i / nrOfRaycasts) * fieldOfView)) % 360;
             Vector2 localDirection = MathUtility.DegreeToVector2(angle, 1);
-            //Vector3 globalDirection = transform.TransformDirection(new Vector3(localDirection.x, 0, localDirection.y));
+            Vector3 globalDirection = transform.TransformDirection(new Vector3(localDirection.x, 0, localDirection.y));
 
-            if (hits[i].HasValue)//Physics.Raycast(transform.position, globalDirection, out hit, viewRadius, viewBlockingLayers))
+            if (Physics.Raycast(transform.position, globalDirection, out hit, viewRadius, viewBlockingLayers))
             {
-                vertices[i + 1] = transform.InverseTransformPoint(hits[i].Value.point);
-
-                //Debug.DrawLine(transform.position, hit.point, Color.magenta);
+                vertices[i + 1] = transform.InverseTransformPoint(hit.point - globalDirection * collisionOffset);
             }
             else
             {
-                vertices[i + 1] = new Vector3(localDirection.x * viewRadius, 0, localDirection.y * viewRadius);
-                //Debug.DrawLine(transform.position, transform.position + new Vector3(direction2D.x * viewRadius, 0, direction2D.y * viewRadius), Color.magenta);
+                vertices[i + 1] = new Vector3(localDirection.x * (viewRadius - collisionOffset), 0, localDirection.y * (viewRadius - collisionOffset));
             }
             normals[i + 1] = Vector3.up;
 
