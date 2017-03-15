@@ -18,16 +18,19 @@ public class TopDownCamera : AbstractCamera {
 	private Vector3 m_targetOffset = new Vector3(0,0,0);
 
 	[SerializeField]
-	protected float m_springConstant = 20.0f;
+	private float m_springConstant = 20.0f;
 
 	[SerializeField]
-	protected float m_lookAheadFactor = 1.0f;
+	private float m_lookAheadFactor = 1.0f;
 
 	[SerializeField]
-	protected float m_minLookAheadVelocity = 1.0f;
+	private float m_minLookAheadVelocity = 1.0f;
 
 	[SerializeField]
-	protected float m_LerpFactor = 10.0f;
+	private float m_LerpFactor = 10.0f;
+
+	[SerializeField]
+	private Vector3 m_roomCorrectionOffset = new Vector2 (0,0);
 
 	private Vector2 m_velocity;
 
@@ -124,9 +127,9 @@ public class TopDownCamera : AbstractCamera {
 	}
 
 	private void LimitPosition() {
-		var topCenterCam = ViewportToWorldPos (0.5f,1);
-		var bottomRightCam = ViewportToWorldPos (1,0);
-		var bottomLeftCam = ViewportToWorldPos (0,0);
+		var topCenterCam   = ViewportToWorldPos (0.5f,1) + m_roomCorrectionOffset;
+		var bottomRightCam = ViewportToWorldPos (1,0) + m_roomCorrectionOffset;
+		var bottomLeftCam  = ViewportToWorldPos (0,0) + m_roomCorrectionOffset;
 
 		var p = transform.position;
 
