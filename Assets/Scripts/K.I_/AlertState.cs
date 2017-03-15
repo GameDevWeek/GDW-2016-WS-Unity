@@ -52,6 +52,7 @@ public class AlertState : IEnemyState {
             //enemy.targetPos = hit.transform.position;
 
             enemy.navMeshAgent.SetDestination(enemy.targetPos);
+            WantedLevel.Instance.RaiseWantedLevel();
             ToChaseState();
         }
     }

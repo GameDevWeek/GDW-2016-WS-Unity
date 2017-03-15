@@ -58,6 +58,8 @@ public class PatrolState : IEnemyState
                 enemy.chaseTarget = hit.transform;          //Wenn Spieler unterm Toleranzbereich ist direkt chasen
                 searchTimer = 0f;
                 isLooking = false;
+                WantedLevel.Instance.RaiseWantedLevel();
+
                 ToChaseState();
             }
         }

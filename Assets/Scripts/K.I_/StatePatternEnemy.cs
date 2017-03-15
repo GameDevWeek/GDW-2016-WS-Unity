@@ -57,6 +57,7 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
     {
         searchingTurnSpeed += 20f;
         sightRange += 5f;
+
     }
 
     public void WantedLvlDown()
@@ -71,6 +72,11 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
         {
             navMeshAgent.SetDestination(data.initialPosition);
             currentState = alertState;
+        }
+        else if(currentState == alertState)
+        {
+            navMeshAgent.SetDestination(data.initialPosition);
+            navMeshAgent.Resume();
         }
         
     }
