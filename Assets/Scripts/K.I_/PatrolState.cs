@@ -6,6 +6,8 @@ public class PatrolState : IEnemyState
 {
     private readonly StatePatternEnemy enemy;
     private int nextWayPoint;
+    private float searchTimer;
+    private bool isLooking;
 
     public PatrolState(StatePatternEnemy statePatternEnemy)
     {
@@ -32,66 +34,76 @@ public class PatrolState : IEnemyState
     public void ToAlertState()
     {
         enemy.currentState = enemy.alertState;
+        searchTimer = 0f;
     }
 
     public void ToChaseState()
     {
         enemy.currentState = enemy.chaseState;
+        searchTimer = 0f;
     }
 
     private void Look()
     {
-        //Bounds test -------------------------------------
-        //Vector3[] boundPoints = new Vector3[3];
-        //RaycastHit boundsHit, boundsHit1, boundsHit2;
-
-        //var targetPoint = PlayerActor.Instance.collider.bounds.ClosestPoint(enemy.eyes.transform.position);
-        //var minPoint = PlayerActor.Instance.collider.bounds.min;
-        //var maxPoint = PlayerActor.Instance.collider.bounds.max;
-
-        //boundPoints[0] = targetPoint;
-        //boundPoints[1] = minPoint;
-        //boundPoints[2] = maxPoint;
-
-        //int oldlayer = enemy.gameObject.layer;
-        //enemy.gameObject.layer = GameLayer.IgnoreRaycast;
-        //if (Physics.Raycast(enemy.eyes.transform.position, boundPoints[0] - enemy.eyes.transform.position, out boundsHit, enemy.sightRange) &&
-        //    Physics.Raycast(enemy.eyes.transform.position, boundPoints[1] - enemy.eyes.transform.position, out boundsHit1, enemy.sightRange) &&
-        //    Physics.Raycast(enemy.eyes.transform.position, boundPoints[2] - enemy.eyes.transform.position, out boundsHit2, enemy.sightRange))
-        //    //Debug.Log(boundsHit.transform.gameObject);
-        //    if (boundsHit.collider.CompareTag("Player") == PlayerActor.Instance.transform)
-        //    {
-        //        enemy.chaseTarget = boundsHit.transform;
-        //        ToChaseState();
-        //    }
-        //enemy.gameObject.layer = oldlayer;
-
-        //-----------------------------------------------------
         RaycastHit hit;
-
         if ((Physics.Raycast(enemy.eyes.transform.position, enemy.eyes.transform.forward, out hit, enemy.sightRange) &&
             (hit.collider.CompareTag("Player")))) //Eventuell CompareTag entfernen falls Layer angepasst werden
         {
-            enemy.chaseTarget = hit.transform;
-            ToChaseState();
+            if(hit.distance>=enemy.toleratedSightrange)     //Wenn Spieler im Toleranzbereich erstmal stoppen und schauen
+            {
+                StopAndLook(hit);
+            }
+            else
+            {
+                enemy.chaseTarget = hit.transform;          //Wenn Spieler unterm Toleranzbereich ist direkt chasen
+                searchTimer = 0f;
+                isLooking = false;
+                ToChaseState();
+            }
         }
+        else if(searchTimer >= enemy.stoppingTime && searchTimer !=0)
+        {   
+            isLooking = false;
+        }
+        else if(searchTimer<enemy.stoppingTime && searchTimer > 0)
+        {
+            searchTimer += Time.deltaTime;
+        }
+            
     }
 
 
     //TODO Abfahrfolge der Wegpunkte zufällig machen
     void Patrol()
     {
-        enemy.meshRendererFlag.material.color = Color.green;  //Debugging tool
+        if (!isLooking) {
+            enemy.meshRendererFlag.material.color = Color.green;  //Debugging tool
 
-        enemy.navMeshAgent.destination = enemy.wayPoints.points[enemy.currentWaypoint];
-        enemy.navMeshAgent.Resume();
+            searchTimer = 0f;
+            enemy.navMeshAgent.destination = enemy.wayPoints.points[enemy.currentWaypoint];
+            enemy.navMeshAgent.Resume();
 
-        if (enemy.navMeshAgent.remainingDistance <= enemy.navMeshAgent.stoppingDistance && !enemy.navMeshAgent.pathPending) //Durch jeden Waypoint laufen und nach dem letzten wieder zum ersten
+            if (enemy.navMeshAgent.remainingDistance <= enemy.navMeshAgent.stoppingDistance && !enemy.navMeshAgent.pathPending) //Durch jeden Waypoint laufen und nach dem letzten wieder zum ersten
+            {
+                int nxt;
+                enemy.wayPoints.GetNextPoint(enemy.currentWaypoint, out nxt);
+                enemy.currentWaypoint = nxt;
+                // nextWayPoint = (nextWayPoint + 1) % enemy.wayPoints.Length;
+            }
+        }
+    }
+
+    void StopAndLook(RaycastHit hit)    
+    {
+        enemy.navMeshAgent.Stop();
+        isLooking = true;
+        searchTimer += Time.deltaTime;
+        if (searchTimer >= enemy.stoppingTime)
         {
-            int nxt;
-            enemy.wayPoints.GetNextPoint(enemy.currentWaypoint, out nxt);
-            enemy.currentWaypoint = nxt;
-            // nextWayPoint = (nextWayPoint + 1) % enemy.wayPoints.Length;
+            enemy.chaseTarget = hit.transform;
+            searchTimer = 0f;
+            ToChaseState();
+            isLooking = false;
         }
     }
 }
