@@ -22,7 +22,10 @@ public class Peanut_Script : MonoBehaviour
         //Find Gameobject of the player
         m_playerGameObject= GameObject.FindGameObjectWithTag("Player");
         //Set the projectile physics to ignore the player collision
+<<<<<<< HEAD
         //Todo: this trows: MissingComponentException: There is no 'Collider' attached to the "Elephant-WK" game object, but a script is trying to access it.
+=======
+>>>>>>> 67f2227f5cdfcf8fb0f45993f76aa8efd249a229
         //Physics.IgnoreCollision(GetComponent<Collider>(), m_playerGameObject.GetComponent<Collider>());
 
         m_noiseSource = GetComponent<NoiseSource>();
