@@ -23,12 +23,10 @@ public class Shoot_Peanuts : MonoBehaviour
 	
 	// Update is called once per frame
 	void Update () {
-
         //for testing
         if (Input.GetMouseButtonDown(1))
         {
             Fire();
-            
         }
     }
 
@@ -39,9 +37,7 @@ public class Shoot_Peanuts : MonoBehaviour
         Vector3 offsetPosition = transform.position + worldOffset;
 
         //Instantiate a clone of the given asset
-        GameObject clone;
-        clone = (GameObject)Instantiate(m_peanutPrefab, offsetPosition, transform.rotation);
-      
+        GameObject clone = Instantiate(m_peanutPrefab, offsetPosition, transform.rotation);
 
         //set the velocity of the clone
         clone.GetComponent<Rigidbody>().velocity = transform.TransformDirection(Vector3.forward * m_velocity);
@@ -52,6 +48,5 @@ public class Shoot_Peanuts : MonoBehaviour
 
         //Destroy clone after x seconds
         Destroy(clone,m_lifeSpan);
-
     }
 }
