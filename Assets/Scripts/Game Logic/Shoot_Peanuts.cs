@@ -29,6 +29,7 @@ public class Shoot_Peanuts : MonoBehaviour
         if (Input.GetMouseButtonDown(1))
         {
             Fire();
+            
         }
     }
 
