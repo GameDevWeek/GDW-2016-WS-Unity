@@ -52,6 +52,12 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
+        name: _MainTexABV
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
         name: _MetallicGlossMap
       second:
         m_Texture: {fileID: 0}
@@ -95,8 +101,20 @@ Material:
         name: _GlossyReflections
       second: 1
     - first:
+        name: _LineSpeed
+      second: 1
+    - first:
+        name: _LineThickness
+      second: 2.5
+    - first:
+        name: _MaxAlpha
+      second: 0.6
+    - first:
         name: _Metallic
       second: 0
+    - first:
+        name: _MinAlpha
+      second: 0.2
     - first:
         name: _Mode
       second: 0
@@ -124,7 +142,7 @@ Material:
     m_Colors:
     - first:
         name: _Color
-      second: {r: 1, g: 0, b: 0, a: 0.39215687}
+      second: {r: 0.75, g: 0.09926471, b: 0.09926471, a: 1}
     - first:
         name: _EmissionColor
       second: {r: 0, g: 0, b: 0, a: 1}
