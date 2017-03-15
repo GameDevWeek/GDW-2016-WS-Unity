@@ -5,8 +5,10 @@ using UnityEngine;
 public class ChaseState : IEnemyState
 {
     private readonly StatePatternEnemy enemy;
+    //private Vector3 m_chasePos;
+    // public Vector3 chasePos { get { return m_chasePos; } set { m_chasePos = value; } }
 
-	public ChaseState(StatePatternEnemy statePatternEnemy)
+    public ChaseState(StatePatternEnemy statePatternEnemy)
     {
         enemy = statePatternEnemy;
     }
@@ -66,8 +68,8 @@ public class ChaseState : IEnemyState
         Vector3 enemyToTarget = (enemy.chaseTarget.position + enemy.offset) - enemy.eyes.transform.position;
         if (Physics.Raycast(enemy.eyes.transform.position, enemyToTarget, out hit, enemy.sightRange) && hit.collider.CompareTag("Player"))
         {
-            //enemy.chaseTarget = hit.transform;
-            enemy.targetPos = hit.transform.position;
+            enemy.chaseTarget = hit.transform;
+            //m_chasePos = hit.transform.position;
         }
         else
         {
@@ -78,9 +80,8 @@ public class ChaseState : IEnemyState
     private void Chase()
     {
         enemy.meshRendererFlag.material.color = Color.red;  //Debugging tool
-        enemy.navMeshAgent.destination = enemy.targetPos;
+        enemy.navMeshAgent.destination = enemy.chaseTarget.position;
         enemy.navMeshAgent.Resume();
-        Debug.Log("Test");
 
     }
 }
