@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Peanut_Script : MonoBehaviour
-{
+public class Peanut_Script : MonoBehaviour {
+
     private bool m_destroyOnCollision;
     public bool destroyOnCollision
     {
@@ -22,7 +22,10 @@ public class Peanut_Script : MonoBehaviour
         //Find Gameobject of the player
         m_playerGameObject= GameObject.FindGameObjectWithTag("Player");
         //Set the projectile physics to ignore the player collision
-        Physics.IgnoreCollision(GetComponent<Collider>(), m_playerGameObject.GetComponent<Collider>());
+
+        //Todo: this trows: MissingComponentException: There is no 'Collider' attached to the "Elephant-WK" game object, but a script is trying to access it.
+
+        //Physics.IgnoreCollision(GetComponent<Collider>(), m_playerGameObject.GetComponent<Collider>());
 
         m_noiseSource = GetComponent<NoiseSource>();
 
