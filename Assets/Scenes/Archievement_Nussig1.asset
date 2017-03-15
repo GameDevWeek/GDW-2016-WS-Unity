@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c23f82fec7ce4e5d82a67cd6dd9c0140, type: 3}
+  m_Name: New Archievement
+  m_EditorClassIdentifier: 
+  name: Nussig
+  text: "Schie\xDFe 75 Erdn\xFCsse auf Feinde ab"
+  value: 0
+  archievmentReachedValue: 75
+  saveOnLocalMachine: 1
+  property:
+    Name: peanutWasShot
+    PropType: 6
+    boolValue: 0
+    intValue: 0
+    floatValue: 0
+    ComponentValue: {fileID: 0}
+    GameObjectValue: {fileID: 0}
+    StringValue: 
+    ObjectValue: {fileID: 11500000, guid: 1cbb56947ec8795429ae2909a055417a, type: 3}
+    Vector3Value: {x: 0, y: 0, z: 0}
+  increment_instead_set: 1
+  scaling: 1
+  assembly: Shoot_Peanuts, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  classPath: Assets/Scripts/Game Logic/Shoot_Peanuts.cs

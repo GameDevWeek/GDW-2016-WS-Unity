@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,15 +11,13 @@ public class Shoot_Peanuts : MonoBehaviour
     public Vector3 m_offset;
     public bool m_destroy_Peanut_On_Collison;
  
-    
-
     private Rigidbody peanutRigidbody;
 
+    public static event Action peanutWasShot;
 
     // Use this for initialization
     void Start ()
     {
-
         peanutRigidbody = m_peanutPrefab.GetComponent<Rigidbody>();
     }
 	
@@ -29,6 +28,7 @@ public class Shoot_Peanuts : MonoBehaviour
         if (Input.GetMouseButtonDown(1))
         {
             Fire();
+            
         }
     }
 
@@ -45,6 +45,10 @@ public class Shoot_Peanuts : MonoBehaviour
 
         //set the velocity of the clone
         clone.GetComponent<Rigidbody>().velocity = transform.TransformDirection(Vector3.forward * m_velocity);
+
+        if (peanutWasShot != null) {
+            peanutWasShot.Invoke();
+        }
 
         //Destroy clone after x seconds
         Destroy(clone,m_lifeSpan);
