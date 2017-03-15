@@ -36,10 +36,12 @@ public class SoundParticlePool : MonoBehaviour {
 	void Awake() {
 		m_instance = this;
 
-		m_poolSize = 10;
 		m_particleSystems = new GameObject[m_poolSize];
-		for(int i = 0; i < m_poolSize; ++i)
+		m_isActive = new bool[m_poolSize];
+		for(int i = 0; i < m_poolSize; ++i) {
 			m_particleSystems[i] = Instantiate(m_prefab);
+			m_isActive[i] = false;
+		}
 	}
 
 	public void Play(Vector3 startPosition, float volume)

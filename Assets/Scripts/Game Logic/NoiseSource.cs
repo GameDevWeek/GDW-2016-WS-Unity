@@ -14,7 +14,7 @@ public class NoiseSource : MonoBehaviour {
 
     private AudioSource m_audioSource;
 
-    private SoundParticlePool m_particlePool;
+    //private SoundParticlePool m_particlePool;
 
     public float affectedRange {
         get { return m_affectedRange; }
@@ -30,15 +30,18 @@ public class NoiseSource : MonoBehaviour {
     }
 
     public void Play() {
-        m_particlePool.Play(transform.position, m_affectedRange);
+        var particleSystem = global::Spawner.Spawn("Sound Particle System",transform.position);
+        particleSystem.GetComponent<ParticleSystem>().startLifetime = m_affectedRange / 10;
+        global::Spawner.DeSpawn(particleSystem, m_affectedRange / 10);
 
+        //m_particlePool.Play(transform.position, m_affectedRange);
+        
         AudioClip clip = m_audioSource.clip;
         if (m_audioClips.Length > 0) {
             m_audioSource.clip = Util.RandomElement(m_audioClips);
         }
 
         m_audioSource.Play();
-
         var colliders = Physics.OverlapSphere(transform.position, m_affectedRange, m_affectedLayer);
         foreach (var c in colliders) {
             if (c.GetComponent<INoiseListener>() != null) {
@@ -49,6 +52,6 @@ public class NoiseSource : MonoBehaviour {
 
     void Start() {
         m_audioSource = GetComponent<AudioSource>();
-        m_particlePool = SoundParticlePool.Instance;
+        //m_particlePool = SoundParticlePool.Instance;
     }
 }
