@@ -28,6 +28,7 @@ GameObject:
   - component: {fileID: 114696654192980324}
   - component: {fileID: 114561558624081882}
   - component: {fileID: 114171085052844706}
+  - component: {fileID: 114176916924841368}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -118,6 +119,7 @@ MonoBehaviour:
   m_lookAheadFactor: 0.5
   m_minLookAheadVelocity: 2
   m_LerpFactor: 10
+  m_roomCorrectionOffset: {x: 0.8, y: 0, z: 0}
 --- !u!114 &114171085052844706
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -135,6 +137,19 @@ MonoBehaviour:
   blurIterations: 2
   blurType: 0
   fastBloomShader: {fileID: 4800000, guid: 68a00c837b82e4c6d92e7da765dc5f1d, type: 3}
+--- !u!114 &114176916924841368
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1160654835837066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87b7f55eed27d4606a224a619ccf866a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_frequency: 0.8
+  m_maxIntensity: 0.4
 --- !u!114 &114448387684276110
 MonoBehaviour:
   m_ObjectHideFlags: 1
