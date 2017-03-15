@@ -17,6 +17,7 @@ public class ViewCone : MonoBehaviour {
     [SerializeField]
     private float fieldOfView = 90;
 
+    private LineRenderer2D lineRenderer;
     private MeshRenderer meshRenderer;
     private MeshFilter meshFilter;
     private Mesh mesh;
@@ -27,11 +28,12 @@ public class ViewCone : MonoBehaviour {
 
     private void Start()
     {
-        vertices = new Vector3[nrOfRaycasts + 1];
+        vertices = new Vector3[nrOfRaycasts + 2];
         normals = new Vector3[nrOfRaycasts + 1];
         uv = new Vector2[nrOfRaycasts + 1];
         mesh = new Mesh();
         mesh.name = transform.parent.name + " ViewConeMesh";
+        lineRenderer = GetComponentInChildren<LineRenderer2D>();
         meshRenderer = GetComponent<MeshRenderer>();
         meshFilter = GetComponent<MeshFilter>();
         Camera.main.depthTextureMode = DepthTextureMode.DepthNormals;
@@ -47,6 +49,7 @@ public class ViewCone : MonoBehaviour {
         //Collider[] objectsInRange = Physics.OverlapSphere(transform.position, viewRadius, viewBlockingLayers);
         
         vertices[0] = Vector3.zero;
+        vertices[vertices.Length - 1] = Vector3.zero;
         normals[0] = Vector3.up;
         uv[0] = Vector3.zero;
 
@@ -104,13 +107,11 @@ public class ViewCone : MonoBehaviour {
             triangles[i + 1] = j + 2;
             triangles[i + 2] = j + 1;
         }
-        //triangles[triangles.Length - 3] = 0;
-        //triangles[triangles.Length - 2] = 1;
-        //triangles[triangles.Length - 1] = triangles.Length / 3 - 1;
         mesh.vertices = vertices;
         mesh.normals = normals;
         mesh.triangles = triangles;
         mesh.uv = uv;
         meshFilter.mesh = mesh;
+        lineRenderer.Points = vertices;
     }
 }

@@ -64,7 +64,7 @@
 	fixed4 frag(v2f i) : SV_Target
 	{
 		float2 distScroll = float2(_Time.x, _Time.x);
-		fixed2 dist = (tex2D(_DistTex, i.world_vertex.xy + distScroll).r - 0.5) * 2 * _DistMultiplier;
+		fixed2 dist = (tex2D(_DistTex, i.world_vertex.xz + distScroll).r - 0.5) * 2 * _DistMultiplier;
 
 		float pos = modulo((i.world_vertex.x + i.world_vertex.z) * _LineThickness + _Time[1] * _LineSpeed, 1.0);
 		pos = modulo(pos + dist, 1.0);

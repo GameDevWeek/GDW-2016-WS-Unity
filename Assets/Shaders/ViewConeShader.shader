@@ -105,7 +105,7 @@
 
 				float3 outline = tex2D(_OutlineTex, i.uv).rgb;
 
-				fixed4 col = _Color /*+ intersectColor * intersect*/ + fixed4(outline,0);
+				fixed4 col = _Color + intersectColor * intersect;//+ fixed4(outline,0);
 				col.a *= a + outline.r;
 				return col;
 			}
