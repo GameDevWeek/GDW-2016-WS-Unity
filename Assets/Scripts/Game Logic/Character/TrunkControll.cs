@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -21,6 +21,9 @@ public class TrunkControll : MonoBehaviour {
     [SerializeField]
     private float m_damping = 1.0f;
 
+    [SerializeField]
+    private Transform m_trunkRoot;
+
     // Use this for initialization
     void Start () {
         m_animator = GetComponent<Animator>();
@@ -36,8 +39,8 @@ public class TrunkControll : MonoBehaviour {
 
         if (!m_controllWithSlider)
         {
-            m_animatorForTrunk.SetFloat("TrunkStiffness", m_animator.GetFloat("Forward") + m_value);
-        }else
+            m_animatorForTrunk.SetFloat("TrunkStiffness", m_value); // m_animator.GetFloat("Forward") + 
+        } else
         {
             m_animatorForTrunk.SetFloat("TrunkStiffness", m_trunkStiffness);
         }

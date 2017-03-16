@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+[RequireComponent(typeof(LineRenderer))]
+[RequireComponent(typeof(BoxCollider))]
+[RequireComponent(typeof(NoiseSource))]
 public class LaserDetection : MonoBehaviour {
 
     private LineRenderer m_laserBeam;
@@ -9,53 +13,59 @@ public class LaserDetection : MonoBehaviour {
     private BoxCollider m_collider;
 
     private bool m_isActive = true;
+    private NoiseSource noiseSource;
 
-	// Use this for initialization
-	void Start () {
+    public Vector3 direction = Vector3.forward;
+
+    private void OnValidate() {
+        Awake();
+        this.gameObject.layer = GameLayer.Laser;
+        this.direction.Normalize();
+        this.m_collider.isTrigger = true;
+        Start();
+
+
+    }
+
+    void Awake() {
         m_laserBeam = GetComponent<LineRenderer>();
+        m_collider = GetComponent<BoxCollider>();
+        noiseSource = GetComponent<NoiseSource>();
+    }
+
+    // Use this for initialization
+	void Start () {
         m_laserBeam.material = new Material(Shader.Find("Mobile/Particles/Additive"));
 
-        m_collider = GetComponent<BoxCollider>();
-
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.up, out hit))
+	    Vector3 localdir = transform.worldToLocalMatrix * direction;
+        if (Physics.Raycast(transform.position, localdir, out hit, maxDistance: 20, layerMask: ~GameLayer.LaserMask))
         {
             if (hit.collider)
             {
-                Debug.Log("HitDistance = " + hit.distance);
 
                 m_laserBeam.SetPosition(0, transform.position);
                 m_laserBeam.SetPosition(1, hit.point);
-                
-                m_collider.size = new Vector3(m_collider.size.x, hit.distance / transform.lossyScale.y, m_collider.size.z);                
-                m_collider.center = new Vector3(m_collider.center.x, (hit.distance / transform.lossyScale.y) / 2f, m_collider.center.z);
+
+                var orth = Vector3.Cross(Vector3.up, localdir);
+
+                m_collider.size = (Vector3)(transform.localToWorldMatrix * Vector3.up) + localdir * hit.distance + orth * 0.0625f;
+                m_collider.center = localdir * (hit.distance / 2);
             }
         }
     }
-	
+
+    private IEnumerator SendAlarm() {
+
+        for (int i = 0; i < 10; ++i) {
+            noiseSource.Play();
+            yield return new WaitForSeconds(0.5f);
+        }
+
+    }
+
 	// Update is called once per frame
 	void Update () {
-        RaycastHit hit;
-        if(Physics.Raycast(transform.position, transform.up, out hit))
-        {
-            if(hit.collider)
-            {
-                m_laserBeam.SetPosition(0, transform.position);
-                m_laserBeam.SetPosition(1, hit.point);
-
-                m_collider.size = new Vector3(m_collider.size.x, hit.distance / transform.lossyScale.y, m_collider.size.z);
-                m_collider.center = new Vector3(m_collider.center.x, (hit.distance / transform.lossyScale.y) / 2f, m_collider.center.z);
-            }
-        }
-        else
-        {
-            m_laserBeam.SetPosition(0, transform.position);
-            m_laserBeam.SetPosition(1, transform.position + transform.up * 20f);
-
-            m_collider.size = new Vector3(m_collider.size.x, 20f / transform.lossyScale.y, m_collider.size.z);
-            m_collider.center = new Vector3(m_collider.center.x, (20f / transform.lossyScale.y) / 2f, m_collider.center.z);
-        }
-
         // Test code
         if(Input.GetKeyDown(KeyCode.Space))
         {

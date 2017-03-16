@@ -283,6 +283,15 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114821812586447890, guid: a11f4e40c62fde94cb98110341f0a50f,
+        type: 2}
+      propertyPath: m_sprintCapsule
+      value: 
+      objectReference: {fileID: 1096706292}
+    - target: {fileID: 1960445719896116, guid: a11f4e40c62fde94cb98110341f0a50f, type: 2}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a11f4e40c62fde94cb98110341f0a50f, type: 2}
   m_IsPrefabParent: 0
@@ -2518,7 +2527,6 @@ MonoBehaviour:
   currentWaypoint: 0
   eyes: {fileID: 1065083542}
   offset: {x: 0, y: 0.5, z: 0}
-  meshRendererFlag: {fileID: 743147667}
   targetPos: {x: 0, y: 0, z: 0}
   chaseTarget: {fileID: 0}
   navMeshAgent: {fileID: 0}
@@ -3661,15 +3669,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400016, guid: 46184b5191d6eb04084bf2a63b382a5c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.388
+      value: -0.376
       objectReference: {fileID: 0}
     - target: {fileID: 400016, guid: 46184b5191d6eb04084bf2a63b382a5c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 400016, guid: 46184b5191d6eb04084bf2a63b382a5c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.561
+      value: 0.064
       objectReference: {fileID: 0}
     - target: {fileID: 400016, guid: 46184b5191d6eb04084bf2a63b382a5c, type: 3}
       propertyPath: m_LocalRotation.x
@@ -3719,6 +3727,42 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 044be340406ad7b488822e4e85ca250c, type: 2}
+    - target: {fileID: 100006, guid: 46184b5191d6eb04084bf2a63b382a5c, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 46184b5191d6eb04084bf2a63b382a5c, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 100012, guid: 46184b5191d6eb04084bf2a63b382a5c, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 100014, guid: 46184b5191d6eb04084bf2a63b382a5c, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 46184b5191d6eb04084bf2a63b382a5c, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 100016, guid: 46184b5191d6eb04084bf2a63b382a5c, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 100008, guid: 46184b5191d6eb04084bf2a63b382a5c, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 46184b5191d6eb04084bf2a63b382a5c, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 100010, guid: 46184b5191d6eb04084bf2a63b382a5c, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 46184b5191d6eb04084bf2a63b382a5c, type: 3}
   m_IsPrefabParent: 0
@@ -4831,10 +4875,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31d4535b3dfe42149a973b2eba68aa5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_controllWithSlider: 0
+  m_controllWithSlider: 1
   m_trunkStiffness: 1
   m_animatorForTrunk: {fileID: 1451702403}
   m_damping: 1
+  m_trunkRoot: {fileID: 0}
+--- !u!136 &1096706292
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1096706290}
+  m_Material: {fileID: 13400000, guid: c2815a7ab32e42c4bb42f59caacb8ec1, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  m_Radius: 0.9366265
+  m_Height: 3.4337025
+  m_Direction: 2
+  m_Center: {x: 0, y: 0.97, z: 0.84}
 --- !u!1 &1099549597
 GameObject:
   m_ObjectHideFlags: 0
@@ -6794,6 +6852,11 @@ Prefab:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114137936087905380, guid: b32926f40a83740d2988f64a13e0da83,
+        type: 2}
+      propertyPath: m_offset.y
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b32926f40a83740d2988f64a13e0da83, type: 2}
   m_IsPrefabParent: 0
@@ -8444,6 +8507,7 @@ MonoBehaviour:
   m_groundCheckDistance: 0.3
   m_sprintSpeed: 2
   m_sprintAnimSpeedMultiplier: 2
+  m_sprintCapsule: {fileID: 0}
 --- !u!114 &1853797362
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9181,6 +9245,7 @@ MonoBehaviour:
   m_groundCheckDistance: 0.3
   m_sprintSpeed: 2
   m_sprintAnimSpeedMultiplier: 2
+  m_sprintCapsule: {fileID: 0}
 --- !u!114 &2011954425
 MonoBehaviour:
   m_ObjectHideFlags: 0
