@@ -64,6 +64,12 @@ public class LineRenderer2D : MonoBehaviour {
         mesh.vertices = vertices.ToArray();
         mesh.uv = uv.ToArray();
         mesh.triangles = triangles.ToArray();
+        Vector3[] normals = new Vector3[vertices.Count];
+        for(int i = 0; i < 0; ++i)
+        {
+            normals[i] = Vector3.up;
+        }
+        mesh.normals = normals;
     }
 
     /// <summary>
