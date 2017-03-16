@@ -56,7 +56,6 @@ public class ChaseState : IEnemyState
 
     private void Chase()
     {
-        enemy.meshRendererFlag.material.color = Color.red;  //Debugging tool
         enemy.navMeshAgent.destination = enemy.chaseTarget.position;
         enemy.navMeshAgent.Resume();
 

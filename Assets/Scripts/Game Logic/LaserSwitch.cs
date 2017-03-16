@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LaserSwitch : MonoBehaviour
+public class LaserSwitch : Interactable
 {
     [SerializeField]
     private LaserDetection[] m_laser;
@@ -13,36 +13,30 @@ public class LaserSwitch : MonoBehaviour
     private Color m_switchOffColor;
 
     [SerializeField]
-    private bool m_isSwitchPowered;
-
-    private Renderer rend;
+    private bool m_switchPoweredOn = true;
 
     // Use this for initialization
     void Start ()
     {
-        ChangeColor(m_isSwitchPowered ? m_switchOnColor : m_switchOffColor);
-
+        ChangeColor(m_switchPoweredOn ? m_switchOnColor : m_switchOffColor);
     }
 
     // Update is called once per frame
 	void Update () {
-		
-        //TODO: insert the interactive method
 
 	}
 
     public void ChangeColor(Color c)
     {
         gameObject.GetComponent<Renderer>().material.color = c;
-
     }
 
-    public void ToggleSwitch(bool powered)
+    public void ToggleSwitch()
     {
-        m_isSwitchPowered = powered;
-        ChangeColor(m_isSwitchPowered ? m_switchOnColor : m_switchOffColor);
+        m_switchPoweredOn = !m_switchPoweredOn;
+        ChangeColor(m_switchPoweredOn ? m_switchOnColor : m_switchOffColor);
 
-        SwitchLaser(m_isSwitchPowered);
+        SwitchLaser(m_switchPoweredOn);
     }
 
 
@@ -52,5 +46,10 @@ public class LaserSwitch : MonoBehaviour
         {
             laser.SetActivation(b);
         }
+    }
+
+    public override void Interact(Interactor interactor)
+    {
+        ToggleSwitch();
     }
 }
