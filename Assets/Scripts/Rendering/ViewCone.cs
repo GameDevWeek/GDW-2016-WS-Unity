@@ -44,10 +44,10 @@ public class ViewCone : MonoBehaviour {
 
         enemy = transform.parent.GetComponent<StatePatternEnemy>();
 
-        InvokeRepeating("UpdateViewCone", 0.1f, 0.3f);
+        // InvokeRepeating("UpdateViewCone", 0.1f, 0.125f);
     }
 
-    private void UpdateViewCone()
+    private void Update()
     {
         if(!meshRenderer.enabled)
         {
