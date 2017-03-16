@@ -42,14 +42,14 @@ public class AddLoad_IngamePaused : MonoBehaviour {
     public void pausedOn()
     {
         Time.timeScale = 0;
-        SceneManager.LoadScene(2, LoadSceneMode.Additive);
+        SceneManager.LoadScene(0, LoadSceneMode.Additive);
         pause = true;
     }
 
     public void pausedOff()
     {
         Time.timeScale = 1;
-        SceneManager.UnloadSceneAsync(2);
+        SceneManager.UnloadSceneAsync(0);
         pause = false;
     }
 }

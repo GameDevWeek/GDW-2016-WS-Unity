@@ -23,14 +23,14 @@ public class InGameMenu : MonoBehaviour
 
     public void clickedButtonBackToGame()
     {
-        SceneManager.UnloadSceneAsync(2);       //Die Scene IngameMenu schließen
+        SceneManager.UnloadSceneAsync(0);       //Die Scene IngameMenu schließen
         AddLoad_IngamePaused.setPause(false);   //In der Klasse AddLoad_IngamePaused pause-Variable auf false setzen, da sich das Spiel nun nicht mehr im Pausemodus befindet
         Time.timeScale = 1;                     //pausierte Scene fortsetzen
     }
 
     public void clickedButtonRestartLevel()
     {
-        SceneManager.UnloadSceneAsync(2);
+        SceneManager.UnloadSceneAsync(0);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
         AddLoad_IngamePaused.setPause(false);
         Time.timeScale = 1;
