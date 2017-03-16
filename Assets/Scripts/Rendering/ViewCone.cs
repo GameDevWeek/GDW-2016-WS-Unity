@@ -8,8 +8,8 @@ using System.Linq;
 [RequireComponent(typeof(MeshFilter))]
 public class ViewCone : MonoBehaviour {
 
-    [SerializeField]
-    private float viewRadius = 10.0f;
+    [HideInInspector] public float viewRadius = 10.0f;
+
     [SerializeField]
     private LayerMask viewBlockingLayers;
     [SerializeField]
@@ -28,6 +28,8 @@ public class ViewCone : MonoBehaviour {
     private Vector3[] normals;
     private Vector2[] uv;
 
+    private StatePatternEnemy enemy;
+
     private void Start()
     {
         vertices = new Vector3[nrOfRaycasts + 2];
@@ -39,6 +41,10 @@ public class ViewCone : MonoBehaviour {
         meshRenderer = GetComponent<MeshRenderer>();
         meshFilter = GetComponent<MeshFilter>();
         Camera.main.depthTextureMode = DepthTextureMode.DepthNormals;
+
+        enemy = transform.parent.GetComponent<StatePatternEnemy>();
+
+        // InvokeRepeating("UpdateViewCone", 0.1f, 0.125f);
     }
 
     private void Update()
@@ -47,6 +53,8 @@ public class ViewCone : MonoBehaviour {
         {
             return;
         }
+        viewRadius = enemy.sightRange;
+        //Collider[] objectsInRange = Physics.OverlapSphere(transform.position, viewRadius, viewBlockingLayers);
         
         vertices[0] = Vector3.zero;
         vertices[vertices.Length - 1] = Vector3.zero;
