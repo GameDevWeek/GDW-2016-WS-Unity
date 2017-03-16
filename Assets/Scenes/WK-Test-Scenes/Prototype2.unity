@@ -3410,6 +3410,46 @@ Transform:
   m_Father: {fileID: 873437627}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &798096497
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 798096499}
+  - component: {fileID: 798096498}
+  m_Layer: 0
+  m_Name: Add Load IGM
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &798096498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 798096497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff37443c9ea1149489c7253a54a9b6b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &798096499
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 798096497}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 379.7559, y: 137.53532, z: 405.30392}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &808786217
 GameObject:
   m_ObjectHideFlags: 0
@@ -6800,7 +6840,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigidbody: {fileID: 1563592881}
   collider: {fileID: 1563592884}
-  noiseSource: {fileID: 1563592882}
+  noiseSource: {fileID: 1563592885}
   forward: 1
   backward: 0
 --- !u!54 &1563592881
@@ -6835,6 +6875,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   m_allowPlayingSounds: 1
+  priority: 0
 --- !u!82 &1563592883
 AudioSource:
   m_ObjectHideFlags: 0
@@ -6920,6 +6961,12 @@ BoxCollider:
   m_PrefabParentObject: {fileID: 65894513206240840, guid: ae09091cd5e13584eabf35b879c9a6c4,
     type: 2}
   m_PrefabInternal: {fileID: 1760864395}
+--- !u!114 &1563592885 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114815066163190588, guid: ae09091cd5e13584eabf35b879c9a6c4,
+    type: 2}
+  m_PrefabInternal: {fileID: 1760864395}
+  m_Script: {fileID: 11500000, guid: a76f3f01326dd4a40ac19f525fd74a89, type: 3}
 --- !u!1 &1573180697
 GameObject:
   m_ObjectHideFlags: 0
@@ -8122,6 +8169,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_allowPlayingSounds: 1
+  priority: 0
 --- !u!82 &1853797363
 AudioSource:
   m_ObjectHideFlags: 0
@@ -8861,6 +8909,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_allowPlayingSounds: 1
+  priority: 0
 --- !u!82 &2011954427
 AudioSource:
   m_ObjectHideFlags: 0

@@ -9,3 +9,5 @@ EditorBuildSettings:
     path: Assets/Scenes/Max's Scene/Max's_Prototype.unity
   - enabled: 1
     path: Assets/Scenes/Max's Scene/Test_Levelchange.unity
+  - enabled: 1
+    path: Assets/Scenes/InGameMenu/IngameMenu.unity
