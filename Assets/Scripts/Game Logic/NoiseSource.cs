@@ -14,6 +14,9 @@ public class NoiseSource : MonoBehaviour {
 
     private AudioSource m_audioSource;
 
+    [SerializeField]
+    private bool IsPlayingSounds = true;
+
     public float affectedRange {
         get { return m_affectedRange; }
         set { m_affectedRange = value; }
@@ -35,12 +38,13 @@ public class NoiseSource : MonoBehaviour {
             Spawner.DeSpawn(particleSystem, m_affectedRange / 10);
         }
 
-        if (m_audioClips.Length > 0) {
+        if (m_audioClips.Length > 0 && IsPlayingSounds) {
             m_audioSource.clip = Util.RandomElement(m_audioClips);
             
         }
 
-        m_audioSource.Play();
+        if(IsPlayingSounds)
+            m_audioSource.Play();
         var colliders = Physics.OverlapSphere(transform.position, m_affectedRange, m_affectedLayer);
         foreach (var c in colliders) {
             if (c.GetComponent<INoiseListener>() != null) {
