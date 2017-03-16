@@ -47,9 +47,11 @@ public class ChaseState : IEnemyState
         {
             enemy.chaseTarget = hit.transform;
             WantedLevel.Instance.RaiseWantedLevel();
+            enemy.camouflageInRange(hit);
         }
         else
         {
+            enemy.camouflageNotInRange();
             ToAlertState();
         }
     }

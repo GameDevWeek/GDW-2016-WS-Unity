@@ -2422,6 +2422,20 @@ MonoBehaviour:
   m_lifeSpan: 3
   m_offset: {x: 0, y: 1, z: 1}
   m_destroy_Peanut_On_Collison: 0
+--- !u!114 &414742856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 414742843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7218a1a416481e48b237be1721f942a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pedestalTag: Pedestal
+  _mouseTag: Mouse
+  _camouflageMaxDurationMS: 0
 --- !u!4 &430849975 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4128965988225342, guid: e28623aa35849cc419ffd0b0186c7c9e,
@@ -2712,7 +2726,7 @@ Prefab:
     - target: {fileID: 114764687126675632, guid: 4f0fe6c325c762947a707a726a5f6992,
         type: 2}
       propertyPath: priority
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114764687126675632, guid: 4f0fe6c325c762947a707a726a5f6992,
         type: 2}

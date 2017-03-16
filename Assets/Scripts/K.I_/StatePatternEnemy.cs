@@ -12,13 +12,14 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
     public float stoppingTime = 2f;
 
     public Waypoints wayPoints;
-    public int currentWaypoint;
+    [HideInInspector] public int currentWaypoint;
 
     public Transform eyes;
     public Vector3 offset = new Vector3(0, .5f, 0);  //Damit man nicht auf die Schuhe des Spielers schaut
     public MeshRenderer meshRendererFlag;
 
     private int highestPriority = 0;
+    private CamouflageController camouflage;
 
     [HideInInspector] public Vector3 targetPos; 
     [HideInInspector] public Transform chaseTarget;
@@ -27,7 +28,7 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
     [HideInInspector] public AlertState alertState;
     [HideInInspector] public PatrolState patrolState;
     [HideInInspector] public NavMeshAgent navMeshAgent;
-
+    
 
     private void Awake()
     {
@@ -36,6 +37,7 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
         patrolState = new PatrolState(this);
 
         navMeshAgent = GetComponent<NavMeshAgent>();
+
     }
 
     void Start()
@@ -81,5 +83,25 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
             navMeshAgent.Resume();
         }
         
+    }
+
+
+    public void camouflageInRange(RaycastHit hit)
+    {
+        camouflage = hit.collider.gameObject.GetComponent<CamouflageController>();
+        if (camouflage != null)
+        {
+            camouflage.EnemyInRange(this.gameObject);
+            Debug.Log("Can't camouflage!");
+        }
+    }
+
+    public void camouflageNotInRange()
+    {
+        if (camouflage != null)
+        {
+            camouflage.EnemyOutOfRange(this.gameObject);
+            Debug.Log("Can camouflage now!");
+        }
     }
 }

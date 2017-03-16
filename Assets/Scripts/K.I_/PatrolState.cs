@@ -9,9 +9,11 @@ public class PatrolState : IEnemyState
     private float searchTimer;
     private bool isLooking;
 
+
     public PatrolState(StatePatternEnemy statePatternEnemy)
     {
         enemy = statePatternEnemy;
+
     }
 	
     public void UpdateState()
@@ -49,12 +51,16 @@ public class PatrolState : IEnemyState
         if ((Physics.Raycast(enemy.eyes.transform.position, enemy.eyes.transform.forward, out hit, enemy.sightRange) &&
             (hit.collider.CompareTag("Player")))) //Eventuell CompareTag entfernen falls Layer angepasst werden
         {
-            if(hit.distance>=enemy.toleratedSightrange)     //Wenn Spieler im Toleranzbereich erstmal stoppen und schauen
+
+            enemy.camouflageInRange(hit);
+
+            if (hit.distance >= enemy.toleratedSightrange)     //Wenn Spieler im Toleranzbereich erstmal stoppen und schauen
             {
                 StopAndLook(hit);
             }
             else
             {
+                
                 enemy.chaseTarget = hit.transform;          //Wenn Spieler unterm Toleranzbereich ist direkt chasen
                 searchTimer = 0f;
                 isLooking = false;

@@ -49,10 +49,10 @@ public class AlertState : IEnemyState {
             hit.collider.CompareTag("Player"))
         {
             enemy.chaseTarget = hit.transform;
-            //enemy.targetPos = hit.transform.position;
 
             enemy.navMeshAgent.SetDestination(enemy.targetPos);
             WantedLevel.Instance.RaiseWantedLevel();
+            enemy.camouflageInRange(hit);
             ToChaseState();
         }
     }
