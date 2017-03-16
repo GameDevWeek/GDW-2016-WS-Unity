@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -54,6 +54,7 @@ public class HideOutOfPlayerRange : MonoBehaviour
         if (hit2.collider == null) Debug.DrawLine(startPosition - orthogonalVector * raycastOriginOffset, startPosition - orthogonalVector * raycastOriginOffset + rightRayDirection * vectorToPlayer.magnitude);
         else Debug.DrawLine(startPosition - orthogonalVector * raycastOriginOffset, hit2.point, Color.cyan);
         bool visible = isInDistance && !hitBoth;
+
         if (visible && !renderers[0].enabled)
         {
             activeCoroutine = StartCoroutine(Show());

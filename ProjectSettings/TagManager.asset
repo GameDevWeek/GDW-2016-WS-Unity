@@ -6,7 +6,6 @@ TagManager:
   tags:
   - Pedestal
   - Mouse
-  - JadeElephant
   - Enemy
   - Ground
   layers:
@@ -18,9 +17,15 @@ TagManager:
   - UI
   - 
   - 
+<<<<<<< HEAD
   - Background Image
   - 
   - 
+=======
+  - Destructible
+  - Player
+  - Floor
+>>>>>>> c85b57b56d3edc02c6080036696427ceeac87eba
   - 
   - 
   - 

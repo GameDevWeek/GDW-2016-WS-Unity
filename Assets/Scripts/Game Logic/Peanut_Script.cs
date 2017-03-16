@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,7 +17,7 @@ public class Peanut_Script : MonoBehaviour {
     
    
 	// Use this for initialization
-    void Start () {
+    void Awake () {
 
         //Find Gameobject of the player
         m_playerGameObject= GameObject.FindGameObjectWithTag("Player");

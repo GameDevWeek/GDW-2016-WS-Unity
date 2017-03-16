@@ -3,7 +3,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 
-[RequireComponent(typeof(ElephantMovement))]
+[RequireComponent(typeof(ElephantMovement), typeof(Interactor))]
 public class ElephantControl : MonoBehaviour {
     public enum ControlsMode {
         Controller,
@@ -29,10 +29,13 @@ public class ElephantControl : MonoBehaviour {
 
     [SerializeField]
     private float m_walkRadius = 0.4f;
+    private Shoot_Peanuts m_shootPeanuts;
+    private Interactor m_interactor;
 
     private void Start() {
         m_sprintCooldown.End();
         m_sprintDurationAfterSprintStopped.End();
+        m_shootPeanuts = GetComponent<Shoot_Peanuts>();
 
         // get the transform of the main camera
         if (Camera.main != null) {
@@ -45,6 +48,7 @@ public class ElephantControl : MonoBehaviour {
 
         // get the third person character ( this should never be null due to require component )
         m_character = GetComponent<ElephantMovement>();
+        m_interactor = GetComponent<Interactor>();
     }
 
     private bool IsCrouching() {
@@ -156,7 +160,7 @@ public class ElephantControl : MonoBehaviour {
 
         switch (controlsMode) {
             case ControlsMode.Controller:
-                if (Input.GetMouseButton(1)) {
+                if (Input.GetButton("TargetMode")) {
                     HandleAiming();
                 } else {
                     HandleControllerMovement();
@@ -165,6 +169,16 @@ public class ElephantControl : MonoBehaviour {
             case ControlsMode.KeyboardMouse:
                 HandleMouseKeyboardMovement();
                 break;
+        }
+    }
+
+    private void Update() {
+        if (m_shootPeanuts && Input.GetButtonDown("Shoot")) {
+            m_shootPeanuts.Fire();
+        }
+
+        if (Input.GetButtonDown("Interact")) {
+            m_interactor.InteractionRequest();
         }
     }
 

@@ -1,5 +1,8 @@
-﻿using System;
+﻿﻿using System;
 using UnityEngine;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 [RequireComponent(typeof(Collider))]
 [RequireComponent(typeof(Rigidbody))]
@@ -32,7 +35,7 @@ public sealed class ShelfActor : MonoBehaviour {
 
     private void Start() {
         hingePosition = new Vector3(transform.position.x, 0, transform.position.z);
-        hingeXTranslation = transform.right * (collider.bounds.size.x/2);
+        hingeXTranslation = transform.up * (collider.bounds.size.y/2);
 
         originalPosition = this.transform.position;
         originalRotation = this.transform.rotation;
@@ -43,11 +46,20 @@ public sealed class ShelfActor : MonoBehaviour {
         rigidbody = this.GetComponent<Rigidbody>();
         collider = this.GetComponent<Collider>();
         noiseSource = this.GetComponent<NoiseSource>();
+
+        hingePosition = new Vector3(transform.position.x, 0, transform.position.z);
+        rigidbody.isKinematic = true;
+
         this.enabled = false;
     }
 
     private void OnEnable() {
         amount = 0;
+        #if UNITY_EDITOR
+        if (! EditorApplication.isPlayingOrWillChangePlaymode) {
+            OnValidate();
+        }
+        #endif
     }
 
     private void Update() {
@@ -66,7 +78,7 @@ public sealed class ShelfActor : MonoBehaviour {
 
 
         var hinge = amount > 0 ? hingePosition + hingeXTranslation : hingePosition - hingeXTranslation;
-        this.transform.RotateAround(hinge, transform.forward, -amount*90);
+        this.transform.RotateAround(hinge, transform.right, -amount*90);
     }
 
     private void EndFalling() {
@@ -76,25 +88,41 @@ public sealed class ShelfActor : MonoBehaviour {
     }
 
 
-    #if UNITY_EDITOR
+#if UNITY_EDITOR
     private void OnDrawGizmosSelected() {
+        if(amount > Single.Epsilon || amount < -Single.Epsilon) return;
+        hingePosition = new Vector3(transform.position.x, 0, transform.position.z);
 
         Gizmos.DrawSphere(hingePosition-hingeXTranslation, 0.1f);
 
         var pos = new Vector3(transform.position.x, collider.bounds.size.x / 2, transform.position.z);
-        var x_translatioin = transform.right * (collider.bounds.size.y / 2 + collider.bounds.size.x/2); // TODO: change to right
+        var x_translatioin = transform.forward * (collider.bounds.size.y / 2 + collider.bounds.size.x/2); // TODO: change to right
 
-        if(forward)
-            Gizmos.DrawWireCube(pos + x_translatioin, new Vector3(collider.bounds.size.y, collider.bounds.size.x, collider.bounds.size.z));
-        if(backward)
-            Gizmos.DrawWireCube(pos - x_translatioin, new Vector3(collider.bounds.size.y, collider.bounds.size.x, collider.bounds.size.z));
+        if (forward) {
+            var forward_hinge = (hingePosition - hingeXTranslation);
+            var h = transform.position - forward_hinge;
+            var quat = Quaternion.AngleAxis(90, transform.right);
+            var ext = collider.bounds.extents;
+            ext.x = 0;
+            ext.y *= 1.5f;
+            Gizmos.DrawWireCube(forward_hinge + quat * h - quat * ext, quat * collider.bounds.size);
+        }
+
+        if (backward) {
+            var forward_hinge = (hingePosition + hingeXTranslation);
+            var h = transform.position - forward_hinge;
+            var quat = Quaternion.AngleAxis(-90, transform.right);
+            var ext = collider.bounds.extents;
+            ext.x = 0;
+            ext.y *= -1.5f;
+            Gizmos.DrawWireCube(forward_hinge + quat * h + quat * ext, quat * collider.bounds.size);
+        }
+
     }
-    #endif
+#endif
 
     private void OnCollisionEnter(Collision col) {
         const float sensitivity = 0.5f;
-
-        Debug.Log("test");
 
         // TODO: check if player
 
@@ -102,9 +130,9 @@ public sealed class ShelfActor : MonoBehaviour {
 
         Debug.DrawRay(col.contacts[0].point, -col.contacts[0].normal, Color.red, 2);
 
-        if (Vector3.Dot(col.contacts[0].normal, transform.right) > sensitivity && forward) {
+        if (Vector3.Dot(col.contacts[0].normal, transform.up) > sensitivity && forward) {
             fallingForward = true;
-        }else if (Vector3.Dot(col.contacts[0].normal, transform.right) < -sensitivity && backward) {
+        }else if (Vector3.Dot(col.contacts[0].normal, transform.up) < -sensitivity && backward) {
             fallingForward = false;
         }
         else {

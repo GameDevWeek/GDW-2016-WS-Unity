@@ -7,7 +7,9 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
 
     public float searchingTurnSpeed = 120f;
     public float searchingDuration = 4f;
-    public float sightRange = 20f;
+    public float sightRange = 10f;
+    public float toleratedSightrange = 5f;      //Muss kleiner sein als sightRange!!!
+    public float stoppingTime = 2f;
 
     public Waypoints wayPoints;
     public int currentWaypoint;
@@ -54,21 +56,27 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
     public void WantedLvlUp()
     {
         searchingTurnSpeed += 20f;
-        sightRange += 10f;
+        sightRange += 5f;
+
     }
 
     public void WantedLvlDown()
     {
         searchingTurnSpeed -= 20f;
-        sightRange -= 10f;
+        sightRange -= 5f;
     }
 
-    public void Inform(NoiseSourceData data)
+    public void Inform(NoiseSourceData data)    //Wenn ich im PatrolState etwas höre laufe ich auf
     {
         if (currentState == patrolState)
         {
             navMeshAgent.SetDestination(data.initialPosition);
             currentState = alertState;
+        }
+        else if(currentState == alertState)
+        {
+            navMeshAgent.SetDestination(data.initialPosition);
+            navMeshAgent.Resume();
         }
         
     }

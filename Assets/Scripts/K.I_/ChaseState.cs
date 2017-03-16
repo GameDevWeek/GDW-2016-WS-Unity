@@ -19,14 +19,14 @@ public class ChaseState : IEnemyState
         Chase();
     }
 
-    public void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter(Collider other)  //TODO: Wenn spieler in Reichweite ist GameOver
     {
 
     }
 
     public void ToPatrolState()
     {
-
+        Debug.Log("Kann nicht vom Chasen zum Patrolen wechseln");
     }
 
     public void ToAlertState()
@@ -36,40 +36,17 @@ public class ChaseState : IEnemyState
 
     public void ToChaseState()
     {
-
+        Debug.Log("Kann nicht zum selben State wechseln (D'Uh...)");
     }
 
     private void Look()
     {
-        //Vector3[] boundPoints = new Vector3[3];
-        //RaycastHit boundsHit, boundsHit1, boundsHit2;
-
-        //var targetPoint = PlayerActor.Instance.collider.bounds.ClosestPoint(enemy.eyes.transform.position);
-        //var minPoint = PlayerActor.Instance.collider.bounds.min;
-        //var maxPoint = PlayerActor.Instance.collider.bounds.max;
-
-        //boundPoints[0] = targetPoint;
-        //boundPoints[1] = minPoint;
-        //boundPoints[2] = maxPoint;
-
-        //if (Physics.Raycast(enemy.eyes.transform.position, boundPoints[0] - enemy.eyes.transform.position, out boundsHit, enemy.sightRange) &&
-        //    Physics.Raycast(enemy.eyes.transform.position, boundPoints[1] - enemy.eyes.transform.position, out boundsHit1, enemy.sightRange) &&
-        //    Physics.Raycast(enemy.eyes.transform.position, boundPoints[2] - enemy.eyes.transform.position, out boundsHit2, enemy.sightRange))
-        //    if (boundsHit.collider.CompareTag("Player"))
-        //    {
-        //        enemy.chaseTarget = boundsHit.transform;
-        //    }
-        //else
-        //    {
-        //        ToAlertState();
-        //    }
-
         RaycastHit hit;
         Vector3 enemyToTarget = (enemy.chaseTarget.position + enemy.offset) - enemy.eyes.transform.position;
         if (Physics.Raycast(enemy.eyes.transform.position, enemyToTarget, out hit, enemy.sightRange) && hit.collider.CompareTag("Player"))
         {
             enemy.chaseTarget = hit.transform;
-            //m_chasePos = hit.transform.position;
+            WantedLevel.Instance.RaiseWantedLevel();
         }
         else
         {
