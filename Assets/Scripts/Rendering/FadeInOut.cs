@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Linq;
 
 public class FadeInOut : MonoBehaviour
 {
@@ -19,40 +20,20 @@ public class FadeInOut : MonoBehaviour
     {
         float fadingSpeed = 1.0f / fadeTime;
         
-        Renderer[] rendererObjects = GetComponentsInChildren<Renderer>();
-        
-        float currentAlpha = CurrentAlpha();
-        bool fadingIn = targetAlpha > currentAlpha;
-        if (!fadingIn)
-        {
-            fadingSpeed = -fadingSpeed;
-        }
+		var rendererObjects = GetComponentsInChildren<Renderer>().ToList();
 
-        while ((fadingIn && currentAlpha < targetAlpha) || (!fadingIn && currentAlpha > targetAlpha))
+		while(rendererObjects.Count()>0)
         {
-            currentAlpha += Time.deltaTime * fadingSpeed;
-
-            for (int i = 0; i < rendererObjects.Length; i++)
-            {
-                var color = rendererObjects[i].material.color;
-                rendererObjects[i].material.color = new Color(color.r, color.g, color.b, Mathf.Clamp(currentAlpha, 0.0f, 1.0f));
-                //Color newColor = rendererObjects[i].material.color;
-                //newColor.a = Mathf.Clamp(currentAlpha, 0.0f, 1.0f);
-                //rendererObjects[i].material.SetColor("_Color", newColor);
+			foreach (var renderer in rendererObjects)
+			{
+				var color = renderer.material.color;
+				var fadeStep = fadingSpeed * Mathf.Sign (targetAlpha - color.a);
+				color.a = Mathf.Clamp(color.a + Time.deltaTime * fadeStep, 0f, 1f);
+				renderer.material.color = color;
             }
 
             yield return null;
         }
     }
     
-    private float CurrentAlpha()
-    {
-        float maxAlpha = 0.0f;
-        Renderer[] rendererObjects = GetComponentsInChildren<Renderer>();
-        foreach (Renderer item in rendererObjects)
-        {
-            maxAlpha = Mathf.Max(maxAlpha, item.material.color.a);
-        }
-        return maxAlpha;
-    }
 }

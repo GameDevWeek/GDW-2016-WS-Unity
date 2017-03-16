@@ -5235,6 +5235,46 @@ Transform:
   m_PrefabParentObject: {fileID: 4128965988225342, guid: e28623aa35849cc419ffd0b0186c7c9e,
     type: 2}
   m_PrefabInternal: {fileID: 1210188761}
+--- !u!1 &795609776
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 795609778}
+  - component: {fileID: 795609777}
+  m_Layer: 0
+  m_Name: LoadInGameMenuScene
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &795609777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 795609776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff37443c9ea1149489c7253a54a9b6b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &795609778
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 795609776}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 379.7559, y: 137.53532, z: 405.30392}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &797521449 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4457002849638692, guid: 6f76bf094d1a4d64782094e9b4bd5072,

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(NoiseSource))]
 public class DestructibleObject : MonoBehaviour {
     [SerializeField]
     private GameObject m_completeObject;
@@ -16,6 +17,7 @@ public class DestructibleObject : MonoBehaviour {
         GetComponent<Collider>().enabled = false;
         m_completeObject.SetActive(false);
         m_destrucedObject.SetActive(true);
+        GetComponent<NoiseSource>().Play();
 
         var dTransform = m_destrucedObject.transform;
         for (int i = 0; i < dTransform.childCount; ++i) {

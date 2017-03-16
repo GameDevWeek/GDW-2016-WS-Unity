@@ -17,8 +17,8 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
     public Transform eyes;
     public Vector3 offset = new Vector3(0, .5f, 0);  //Damit man nicht auf die Schuhe des Spielers schaut
     public MeshRenderer meshRendererFlag;
-   
 
+    private int highestPriority = 0;
 
     [HideInInspector] public Vector3 targetPos; 
     [HideInInspector] public Transform chaseTarget;
@@ -70,11 +70,13 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
     {
         if (currentState == patrolState)
         {
+            highestPriority = 0;        //Wenn ich irgendwann mal wieder in den patrolState komme ist jede Noise highestPrio
             navMeshAgent.SetDestination(data.initialPosition);
             currentState = alertState;
         }
-        else if(currentState == alertState)
+        else if (currentState == alertState && data.priority>=highestPriority)
         {
+            highestPriority = data.priority;
             navMeshAgent.SetDestination(data.initialPosition);
             navMeshAgent.Resume();
         }
