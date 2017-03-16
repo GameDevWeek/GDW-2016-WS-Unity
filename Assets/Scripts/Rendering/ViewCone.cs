@@ -6,7 +6,6 @@ using System.Linq;
 
 [RequireComponent(typeof(MeshRenderer))]
 [RequireComponent(typeof(MeshFilter))]
-[ExecuteInEditMode]
 public class ViewCone : MonoBehaviour {
 
     [HideInInspector] public float viewRadius = 10.0f;
@@ -43,8 +42,9 @@ public class ViewCone : MonoBehaviour {
         meshFilter = GetComponent<MeshFilter>();
         Camera.main.depthTextureMode = DepthTextureMode.DepthNormals;
 
-        InvokeRepeating("UpdateViewCone", 0, 0.3f);
         enemy = transform.parent.GetComponent<StatePatternEnemy>();
+
+        InvokeRepeating("UpdateViewCone", 0.1f, 0.3f);
     }
 
     private void UpdateViewCone()
