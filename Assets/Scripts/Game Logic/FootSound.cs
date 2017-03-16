@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
@@ -58,7 +56,7 @@ public class FootSound : MonoBehaviour {
     {
         foreach (FootSoundPair fsp in FootSoundPairs)
         {
-            if (fsp.GroundTag == collision.gameObject.tag)
+            if (collision.gameObject.CompareTag(fsp.GroundTag))
             {
                 CurrentFootLeft = fsp.FootLeft;
                 CurrentFootRight = fsp.FootRight;
