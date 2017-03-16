@@ -122,6 +122,7 @@ public class ElephantControl : MonoBehaviour {
             m_character.LookTowards(desiredMouseLookDir);
             m_character.Move(move, IsCrouching());
         }
+
     }
 
     private void UpdateSprint(Vector3 direction) {
