@@ -56,13 +56,19 @@ public class ElephantMovement : MonoBehaviour {
         ApplyExtraTurnRotation();
     }
 
+    public void StopSprint() {
+        m_animator.SetBool("Sprint", false);
+    }
+
     public void Sprint(Vector3 dir) {
         Move(dir, m_sprintSpeed, m_sprintAnimSpeedMultiplier, false);
+        m_animator.SetBool("Sprint", true);
     }
     
     public void Sprint(Vector3 dir, float slowDownProgress) {
         Move(dir, Mathf.Lerp(m_sprintSpeed, 0.0f, slowDownProgress), 
             Mathf.Lerp(m_sprintAnimSpeedMultiplier, 0.0f, slowDownProgress), false);
+        m_animator.SetBool("Sprint", true);
     }
 
     private void Move(Vector3 dir, float speed, float animSpeed, bool crouch) {
@@ -98,6 +104,7 @@ public class ElephantMovement : MonoBehaviour {
     void UpdateAnimator(Vector3 move, float animSpeed) {
         // update the animator parameters
         m_animator.SetFloat("Forward", m_forwardAmount, 0.1f, Time.deltaTime);
+
         //m_rigidbody.velocity = transform.forward * m_forwardAmount * animSpeed;
         m_animator.SetFloat("Turn", m_turnAmount, 0.1f, Time.deltaTime);
         m_animator.SetBool("Crouch", m_crouching);
