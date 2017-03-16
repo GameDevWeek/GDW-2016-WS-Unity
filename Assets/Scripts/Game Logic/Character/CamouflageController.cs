@@ -48,12 +48,12 @@ public class CamouflageController : MonoBehaviour
         this.CamouflageModeActive = false;
     }
 
-    public void OnEnemyInRange(GameObject enemy)
+    public void EnemyInRange(GameObject enemy)
     {
         _enemyInRangeCounter++;
     }
 
-    public void OnEnemyOutOfRange(GameObject enemy)
+    public void EnemyOutOfRange(GameObject enemy)
     {
         _enemyInRangeCounter--;
         if (_enemyInRangeCounter < 0) _enemyInRangeCounter = 0;
