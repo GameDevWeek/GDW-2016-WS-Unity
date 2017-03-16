@@ -24,17 +24,16 @@ public class CamouflageController : MonoBehaviour
     /// Event invoked if camouflage mode exits (will be invoked even if OnElephantShocked/OnElephantFallFromPedestal is invoked).
     /// </summary>
     public static EventHandler<EventArgs> OnElephantExitsCamouflageMode;
-
-    [SerializeField]
-    private string _pedestalTag = "Pedestal";
+    
     [SerializeField]
     private string _mouseTag = "Mouse";
+    [SerializeField]
+    private int _mouseDistanceToReact = 3;
     [SerializeField] [Range(0,20000)] [Tooltip("Milliseconds: Maximum duration in ms for player in camouflage mode. If time is exceeded elephant will fall from pedestal.")]
     private int _camouflageMaxDurationMS = 5000;
 
     private Coroutine _camouflageTimeExceededChecker;
-
-    private List<Collider> _pedestalsInRange;
+    
     private List<Collider> _miceInRange;
     private List<GameObject> _enemiesInRange;
 
@@ -42,9 +41,9 @@ public class CamouflageController : MonoBehaviour
 
     private void Awake()
     {
-        this._pedestalsInRange = new List<Collider>();
         this._miceInRange = new List<Collider>();
         this._enemiesInRange = new List<GameObject>();
+
         this.CamouflageModeActive = false;
     }
 
@@ -95,8 +94,8 @@ public class CamouflageController : MonoBehaviour
         }
 
         _camouflageTimeExceededChecker = StartCoroutine(CamouflageTimeExceededChecker());
-        CamouflageModeActive = true;
-        return true;
+
+        return CamouflageModeActive = true;
     }
 
     /// <summary>
@@ -121,8 +120,16 @@ public class CamouflageController : MonoBehaviour
 
     private bool CamouflagePossible()
     {
-        if (_pedestalsInRange.Count > 0 
-            && _miceInRange.Count == 0
+        int miceVisible = 0;
+        foreach (Collider mouseCollider in _miceInRange)
+        {
+            if (Physics.Raycast(transform.position, mouseCollider.gameObject.transform.position - transform.position))
+            {
+                miceVisible++;
+            }
+        }
+
+        if (miceVisible == 0
             && _enemiesInRange.Count == 0)
         {
             return true;
@@ -152,14 +159,13 @@ public class CamouflageController : MonoBehaviour
 
     private void OnTriggerEnter(Collider coll)
     {
-        
-        if (_pedestalTag == coll.tag && !_pedestalsInRange.Contains(coll))
-        {
-            _pedestalsInRange.Add(coll);
-        }
         if (_mouseTag == coll.tag && !_miceInRange.Contains(coll))
         {
             _miceInRange.Add(coll);
+            
+            // mouse triggered not visible
+            if (!Physics.Raycast(transform.position, coll.gameObject.transform.position - transform.position))
+                return;
 
             if (CamouflageModeActive)
             {
@@ -177,10 +183,6 @@ public class CamouflageController : MonoBehaviour
 
     private void OnTriggerExit(Collider coll)
     {
-        if (_pedestalTag == coll.tag && _pedestalsInRange.Contains(coll))
-        {
-            _pedestalsInRange.Remove(coll);
-        }
         if (_mouseTag == coll.tag && _miceInRange.Contains(coll))
         {
             _miceInRange.Remove(coll);

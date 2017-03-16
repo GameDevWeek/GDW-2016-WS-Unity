@@ -130,6 +130,7 @@ public class ElephantControl : MonoBehaviour {
         m_sprintJustStarted = !m_sprinting && sprint;
         m_sprintJustEnded = m_sprinting && !sprint;
         m_sprinting = sprint;
+        m_character.StopSprint();
 
         if (m_sprintCooldown.IsOver() || !m_sprintDurationAfterSprintStopped.IsOver()) {
             if (m_sprintJustEnded) {

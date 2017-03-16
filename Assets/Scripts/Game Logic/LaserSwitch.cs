@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LaserSwitch : MonoBehaviour
+public class LaserSwitch : Interactable
 {
-
     [SerializeField]
-    private GameObject[] m_Laser;
+    private LaserDetection[] m_laser;
 
     [SerializeField]
     private Color m_switchOnColor;
@@ -14,44 +13,43 @@ public class LaserSwitch : MonoBehaviour
     private Color m_switchOffColor;
 
     [SerializeField]
-    private bool m_isSwitchOn;
-
-    private Renderer rend;
+    private bool m_switchPoweredOn = true;
 
     // Use this for initialization
     void Start ()
     {
-        ChangeSwitchColor(m_isSwitchOn ? m_switchOnColor : m_switchOffColor);
+        ChangeColor(m_switchPoweredOn ? m_switchOnColor : m_switchOffColor);
     }
 
     // Update is called once per frame
 	void Update () {
-		
-        //TODO: insert the interactive method
 
 	}
 
-    public void ChangeSwitchColor(Color c)
+    public void ChangeColor(Color c)
     {
         gameObject.GetComponent<Renderer>().material.color = c;
-
     }
 
-    public void ToggleSwitch(bool b)
+    public void ToggleSwitch()
     {
-        m_isSwitchOn = b;
-        ChangeSwitchColor(m_isSwitchOn ? m_switchOnColor : m_switchOffColor);
+        m_switchPoweredOn = !m_switchPoweredOn;
+        ChangeColor(m_switchPoweredOn ? m_switchOnColor : m_switchOffColor);
 
-        SwitchLaser(m_isSwitchOn);
+        SwitchLaser(m_switchPoweredOn);
     }
 
 
     public void SwitchLaser(bool b)
     {
-       
-        foreach (var NULL in m_Laser)
+        foreach (var laser in m_laser)
         {
-            //TODO: insert here the switch Method from Laser Object
+            laser.SetActivation(b);
         }
+    }
+
+    public override void Interact(Interactor interactor)
+    {
+        ToggleSwitch();
     }
 }

@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -114,7 +114,6 @@ public class PatrolState : IEnemyState
     void Patrol()
     {
         if (!isLooking) {
-            enemy.meshRendererFlag.material.color = Color.green;  //Debugging tool
             searchTimer = 0f;
             enemy.navMeshAgent.destination = enemy.wayPoints.points[enemy.currentWaypoint];
             enemy.navMeshAgent.Resume();
