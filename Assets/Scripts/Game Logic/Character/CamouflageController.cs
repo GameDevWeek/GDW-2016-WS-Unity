@@ -26,17 +26,17 @@ public class CamouflageController : MonoBehaviour
     public static EventHandler<EventArgs> OnElephantExitsCamouflageMode;
 
     [SerializeField]
-    private string _pedestalTag;
+    private string _pedestalTag = "Pedestal";
     [SerializeField]
-    private string _mouseTag;
+    private string _mouseTag = "Mouse";
     [SerializeField] [Range(0,20000)] [Tooltip("Milliseconds: Maximum duration in ms for player in camouflage mode. If time is exceeded elephant will fall from pedestal.")]
-    private int _camouflageMaxDurationMS;
+    private int _camouflageMaxDurationMS = 5000;
 
     private Coroutine _camouflageTimeExceededChecker;
 
     private List<Collider> _pedestalsInRange;
     private List<Collider> _miceInRange;
-    private int _enemyInRangeCounter;
+    private List<GameObject> _enemiesInRange;
 
     public bool CamouflageModeActive { get; private set; }
 
@@ -44,19 +44,24 @@ public class CamouflageController : MonoBehaviour
     {
         this._pedestalsInRange = new List<Collider>();
         this._miceInRange = new List<Collider>();
-        this._enemyInRangeCounter = 0;
+        this._enemiesInRange = new List<GameObject>();
         this.CamouflageModeActive = false;
     }
 
     public void EnemyInRange(GameObject enemy)
     {
-        _enemyInRangeCounter++;
+        if (!_enemiesInRange.Contains(enemy))
+        {
+            _enemiesInRange.Add(enemy);
+        }
     }
 
     public void EnemyOutOfRange(GameObject enemy)
     {
-        _enemyInRangeCounter--;
-        if (_enemyInRangeCounter < 0) _enemyInRangeCounter = 0;
+        if (_enemiesInRange.Contains(enemy))
+        {
+            _enemiesInRange.Remove(enemy);
+        }
     }
 
     /// <summary>
@@ -118,7 +123,7 @@ public class CamouflageController : MonoBehaviour
     {
         if (_pedestalsInRange.Count > 0 
             && _miceInRange.Count == 0
-            && _enemyInRangeCounter == 0)
+            && _enemiesInRange.Count == 0)
         {
             return true;
         }

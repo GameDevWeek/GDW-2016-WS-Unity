@@ -8,7 +8,11 @@ public static class GameTag {
     public const string MainCamera = "MainCamera";
     public const string Player = "Player";
     public const string GameController = "GameController";
+    public const string Pedestal = "Pedestal";
+    public const string Mouse = "Mouse";
+    public const string JadeElephant = "JadeElephant";
     public const string Enemy = "Enemy";
+    public const string Ground = "Ground";
  }
 
 public static class GameLayer { 
@@ -23,4 +27,10 @@ public static class GameLayer {
     public const int WaterMask = 1 << 4;
     public const int UI = 5;
     public const int UIMask = 1 << 5;
+    public const int Destructible = 8;
+    public const int DestructibleMask = 1 << 8;
+    public const int Player = 9;
+    public const int PlayerMask = 1 << 9;
+    public const int Laser = 10;
+    public const int LaserMask = 1 << 10;
  }
