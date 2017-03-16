@@ -1731,6 +1731,7 @@ MonoBehaviour:
     m_Bits: 4294966267
   nrOfRaycasts: 60
   fieldOfView: 90
+  collisionOffset: 0.05
 --- !u!33 &424939988
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -5409,19 +5410,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400030, guid: 9a727523e9285994fa8934fe9bf493f6, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 400030, guid: 9a727523e9285994fa8934fe9bf493f6, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.7387192
       objectReference: {fileID: 0}
     - target: {fileID: 400030, guid: 9a727523e9285994fa8934fe9bf493f6, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 400030, guid: 9a727523e9285994fa8934fe9bf493f6, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.6740132
       objectReference: {fileID: 0}
     - target: {fileID: 400030, guid: 9a727523e9285994fa8934fe9bf493f6, type: 3}
       propertyPath: m_RootOrder
@@ -5578,6 +5579,38 @@ Prefab:
     - target: {fileID: 100030, guid: 9a727523e9285994fa8934fe9bf493f6, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100020, guid: 9a727523e9285994fa8934fe9bf493f6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400020, guid: 9a727523e9285994fa8934fe9bf493f6, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.69346625
+      objectReference: {fileID: 0}
+    - target: {fileID: 400020, guid: 9a727523e9285994fa8934fe9bf493f6, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.13821954
+      objectReference: {fileID: 0}
+    - target: {fileID: 400020, guid: 9a727523e9285994fa8934fe9bf493f6, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.13821952
+      objectReference: {fileID: 0}
+    - target: {fileID: 400020, guid: 9a727523e9285994fa8934fe9bf493f6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.69346625
+      objectReference: {fileID: 0}
+    - target: {fileID: 400020, guid: 9a727523e9285994fa8934fe9bf493f6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90.00001
+      objectReference: {fileID: 0}
+    - target: {fileID: 400020, guid: 9a727523e9285994fa8934fe9bf493f6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 22.545002
+      objectReference: {fileID: 0}
+    - target: {fileID: 400030, guid: 9a727523e9285994fa8934fe9bf493f6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 95.245
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9a727523e9285994fa8934fe9bf493f6, type: 3}
@@ -6366,7 +6399,7 @@ Prefab:
     - target: {fileID: 114696654192980324, guid: b32926f40a83740d2988f64a13e0da83,
         type: 2}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b32926f40a83740d2988f64a13e0da83, type: 2}
@@ -6800,7 +6833,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigidbody: {fileID: 1563592881}
   collider: {fileID: 1563592884}
-  noiseSource: {fileID: 1563592882}
+  noiseSource: {fileID: 1563592885}
   forward: 1
   backward: 0
 --- !u!54 &1563592881
@@ -6835,6 +6868,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   m_allowPlayingSounds: 1
+  priority: 0
 --- !u!82 &1563592883
 AudioSource:
   m_ObjectHideFlags: 0
@@ -6920,6 +6954,12 @@ BoxCollider:
   m_PrefabParentObject: {fileID: 65894513206240840, guid: ae09091cd5e13584eabf35b879c9a6c4,
     type: 2}
   m_PrefabInternal: {fileID: 1760864395}
+--- !u!114 &1563592885 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114815066163190588, guid: ae09091cd5e13584eabf35b879c9a6c4,
+    type: 2}
+  m_PrefabInternal: {fileID: 1760864395}
+  m_Script: {fileID: 11500000, guid: a76f3f01326dd4a40ac19f525fd74a89, type: 3}
 --- !u!1 &1573180697
 GameObject:
   m_ObjectHideFlags: 0
@@ -8122,6 +8162,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_allowPlayingSounds: 1
+  priority: 0
 --- !u!82 &1853797363
 AudioSource:
   m_ObjectHideFlags: 0
@@ -8861,6 +8902,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_allowPlayingSounds: 1
+  priority: 0
 --- !u!82 &2011954427
 AudioSource:
   m_ObjectHideFlags: 0
