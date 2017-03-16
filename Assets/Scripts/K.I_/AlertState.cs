@@ -59,8 +59,6 @@ public class AlertState : IEnemyState {
 
     private void Search()
     {
-        enemy.meshRendererFlag.material.color = Color.yellow;  //Debugging tool
-
         if(enemy.navMeshAgent.remainingDistance < 1f) {
             enemy.navMeshAgent.Stop();
             enemy.transform.Rotate(0, enemy.searchingTurnSpeed * Time.deltaTime, 0);

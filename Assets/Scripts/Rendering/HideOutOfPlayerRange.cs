@@ -9,8 +9,8 @@ public class HideOutOfPlayerRange : MonoBehaviour
     private LayerMask viewBlockingLayers;
     [SerializeField]
     private float visibleDistance = 10.0f;
-    [SerializeField]
-    private string playerTag = "Player";
+
+    [SerializeField] private string playerTag = GameTag.Player;
     [SerializeField]
     private float objectRadius = 0.5f;
     [SerializeField]
