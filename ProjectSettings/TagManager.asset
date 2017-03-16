@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Pedestal
   - Mouse
+  - JadeElephant
   - Enemy
   - Ground
   layers:
@@ -19,8 +20,8 @@ TagManager:
   - 
   - Destructible
   - Player
-  - Floor
-  - 
+  - Laser
+  - Ground
   - 
   - 
   - 
