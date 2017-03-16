@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class LaserSwitch : MonoBehaviour
 {
-
     [SerializeField]
-    private GameObject[] m_Laser;
+    private LaserDetection[] m_laser;
 
     [SerializeField]
     private Color m_switchOnColor;
@@ -14,14 +13,15 @@ public class LaserSwitch : MonoBehaviour
     private Color m_switchOffColor;
 
     [SerializeField]
-    private bool m_isSwitchOn;
+    private bool m_isSwitchPowered;
 
     private Renderer rend;
 
     // Use this for initialization
     void Start ()
     {
-        ChangeSwitchColor(m_isSwitchOn ? m_switchOnColor : m_switchOffColor);
+        ChangeColor(m_isSwitchPowered ? m_switchOnColor : m_switchOffColor);
+
     }
 
     // Update is called once per frame
@@ -31,27 +31,26 @@ public class LaserSwitch : MonoBehaviour
 
 	}
 
-    public void ChangeSwitchColor(Color c)
+    public void ChangeColor(Color c)
     {
         gameObject.GetComponent<Renderer>().material.color = c;
 
     }
 
-    public void ToggleSwitch(bool b)
+    public void ToggleSwitch(bool powered)
     {
-        m_isSwitchOn = b;
-        ChangeSwitchColor(m_isSwitchOn ? m_switchOnColor : m_switchOffColor);
+        m_isSwitchPowered = powered;
+        ChangeColor(m_isSwitchPowered ? m_switchOnColor : m_switchOffColor);
 
-        SwitchLaser(m_isSwitchOn);
+        SwitchLaser(m_isSwitchPowered);
     }
 
 
     public void SwitchLaser(bool b)
     {
-       
-        foreach (var NULL in m_Laser)
+        foreach (var laser in m_laser)
         {
-            //TODO: insert here the switch Method from Laser Object
+            laser.SetActivation(b);
         }
     }
 }
