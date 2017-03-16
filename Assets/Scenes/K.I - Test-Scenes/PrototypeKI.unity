@@ -2703,11 +2703,21 @@ Prefab:
         type: 2}
       propertyPath: m_audioClips.Array.data[0]
       value: 
-      objectReference: {fileID: 8300000, guid: 89d3469c05d0cca4c98b479ac95c4a5a, type: 3}
+      objectReference: {fileID: 8300000, guid: 42e65e088b3f4374e851b8dbd38f3df9, type: 3}
     - target: {fileID: 82627585711910592, guid: 4f0fe6c325c762947a707a726a5f6992,
         type: 2}
       propertyPath: m_PlayOnAwake
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114764687126675632, guid: 4f0fe6c325c762947a707a726a5f6992,
+        type: 2}
+      propertyPath: priority
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114764687126675632, guid: 4f0fe6c325c762947a707a726a5f6992,
+        type: 2}
+      propertyPath: m_affectedRange
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4f0fe6c325c762947a707a726a5f6992, type: 2}
