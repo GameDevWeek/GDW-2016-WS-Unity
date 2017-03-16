@@ -6,10 +6,18 @@ public abstract class Interactable : MonoBehaviour {
 
     [SerializeField]
     private Vector3 m_positionOffset = new Vector3();
+    [SerializeField]
+    private bool m_useDefaultInteractionRange;
+    [SerializeField]
+    protected float m_interactionRange = 3.0f;
 
     public Vector3 positionOffset {
         get { return m_positionOffset; }
         set { m_positionOffset = value; }
+    }
+
+    public float GetInteractionRange(float defaultRange) {
+        return m_useDefaultInteractionRange ? defaultRange : m_interactionRange;
     }
 
     public Vector3 position {
