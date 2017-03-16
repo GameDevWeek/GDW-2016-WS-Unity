@@ -14,6 +14,12 @@ public class NoiseSource : MonoBehaviour {
 
     private AudioSource m_audioSource;
 
+    [SerializeField]
+    private bool m_allowPlayingSounds = true;
+
+    [Tooltip("Higher value means higher priority.")]
+    public int priority = 0;
+
     public float affectedRange {
         get { return m_affectedRange; }
         set { m_affectedRange = value; }
@@ -32,23 +38,25 @@ public class NoiseSource : MonoBehaviour {
         if (particleSystem!= null)
         {
             particleSystem.GetComponent<ParticleSystem>().startLifetime = m_affectedRange / 10;
-            global::Spawner.DeSpawn(particleSystem, m_affectedRange / 10);
-        }
-        AudioClip clip = m_audioSource.clip;
-        if (m_audioClips.Length > 0) {
-            m_audioSource.clip = Util.RandomElement(m_audioClips);
+            Spawner.DeSpawn(particleSystem, m_affectedRange / 10);
         }
 
-        m_audioSource.Play();
+        if (m_audioClips.Length > 0 && m_allowPlayingSounds) {
+            m_audioSource.clip = Util.RandomElement(m_audioClips);
+            
+        }
+
+        if(m_allowPlayingSounds)
+            m_audioSource.Play();
         var colliders = Physics.OverlapSphere(transform.position, m_affectedRange, m_affectedLayer);
         foreach (var c in colliders) {
             if (c.GetComponent<INoiseListener>() != null) {
-                c.GetComponent<INoiseListener>().Inform(new NoiseSourceData(gameObject, transform.position));
+                c.GetComponent<INoiseListener>().Inform(new NoiseSourceData(gameObject, transform.position, priority));
             }
         }
     }
 
-    void Start() {
+    void Awake() {
         m_audioSource = GetComponent<AudioSource>();
     }
 }
