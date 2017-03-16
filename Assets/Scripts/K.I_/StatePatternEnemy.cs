@@ -18,6 +18,7 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
     public Transform eyes;
     public Vector3 offset = new Vector3(0, .5f, 0);  //Damit man nicht auf die Schuhe des Spielers schaut
     public ViewCone viewCone;
+    public LayerMask viewBlockingLayers;
 
     private int highestPriority = 0;
     private CamouflageController camouflage;
@@ -30,8 +31,7 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
     [HideInInspector] public PatrolState patrolState;
     [HideInInspector] public NavMeshAgent navMeshAgent;
 
-    [HideInInspector]
-    public GameObject player;
+    
     
 
     private void Awake()
@@ -41,8 +41,7 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
         patrolState = new PatrolState(this);
 
         navMeshAgent = GetComponent<NavMeshAgent>();
-        player = GameObject.FindGameObjectWithTag("Player");
-
+        
     }
 
     void OnValidate() {
@@ -108,7 +107,7 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
 
     public void camouflageInRange(RaycastHit hit)
     {
-        camouflage = player.GetComponent<CamouflageController>();
+        camouflage = PlayerActor.Instance.GetComponent<CamouflageController>();
         if (camouflage != null)
         {
             camouflage.EnemyInRange(this.gameObject);
@@ -123,5 +122,48 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
             camouflage.EnemyOutOfRange(this.gameObject);
             Debug.Log("Can camouflage now!");
         }
+    }
+
+    public bool canSeePlayer(out RaycastHit hit)
+    {
+        Vector3 enemyToPlayer = PlayerActor.Instance.transform.position - transform.position;
+
+
+
+        float playerDistance = enemyToPlayer.magnitude;
+        if (playerDistance <= sightRange)
+        {
+            float angleDistance = Vector3.Angle(enemyToPlayer, transform.forward);
+            if (angleDistance < fieldOfView * 0.5f)
+            {
+
+                float playerWidth = ((CapsuleCollider)PlayerActor.Instance.collider).radius;
+
+
+
+                Vector3 enemyToPlayerOrtho = new Vector3(enemyToPlayer.z, enemyToPlayer.y, -enemyToPlayer.x).normalized;
+                Vector3 playerPosLeft = PlayerActor.Instance.transform.position - enemyToPlayerOrtho * 0.5f * playerWidth;
+                Vector3 playerPosRight = PlayerActor.Instance.transform.position + enemyToPlayerOrtho * 0.5f * playerWidth;
+
+                Debug.DrawLine(transform.position, playerPosRight, Color.green);
+                Debug.DrawLine(transform.position, playerPosLeft, Color.green);
+                Debug.DrawLine(transform.position, PlayerActor.Instance.transform.position, Color.green);
+
+                if ((Physics.Raycast(eyes.transform.position, enemyToPlayer.normalized, out hit, sightRange, viewBlockingLayers) &&
+                    (hit.collider.CompareTag("Player"))))
+                    return true;
+                if (Physics.Raycast(eyes.transform.position, (playerPosLeft - transform.position).normalized, out hit, sightRange, viewBlockingLayers) &&
+                     (hit.collider.CompareTag("Player")))
+                    return true;
+                if (Physics.Raycast(eyes.transform.position, (playerPosRight - transform.position).normalized, out hit, sightRange, viewBlockingLayers) &&
+                    (hit.collider.CompareTag("Player")))
+                    return true;
+
+
+            }
+
+        }
+        hit = new RaycastHit();
+        return false;
     }
 }

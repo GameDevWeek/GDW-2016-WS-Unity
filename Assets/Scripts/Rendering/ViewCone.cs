@@ -22,6 +22,9 @@ public class ViewCone : MonoBehaviour {
     private Color colorAlarmed = Color.red;
     [SerializeField]
     Color colorDefault = Color.grey;
+    [SerializeField]
+    private StatePatternEnemy enemy;
+
 
     private LineRenderer2D lineRenderer;
     private MeshRenderer meshRenderer;
@@ -32,7 +35,6 @@ public class ViewCone : MonoBehaviour {
     private Vector3[] normals;
     private Vector2[] uv;
 
-    private StatePatternEnemy enemy;
 
     private void Start()
     {
@@ -47,7 +49,6 @@ public class ViewCone : MonoBehaviour {
         Camera.main.depthTextureMode = DepthTextureMode.DepthNormals;
         setAlarmed(false);
 
-        enemy = transform.parent.GetComponent<StatePatternEnemy>();
 
         // InvokeRepeating("UpdateViewCone", 0.1f, 0.125f);
     }
