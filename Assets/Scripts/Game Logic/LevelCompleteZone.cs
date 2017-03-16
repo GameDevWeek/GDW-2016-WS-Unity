@@ -35,8 +35,7 @@ public class LevelCompleteZone : MonoBehaviour
     private void loadNextLevel()
     {
         //todo: save data
-        CollectablesSave.Instance.m_peanuts = 12;
-        CollectablesSave.Instance.m_miniJadeElephant = 3;
+
         SceneManager.LoadScene(m_scene.name);
         
     }

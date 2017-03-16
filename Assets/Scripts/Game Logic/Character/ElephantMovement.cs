@@ -41,7 +41,8 @@ public class ElephantMovement : MonoBehaviour {
         m_rigidbody.constraints = 
             RigidbodyConstraints.FreezeRotationX | 
             RigidbodyConstraints.FreezeRotationY | 
-            RigidbodyConstraints.FreezeRotationZ;
+            RigidbodyConstraints.FreezeRotationZ |
+            RigidbodyConstraints.FreezePositionY;
     }
 
     public void LookAt(Vector3 position) {
@@ -97,6 +98,7 @@ public class ElephantMovement : MonoBehaviour {
     void UpdateAnimator(Vector3 move, float animSpeed) {
         // update the animator parameters
         m_animator.SetFloat("Forward", m_forwardAmount, 0.1f, Time.deltaTime);
+        //m_rigidbody.velocity = transform.forward * m_forwardAmount * animSpeed;
         m_animator.SetFloat("Turn", m_turnAmount, 0.1f, Time.deltaTime);
         m_animator.SetBool("Crouch", m_crouching);
         m_animator.SetBool("OnGround", true);
