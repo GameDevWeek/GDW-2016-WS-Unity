@@ -23,7 +23,8 @@ public class ElephantMovement : MonoBehaviour {
     Rigidbody m_rigidbody;
     Animator m_animator;
     const float k_half = 0.5f;
-    float m_turnAmount;
+
+    public float m_turnAmount { get; private set; }
     float m_forwardAmount;
     Vector3 m_groundNormal;
     float m_capsuleHeight;
@@ -123,6 +124,12 @@ public class ElephantMovement : MonoBehaviour {
         // help the character turn faster (this is in addition to root rotation in the animation)
         float turnSpeed = Mathf.Lerp(m_stationaryTurnSpeed, m_movingTurnSpeed, m_forwardAmount);
         transform.Rotate(0, m_turnAmount * turnSpeed * Time.deltaTime, 0);
+    }
+
+    public float GetRotationSpeed()
+    {
+        float turnSpeed = Mathf.Lerp(m_stationaryTurnSpeed, m_movingTurnSpeed, m_forwardAmount);
+        return m_turnAmount * turnSpeed * Time.deltaTime;
     }
 
     public void OnAnimatorMove() {
