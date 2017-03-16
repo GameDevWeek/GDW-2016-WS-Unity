@@ -6,8 +6,8 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Wood.008
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_Name: EnemyConeOutline
+  m_Shader: {fileID: 4800000, guid: effa863d33b33fa48aa2704beca7f797, type: 3}
   m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 1
   m_CustomRenderQueue: -1
@@ -121,7 +121,7 @@ Material:
     m_Colors:
     - first:
         name: _Color
-      second: {r: 0.07657967, g: 0.0273276, b: 0.006063029, a: 1}
+      second: {r: 0.58823526, g: 0.3788331, b: 0.004325263, a: 1}
     - first:
         name: _EmissionColor
       second: {r: 0, g: 0, b: 0, a: 1}
