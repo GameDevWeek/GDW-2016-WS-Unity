@@ -68,6 +68,7 @@ public class AlertState : IEnemyState {
 
             if (searchTimer >= enemy.searchingDuration)
             {
+                enemy.viewCone.setAlarmed(false);
                 ToPatrolState();
             }
         }

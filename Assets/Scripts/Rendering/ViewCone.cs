@@ -18,6 +18,10 @@ public class ViewCone : MonoBehaviour {
     private float fieldOfView = 90;
     [SerializeField]
     private float collisionOffset = 0.05f;
+    [SerializeField]
+    private Color colorAlarmed = Color.red;
+    [SerializeField]
+    Color colorDefault = Color.grey;
 
     private LineRenderer2D lineRenderer;
     private MeshRenderer meshRenderer;
@@ -39,6 +43,7 @@ public class ViewCone : MonoBehaviour {
         meshRenderer = GetComponent<MeshRenderer>();
         meshFilter = GetComponent<MeshFilter>();
         Camera.main.depthTextureMode = DepthTextureMode.DepthNormals;
+        setAlarmed(false);
     }
 
     private void Update()
@@ -99,5 +104,13 @@ public class ViewCone : MonoBehaviour {
         mesh.uv = uv;
         meshFilter.mesh = mesh;
         lineRenderer.Points = vertices;
+    }
+
+    public void setAlarmed(bool isAlarmed)
+    {
+        if (isAlarmed)
+            meshRenderer.material.color = colorAlarmed;
+        else
+            meshRenderer.material.color = colorDefault;
     }
 }

@@ -8,6 +8,7 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
     public float searchingTurnSpeed = 120f;
     public float searchingDuration = 4f;
     public float sightRange = 10f;
+    public float fieldOfView = 90;
     public float toleratedSightrange = 5f;      //Muss kleiner sein als sightRange!!!
     public float stoppingTime = 2f;
 
@@ -17,6 +18,7 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
     public Transform eyes;
     public Vector3 offset = new Vector3(0, .5f, 0);  //Damit man nicht auf die Schuhe des Spielers schaut
     public MeshRenderer meshRendererFlag;
+    public ViewCone viewCone;
 
     private int highestPriority = 0;
     private CamouflageController camouflage;
@@ -28,6 +30,9 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
     [HideInInspector] public AlertState alertState;
     [HideInInspector] public PatrolState patrolState;
     [HideInInspector] public NavMeshAgent navMeshAgent;
+
+    [HideInInspector]
+    public GameObject player;
     
 
     private void Awake()
@@ -37,6 +42,7 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
         patrolState = new PatrolState(this);
 
         navMeshAgent = GetComponent<NavMeshAgent>();
+        player = GameObject.FindGameObjectWithTag("Player");
 
     }
 
@@ -74,6 +80,7 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
         {
             highestPriority = 0;        //Wenn ich irgendwann mal wieder in den patrolState komme ist jede Noise highestPrio
             navMeshAgent.SetDestination(data.initialPosition);
+            viewCone.setAlarmed(true);
             currentState = alertState;
         }
         else if (currentState == alertState && data.priority>=highestPriority)
@@ -88,7 +95,7 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
 
     public void camouflageInRange(RaycastHit hit)
     {
-        camouflage = hit.collider.gameObject.GetComponent<CamouflageController>();
+        camouflage = player.GetComponent<CamouflageController>();
         if (camouflage != null)
         {
             camouflage.EnemyInRange(this.gameObject);
