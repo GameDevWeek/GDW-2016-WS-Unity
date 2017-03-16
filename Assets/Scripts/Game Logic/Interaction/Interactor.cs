@@ -14,11 +14,12 @@ public class Interactor : MonoBehaviour {
     private LayerMask m_interactionBlockerMask = ~0;
     [SerializeField]
     private LayerMask m_interactableLayerMask = ~0;
+    [Tooltip("Note that interactables can have their own interaction range.")]
     [SerializeField]
-    private float m_interactionRadius = 3.0f;
+    private float m_interactionRange = 3.0f;
     private Interactable m_curInteractable;
 
-    public Vector3 origin {
+    public Vector3 position {
         get {
             return transform.position + m_positionOffset;
         }
@@ -26,21 +27,29 @@ public class Interactor : MonoBehaviour {
 
     void OnDrawGizmosSelected() {
         Handles.color = new Color(1.0f, 0.0f, 1.0f, 0.3f);
-        Handles.DrawSolidArc(origin, Vector3.up, 
+        Handles.DrawSolidArc(position, Vector3.up, 
             Quaternion.AngleAxis(-m_interactionDegree * 0.5f, Vector3.up) * transform.forward, 
-            m_interactionDegree, m_interactionRadius);
+            m_interactionDegree, m_interactionRange);
     }
 
     private bool IsVisible(Interactable interactable) {
+        if (DistanceTo(interactable) > interactable.GetInteractionRange(m_interactionRange)) {
+            return false;
+        }
+
         RaycastHit hitInfo;
-        bool hit = Physics.Raycast(origin, (interactable.position - origin).normalized, 
-            out hitInfo, m_interactionRadius, m_interactionBlockerMask);
+        bool hit = Physics.Raycast(position, (interactable.position - position).normalized, 
+            out hitInfo, interactable.GetInteractionRange(m_interactionRange), m_interactionBlockerMask);
 
         return hit && hitInfo.collider.GetComponent<Interactable>() == interactable;
     }
 
+    private float DistanceTo(Interactable interactable) {
+        return (interactable.position - position).magnitude;
+    }
+
     Interactable FindMinInteractable() {
-        var colliders = Physics.OverlapSphere(transform.position, m_interactionRadius, m_interactableLayerMask);
+        var colliders = Physics.OverlapSphere(transform.position, m_interactionRange, m_interactableLayerMask);
 
         float minDegree = float.MaxValue;
         GameObject minInteractable = null;
@@ -71,7 +80,7 @@ public class Interactor : MonoBehaviour {
         m_curInteractable = FindMinInteractable();
 
         if (m_curInteractable) {
-            Debug.DrawLine(origin, m_curInteractable.transform.position, Color.red);
+            Debug.DrawLine(position, m_curInteractable.transform.position, Color.red);
         }
     }
 
@@ -84,10 +93,9 @@ public class Interactor : MonoBehaviour {
     }
 
     private float DegreeTo(GameObject go) {
-        Vector3 camPos = Camera.main.transform.position;
         Vector3 otherPos = go.transform.position + go.GetComponent<Interactable>().positionOffset;
 
-        Vector3 delta = Vector3.ProjectOnPlane(otherPos - origin, Vector3.up);
+        Vector3 delta = Vector3.ProjectOnPlane(otherPos - position, Vector3.up);
 
         return Vector3.Angle(transform.forward, delta);
     }
