@@ -16,9 +16,6 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
 
     public Transform eyes;
     public Vector3 offset = new Vector3(0, .5f, 0);  //Damit man nicht auf die Schuhe des Spielers schaut
-    public MeshRenderer meshRendererFlag;
-   
-
 
     [HideInInspector] public Vector3 targetPos; 
     [HideInInspector] public Transform chaseTarget;
@@ -27,7 +24,6 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
     [HideInInspector] public AlertState alertState;
     [HideInInspector] public PatrolState patrolState;
     [HideInInspector] public NavMeshAgent navMeshAgent;
-
 
     private void Awake()
     {
@@ -38,13 +34,16 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
         navMeshAgent = GetComponent<NavMeshAgent>();
     }
 
+    void OnValidate() {
+        currentState = patrolState;
+    }
+
     void Start()
     {
         currentState = patrolState;
     }
 
-    void Update()
-    {
+    void Update() {
         currentState.UpdateState();
     }
 
@@ -64,6 +63,17 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
     {
         searchingTurnSpeed -= 20f;
         sightRange -= 5f;
+    }
+
+    private void OnDrawGizmos() {
+        if(currentState == this.alertState)
+            Gizmos.color = Color.yellow;
+        else if(currentState == this.chaseState)
+            Gizmos.color = Color.red;
+        else
+            Gizmos.color = Color.green;
+
+        Gizmos.DrawCube(transform.position + Vector3.up, Vector3.one * 0.25f);
     }
 
     public void Inform(NoiseSourceData data)    //Wenn ich im PatrolState etwas höre laufe ich auf

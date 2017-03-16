@@ -1,8 +1,12 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 
-public class FadeInOut : MonoBehaviour
-{
+public class FadeInOut : MonoBehaviour {
+
+    private Renderer[] rendererObjects = null;
+
+
     public void FadeIn(float duration)
     {
         StopAllCoroutines();
@@ -19,7 +23,7 @@ public class FadeInOut : MonoBehaviour
     {
         float fadingSpeed = 1.0f / fadeTime;
         
-        Renderer[] rendererObjects = GetComponentsInChildren<Renderer>();
+        if (rendererObjects == null) rendererObjects = GetComponentsInChildren<Renderer>();
         
         float currentAlpha = CurrentAlpha();
         bool fadingIn = targetAlpha > currentAlpha;
@@ -48,7 +52,9 @@ public class FadeInOut : MonoBehaviour
     private float CurrentAlpha()
     {
         float maxAlpha = 0.0f;
-        Renderer[] rendererObjects = GetComponentsInChildren<Renderer>();
+
+        if (rendererObjects == null) rendererObjects = GetComponentsInChildren<Renderer>();
+
         foreach (Renderer item in rendererObjects)
         {
             maxAlpha = Mathf.Max(maxAlpha, item.material.color.a);

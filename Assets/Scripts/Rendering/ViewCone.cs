@@ -5,10 +5,11 @@ using System.Linq;
 
 [RequireComponent(typeof(MeshRenderer))]
 [RequireComponent(typeof(MeshFilter))]
+[ExecuteInEditMode]
 public class ViewCone : MonoBehaviour {
 
-    [SerializeField]
-    private float viewRadius = 10.0f;
+    [HideInInspector] public float viewRadius = 10.0f;
+
     [SerializeField]
     private LayerMask viewBlockingLayers;
     [SerializeField]
@@ -23,6 +24,8 @@ public class ViewCone : MonoBehaviour {
     private Vector3[] vertices;
     private Vector3[] normals;
 
+    private StatePatternEnemy enemy;
+
     private void Start()
     {
         vertices = new Vector3[nrOfRaycasts + 1];
@@ -31,15 +34,18 @@ public class ViewCone : MonoBehaviour {
         mesh.name = transform.parent.name + " ViewConeMesh";
         meshRenderer = GetComponent<MeshRenderer>();
         meshFilter = GetComponent<MeshFilter>();
+
+        InvokeRepeating("UpdateViewCone", 0, 0.3f);
+        enemy = transform.parent.GetComponent<StatePatternEnemy>();
     }
 
-    private void Update()
+    private void UpdateViewCone()
     {
         if(!meshRenderer.enabled)
         {
             return;
         }
-
+        viewRadius = enemy.sightRange;
         //Collider[] objectsInRange = Physics.OverlapSphere(transform.position, viewRadius, viewBlockingLayers);
         
         vertices[0] = Vector3.zero;
