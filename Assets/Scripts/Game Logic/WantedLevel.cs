@@ -194,4 +194,17 @@ public class WantedLevel : Singleton<WantedLevel>
         // Reset flag to lower wanted level if no guard has seen the player
         m_playerIsNotInGuardSight = true;
     }
+
+    public void TriggerLaserAlert()
+    {
+        // Laser alert raise the current alert to tier 2
+        if(m_currentAlertTier < 2)
+        {
+            m_currentAlertTier = 2;
+            m_currentWantedLevel = m_minWantedLvlAlert2;
+
+            //TODO AI & UI
+            //Guards will switch to vigilant state
+        }
+    }
 }
