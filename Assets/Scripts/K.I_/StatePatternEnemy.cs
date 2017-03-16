@@ -7,16 +7,17 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
 
     public float searchingTurnSpeed = 120f;
     public float searchingDuration = 4f;
-    public float sightRange = 20f;
+    public float sightRange = 10f;
+    public float toleratedSightrange = 5f;      //Muss kleiner sein als sightRange!!!
+    public float stoppingTime = 2f;
 
     public Waypoints wayPoints;
     public int currentWaypoint;
 
     public Transform eyes;
     public Vector3 offset = new Vector3(0, .5f, 0);  //Damit man nicht auf die Schuhe des Spielers schaut
-    public MeshRenderer meshRendererFlag;
-   
 
+    private int highestPriority = 0;
 
     [HideInInspector] public Vector3 targetPos; 
     [HideInInspector] public Transform chaseTarget;
@@ -25,7 +26,6 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
     [HideInInspector] public AlertState alertState;
     [HideInInspector] public PatrolState patrolState;
     [HideInInspector] public NavMeshAgent navMeshAgent;
-
 
     private void Awake()
     {
@@ -36,13 +36,16 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
         navMeshAgent = GetComponent<NavMeshAgent>();
     }
 
+    void OnValidate() {
+        currentState = patrolState;
+    }
+
     void Start()
     {
         currentState = patrolState;
     }
 
-    void Update()
-    {
+    void Update() {
         currentState.UpdateState();
     }
 
@@ -54,21 +57,40 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
     public void WantedLvlUp()
     {
         searchingTurnSpeed += 20f;
-        sightRange += 10f;
+        sightRange += 5f;
+
     }
 
     public void WantedLvlDown()
     {
         searchingTurnSpeed -= 20f;
-        sightRange -= 10f;
+        sightRange -= 5f;
     }
 
-    public void Inform(NoiseSourceData data)
+    private void OnDrawGizmos() {
+        if(currentState == this.alertState)
+            Gizmos.color = Color.yellow;
+        else if(currentState == this.chaseState)
+            Gizmos.color = Color.red;
+        else
+            Gizmos.color = Color.green;
+
+        Gizmos.DrawCube(transform.position + Vector3.up, Vector3.one * 0.25f);
+    }
+
+    public void Inform(NoiseSourceData data)    //Wenn ich im PatrolState etwas höre laufe ich auf
     {
         if (currentState == patrolState)
         {
+            highestPriority = 0;        //Wenn ich irgendwann mal wieder in den patrolState komme ist jede Noise highestPrio
             navMeshAgent.SetDestination(data.initialPosition);
             currentState = alertState;
+        }
+        else if (currentState == alertState && data.priority>=highestPriority)
+        {
+            highestPriority = data.priority;
+            navMeshAgent.SetDestination(data.initialPosition);
+            navMeshAgent.Resume();
         }
         
     }

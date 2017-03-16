@@ -1,0 +1,132 @@
+fileFormatVersion: 2
+guid: c835401589f9b440c916fe319ad32d0e
+timeCreated: 1489679325
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Absperrband_Solo
+    100002: "Absperrst\xE4nder_Bandteil"
+    100004: "Absperrst\xE4nder_Solo"
+    100006: Kasse
+    100008: Mumie
+    100010: Sarkophag_Back
+    100012: Sarkophag_Front
+    100014: Teller
+    100016: //RootNode
+    100018: Tresen_edge
+    100020: Tresen_solo
+    100022: TRex_big
+    400000: Absperrband_Solo
+    400002: "Absperrst\xE4nder_Bandteil"
+    400004: "Absperrst\xE4nder_Solo"
+    400006: Kasse
+    400008: Mumie
+    400010: Sarkophag_Back
+    400012: Sarkophag_Front
+    400014: Teller
+    400016: //RootNode
+    400018: Tresen_edge
+    400020: Tresen_solo
+    400022: TRex_big
+    2300000: Absperrband_Solo
+    2300002: "Absperrst\xE4nder_Bandteil"
+    2300004: "Absperrst\xE4nder_Solo"
+    2300006: Kasse
+    2300008: Mumie
+    2300010: Sarkophag_Back
+    2300012: Sarkophag_Front
+    2300014: Teller
+    2300016: Tresen_edge
+    2300018: Tresen_solo
+    2300020: TRex_big
+    3300000: Absperrband_Solo
+    3300002: "Absperrst\xE4nder_Bandteil"
+    3300004: "Absperrst\xE4nder_Solo"
+    3300006: Kasse
+    3300008: Mumie
+    3300010: Sarkophag_Back
+    3300012: Sarkophag_Front
+    3300014: Teller
+    3300016: Tresen_edge
+    3300018: Tresen_solo
+    3300020: TRex_big
+    4300000: Teller
+    4300002: Sarkophag_Front
+    4300004: Tresen_solo
+    4300006: Tresen_edge
+    4300008: Kasse
+    4300010: TRex_big
+    4300012: Sarkophag_Back
+    4300014: "Absperrst\xE4nder_Bandteil"
+    4300016: "Absperrst\xE4nder_Solo"
+    4300018: Absperrband_Solo
+    4300020: Mumie
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

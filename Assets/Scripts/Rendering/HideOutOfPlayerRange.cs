@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,8 +9,8 @@ public class HideOutOfPlayerRange : MonoBehaviour
     private LayerMask viewBlockingLayers;
     [SerializeField]
     private float visibleDistance = 10.0f;
-    [SerializeField]
-    private string playerTag = "Player";
+
+    [SerializeField] private string playerTag = GameTag.Player;
     [SerializeField]
     private float objectRadius = 0.5f;
     [SerializeField]
@@ -54,6 +54,7 @@ public class HideOutOfPlayerRange : MonoBehaviour
         if (hit2.collider == null) Debug.DrawLine(startPosition - orthogonalVector * raycastOriginOffset, startPosition - orthogonalVector * raycastOriginOffset + rightRayDirection * vectorToPlayer.magnitude);
         else Debug.DrawLine(startPosition - orthogonalVector * raycastOriginOffset, hit2.point, Color.cyan);
         bool visible = isInDistance && !hitBoth;
+
         if (visible && !renderers[0].enabled)
         {
             activeCoroutine = StartCoroutine(Show());
