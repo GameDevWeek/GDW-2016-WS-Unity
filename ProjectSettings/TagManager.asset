@@ -4,11 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Pedestal
   - Mouse
   - JadeElephant
-  - Enemy
-  - Ground
   layers:
   - Default
   - TransparentFX
@@ -18,8 +15,8 @@ TagManager:
   - UI
   - 
   - 
-  - Destructible
-  - Player
+  - 
+  - 
   - 
   - 
   - 
