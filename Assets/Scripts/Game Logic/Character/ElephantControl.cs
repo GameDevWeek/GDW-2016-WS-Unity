@@ -174,6 +174,7 @@ public class ElephantControl : MonoBehaviour {
     }
 
     private void Update() {
+        if (Time.timeScale < float.Epsilon) return;
         if (m_shootPeanuts && Input.GetButtonDown("Shoot")) {
             m_shootPeanuts.Fire();
         }
