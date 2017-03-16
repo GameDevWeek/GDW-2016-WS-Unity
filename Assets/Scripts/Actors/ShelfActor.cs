@@ -43,13 +43,16 @@ public sealed class ShelfActor : MonoBehaviour {
         rigidbody = this.GetComponent<Rigidbody>();
         collider = this.GetComponent<Collider>();
         noiseSource = this.GetComponent<NoiseSource>();
-        this.enabled = false;
 
         hingePosition = new Vector3(transform.position.x, 0, transform.position.z);
+        rigidbody.isKinematic = true;
+
+        this.enabled = false;
     }
 
     private void OnEnable() {
         amount = 0;
+        OnValidate();
     }
 
     private void Update() {
@@ -80,8 +83,8 @@ public sealed class ShelfActor : MonoBehaviour {
 
     #if UNITY_EDITOR
     private void OnDrawGizmosSelected() {
-
         if(amount > Single.Epsilon || amount < -Single.Epsilon) return;
+        hingePosition = new Vector3(transform.position.x, 0, transform.position.z);
 
         Gizmos.DrawSphere(hingePosition-hingeXTranslation, 0.1f);
 
