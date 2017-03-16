@@ -1,0 +1,894 @@
+fileFormatVersion: 2
+guid: 9a727523e9285994fa8934fe9bf493f6
+timeCreated: 1489604566
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Arm Lower.L
+    100002: Arm Lower.L_end
+    100004: Arm Lower.R
+    100006: Arm Lower.R_end
+    100008: Arm Upper.L
+    100010: Arm Upper.R
+    100012: Base
+    100014: Base High
+    100016: Base Middle
+    100018: BaseLow
+    100020: Cube
+    100022: Ear.L
+    100024: Ear.L_end
+    100026: Ear.R
+    100028: Ear.R_end
+    100030: //RootNode
+    100032: Head
+    100034: Leg Lower.L
+    100036: Leg Lower.L_end
+    100038: Leg Lower.R
+    100040: Leg Lower.R_end
+    100042: Leg Upper.L
+    100044: Leg Upper.R
+    100046: snout 1
+    100048: snout 2
+    100050: snout 3
+    100052: snout 4
+    100054: snout 5
+    100056: snout 5_end
+    400000: Arm Lower.L
+    400002: Arm Lower.L_end
+    400004: Arm Lower.R
+    400006: Arm Lower.R_end
+    400008: Arm Upper.L
+    400010: Arm Upper.R
+    400012: Base
+    400014: Base High
+    400016: Base Middle
+    400018: BaseLow
+    400020: Cube
+    400022: Ear.L
+    400024: Ear.L_end
+    400026: Ear.R
+    400028: Ear.R_end
+    400030: //RootNode
+    400032: Head
+    400034: Leg Lower.L
+    400036: Leg Lower.L_end
+    400038: Leg Lower.R
+    400040: Leg Lower.R_end
+    400042: Leg Upper.L
+    400044: Leg Upper.R
+    400046: snout 1
+    400048: snout 2
+    400050: snout 3
+    400052: snout 4
+    400054: snout 5
+    400056: snout 5_end
+    4300000: Cube
+    7400000: Base|FunnyWalk
+    7400002: Base|Idle
+    7400004: Base|IntoPose
+    7400006: Base|Po01
+    7400008: Base|Po01.001
+    7400010: Base|Pose
+    7400012: Base|Run
+    7400014: Base|Walk
+    7400016: Base|Walk0
+    9500000: //RootNode
+    13700000: Cube
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: <Root Transform>
+    animationImportErrors: 
+    animationImportWarnings: "\nClip 'Base|IntoPose' has import animation warnings
+      that might lower retargeting quality:\n\t'Leg Upper.R' has translation animation
+      that will be discarded.\n\nClip 'Base|Run' has import animation warnings that
+      might lower retargeting quality:\n\t'Leg Upper.R' has translation animation
+      that will be discarded.\n\t'Leg Upper.L' has translation animation that will
+      be discarded.\n\nClip 'Base|Walk' has import animation warnings that might lower
+      retargeting quality:\n\t'Leg Upper.L' has translation animation that will be
+      discarded.\n"
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Base|Idle
+      takeName: Base|Idle
+      firstFrame: 0
+      lastFrame: 120
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Base
+        weight: 1
+      - path: Base/BaseLow
+        weight: 1
+      - path: Base/BaseLow/Base Middle
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Arm Upper.L
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Arm Upper.L/Arm Lower.L
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Arm Upper.L/Arm Lower.L/Arm Lower.L_end
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Arm Upper.R
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Arm Upper.R/Arm Lower.R
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Arm Upper.R/Arm Lower.R/Arm Lower.R_end
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head/Ear.L
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head/Ear.L/Ear.L_end
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head/Ear.R
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head/Ear.R/Ear.R_end
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head/snout 1
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head/snout 1/snout 2
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head/snout 1/snout 2/snout 3
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head/snout 1/snout 2/snout 3/snout
+          4
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head/snout 1/snout 2/snout 3/snout
+          4/snout 5
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head/snout 1/snout 2/snout 3/snout
+          4/snout 5/snout 5_end
+        weight: 1
+      - path: Base/BaseLow/Leg Upper.L
+        weight: 1
+      - path: Base/BaseLow/Leg Upper.L/Leg Lower.L
+        weight: 1
+      - path: Base/BaseLow/Leg Upper.L/Leg Lower.L/Leg Lower.L_end
+        weight: 1
+      - path: Base/BaseLow/Leg Upper.R
+        weight: 1
+      - path: Base/BaseLow/Leg Upper.R/Leg Lower.R
+        weight: 1
+      - path: Base/BaseLow/Leg Upper.R/Leg Lower.R/Leg Lower.R_end
+        weight: 1
+      - path: Cube
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Base|IntoPose
+      takeName: Base|IntoPose
+      firstFrame: 0
+      lastFrame: 21
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Base
+        weight: 1
+      - path: Base/BaseLow
+        weight: 1
+      - path: Base/BaseLow/Base Middle
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Arm Upper.L
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Arm Upper.L/Arm Lower.L
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Arm Upper.L/Arm Lower.L/Arm Lower.L_end
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Arm Upper.R
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Arm Upper.R/Arm Lower.R
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Arm Upper.R/Arm Lower.R/Arm Lower.R_end
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head/Ear.L
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head/Ear.L/Ear.L_end
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head/Ear.R
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head/Ear.R/Ear.R_end
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head/snout 1
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head/snout 1/snout 2
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head/snout 1/snout 2/snout 3
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head/snout 1/snout 2/snout 3/snout
+          4
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head/snout 1/snout 2/snout 3/snout
+          4/snout 5
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head/snout 1/snout 2/snout 3/snout
+          4/snout 5/snout 5_end
+        weight: 1
+      - path: Base/BaseLow/Leg Upper.L
+        weight: 1
+      - path: Base/BaseLow/Leg Upper.L/Leg Lower.L
+        weight: 1
+      - path: Base/BaseLow/Leg Upper.L/Leg Lower.L/Leg Lower.L_end
+        weight: 1
+      - path: Base/BaseLow/Leg Upper.R
+        weight: 1
+      - path: Base/BaseLow/Leg Upper.R/Leg Lower.R
+        weight: 1
+      - path: Base/BaseLow/Leg Upper.R/Leg Lower.R/Leg Lower.R_end
+        weight: 1
+      - path: Cube
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Base|Pose
+      takeName: Base|Pose
+      firstFrame: 0
+      lastFrame: 1
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Base
+        weight: 1
+      - path: Base/BaseLow
+        weight: 1
+      - path: Base/BaseLow/Base Middle
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Arm Upper.L
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Arm Upper.L/Arm Lower.L
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Arm Upper.L/Arm Lower.L/Arm Lower.L_end
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Arm Upper.R
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Arm Upper.R/Arm Lower.R
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Arm Upper.R/Arm Lower.R/Arm Lower.R_end
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head/Ear.L
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head/Ear.L/Ear.L_end
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head/Ear.R
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head/Ear.R/Ear.R_end
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head/snout 1
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head/snout 1/snout 2
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head/snout 1/snout 2/snout 3
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head/snout 1/snout 2/snout 3/snout
+          4
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head/snout 1/snout 2/snout 3/snout
+          4/snout 5
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head/snout 1/snout 2/snout 3/snout
+          4/snout 5/snout 5_end
+        weight: 1
+      - path: Base/BaseLow/Leg Upper.L
+        weight: 1
+      - path: Base/BaseLow/Leg Upper.L/Leg Lower.L
+        weight: 1
+      - path: Base/BaseLow/Leg Upper.L/Leg Lower.L/Leg Lower.L_end
+        weight: 1
+      - path: Base/BaseLow/Leg Upper.R
+        weight: 1
+      - path: Base/BaseLow/Leg Upper.R/Leg Lower.R
+        weight: 1
+      - path: Base/BaseLow/Leg Upper.R/Leg Lower.R/Leg Lower.R_end
+        weight: 1
+      - path: Cube
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Base|Run
+      takeName: Base|Run
+      firstFrame: 0
+      lastFrame: 20
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Base
+        weight: 1
+      - path: Base/BaseLow
+        weight: 1
+      - path: Base/BaseLow/Base Middle
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Arm Upper.L
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Arm Upper.L/Arm Lower.L
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Arm Upper.L/Arm Lower.L/Arm Lower.L_end
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Arm Upper.R
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Arm Upper.R/Arm Lower.R
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Arm Upper.R/Arm Lower.R/Arm Lower.R_end
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head/Ear.L
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head/Ear.L/Ear.L_end
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head/Ear.R
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head/Ear.R/Ear.R_end
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head/snout 1
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head/snout 1/snout 2
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head/snout 1/snout 2/snout 3
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head/snout 1/snout 2/snout 3/snout
+          4
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head/snout 1/snout 2/snout 3/snout
+          4/snout 5
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head/snout 1/snout 2/snout 3/snout
+          4/snout 5/snout 5_end
+        weight: 1
+      - path: Base/BaseLow/Leg Upper.L
+        weight: 1
+      - path: Base/BaseLow/Leg Upper.L/Leg Lower.L
+        weight: 1
+      - path: Base/BaseLow/Leg Upper.L/Leg Lower.L/Leg Lower.L_end
+        weight: 1
+      - path: Base/BaseLow/Leg Upper.R
+        weight: 1
+      - path: Base/BaseLow/Leg Upper.R/Leg Lower.R
+        weight: 1
+      - path: Base/BaseLow/Leg Upper.R/Leg Lower.R/Leg Lower.R_end
+        weight: 1
+      - path: Cube
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Base|Walk
+      takeName: Base|Walk
+      firstFrame: 0
+      lastFrame: 45
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Base
+        weight: 1
+      - path: Base/BaseLow
+        weight: 1
+      - path: Base/BaseLow/Base Middle
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Arm Upper.L
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Arm Upper.L/Arm Lower.L
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Arm Upper.L/Arm Lower.L/Arm Lower.L_end
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Arm Upper.R
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Arm Upper.R/Arm Lower.R
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Arm Upper.R/Arm Lower.R/Arm Lower.R_end
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head/Ear.L
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head/Ear.L/Ear.L_end
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head/Ear.R
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head/Ear.R/Ear.R_end
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head/snout 1
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head/snout 1/snout 2
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head/snout 1/snout 2/snout 3
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head/snout 1/snout 2/snout 3/snout
+          4
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head/snout 1/snout 2/snout 3/snout
+          4/snout 5
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head/snout 1/snout 2/snout 3/snout
+          4/snout 5/snout 5_end
+        weight: 1
+      - path: Base/BaseLow/Leg Upper.L
+        weight: 1
+      - path: Base/BaseLow/Leg Upper.L/Leg Lower.L
+        weight: 1
+      - path: Base/BaseLow/Leg Upper.L/Leg Lower.L/Leg Lower.L_end
+        weight: 1
+      - path: Base/BaseLow/Leg Upper.R
+        weight: 1
+      - path: Base/BaseLow/Leg Upper.R/Leg Lower.R
+        weight: 1
+      - path: Base/BaseLow/Leg Upper.R/Leg Lower.R/Leg Lower.R_end
+        weight: 1
+      - path: Cube
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.5
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human:
+    - boneName: BaseLow
+      humanName: Hips
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Leg Upper.L
+      humanName: LeftUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Leg Upper.R
+      humanName: RightUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Leg Lower.L
+      humanName: LeftLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Leg Lower.R
+      humanName: RightLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Base Middle
+      humanName: Spine
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Base High
+      humanName: Chest
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Head
+      humanName: Head
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Arm Upper.L
+      humanName: LeftUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Arm Upper.R
+      humanName: RightUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Arm Lower.L
+      humanName: LeftLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Arm Lower.R
+      humanName: RightLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Ear.L
+      humanName: LeftEye
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Ear.R
+      humanName: RightEye
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: snout 2
+      humanName: Jaw
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Leg Lower.R_end
+      humanName: RightFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Leg Lower.L_end
+      humanName: LeftFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Arm Lower.R_end
+      humanName: RightHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Arm Lower.L_end
+      humanName: LeftHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    skeleton:
+    - name: elenin005(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Base
+      parentName: elenin005(Clone)
+      position: {x: -0, y: 0.85984784, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 100, y: 100, z: 100}
+    - name: BaseLow
+      parentName: Base
+      position: {x: 0.00019387603, y: 0, z: 0.0012034761}
+      rotation: {x: 0.70639783, y: 0.03447208, z: 0.031656794, w: 0.706266}
+      scale: {x: 1, y: 1, z: 0.99999994}
+    - name: Base Middle
+      parentName: BaseLow
+      position: {x: -5.455354e-13, y: 0.005, z: -1.6943558e-13}
+      rotation: {x: 0.12593897, y: -0.046464108, z: -0.007352158, w: 0.99092203}
+      scale: {x: 1, y: 0.9999999, z: 1}
+    - name: Base High
+      parentName: Base Middle
+      position: {x: 4.9767548e-11, y: 0.004858057, z: -9.924406e-11}
+      rotation: {x: -0.06557312, y: -0.06858569, z: 0.027194478, w: 0.9951164}
+      scale: {x: 1, y: 0.99999994, z: 0.9999999}
+    - name: Arm Upper.L
+      parentName: Base High
+      position: {x: -0.0061282534, y: 0.0022803992, z: -0.00018167603}
+      rotation: {x: 0.08000089, y: 0.036196172, z: 0.7180405, w: 0.6904402}
+      scale: {x: 0.9999999, y: 1, z: 0.99999994}
+    - name: Arm Lower.L
+      parentName: Arm Upper.L
+      position: {x: -0.0000000021187587, y: 0.0032047492, z: 3.7252902e-11}
+      rotation: {x: 0.051314518, y: 0.67216384, z: -0.04449338, w: 0.73728085}
+      scale: {x: 0.99999994, y: 1, z: 0.99999994}
+    - name: Arm Lower.L_end
+      parentName: Arm Lower.L
+      position: {x: -0, y: 0.005744164, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Arm Upper.R
+      parentName: Base High
+      position: {x: 0.0068043843, y: 0.0026650315, z: -0.0013221361}
+      rotation: {x: -0.1587541, y: -0.053497687, z: -0.6687314, w: 0.7243849}
+      scale: {x: 0.99999994, y: 0.99999976, z: 0.99999994}
+    - name: Arm Lower.R
+      parentName: Arm Upper.R
+      position: {x: -6.891787e-10, y: 0.0032047492, z: 3.72529e-10}
+      rotation: {x: 0.0043279, y: -0.5896298, z: -0.032000847, w: 0.8070278}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Arm Lower.R_end
+      parentName: Arm Lower.R
+      position: {x: -0, y: 0.005744164, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Head
+      parentName: Base High
+      position: {x: -3.4924594e-11, y: 0.0050557894, z: -2.6775523e-11}
+      rotation: {x: -0.06479953, y: 0.060083624, z: -0.01650145, w: 0.9959512}
+      scale: {x: 0.99999994, y: 1, z: 1}
+    - name: Ear.L
+      parentName: Head
+      position: {x: -0.0082227755, y: 0.005938926, z: -0.0002842978}
+      rotation: {x: 0.30296513, y: 0.34947473, z: 0.6056393, w: 0.6475188}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Ear.L_end
+      parentName: Ear.L
+      position: {x: -0, y: 0.0039677015, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Ear.R
+      parentName: Head
+      position: {x: 0.008222775, y: 0.005938926, z: -0.0002843016}
+      rotation: {x: 0.21051677, y: -0.20870769, z: -0.6608378, w: 0.68950504}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Ear.R_end
+      parentName: Ear.R
+      position: {x: -0, y: 0.0039677015, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: snout 1
+      parentName: Head
+      position: {x: 0.000027100266, y: 0.0033248102, z: 0.0044200025}
+      rotation: {x: 0.6342378, y: -0.01905704, z: 0.019590849, w: 0.7726548}
+      scale: {x: 0.99999994, y: 0.9999997, z: 1}
+    - name: snout 2
+      parentName: snout 1
+      position: {x: 9.313225e-11, y: 0.0045028897, z: -0.0000000015035039}
+      rotation: {x: 0.008679271, y: 0.9990927, z: 0.041691933, w: 0.00050132745}
+      scale: {x: 1, y: 0.99999994, z: 1}
+    - name: snout 3
+      parentName: snout 2
+      position: {x: -7.4505804e-11, y: 0.005093109, z: -0.000000001922017}
+      rotation: {x: -0.09927542, y: -0.00072316837, z: 0.036538024, w: 0.9943887}
+      scale: {x: 0.99999994, y: 0.9999998, z: 0.9999999}
+    - name: snout 4
+      parentName: snout 3
+      position: {x: -0, y: 0.0050335526, z: -0.0000000019243451}
+      rotation: {x: -0.08421407, y: -0.00068220706, z: 0.042766783, w: 0.9955293}
+      scale: {x: 1.0000001, y: 0.9999998, z: 0.99999994}
+    - name: snout 5
+      parentName: snout 4
+      position: {x: 1.11758706e-10, y: 0.004678612, z: 0.0000000021184678}
+      rotation: {x: -0.050950833, y: -0.00018426114, z: 0.029084735, w: 0.99827754}
+      scale: {x: 0.9999999, y: 0.99999994, z: 0.99999994}
+    - name: snout 5_end
+      parentName: snout 5
+      position: {x: -0, y: 0.0052125463, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Leg Upper.L
+      parentName: BaseLow
+      position: {x: -0.004610465, y: -0.00007062973, z: 0.000055384047}
+      rotation: {x: 0.8462677, y: -0.07042538, z: 0.5133497, w: 0.123868465}
+      scale: {x: 1, y: 0.99999994, z: 1}
+    - name: Leg Lower.L
+      parentName: Leg Upper.L
+      position: {x: -1.3504177e-10, y: 0.004889439, z: -1.4901161e-10}
+      rotation: {x: 0.08648477, y: -0.086432785, z: 0.050304387, w: 0.9912211}
+      scale: {x: 1, y: 1, z: 1.0000001}
+    - name: Leg Lower.L_end
+      parentName: Leg Lower.L
+      position: {x: -0, y: 0.0035530913, z: 0}
+      rotation: {x: -0.0063687935, y: 0.0005917996, z: 0.00022209901, w: 0.99997956}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Leg Upper.R
+      parentName: BaseLow
+      position: {x: 0.0042139054, y: 0.00012050242, z: 0.000018175533}
+      rotation: {x: 0.9268704, y: 0.006995006, z: -0.35214856, w: 0.12982161}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Leg Lower.R
+      parentName: Leg Upper.R
+      position: {x: -1.862645e-10, y: 0.004889438, z: -7.4505804e-11}
+      rotation: {x: 0.27439675, y: 0.021939341, z: -0.1018036, w: 0.9559608}
+      scale: {x: 0.99999994, y: 1.0000001, z: 1.0000001}
+    - name: Leg Lower.R_end
+      parentName: Leg Lower.R
+      position: {x: -0, y: 0.0035530913, z: 0}
+      rotation: {x: -0.08962488, y: 0.0073466543, z: 0.042438056, w: 0.99504393}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cube
+      parentName: elenin005(Clone)
+      position: {x: -0, y: 1.813548, z: 0.21557}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 100, y: 100, z: 100}
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: Base
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 1
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 3
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

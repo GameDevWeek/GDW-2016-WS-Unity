@@ -12,7 +12,7 @@ public class SpawnerExample : MonoBehaviour {
     }
 
     public delegate void ShootEvent(ShootEventData data);
-    public static ShootEvent OnShoot;
+    public static event ShootEvent OnShoot;
 
     [SerializeField]
     private Cooldown m_cooldown = new Cooldown(0.5f);
@@ -32,7 +32,7 @@ public class SpawnerExample : MonoBehaviour {
                 Debug.Assert(bullet.GetComponent<SpawnerExampleBullet>(), "Bullet should have a bullet component.");
                 bullet.GetComponent<SpawnerExampleBullet>().Shoot(ray.direction * 10.0f);
                 if (OnShoot != null) {
-                    OnShoot(new ShootEventData(gameObject));
+                    OnShoot.Invoke(new ShootEventData(gameObject));
                 }
 
                 m_cooldown.Start();
