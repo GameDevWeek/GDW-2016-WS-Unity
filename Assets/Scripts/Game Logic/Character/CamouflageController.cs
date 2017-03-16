@@ -10,20 +10,20 @@ public class CamouflageController : MonoBehaviour
     /// <summary>
     /// Event invoked if elephant is shocked because of mice in range.
     /// </summary>
-    public EventHandler<EventArgs> OnElephantShocked;
+    public static EventHandler<EventArgs> OnElephantShocked;
     /// <summary>
     /// Event invoked if elephant is falling from pedestal if max time is over.
     /// </summary>
-    public EventHandler<EventArgs> OnElephantFallFromPedestal;
+    public static EventHandler<EventArgs> OnElephantFallFromPedestal;
 
     /// <summary>
     /// Event invoked if camouflage mode was entered.
     /// </summary>
-    public EventHandler<EventArgs> OnElephantEntersCamouflageMode;
+    public static EventHandler<EventArgs> OnElephantEntersCamouflageMode;
     /// <summary>
     /// Event invoked if camouflage mode exits (will be invoked even if OnElephantShocked/OnElephantFallFromPedestal is invoked).
     /// </summary>
-    public EventHandler<EventArgs> OnElephantExitsCamouflageMode;
+    public static EventHandler<EventArgs> OnElephantExitsCamouflageMode;
 
     [SerializeField]
     private string _pedestalTag;
