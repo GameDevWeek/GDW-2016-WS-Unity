@@ -17,6 +17,9 @@ public class NoiseSource : MonoBehaviour {
     [SerializeField]
     private bool m_allowPlayingSounds = true;
 
+    [Tooltip("Higher value means higher priority.")]
+    public int priority = 0;
+
     public float affectedRange {
         get { return m_affectedRange; }
         set { m_affectedRange = value; }
@@ -48,7 +51,7 @@ public class NoiseSource : MonoBehaviour {
         var colliders = Physics.OverlapSphere(transform.position, m_affectedRange, m_affectedLayer);
         foreach (var c in colliders) {
             if (c.GetComponent<INoiseListener>() != null) {
-                c.GetComponent<INoiseListener>().Inform(new NoiseSourceData(gameObject, transform.position));
+                c.GetComponent<INoiseListener>().Inform(new NoiseSourceData(gameObject, transform.position, priority));
             }
         }
     }
