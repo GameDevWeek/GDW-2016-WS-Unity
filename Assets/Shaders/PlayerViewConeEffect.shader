@@ -12,6 +12,8 @@ Shader "PlayerViewConeEffect" {
 		sampler2D _MainTex;
 		sampler2D _VisibilityTexture;
 
+		uniform half4 _MainTex_TexelSize;
+
 		half4 _MainTex_ST;
 		
 		uniform half4 _Parameter;
