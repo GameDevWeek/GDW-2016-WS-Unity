@@ -32,7 +32,7 @@ public sealed class ShelfActor : MonoBehaviour {
 
     private void Start() {
         hingePosition = new Vector3(transform.position.x, 0, transform.position.z);
-        hingeXTranslation = transform.right * (collider.bounds.size.x/2);
+        hingeXTranslation = transform.up * (collider.bounds.size.y/2);
 
         originalPosition = this.transform.position;
         originalRotation = this.transform.rotation;
@@ -44,6 +44,8 @@ public sealed class ShelfActor : MonoBehaviour {
         collider = this.GetComponent<Collider>();
         noiseSource = this.GetComponent<NoiseSource>();
         this.enabled = false;
+
+        hingePosition = new Vector3(transform.position.x, 0, transform.position.z);
     }
 
     private void OnEnable() {
@@ -66,7 +68,7 @@ public sealed class ShelfActor : MonoBehaviour {
 
 
         var hinge = amount > 0 ? hingePosition + hingeXTranslation : hingePosition - hingeXTranslation;
-        this.transform.RotateAround(hinge, transform.forward, -amount*90);
+        this.transform.RotateAround(hinge, transform.right, -amount*90);
     }
 
     private void EndFalling() {
@@ -79,15 +81,33 @@ public sealed class ShelfActor : MonoBehaviour {
     #if UNITY_EDITOR
     private void OnDrawGizmosSelected() {
 
+        if(amount > Single.Epsilon || amount < -Single.Epsilon) return;
+
         Gizmos.DrawSphere(hingePosition-hingeXTranslation, 0.1f);
 
         var pos = new Vector3(transform.position.x, collider.bounds.size.x / 2, transform.position.z);
-        var x_translatioin = transform.right * (collider.bounds.size.y / 2 + collider.bounds.size.x/2); // TODO: change to right
+        var x_translatioin = transform.forward * (collider.bounds.size.y / 2 + collider.bounds.size.x/2); // TODO: change to right
 
-        if(forward)
-            Gizmos.DrawWireCube(pos + x_translatioin, new Vector3(collider.bounds.size.y, collider.bounds.size.x, collider.bounds.size.z));
-        if(backward)
-            Gizmos.DrawWireCube(pos - x_translatioin, new Vector3(collider.bounds.size.y, collider.bounds.size.x, collider.bounds.size.z));
+        if (forward) {
+            var forward_hinge = (hingePosition - hingeXTranslation);
+            var h = transform.position - forward_hinge;
+            var quat = Quaternion.AngleAxis(90, transform.right);
+            var ext = collider.bounds.extents;
+            ext.x = 0;
+            ext.y *= 1.5f;
+            Gizmos.DrawWireCube(forward_hinge + quat * h - quat * ext, quat * collider.bounds.size);
+        }
+
+        if (backward) {
+            var forward_hinge = (hingePosition + hingeXTranslation);
+            var h = transform.position - forward_hinge;
+            var quat = Quaternion.AngleAxis(-90, transform.right);
+            var ext = collider.bounds.extents;
+            ext.x = 0;
+            ext.y *= -1.5f;
+            Gizmos.DrawWireCube(forward_hinge + quat * h + quat * ext, quat * collider.bounds.size);
+        }
+
     }
     #endif
 
@@ -102,9 +122,9 @@ public sealed class ShelfActor : MonoBehaviour {
 
         Debug.DrawRay(col.contacts[0].point, -col.contacts[0].normal, Color.red, 2);
 
-        if (Vector3.Dot(col.contacts[0].normal, transform.right) > sensitivity && forward) {
+        if (Vector3.Dot(col.contacts[0].normal, transform.up) > sensitivity && forward) {
             fallingForward = true;
-        }else if (Vector3.Dot(col.contacts[0].normal, transform.right) < -sensitivity && backward) {
+        }else if (Vector3.Dot(col.contacts[0].normal, transform.up) < -sensitivity && backward) {
             fallingForward = false;
         }
         else {

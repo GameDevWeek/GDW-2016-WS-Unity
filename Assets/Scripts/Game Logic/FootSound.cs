@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
@@ -11,7 +9,6 @@ public class FootSound : MonoBehaviour {
         [TagSelector]
         public string GroundTag;
         public AudioClip FootLeft, FootRight;
-        public float NoiseRange;
     }
 
 
@@ -29,6 +26,11 @@ public class FootSound : MonoBehaviour {
         m_SourceRight = gameObject.AddComponent<AudioSource>();
         m_Animator = this.GetComponent<Animator>();
         m_NoiseSource = GetComponent<NoiseSource>();
+        if (FootSoundPairs.Length > 0)
+        {
+            CurrentFootLeft = FootSoundPairs[0].FootLeft;
+            CurrentFootRight = FootSoundPairs[0].FootRight;
+        }
     }
 
     public void FootSoundLeft(float intensity)
@@ -38,7 +40,8 @@ public class FootSound : MonoBehaviour {
         {
             float forwardPower = m_Animator.GetFloat("Forward"); //Value 0-1
             m_SourceLeft.volume = 1 * forwardPower;
-            m_SourceLeft.PlayOneShot(CurrentFootLeft, intensity);
+            m_SourceLeft.clip = CurrentFootLeft;
+            m_SourceLeft.Play();
             m_NoiseSource.Play();
         }
     }
@@ -49,7 +52,8 @@ public class FootSound : MonoBehaviour {
         if (!m_SourceRight.isPlaying) {
             float forwardPower = m_Animator.GetFloat("Forward"); //Value 0-1
             m_SourceRight.volume = 1 * forwardPower;
-            m_SourceRight.PlayOneShot(CurrentFootRight, intensity);
+            m_SourceRight.clip = CurrentFootRight;
+            m_SourceRight.Play();
             m_NoiseSource.Play();
         }
     }
@@ -58,11 +62,10 @@ public class FootSound : MonoBehaviour {
     {
         foreach (FootSoundPair fsp in FootSoundPairs)
         {
-            if (fsp.GroundTag == collision.gameObject.tag)
+            if (collision.gameObject.CompareTag(fsp.GroundTag))
             {
                 CurrentFootLeft = fsp.FootLeft;
                 CurrentFootRight = fsp.FootRight;
-                m_NoiseSource.affectedRange = fsp.NoiseRange;
                 return;
             }
         }

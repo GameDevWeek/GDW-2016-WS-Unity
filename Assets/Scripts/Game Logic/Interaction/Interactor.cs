@@ -26,6 +26,7 @@ public class Interactor : MonoBehaviour {
     }
 
     void OnDrawGizmosSelected() {
+        if(! this.enabled) return;
         Handles.color = new Color(1.0f, 0.0f, 1.0f, 0.3f);
         Handles.DrawSolidArc(position, Vector3.up, 
             Quaternion.AngleAxis(-m_interactionDegree * 0.5f, Vector3.up) * transform.forward, 
