@@ -24,6 +24,9 @@ public class TopDownCamera : AbstractCamera {
 	private float m_lookAheadFactor = 1.0f;
 
 	[SerializeField]
+	private float m_lookAheadLerpFactor = 0.5f;
+
+	[SerializeField]
 	private float m_minLookAheadVelocity = 1.0f;
 
 	[SerializeField]
@@ -32,9 +35,16 @@ public class TopDownCamera : AbstractCamera {
 	[SerializeField]
 	private Vector3 m_roomCorrectionOffset = new Vector2 (0,0);
 
+	[SerializeField]
+	private float m_maxAcceleration = 10.0f;
+
+	private Vector2 m_lastLookAheadVelocity;
+
 	private Vector2 m_velocity;
 
 	private Vector3 m_targetedPosition;
+
+	private Vector3 m_lastTargetedPosition;
 
 	private Vector3 m_lastTarget;
 
@@ -72,13 +82,12 @@ public class TopDownCamera : AbstractCamera {
 
 		Vector3 position = Target.position + m_targetOffset;
 		if (m_lookAheadFactor > 0f) {
-			var rigidBody = Target.GetComponent<Rigidbody> ();
-			if (rigidBody != null) {
-				if ((rigidBody.velocity.x * rigidBody.velocity.x + rigidBody.velocity.y * rigidBody.velocity.y) >= m_minLookAheadVelocity) {
-					position.x += rigidBody.velocity.x * m_lookAheadFactor;
-					position.z += rigidBody.velocity.z * m_lookAheadFactor;
-				}
-			}
+			var targetVelocity = GetTargetVelocity();
+
+			m_lastLookAheadVelocity = Vector2.Lerp (m_lastLookAheadVelocity, targetVelocity, m_lookAheadLerpFactor);
+
+			position.x += m_lastLookAheadVelocity.x * m_lookAheadFactor;
+			position.z += m_lastLookAheadVelocity.y * m_lookAheadFactor;
 		}
 
 		foreach (var a in m_activeAttractors) {
@@ -87,6 +96,16 @@ public class TopDownCamera : AbstractCamera {
 		}
 
 		return position;
+	}
+
+	private Vector2 GetTargetVelocity() {
+		var rigidBody = Target.GetComponent<Rigidbody> ();
+		var v = rigidBody.velocity;
+		if (rigidBody != null && (v.x*v.x+v.z*v.z) >= m_minLookAheadVelocity*m_minLookAheadVelocity) {
+			return new Vector2(v.x, v.z);
+		}
+
+		return new Vector2 (0,0);
 	}
 
 	protected override void FollowTarget(float deltaTime) {
@@ -112,7 +131,12 @@ public class TopDownCamera : AbstractCamera {
 
 		UpdatePosition (m_lastTarget, deltaTime);
 
-		transform.position = Vector3.Lerp(transform.position, m_targetedPosition + m_offset, m_LerpFactor*deltaTime);
+		if ((m_lastTargetedPosition - m_targetedPosition).sqrMagnitude > 0.05f) {
+			m_targetedPosition = Vector3.Lerp (m_lastTargetedPosition, m_targetedPosition, m_LerpFactor * deltaTime);
+		}
+		m_lastTargetedPosition = m_targetedPosition;
+
+		transform.position = m_targetedPosition + m_offset;
 		LimitPosition ();
 
 		transform.LookAt (transform.position - m_offset);
@@ -161,6 +185,9 @@ public class TopDownCamera : AbstractCamera {
 
 	private void UpdatePosition(Vector3 target, float deltaTime) {
 		Vector2 accel = ComputeSpringAccel(new Vector2(m_targetedPosition.x, m_targetedPosition.z), new Vector2(target.x, target.z), m_velocity);
+		if(accel.sqrMagnitude > m_maxAcceleration*m_maxAcceleration)
+			accel = accel.normalized * m_maxAcceleration;
+
 		m_velocity += accel * deltaTime;
 		m_targetedPosition.x += m_velocity.x * deltaTime;
 		m_targetedPosition.z += m_velocity.y * deltaTime;

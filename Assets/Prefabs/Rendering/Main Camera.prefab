@@ -112,15 +112,17 @@ MonoBehaviour:
   m_target: {fileID: 0}
   m_autoTargetPlayer: 1
   m_updateType: 0
-  m_noFollowDistance: {x: 0.6, y: 0.3}
-  m_stopFollowDistance: 0.3
-  m_offset: {x: 0, y: 20, z: -5}
+  m_noFollowDistance: {x: 0.6, y: 0.4}
+  m_stopFollowDistance: 0.1
+  m_offset: {x: 0, y: 18, z: -5}
   m_targetOffset: {x: 0, y: 0, z: 0}
-  m_springConstant: 30
-  m_lookAheadFactor: 0.5
-  m_minLookAheadVelocity: 2
-  m_LerpFactor: 10
+  m_springConstant: 35
+  m_lookAheadFactor: 0.6
+  m_lookAheadLerpFactor: 20
+  m_minLookAheadVelocity: 1.5
+  m_LerpFactor: 30
   m_roomCorrectionOffset: {x: 0.8, y: 0, z: 0}
+  m_maxAcceleration: 60
 --- !u!114 &114171085052844706
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -182,9 +184,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f46b285928a1c194ab8ee8c910120095, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_strength: 0.031
+  m_strength: 0.4
   m_speed: 50
-  m_duration: 1
+  m_duration: 2
 --- !u!114 &114561558624081882
 MonoBehaviour:
   m_ObjectHideFlags: 1
