@@ -32,9 +32,9 @@ public class NoiseSource : MonoBehaviour {
         particleSystem.GetComponent<ParticleSystem>().startLifetime = m_affectedRange / 10;
         global::Spawner.DeSpawn(particleSystem, m_affectedRange / 10);
 
-        AudioClip clip = m_audioSource.clip;
         if (m_audioClips.Length > 0) {
             m_audioSource.clip = Util.RandomElement(m_audioClips);
+            
         }
 
         m_audioSource.Play();
@@ -46,7 +46,7 @@ public class NoiseSource : MonoBehaviour {
         }
     }
 
-    void Start() {
+    void Awake() {
         m_audioSource = GetComponent<AudioSource>();
     }
 }

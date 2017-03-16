@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,6 +11,7 @@ public class FootSound : MonoBehaviour {
         [TagSelector]
         public string GroundTag;
         public AudioClip FootLeft, FootRight;
+        public float NoiseRange;
     }
 
 
@@ -20,12 +21,14 @@ public class FootSound : MonoBehaviour {
     private AudioSource m_SourceRight;
     private Animator m_Animator;
     private AudioClip CurrentFootLeft, CurrentFootRight;
+    private NoiseSource m_NoiseSource;
 
     private void Start()
     {
         m_SourceLeft = gameObject.AddComponent<AudioSource>();
         m_SourceRight = gameObject.AddComponent<AudioSource>();
         m_Animator = this.GetComponent<Animator>();
+        m_NoiseSource = GetComponent<NoiseSource>();
     }
 
     public void FootSoundLeft(float intensity)
@@ -36,6 +39,7 @@ public class FootSound : MonoBehaviour {
             float forwardPower = m_Animator.GetFloat("Forward"); //Value 0-1
             m_SourceLeft.volume = 1 * forwardPower;
             m_SourceLeft.PlayOneShot(CurrentFootLeft, intensity);
+            m_NoiseSource.Play();
         }
     }
 
@@ -46,6 +50,7 @@ public class FootSound : MonoBehaviour {
             float forwardPower = m_Animator.GetFloat("Forward"); //Value 0-1
             m_SourceRight.volume = 1 * forwardPower;
             m_SourceRight.PlayOneShot(CurrentFootRight, intensity);
+            m_NoiseSource.Play();
         }
     }
 
@@ -57,6 +62,7 @@ public class FootSound : MonoBehaviour {
             {
                 CurrentFootLeft = fsp.FootLeft;
                 CurrentFootRight = fsp.FootRight;
+                m_NoiseSource.affectedRange = fsp.NoiseRange;
                 return;
             }
         }

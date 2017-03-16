@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,19 +20,8 @@ public class Shoot_Peanuts : MonoBehaviour
     {
         peanutRigidbody = m_peanutPrefab.GetComponent<Rigidbody>();
     }
-	
-	// Update is called once per frame
-	void Update () {
 
-        //for testing
-        if (Input.GetMouseButtonDown(1))
-        {
-            Fire();
-            
-        }
-    }
-
-    void Fire()
+    public void Fire()
     {
         //transform the offset from wolrd location to local
         Vector3 worldOffset = transform.rotation * m_offset;
