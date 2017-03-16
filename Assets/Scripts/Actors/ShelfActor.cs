@@ -1,5 +1,8 @@
-﻿using System;
+﻿﻿using System;
 using UnityEngine;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 [RequireComponent(typeof(Collider))]
 [RequireComponent(typeof(Rigidbody))]
@@ -52,7 +55,11 @@ public sealed class ShelfActor : MonoBehaviour {
 
     private void OnEnable() {
         amount = 0;
-        OnValidate();
+        #if UNITY_EDITOR
+        if (! EditorApplication.isPlayingOrWillChangePlaymode) {
+            OnValidate();
+        }
+        #endif
     }
 
     private void Update() {
@@ -81,7 +88,7 @@ public sealed class ShelfActor : MonoBehaviour {
     }
 
 
-    #if UNITY_EDITOR
+#if UNITY_EDITOR
     private void OnDrawGizmosSelected() {
         if(amount > Single.Epsilon || amount < -Single.Epsilon) return;
         hingePosition = new Vector3(transform.position.x, 0, transform.position.z);
@@ -112,12 +119,10 @@ public sealed class ShelfActor : MonoBehaviour {
         }
 
     }
-    #endif
+#endif
 
     private void OnCollisionEnter(Collision col) {
         const float sensitivity = 0.5f;
-
-        Debug.Log("test");
 
         // TODO: check if player
 
