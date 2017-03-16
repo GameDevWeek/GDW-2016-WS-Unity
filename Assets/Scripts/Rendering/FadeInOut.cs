@@ -1,9 +1,13 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 using System.Linq;
 
-public class FadeInOut : MonoBehaviour
-{
+public class FadeInOut : MonoBehaviour {
+
+    private Renderer[] rendererObjects = null;
+
+
     public void FadeIn(float duration)
     {
         StopAllCoroutines();
@@ -20,7 +24,7 @@ public class FadeInOut : MonoBehaviour
     {
         float fadingSpeed = 1.0f / fadeTime;
         
-		var rendererObjects = GetComponentsInChildren<Renderer>().ToList();
+        if (rendererObjects == null) rendererObjects = GetComponentsInChildren<Renderer>();
 
 		while(rendererObjects.Count()>0)
         {
@@ -35,5 +39,5 @@ public class FadeInOut : MonoBehaviour
             yield return null;
         }
     }
-    
+
 }
