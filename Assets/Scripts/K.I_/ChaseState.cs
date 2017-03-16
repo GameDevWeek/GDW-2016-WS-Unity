@@ -43,20 +43,21 @@ public class ChaseState : IEnemyState
     {
         RaycastHit hit;
         Vector3 enemyToTarget = (enemy.chaseTarget.position + enemy.offset) - enemy.eyes.transform.position;
-        if (Physics.Raycast(enemy.eyes.transform.position, enemyToTarget, out hit, enemy.sightRange) && hit.collider.CompareTag("Player"))
+        if (enemy.canSeePlayer(out hit))
         {
             enemy.chaseTarget = hit.transform;
             WantedLevel.Instance.RaiseWantedLevel();
+            enemy.camouflageInRange(hit);
         }
         else
         {
+            enemy.camouflageNotInRange();
             ToAlertState();
         }
     }
 
     private void Chase()
     {
-        enemy.meshRendererFlag.material.color = Color.red;  //Debugging tool
         enemy.navMeshAgent.destination = enemy.chaseTarget.position;
         enemy.navMeshAgent.Resume();
 

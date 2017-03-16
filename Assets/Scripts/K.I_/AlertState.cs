@@ -45,22 +45,19 @@ public class AlertState : IEnemyState {
     private void Look()
     {
         RaycastHit hit;
-        if (Physics.Raycast(enemy.eyes.transform.position, enemy.eyes.transform.forward, out hit, enemy.sightRange) &&
-            hit.collider.CompareTag("Player"))
+        if (enemy.canSeePlayer(out hit))
         {
             enemy.chaseTarget = hit.transform;
-            //enemy.targetPos = hit.transform.position;
 
             enemy.navMeshAgent.SetDestination(enemy.targetPos);
             WantedLevel.Instance.RaiseWantedLevel();
+            enemy.camouflageInRange(hit);
             ToChaseState();
         }
     }
 
     private void Search()
     {
-        enemy.meshRendererFlag.material.color = Color.yellow;  //Debugging tool
-
         if(enemy.navMeshAgent.remainingDistance < 1f) {
             enemy.navMeshAgent.Stop();
             enemy.transform.Rotate(0, enemy.searchingTurnSpeed * Time.deltaTime, 0);
@@ -68,6 +65,7 @@ public class AlertState : IEnemyState {
 
             if (searchTimer >= enemy.searchingDuration)
             {
+                enemy.viewCone.setAlarmed(false);
                 ToPatrolState();
             }
         }

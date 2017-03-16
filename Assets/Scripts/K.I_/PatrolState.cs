@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -45,42 +45,47 @@ public class PatrolState : IEnemyState
 
     private void Look()
     {
+
         RaycastHit hit;
-        if ((Physics.Raycast(enemy.eyes.transform.position, enemy.eyes.transform.forward, out hit, enemy.sightRange) &&
-            (hit.collider.CompareTag("Player")))) //Eventuell CompareTag entfernen falls Layer angepasst werden
+        if (enemy.canSeePlayer(out hit))
         {
-            if(hit.distance>=enemy.toleratedSightrange)     //Wenn Spieler im Toleranzbereich erstmal stoppen und schauen
+
+            enemy.camouflageInRange(hit);
+
+            if (hit.distance >= enemy.toleratedSightrange)     //Wenn Spieler im Toleranzbereich erstmal stoppen und schauen
             {
                 StopAndLook(hit);
             }
             else
             {
+
                 enemy.chaseTarget = hit.transform;          //Wenn Spieler unterm Toleranzbereich ist direkt chasen
                 searchTimer = 0f;
                 isLooking = false;
                 WantedLevel.Instance.RaiseWantedLevel();
-
+                enemy.viewCone.setAlarmed(true);
                 ToChaseState();
             }
         }
-        else if(searchTimer >= enemy.stoppingTime && searchTimer !=0)
-        {   
+        else if (searchTimer >= enemy.stoppingTime && searchTimer != 0)
+        {
             isLooking = false;
         }
-        else if(searchTimer<enemy.stoppingTime && searchTimer > 0)
+        else if (searchTimer < enemy.stoppingTime && searchTimer > 0)
         {
             searchTimer += Time.deltaTime;
         }
-            
     }
+        
+    
+            
+    
 
 
     //TODO Abfahrfolge der Wegpunkte zufällig machen
     void Patrol()
     {
         if (!isLooking) {
-            enemy.meshRendererFlag.material.color = Color.green;  //Debugging tool
-
             searchTimer = 0f;
             enemy.navMeshAgent.destination = enemy.wayPoints.points[enemy.currentWaypoint];
             enemy.navMeshAgent.Resume();
@@ -104,8 +109,14 @@ public class PatrolState : IEnemyState
         {
             enemy.chaseTarget = hit.transform;
             searchTimer = 0f;
+            enemy.viewCone.setAlarmed(true);
             ToChaseState();
             isLooking = false;
         }
+    }
+
+    void castRays()
+    {
+
     }
 }

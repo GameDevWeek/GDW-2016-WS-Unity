@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,8 +8,8 @@ using System.Linq;
 [RequireComponent(typeof(MeshFilter))]
 public class ViewCone : MonoBehaviour {
 
-    [SerializeField]
-    private float viewRadius = 10.0f;
+    [HideInInspector] public float viewRadius = 10.0f;
+
     [SerializeField]
     private LayerMask viewBlockingLayers;
     [SerializeField]
@@ -18,6 +18,13 @@ public class ViewCone : MonoBehaviour {
     private float fieldOfView = 90;
     [SerializeField]
     private float collisionOffset = 0.05f;
+    [SerializeField]
+    private Color colorAlarmed = Color.red;
+    [SerializeField]
+    Color colorDefault = Color.grey;
+    [SerializeField]
+    private StatePatternEnemy enemy;
+
 
     private LineRenderer2D lineRenderer;
     private MeshRenderer meshRenderer;
@@ -27,6 +34,7 @@ public class ViewCone : MonoBehaviour {
     private Vector3[] vertices;
     private Vector3[] normals;
     private Vector2[] uv;
+
 
     private void Start()
     {
@@ -39,6 +47,10 @@ public class ViewCone : MonoBehaviour {
         meshRenderer = GetComponent<MeshRenderer>();
         meshFilter = GetComponent<MeshFilter>();
         Camera.main.depthTextureMode = DepthTextureMode.DepthNormals;
+        setAlarmed(false);
+
+
+        // InvokeRepeating("UpdateViewCone", 0.1f, 0.125f);
     }
 
     private void Update()
@@ -47,6 +59,8 @@ public class ViewCone : MonoBehaviour {
         {
             return;
         }
+        viewRadius = enemy.sightRange;
+        //Collider[] objectsInRange = Physics.OverlapSphere(transform.position, viewRadius, viewBlockingLayers);
         
         vertices[0] = Vector3.zero;
         vertices[vertices.Length - 1] = Vector3.zero;
@@ -99,5 +113,13 @@ public class ViewCone : MonoBehaviour {
         mesh.uv = uv;
         meshFilter.mesh = mesh;
         lineRenderer.Points = vertices;
+    }
+
+    public void setAlarmed(bool isAlarmed)
+    {
+        if (isAlarmed)
+            meshRenderer.material.color = colorAlarmed;
+        else
+            meshRenderer.material.color = colorDefault;
     }
 }
