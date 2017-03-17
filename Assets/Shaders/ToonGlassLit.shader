@@ -1,4 +1,4 @@
-Shader "Toon/Lit" {
+Shader "Toon/GlassLit" {
 	Properties {
 		_Color ("Main Color", Color) = (0.5,0.5,0.5,1)
 		_MainTex ("Base (RGB)", 2D) = "white" {}
@@ -8,17 +8,9 @@ Shader "Toon/Lit" {
 
 		SubShader{
 			Tags{ "Queue" = "Transparent" "IgnoreProjector" = "True" "RenderType" = "Transparent" }
-			//Blend SrcAlpha OneMinusSrcAlpha
-		//Cull Off
+		Cull Off
 
 		LOD 200
-
-	Pass{
-		ZWrite On
-		ColorMask 0
-	}
-
-	//ZTest Greater ZWrite On
 
 CGPROGRAM
 #pragma surface surf ToonRamp alpha
