@@ -74,7 +74,7 @@ Shader "PlayerViewConeEffect" {
 			#endif
 
 			color = changeSaturation(color, visibility);
-			color.rgb = lerp(color.rgb, color.rgb*_FullscreenTint.rgb, _FullscreenTint.a);
+			color.rgb = lerp(color.rgb, color.rgb*0.2 + color.rgb*_FullscreenTint.rgb + _FullscreenTint.rgb*0.5, _FullscreenTint.a);
 			return color;
 		} 
 					
