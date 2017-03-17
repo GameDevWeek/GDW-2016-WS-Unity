@@ -17,6 +17,7 @@ public class PatrolState : IEnemyState
     public void UpdateState()
     {
         Look();
+        if(enemy.currentState == this)
         Patrol();
     }
 

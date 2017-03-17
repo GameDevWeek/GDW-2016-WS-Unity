@@ -9,13 +9,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 952d09221f5e54126bf0bc3386016bef, type: 3}
-  m_Name: AlertWaypoints
+  m_Name: MouseWaypoints
   m_EditorClassIdentifier: 
   points:
-  - {x: 17.128693, y: 0, z: 1.7109375}
-  - {x: 10.714569, y: 0, z: -3.5185547}
-  - {x: 5.4009943, y: 0, z: -4.2784643}
-  - {x: 10.1924095, y: 0, z: 16.168076}
+  - {x: 11.41333, y: 0.0000019073486, z: 10.605533}
+  - {x: 0.7803836, y: 0, z: 10.908807}
+  - {x: 0.9804964, y: 0, z: 18.076477}
+  - {x: 11.318607, y: 0, z: 18.085644}
   pairs:
   - First: 0
     Second: 1
