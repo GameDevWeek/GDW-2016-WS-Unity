@@ -61,7 +61,7 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
 
     void Update() {
         currentState.UpdateState();
-        if (currentState != alertState)
+        if (currentState != alertState && enemyAnimator != null)
         {
             enemyAnimator.SetFloat("BlendSpeed", (float) (navMeshAgent.velocity.magnitude/chaseSpeed));
         }
@@ -100,6 +100,7 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
 
     public void Inform(NoiseSourceData data)    //Wenn ich im PatrolState etwas höre laufe ich auf
     {
+
         if (currentState == patrolState)
         {
             highestPriority = 0;        //Wenn ich irgendwann mal wieder in den patrolState komme ist jede Noise highestPrio
