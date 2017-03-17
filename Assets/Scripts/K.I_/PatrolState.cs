@@ -63,7 +63,7 @@ public class PatrolState : IEnemyState
                 searchTimer = 0f;
                 isLooking = false;
                 WantedLevel.Instance.RaiseWantedLevel();
-                enemy.viewCone.setAlarmed(true);
+                enemy.viewCone.setAlarmed(true, 1f);
                 ToChaseState();
             }
         }
@@ -105,11 +105,11 @@ public class PatrolState : IEnemyState
         enemy.navMeshAgent.Stop();
         isLooking = true;
         searchTimer += Time.deltaTime;
+        enemy.viewCone.setAlarmed(true, Mathf.Clamp(searchTimer / enemy.stoppingTime, 0f, 1f));
         if (searchTimer >= enemy.stoppingTime)
         {
             enemy.chaseTarget = hit.transform;
             searchTimer = 0f;
-            enemy.viewCone.setAlarmed(true);
             ToChaseState();
             isLooking = false;
         }

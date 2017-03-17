@@ -8,7 +8,8 @@ using System.Linq;
 [RequireComponent(typeof(MeshFilter))]
 public class ViewCone : MonoBehaviour {
 
-    public float ViewRadius { get; set; }
+    public float MainViewRadius { get; set; }
+    public float FullViewRadius { get; set; }
 
     [SerializeField]
     private LayerMask viewBlockingLayers;
@@ -22,33 +23,37 @@ public class ViewCone : MonoBehaviour {
     private Color colorAlarmed = Color.red;
     [SerializeField]
     Color colorDefault = Color.grey;
+    [SerializeField]
+    Color colorOuterAlarmed = new Color(1, 0, 0, 0.5f);
+    [SerializeField]
+    Color colorOuterDefault = new Color(0.5f, 0.5f, 0.5f, 0.5f);
 
 
     private LineRenderer2D lineRenderer;
     private MeshRenderer meshRenderer;
     private MeshFilter meshFilter;
-    private Mesh mesh;
+    private Mesh coneMesh;
 
     private Vector3[] vertices;
     private Vector3[] normals;
     private Vector2[] uv;
+    Vector3[] outlinePoints;
 
 
     private void Start()
     {
-        vertices = new Vector3[nrOfRaycasts + 2];
-        normals = new Vector3[nrOfRaycasts + 2];
-        uv = new Vector2[nrOfRaycasts + 2];
-        mesh = new Mesh();
-        mesh.name = transform.parent.name + " ViewConeMesh";
+        vertices = new Vector3[nrOfRaycasts * 2 + 1];
+        normals = new Vector3[nrOfRaycasts * 2 + 1];
+        uv = new Vector2[nrOfRaycasts * 2 + 1];
+        outlinePoints = new Vector3[2 + nrOfRaycasts];
+        coneMesh = new Mesh();
+        coneMesh.name = transform.parent.name + " ViewConeMainMesh";
         lineRenderer = GetComponentInChildren<LineRenderer2D>();
         meshRenderer = GetComponent<MeshRenderer>();
         meshFilter = GetComponent<MeshFilter>();
+        coneMesh.subMeshCount = 2;
         Camera.main.depthTextureMode = DepthTextureMode.DepthNormals;
-        setAlarmed(false);
-
-
-        // InvokeRepeating("UpdateViewCone", 0.1f, 0.125f);
+        setAlarmed(false, 0);
     }
 
     private void Update()
@@ -59,11 +64,11 @@ public class ViewCone : MonoBehaviour {
         }
         
         vertices[0] = Vector3.zero;
-        vertices[vertices.Length - 1] = Vector3.zero;
         normals[0] = Vector3.up;
-        normals[normals.Length - 1] = Vector3.up;
         uv[0] = Vector3.zero;
-        uv[uv.Length - 1] = Vector3.zero;
+        
+        outlinePoints[0] = Vector3.zero;
+        outlinePoints[outlinePoints.Length - 1] = Vector3.zero;
 
         RaycastHit hit;
 
@@ -73,49 +78,73 @@ public class ViewCone : MonoBehaviour {
             Vector2 localDirection = MathUtility.DegreeToVector2(angle, 1);
             Vector3 globalDirection = transform.TransformDirection(new Vector3(localDirection.x, 0, localDirection.y));
 
-            if (Physics.Raycast(transform.position, globalDirection, out hit, ViewRadius, viewBlockingLayers))
+            if (Physics.Raycast(transform.position, globalDirection, out hit, FullViewRadius, viewBlockingLayers))
             {
-                vertices[i + 1] = transform.InverseTransformPoint(hit.point - globalDirection * collisionOffset);
+                if((hit.point - transform.position).magnitude > MainViewRadius)
+                {
+                    vertices[i + 1] = new Vector3(localDirection.x * (MainViewRadius - collisionOffset), 0, localDirection.y * (MainViewRadius - collisionOffset));
+                }
+                else
+                {
+                    vertices[i + 1] = transform.InverseTransformPoint(hit.point - globalDirection * collisionOffset);
+                }
+                vertices[nrOfRaycasts + i + 1] = transform.InverseTransformPoint(hit.point - globalDirection * collisionOffset);
             }
             else
             {
-                vertices[i + 1] = new Vector3(localDirection.x * (ViewRadius - collisionOffset), 0, localDirection.y * (ViewRadius - collisionOffset));
+                vertices[i + 1] = new Vector3(localDirection.x * (MainViewRadius - collisionOffset), 0, localDirection.y * (MainViewRadius - collisionOffset));
+                vertices[nrOfRaycasts + i + 1] = new Vector3(localDirection.x * (FullViewRadius - collisionOffset), 0, localDirection.y * (FullViewRadius - collisionOffset));
             }
-            normals[i + 1] = Vector3.up;
+            outlinePoints[i + 1] = vertices[nrOfRaycasts + i + 1];
 
-            if (i == 0)
-            {
-                uv[1] = Vector2.up;
-            }
-            else if (i == nrOfRaycasts - 1)
-            {
-                uv[nrOfRaycasts] = Vector2.one;
-            }
-            else
-            {
-                uv[i + 1] = new Vector2((float)i / nrOfRaycasts, 1.0f);
-            }
+            normals[i + 1] = Vector3.up;
+            normals[nrOfRaycasts + i + 1] = Vector3.up;
+            uv[i + 1] = new Vector2((float)i / (nrOfRaycasts - 1), 0.5f);
+            uv[nrOfRaycasts + i + 1] = new Vector2((float)i / (nrOfRaycasts - 1), 1.0f);
         }
-        var triangles = new int[(nrOfRaycasts - 2) * 3 + 3];
-        for (int i = 0, j = 0; i < triangles.Length; i += 3, ++j)
+        var trianglesMainCone = new int[(nrOfRaycasts - 2) * 3 + 3];
+        for (int i = 0, j = 0; i < trianglesMainCone.Length; i += 3, ++j)
         {
-            triangles[i] = 0;
-            triangles[i + 1] = j + 2;
-            triangles[i + 2] = j + 1;
+            trianglesMainCone[i] = 0;
+            trianglesMainCone[i + 1] = j + 2;
+            trianglesMainCone[i + 2] = j + 1;
         }
-        mesh.vertices = vertices;
-        mesh.normals = normals;
-        mesh.triangles = triangles;
-        mesh.uv = uv;
-        meshFilter.mesh = mesh;
-        lineRenderer.Points = vertices;
+        var trianglesOuterCone = new int[((nrOfRaycasts * 2) - 2) * 3];
+        for (int i = 0, j = 0; i < trianglesOuterCone.Length - 1; i += 6, ++j)
+        {
+            trianglesOuterCone[i] = j + 1;
+            trianglesOuterCone[i + 1] = j + 2 + nrOfRaycasts;
+            trianglesOuterCone[i + 2] = j + 1 + nrOfRaycasts;
+            trianglesOuterCone[i + 3] = j + 1;
+            trianglesOuterCone[i + 4] = j + 2;
+            trianglesOuterCone[i + 5] = j + 2 + nrOfRaycasts;
+        }
+        coneMesh.vertices = vertices;
+        coneMesh.normals = normals;
+        coneMesh.SetTriangles(trianglesMainCone, 0);
+        coneMesh.SetTriangles(trianglesOuterCone, 1);
+
+        coneMesh.uv = uv;
+        meshFilter.mesh = coneMesh;
+        lineRenderer.Points = outlinePoints;
     }
 
-    public void setAlarmed(bool isAlarmed)
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="isAlarmed"></param>
+    /// <param name="t">Value between 0 and 1. 1 Means fully alarmed.</param>
+    public void setAlarmed(bool isAlarmed, float t)
     {
         if (isAlarmed)
-            meshRenderer.material.color = colorAlarmed;
+        {
+            meshRenderer.materials[0].color = colorAlarmed;
+            meshRenderer.materials[1].color = colorOuterAlarmed * (1 - t) + colorAlarmed * t;
+        }
         else
-            meshRenderer.material.color = colorDefault;
+        {
+            meshRenderer.materials[0].color = colorDefault;
+            meshRenderer.materials[1].color = colorOuterDefault;
+        }
     }
 }

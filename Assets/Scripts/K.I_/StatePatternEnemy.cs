@@ -52,7 +52,8 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
     {
         currentState = patrolState;
 
-        viewCone.ViewRadius = sightRange;
+        viewCone.MainViewRadius = toleratedSightrange;
+        viewCone.FullViewRadius = sightRange;
     }
 
     void Update() {
@@ -94,7 +95,7 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
         {
             highestPriority = 0;        //Wenn ich irgendwann mal wieder in den patrolState komme ist jede Noise highestPrio
             navMeshAgent.SetDestination(data.initialPosition);
-            viewCone.setAlarmed(true);
+            viewCone.setAlarmed(true, 1f);
             currentState = alertState;
         }
         else if (currentState == alertState && data.priority>=highestPriority)

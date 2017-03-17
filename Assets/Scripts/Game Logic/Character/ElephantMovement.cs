@@ -29,15 +29,13 @@ public class ElephantMovement : MonoBehaviour {
     Vector3 m_groundNormal;
     float m_capsuleHeight;
     Vector3 m_capsuleCenter;
-    CapsuleCollider m_capsule;
+    [SerializeField]
+    CapsuleCollider m_sprintCapsule;
     bool m_crouching;
 
     void Start() {
         m_animator = GetComponent<Animator>();
         m_rigidbody = GetComponent<Rigidbody>();
-        m_capsule = GetComponent<CapsuleCollider>();
-        m_capsuleHeight = m_capsule.height;
-        m_capsuleCenter = m_capsule.center;
 
         m_rigidbody.constraints = 
             RigidbodyConstraints.FreezeRotationX | 
@@ -59,47 +57,39 @@ public class ElephantMovement : MonoBehaviour {
 
     public void StopSprint() {
         m_animator.SetBool("Sprint", false);
+        SetCapsuleForSprint(false);
     }
 
     public void Sprint(Vector3 dir) {
-        Move(dir, m_sprintSpeed, m_sprintAnimSpeedMultiplier, false);
+        Move(dir, m_sprintSpeed, m_sprintAnimSpeedMultiplier);
         m_animator.SetBool("Sprint", true);
+        SetCapsuleForSprint(true);
     }
     
     public void Sprint(Vector3 dir, float slowDownProgress) {
         Move(dir, Mathf.Lerp(m_sprintSpeed, 0.0f, slowDownProgress), 
-            Mathf.Lerp(m_sprintAnimSpeedMultiplier, 0.0f, slowDownProgress), false);
+            Mathf.Lerp(m_sprintAnimSpeedMultiplier, 0.0f, slowDownProgress));
         m_animator.SetBool("Sprint", true);
+        SetCapsuleForSprint(true);
     }
 
-    private void Move(Vector3 dir, float speed, float animSpeed, bool crouch) {
+    private void Move(Vector3 dir, float speed, float animSpeed) {
         // Convert the world relative dir vector into a local-relative forward amount
         dir = transform.InverseTransformDirection(dir);
         CheckGroundStatus();
         dir = Vector3.ProjectOnPlane(dir, m_groundNormal);
         m_forwardAmount = dir.z * speed;
 
-        ScaleCapsuleForCrouching(crouch);
-
         // Send input and other state parameters to the animator
         UpdateAnimator(dir, animSpeed);
     }
 
     public void Move(Vector3 move, bool crouch) {
-        Move(move.normalized, move.magnitude, m_animSpeedMultiplier, crouch);
+        Move(move.normalized, move.magnitude, m_animSpeedMultiplier);
     }
 
-    void ScaleCapsuleForCrouching(bool crouch) {
-        if (crouch) {
-            if (m_crouching) return;
-            m_capsule.height = m_capsule.height / 2f;
-            m_capsule.center = m_capsule.center / 2f;
-            m_crouching = true;
-        } else {
-            m_capsule.height = m_capsuleHeight;
-            m_capsule.center = m_capsuleCenter;
-            m_crouching = false;
-        }
+    void SetCapsuleForSprint(bool sprint) {
+        m_sprintCapsule.enabled = sprint;
     }
 
     void UpdateAnimator(Vector3 move, float animSpeed) {
