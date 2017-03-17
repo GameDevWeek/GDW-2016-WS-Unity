@@ -1,7 +1,9 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 
 public class Interactor : MonoBehaviour {
     [SerializeField]
@@ -27,6 +29,7 @@ public class Interactor : MonoBehaviour {
         }
     }
 
+#if UNITY_EDITOR
     void OnDrawGizmosSelected() {
         if(! this.enabled) return;
         Handles.color = new Color(1.0f, 0.0f, 1.0f, 0.3f);
@@ -34,6 +37,7 @@ public class Interactor : MonoBehaviour {
             Quaternion.AngleAxis(-m_interactionDegree * 0.5f, Vector3.up) * transform.forward, 
             m_interactionDegree, m_interactionRange);
     }
+#endif
 
     private bool IsVisible(Interactable interactable) {
         if (!InRange(interactable)) {

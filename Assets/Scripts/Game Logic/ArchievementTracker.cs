@@ -7,6 +7,7 @@ using UnityEngine.Scripting;
 
 
 public class ArchievementTracker : Singleton<ArchievementTracker> {
+#if UNITY_EDITOR
     [SerializeField] private List<Archievement> archievements = new List<Archievement>();
     private List<Invoker> invokers = new List<Invoker>();
 
@@ -94,5 +95,5 @@ public class ArchievementTracker : Singleton<ArchievementTracker> {
         }
 
     }
-
+#endif
 }
