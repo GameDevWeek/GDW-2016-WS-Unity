@@ -92,8 +92,8 @@ GameObject:
   - component: {fileID: 65781539722873658}
   - component: {fileID: 23037998821454996}
   - component: {fileID: 114262187797134016}
-  - component: {fileID: 195840971741472034}
   - component: {fileID: 114614723104199594}
+  - component: {fileID: 195840971741472034}
   - component: {fileID: 114064594904998212}
   m_Layer: 0
   m_Name: EnemyDummy
@@ -358,12 +358,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 557507fa4423f194685f1f0f920f5b2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  viewRadius: 3
+  mainViewRadius: 0
+  fullViewRadius: 0
   viewBlockingLayers:
     serializedVersion: 2
     m_Bits: 4294967295
   nrOfRaycasts: 60
   fieldOfView: 90
+  collisionOffset: 0.05
+  colorAlarmed: {r: 1, g: 0, b: 0, a: 1}
+  colorDefault: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  colorOuterAlarmed: {r: 1, g: 0, b: 0, a: 0.5}
+  colorOuterDefault: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
 --- !u!114 &114064594904998212
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -397,11 +403,17 @@ MonoBehaviour:
   searchingTurnSpeed: 120
   searchingDuration: 5
   sightRange: 20
+  fieldOfView: 90
+  toleratedSightrange: 5
+  stoppingTime: 2
   wayPoints: {fileID: 11400000, guid: 37f3e8748a6a445448e9b57073c99b31, type: 2}
   currentWaypoint: 0
   eyes: {fileID: 4894213168989934}
   offset: {x: 0, y: 0.5, z: 0}
-  meshRendererFlag: {fileID: 23501418529175738}
+  viewCone: {fileID: 0}
+  viewBlockingLayers:
+    serializedVersion: 2
+    m_Bits: 0
   targetPos: {x: 0, y: 0, z: 0}
   chaseTarget: {fileID: 0}
   navMeshAgent: {fileID: 0}
