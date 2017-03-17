@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Assets.Scripts.K.I_;
 using UnityEngine;
 using UnityEngine.AI;
@@ -8,16 +8,20 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
     public float searchingTurnSpeed = 120f;
     public float searchingDuration = 4f;
     public float sightRange = 10f;
+    public float fieldOfView = 90;
     public float toleratedSightrange = 5f;      //Muss kleiner sein als sightRange!!!
     public float stoppingTime = 2f;
 
     public Waypoints wayPoints;
-    public int currentWaypoint;
+    [HideInInspector] public int currentWaypoint;
 
     public Transform eyes;
     public Vector3 offset = new Vector3(0, .5f, 0);  //Damit man nicht auf die Schuhe des Spielers schaut
+    public ViewCone viewCone;
+    public LayerMask viewBlockingLayers;
 
     private int highestPriority = 0;
+    private CamouflageController camouflage;
 
     [HideInInspector] public Vector3 targetPos; 
     [HideInInspector] public Transform chaseTarget;
@@ -27,6 +31,9 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
     [HideInInspector] public PatrolState patrolState;
     [HideInInspector] public NavMeshAgent navMeshAgent;
 
+    
+    
+
     private void Awake()
     {
         chaseState = new ChaseState(this);
@@ -34,6 +41,7 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
         patrolState = new PatrolState(this);
 
         navMeshAgent = GetComponent<NavMeshAgent>();
+        
     }
 
     void OnValidate() {
@@ -43,6 +51,8 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
     void Start()
     {
         currentState = patrolState;
+
+        viewCone.ViewRadius = sightRange;
     }
 
     void Update() {
@@ -84,6 +94,7 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
         {
             highestPriority = 0;        //Wenn ich irgendwann mal wieder in den patrolState komme ist jede Noise highestPrio
             navMeshAgent.SetDestination(data.initialPosition);
+            viewCone.setAlarmed(true);
             currentState = alertState;
         }
         else if (currentState == alertState && data.priority>=highestPriority)
@@ -93,5 +104,68 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
             navMeshAgent.Resume();
         }
         
+    }
+
+
+    public void camouflageInRange(RaycastHit hit)
+    {
+        camouflage = PlayerActor.Instance.GetComponent<CamouflageController>();
+        if (camouflage != null)
+        {
+            camouflage.EnemyInRange(this.gameObject);
+            Debug.Log("Can't camouflage!");
+        }
+    }
+
+    public void camouflageNotInRange()
+    {
+        if (camouflage != null)
+        {
+            camouflage.EnemyOutOfRange(this.gameObject);
+            Debug.Log("Can camouflage now!");
+        }
+    }
+
+    public bool canSeePlayer(out RaycastHit hit)
+    {
+        Vector3 enemyToPlayer = PlayerActor.Instance.transform.position - transform.position;
+
+
+
+        float playerDistance = enemyToPlayer.magnitude;
+        if (playerDistance <= sightRange)
+        {
+            float angleDistance = Vector3.Angle(enemyToPlayer, transform.forward);
+            if (angleDistance < fieldOfView * 0.5f)
+            {
+
+                float playerWidth = ((CapsuleCollider)PlayerActor.Instance.collider).radius;
+
+
+
+                Vector3 enemyToPlayerOrtho = new Vector3(enemyToPlayer.z, enemyToPlayer.y, -enemyToPlayer.x).normalized;
+                Vector3 playerPosLeft = PlayerActor.Instance.transform.position - enemyToPlayerOrtho * 0.5f * playerWidth;
+                Vector3 playerPosRight = PlayerActor.Instance.transform.position + enemyToPlayerOrtho * 0.5f * playerWidth;
+
+                Debug.DrawLine(transform.position, playerPosRight, Color.green);
+                Debug.DrawLine(transform.position, playerPosLeft, Color.green);
+                Debug.DrawLine(transform.position, PlayerActor.Instance.transform.position, Color.green);
+
+                if ((Physics.Raycast(eyes.transform.position, enemyToPlayer.normalized, out hit, sightRange, viewBlockingLayers) &&
+                    (hit.collider.CompareTag("Player"))))
+                    return true;
+                if (Physics.Raycast(eyes.transform.position, (playerPosLeft - transform.position).normalized, out hit, sightRange, viewBlockingLayers) &&
+                     (hit.collider.CompareTag("Player")))
+                    return true;
+                if (Physics.Raycast(eyes.transform.position, (playerPosRight - transform.position).normalized, out hit, sightRange, viewBlockingLayers) &&
+                    (hit.collider.CompareTag("Player")))
+                    return true;
+
+
+            }
+
+        }
+        hit = new RaycastHit();
+        return false;
     }
 }
