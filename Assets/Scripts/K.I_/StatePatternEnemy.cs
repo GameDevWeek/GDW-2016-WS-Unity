@@ -32,7 +32,7 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
     [HideInInspector] public PatrolState patrolState;
     [HideInInspector] public NavMeshAgent navMeshAgent;
 
-    
+    private Animator enemyAnimator;
     
 
     private void Awake()
@@ -43,6 +43,8 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
 
         navMeshAgent = GetComponent<NavMeshAgent>();
         navMeshAgent.speed = standartSpeed;
+
+        enemyAnimator = GetComponent<Animator>();
     }
 
     void OnValidate() {
@@ -59,6 +61,12 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
 
     void Update() {
         currentState.UpdateState();
+        if (currentState != alertState)
+        {
+            enemyAnimator.SetFloat("BlendSpeed", (float) (navMeshAgent.velocity.magnitude/chaseSpeed));
+        }
+
+
     }
 
     private void OnTriggerEnter(Collider other)

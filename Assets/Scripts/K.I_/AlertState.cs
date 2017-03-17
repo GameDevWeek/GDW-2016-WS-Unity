@@ -62,6 +62,8 @@ public class AlertState : IEnemyState {
     {
         if(enemy.navMeshAgent.remainingDistance < 1f) {
             enemy.navMeshAgent.Stop();
+            enemy.GetComponent<Animator>().SetFloat("BlendSpeed", -1);
+
             enemy.transform.Rotate(0, enemy.searchingTurnSpeed * Time.deltaTime, 0);
             searchTimer += Time.deltaTime;
 

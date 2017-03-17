@@ -187,7 +187,6 @@ GameObject:
   - component: {fileID: 4677023805961734}
   - component: {fileID: 95632143784053622}
   - component: {fileID: 114441439249423902}
-  - component: {fileID: 33380254334191402}
   - component: {fileID: 23017060737734518}
   - component: {fileID: 195197553863956536}
   m_Layer: 0
@@ -578,7 +577,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1410314156727270}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.280391, y: 0.001, z: 10.6647215}
+  m_LocalPosition: {x: -11.73, y: 0.001, z: 10.6647215}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4845387258763008}
@@ -667,7 +666,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
+  m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 1
   m_Materials:
   - {fileID: 0}
@@ -720,13 +719,6 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!33 &33380254334191402
-MeshFilter:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1410314156727270}
-  m_Mesh: {fileID: 0}
 --- !u!33 &33473662866315208
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -743,10 +735,10 @@ Animator:
   m_GameObject: {fileID: 1410314156727270}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: a00d58fdfdeac5d4a88163f00289dae3, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 1
+  m_Controller: {fileID: 9100000, guid: 82d18018236e1d0438c23ba41ace4f32, type: 2}
+  m_CullingMode: 2
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
@@ -762,16 +754,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ec7412f597304a41b58b9c84a6188fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  standartSpeed: 2
+  chaseSpeed: 3
   searchingTurnSpeed: 120
   searchingDuration: 5
   sightRange: 20
-  fieldOfView: 90
   toleratedSightrange: 5
+  fieldOfView: 90
   stoppingTime: 2
   wayPoints: {fileID: 11400000, guid: 37f3e8748a6a445448e9b57073c99b31, type: 2}
   currentWaypoint: 0
-  eyes: {fileID: 4894213168989934, guid: d47cdf802b2688e449c503d6e809f4e5, type: 2}
-  offset: {x: 0, y: 0.5, z: 0}
+  eyes: {fileID: 4601993321777874}
   viewCone: {fileID: 114481833139721180}
   viewBlockingLayers:
     serializedVersion: 2
@@ -865,7 +858,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 1410314156727270}
   m_Enabled: 1
   m_Radius: 0.5
-  m_Speed: 2
+  m_Speed: 5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
