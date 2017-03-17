@@ -5,6 +5,8 @@ using UnityEngine.AI;
 
 public class StatePatternEnemy : MonoBehaviour, INoiseListener {
 
+    public float standartSpeed = 2;
+    public float chaseSpeed = 3;
     public float searchingTurnSpeed = 120f;
     public float searchingDuration = 4f;
     public float sightRange = 10f;
@@ -30,7 +32,7 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
     [HideInInspector] public PatrolState patrolState;
     [HideInInspector] public NavMeshAgent navMeshAgent;
 
-    
+    private Animator enemyAnimator;
     
 
     private void Awake()
@@ -40,7 +42,9 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
         patrolState = new PatrolState(this);
 
         navMeshAgent = GetComponent<NavMeshAgent>();
-        
+        navMeshAgent.speed = standartSpeed;
+
+        enemyAnimator = GetComponent<Animator>();
     }
 
     void OnValidate() {
@@ -57,6 +61,12 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
 
     void Update() {
         currentState.UpdateState();
+        if (currentState != alertState)
+        {
+            enemyAnimator.SetFloat("BlendSpeed", (float) (navMeshAgent.velocity.magnitude/chaseSpeed));
+        }
+
+
     }
 
     private void OnTriggerEnter(Collider other)

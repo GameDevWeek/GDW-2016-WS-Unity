@@ -6,12 +6,22 @@ Shader "Toon/Lit" {
 		_Ramp ("Toon Ramp (RGB)", 2D) = "gray" {} 
 	}
 
-	SubShader {
-		Tags { "RenderType"="Opaque" }
+		SubShader{
+			Tags{ "Queue" = "Transparent" "IgnoreProjector" = "True" "RenderType" = "Transparent" }
+			//Blend SrcAlpha OneMinusSrcAlpha
+		//Cull Off
+
 		LOD 200
-		
+
+	Pass{
+		ZWrite On
+		ColorMask 0
+	}
+
+	//ZTest Greater ZWrite On
+
 CGPROGRAM
-#pragma surface surf ToonRamp
+#pragma surface surf ToonRamp alpha
 
 sampler2D _Ramp;
 
@@ -29,7 +39,7 @@ inline half4 LightingToonRamp (SurfaceOutput s, half3 lightDir, half atten)
 	
 	half4 c;
 	c.rgb = s.Albedo * _LightColor0.rgb * ramp * (atten * 2);
-	c.a = 0;
+	c.a = s.Alpha;
 	return c;
 }
 
