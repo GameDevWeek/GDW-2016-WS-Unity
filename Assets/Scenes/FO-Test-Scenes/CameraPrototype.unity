@@ -547,6 +547,11 @@ Transform:
   m_Father: {fileID: 461525909}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &37743679 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4525093900503672, guid: 4f0fe6c325c762947a707a726a5f6992,
+    type: 2}
+  m_PrefabInternal: {fileID: 519809061}
 --- !u!4 &38642515 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4128965988225342, guid: e28623aa35849cc419ffd0b0186c7c9e,
@@ -4867,11 +4872,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 686701330}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -20.35, y: 35.452915, z: -18.394}
+  m_LocalPosition: {x: 0.137249, y: 0.16291428, z: -0.18618011}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1533492844}
-  m_RootOrder: 2
+  m_Father: {fileID: 37743679}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &686701333
 MonoBehaviour:
@@ -4885,13 +4890,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 557507fa4423f194685f1f0f920f5b2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  viewRadius: 10
   viewBlockingLayers:
     serializedVersion: 2
     m_Bits: 4294966783
   nrOfRaycasts: 120
   fieldOfView: 360
   collisionOffset: -1
+  colorAlarmed: {r: 1, g: 1, b: 1, a: 1}
+  colorDefault: {r: 1, g: 1, b: 1, a: 1}
 --- !u!33 &686701334
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -8729,7 +8735,7 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1332133727}
-  m_LocalRotation: {x: 0.5326752, y: 0.070340455, z: 0.83613276, w: -0.110415146}
+  m_LocalRotation: {x: 0.53267515, y: 0.07034045, z: 0.83613265, w: -0.11041513}
   m_LocalPosition: {x: 0.000022271464, y: -0.00006150465, z: 0.026027026}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -8762,8 +8768,8 @@ Light:
   m_Enabled: 1
   serializedVersion: 7
   m_Type: 1
-  m_Color: {r: 0.15441176, g: 0.19878295, b: 0.41176468, a: 1}
-  m_Intensity: 0.15
+  m_Color: {r: 1, g: 0.9643002, b: 0.7647059, a: 1}
+  m_Intensity: 0.3
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -10461,11 +10467,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e28623aa35849cc419ffd0b0186c7c9e, type: 2}
   m_IsPrefabParent: 0
---- !u!4 &1533492844 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4287609121021994, guid: 4f0fe6c325c762947a707a726a5f6992,
-    type: 2}
-  m_PrefabInternal: {fileID: 519809061}
 --- !u!1001 &1537027823
 Prefab:
   m_ObjectHideFlags: 0

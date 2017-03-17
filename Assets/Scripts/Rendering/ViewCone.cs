@@ -8,8 +8,13 @@ using System.Linq;
 [RequireComponent(typeof(MeshFilter))]
 public class ViewCone : MonoBehaviour {
 
-    public float MainViewRadius { get; set; }
-    public float FullViewRadius { get; set; }
+	public float MainViewRadius { get{return mainViewRadius;} set{mainViewRadius = value;} }
+	public float FullViewRadius { get{return fullViewRadius;} set{fullViewRadius=value;} }
+
+	[SerializeField]
+	private float mainViewRadius = 0;
+	[SerializeField]
+	private float fullViewRadius = 0;
 
     [SerializeField]
     private LayerMask viewBlockingLayers;
@@ -119,6 +124,7 @@ public class ViewCone : MonoBehaviour {
             trianglesOuterCone[i + 4] = j + 2;
             trianglesOuterCone[i + 5] = j + 2 + nrOfRaycasts;
         }
+
         coneMesh.vertices = vertices;
         coneMesh.normals = normals;
         coneMesh.SetTriangles(trianglesMainCone, 0);
@@ -126,7 +132,10 @@ public class ViewCone : MonoBehaviour {
 
         coneMesh.uv = uv;
         meshFilter.mesh = coneMesh;
-        lineRenderer.Points = outlinePoints;
+
+		if (lineRenderer != null) {
+        	lineRenderer.Points = outlinePoints;
+		}
     }
 
     public void setAlarmed(bool isAlarmed)

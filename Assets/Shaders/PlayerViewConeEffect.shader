@@ -18,6 +18,7 @@ Shader "PlayerViewConeEffect" {
 		
 		uniform half4 _Parameter;
 		uniform half4 _InvisibleTint;
+		uniform half4 _FullscreenTint;
 
 		struct v2f_simple 
 		{
@@ -63,14 +64,18 @@ Shader "PlayerViewConeEffect" {
         	#if UNITY_UV_STARTS_AT_TOP
 			
 			fixed4 color = tex2D(_MainTex, i.uv2);
-			return changeSaturation(color, tex2D(_VisibilityTexture, i.uv2).r);
+			float visibility = tex2D(_VisibilityTexture, i.uv2).r;
 			
 			#else
 
 			fixed4 color = tex2D(_MainTex, i.uv);
-			return changeSaturation(color, tex2D(_VisibilityTexture, i.uv).r);
+			float visibility = tex2D(_VisibilityTexture, i.uv).r;
 						
 			#endif
+
+			color = changeSaturation(color, visibility);
+			color.rgb = lerp(color.rgb, color.rgb*_FullscreenTint.rgb, _FullscreenTint.a);
+			return color;
 		} 
 					
 	ENDCG
