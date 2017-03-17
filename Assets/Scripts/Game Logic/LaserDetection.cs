@@ -119,7 +119,7 @@ public class LaserDetection : MonoBehaviour {
 
             SendAlarm();
 
-            // Create noice sound
+            // Create noise sound
         }
     }
 }

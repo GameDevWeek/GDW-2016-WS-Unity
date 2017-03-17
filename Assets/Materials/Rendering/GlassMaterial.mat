@@ -6,9 +6,9 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Elephant
-  m_Shader: {fileID: 4800000, guid: 48dca5b99d113b8d11006bab44295342, type: 3}
-  m_ShaderKeywords: _EMISSION _NORMALMAP
+  m_Name: GlassMaterial
+  m_Shader: {fileID: 4800000, guid: e7edc8b778e618b4c953e76a13c1871d, type: 3}
+  m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 1
   m_CustomRenderQueue: -1
   stringTagMap: {}
@@ -18,7 +18,7 @@ Material:
     - first:
         name: _BumpMap
       second:
-        m_Texture: {fileID: 2800000, guid: 259a55fece2796f459fbc7d567d1673d, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
@@ -48,7 +48,7 @@ Material:
     - first:
         name: _MainTex
       second:
-        m_Texture: {fileID: 2800000, guid: 6664a28ce153cfe4b93e71a3bc952edd, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
@@ -133,7 +133,7 @@ Material:
     m_Colors:
     - first:
         name: _Color
-      second: {r: 1, g: 1, b: 1, a: 1}
+      second: {r: 0.5170307, g: 0.9447716, b: 0.9632353, a: 0.312}
     - first:
         name: _EmissionColor
       second: {r: 0, g: 0, b: 0, a: 1}
