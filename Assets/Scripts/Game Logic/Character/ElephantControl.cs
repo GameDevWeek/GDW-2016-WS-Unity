@@ -140,17 +140,17 @@ public class ElephantControl : MonoBehaviour {
 
             if (m_sprintJustStarted) {
                 m_sprintDirection = direction;
-
-                if (Camera.main.GetComponent<CameraShake>()) {
-                    Camera.main.GetComponent<CameraShake>().Shake();
-                }
-            }
+			}
 
             if (m_sprinting && m_sprintCooldown.IsOver() || !m_sprintDurationAfterSprintStopped.IsOver()) {
                 m_character.LookTowards(m_sprintDirection);
 
                 float t = m_sprintDurationAfterSprintStopped.IsOver() ? 0.0f : m_sprintDurationAfterSprintStopped.progress;
-                m_character.Sprint(transform.forward, t);
+				m_character.Sprint(transform.forward, t);
+
+				if (Camera.main.GetComponent<CameraShake>()) {
+					Camera.main.GetComponent<CameraShake>().Shake();
+				}
             }
         }
     }
@@ -174,6 +174,7 @@ public class ElephantControl : MonoBehaviour {
     }
 
     private void Update() {
+        if (Time.timeScale < float.Epsilon) return;
         if (m_shootPeanuts && Input.GetButtonDown("Shoot")) {
             m_shootPeanuts.Fire();
         }

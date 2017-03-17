@@ -53,7 +53,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1939308547233780}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -118,7 +118,8 @@ MeshRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_Materials:
-  - {fileID: 2100000, guid: fe37b24b96228ef42af1cfe1ced30cfd, type: 2}
+  - {fileID: 2100000, guid: f4e3521d57c6d2f4da447ac992c1e279, type: 2}
+  - {fileID: 2100000, guid: f4e3521d57c6d2f4da447ac992c1e279, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -161,13 +162,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 557507fa4423f194685f1f0f920f5b2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  viewRadius: 3
   viewBlockingLayers:
     serializedVersion: 2
     m_Bits: 4294967295
   nrOfRaycasts: 60
   fieldOfView: 90
   collisionOffset: 0.025
+  colorAlarmed: {r: 1, g: 0, b: 0, a: 1}
+  colorDefault: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  colorOuterAlarmed: {r: 1, g: 0, b: 0, a: 0.5}
+  colorOuterDefault: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
 --- !u!114 &114874770621626912
 MonoBehaviour:
   m_ObjectHideFlags: 1

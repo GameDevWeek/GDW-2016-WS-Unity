@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -45,34 +45,41 @@ public class PatrolState : IEnemyState
 
     private void Look()
     {
+
         RaycastHit hit;
-        if ((Physics.Raycast(enemy.eyes.transform.position, enemy.eyes.transform.forward, out hit, enemy.sightRange) &&
-            (hit.collider.CompareTag("Player")))) //Eventuell CompareTag entfernen falls Layer angepasst werden
+        if (enemy.canSeePlayer(out hit))
         {
-            if(hit.distance>=enemy.toleratedSightrange)     //Wenn Spieler im Toleranzbereich erstmal stoppen und schauen
+
+            enemy.camouflageInRange(hit);
+
+            if (hit.distance >= enemy.toleratedSightrange)     //Wenn Spieler im Toleranzbereich erstmal stoppen und schauen
             {
                 StopAndLook(hit);
             }
             else
             {
+
                 enemy.chaseTarget = hit.transform;          //Wenn Spieler unterm Toleranzbereich ist direkt chasen
                 searchTimer = 0f;
                 isLooking = false;
                 WantedLevel.Instance.RaiseWantedLevel();
-
+                enemy.viewCone.setAlarmed(true, 1f);
                 ToChaseState();
             }
         }
-        else if(searchTimer >= enemy.stoppingTime && searchTimer !=0)
-        {   
+        else if (searchTimer >= enemy.stoppingTime && searchTimer != 0)
+        {
             isLooking = false;
         }
-        else if(searchTimer<enemy.stoppingTime && searchTimer > 0)
+        else if (searchTimer < enemy.stoppingTime && searchTimer > 0)
         {
             searchTimer += Time.deltaTime;
         }
-            
     }
+        
+    
+            
+    
 
 
     //TODO Abfahrfolge der Wegpunkte zufällig machen
@@ -98,6 +105,7 @@ public class PatrolState : IEnemyState
         enemy.navMeshAgent.Stop();
         isLooking = true;
         searchTimer += Time.deltaTime;
+        enemy.viewCone.setAlarmed(true, Mathf.Clamp(searchTimer / enemy.stoppingTime, 0f, 1f));
         if (searchTimer >= enemy.stoppingTime)
         {
             enemy.chaseTarget = hit.transform;
@@ -105,5 +113,10 @@ public class PatrolState : IEnemyState
             ToChaseState();
             isLooking = false;
         }
+    }
+
+    void castRays()
+    {
+
     }
 }
