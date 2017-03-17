@@ -32,12 +32,14 @@ public class AlertState : IEnemyState {
     {
         enemy.currentState = enemy.patrolState;
         searchTimer = 0f;
+        enemy.navMeshAgent.speed = enemy.standartSpeed;
     }
 
     public void ToChaseState()
     {
         enemy.currentState = enemy.chaseState;
         searchTimer = 0f;
+        enemy.navMeshAgent.speed = enemy.chaseSpeed;
     }
 
     

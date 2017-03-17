@@ -5,6 +5,8 @@ using UnityEngine.AI;
 
 public class StatePatternEnemy : MonoBehaviour, INoiseListener {
 
+    public float standartSpeed = 2;
+    public float chaseSpeed = 3;
     public float searchingTurnSpeed = 120f;
     public float searchingDuration = 4f;
     public float sightRange = 10f;
@@ -40,7 +42,7 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
         patrolState = new PatrolState(this);
 
         navMeshAgent = GetComponent<NavMeshAgent>();
-        
+        navMeshAgent.speed = standartSpeed;
     }
 
     void OnValidate() {
