@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PedestalInteraction : Interactable
+public class PedestalInteractable : Interactable
 {
     private CamouflageController _camouflageController;
 
@@ -15,11 +15,11 @@ public class PedestalInteraction : Interactable
 
         if (_camouflageController == null)
         {
-            Debug.LogError("PedestalInteraction: PlayerActor misses component CamouflageController.");
+            Debug.LogError("PedestalInteractable: PlayerActor misses component CamouflageController.");
             this.interactionActive = false;
             return null;
         }
-        
+
         return _camouflageController;
     }
 
@@ -27,11 +27,7 @@ public class PedestalInteraction : Interactable
     {
         if (GetCamouflageController() == null) return;
 
-        bool camouflageModeEntered = GetCamouflageController().TryEnterCamouflageMode();
-        if (camouflageModeEntered)
-        {
-            this.interactionActive = false;
-        }
+        GetCamouflageController().ToggleCamouflageMode();
 
     }
 }
