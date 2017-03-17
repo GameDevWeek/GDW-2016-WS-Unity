@@ -33,7 +33,7 @@ public class CamouflageController : MonoBehaviour
     public static event EntersCamouflageModeEvent OnElephantEntersCamouflageMode;
     public delegate void EntersCamouflageModeEvent();
     /// <summary>
-    /// Event invoked if camouflage mode exits (will be invoked even if OnElephantShocked/OnElephantFallFromPedestal is invoked).
+    /// Event invoked if camouflage mode exits (will be invoked every time and before OnElephantShocked/OnElephantFallFromPedestal is invoked).
     /// </summary>
     public static event ExitsCamouflageModeEvent OnElephantExitsCamouflageMode;
     public delegate void ExitsCamouflageModeEvent();
