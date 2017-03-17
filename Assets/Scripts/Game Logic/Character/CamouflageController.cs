@@ -6,12 +6,21 @@ using UnityEngine;
 
 public class CamouflageController : MonoBehaviour
 {
+    public struct ShockEventData
+    {
+        public List<GameObject> MiceInRange;
+
+        public ShockEventData(List<GameObject> miceInRange)
+        {
+            MiceInRange = miceInRange;
+        }
+    }
 
     /// <summary>
     /// Event invoked if elephant is shocked because of mice in range.
     /// </summary>
     public static event ShockEvent OnElephantShocked;
-    public delegate void ShockEvent();
+    public delegate void ShockEvent(ShockEventData e);
     /// <summary>
     /// Event invoked if elephant is falling from pedestal if max time is over.
     /// </summary>
@@ -32,47 +41,66 @@ public class CamouflageController : MonoBehaviour
     [SerializeField]
     private string _mouseTag = "Mouse";
     [SerializeField]
-    private int _mouseReactDistance = 3;
+    private int _mouseReactDistance = 5;
+    [SerializeField]
+    [Range(0, 20000)]
+    [Tooltip("Milliseconds: OnElephantShock cooldown.")]
+    private int _shockedCooldownMS = 10000;
     [SerializeField]
     [Tooltip("Offset from transform.position to calculate mouse in range raycast.")]
     private Vector3 _elephantEyeOffset = Vector3.up * 0.5f;
     [SerializeField]
     [Range(0, 20000)]
     [Tooltip("Milliseconds: Maximum duration in ms for player in camouflage mode. If time is exceeded elephant will fall from pedestal.")]
-    private int _camouflageMaxDurationMS = 5000;
+    private int _camouflageMaxDurationMS = 7000;
 
     private Coroutine _camouflageTimeExceededChecker;
 
-    private List<Collider> _miceInRange;
+    private Cooldown _shockCooldown;
     private List<GameObject> _enemiesInRange;
 
     public bool CamouflageModeActive { get; private set; }
 
     private void Awake()
     {
-        this._miceInRange = new List<Collider>();
         this._enemiesInRange = new List<GameObject>();
-
+        this._shockCooldown = new Cooldown();
         this.CamouflageModeActive = false;
     }
 
     private void FixedUpdate()
     {
-        // TODO: Ist der Elefant immer geschockt, wenn er eine Maus sieht, oder nur, wenn der CamouflageMode on ist?
-
-        if (CamouflageModeActive)
+        if (!_shockCooldown.IsOver())
         {
-            if (IsMouseInRange())
+            _shockCooldown.Update(Time.fixedDeltaTime);
+            if (!CamouflageModeActive)
+            {
+                return;
+            }
+        }
+
+        List<GameObject> miceInRange;
+        if (IsMouseInRange(out miceInRange))
+        {
+            if (CamouflageModeActive)
             {
                 ExitCamouflageMode();
-                Debug.Log("OnElephantShocked");
-                if (OnElephantShocked != null)
-                {
-                    OnElephantShocked();
-                }
+            }
+            Debug.Log("OnElephantShocked()");
+            if (OnElephantShocked != null)
+            {
+                OnElephantShocked(new ShockEventData(miceInRange));
             }
         }
     }
+
+#if UNITY_EDITOR
+    void OnDrawGizmos()
+    {
+        Gizmos.color = new Color(1.0f,1.0f,0.0f,0.2f);
+        Gizmos.DrawSphere(transform.position + _elephantEyeOffset, _mouseReactDistance);
+    }
+#endif
 
     public void EnemyInRange(GameObject enemy)
     {
@@ -115,8 +143,7 @@ public class CamouflageController : MonoBehaviour
     {
         if (!CamouflagePossible()) return false;
 
-        Debug.Log("CamouflageMode on");
-
+        Debug.Log("OnElephantEntersCamouflageMode");
         if (OnElephantEntersCamouflageMode != null)
         {
             OnElephantEntersCamouflageMode();
@@ -137,10 +164,9 @@ public class CamouflageController : MonoBehaviour
 
     private void ExitCamouflageMode(bool calledFromCoroutine)
     {
-        Debug.Log("CamouflageMode off");
-
         if (!calledFromCoroutine) StopCoroutine(_camouflageTimeExceededChecker);
 
+        Debug.Log("OnElephantExitsCamouflageMode");
         if (OnElephantExitsCamouflageMode != null)
         {
             OnElephantExitsCamouflageMode();
@@ -162,6 +188,15 @@ public class CamouflageController : MonoBehaviour
 
     private bool IsMouseInRange()
     {
+        List<GameObject> miceInRange;
+        return IsMouseInRange(out miceInRange);
+    }
+
+    private bool IsMouseInRange(out List<GameObject> miceInRange)
+    {
+        miceInRange = new List<GameObject>();
+
+        bool result = false;
         Collider[] hits = Physics.OverlapSphere(transform.position + _elephantEyeOffset, _mouseReactDistance);
         foreach (Collider coll in hits)
         {
@@ -172,30 +207,24 @@ public class CamouflageController : MonoBehaviour
                 bool hitSomething = Physics.Raycast(transform.position + _elephantEyeOffset, direction, out hit, _mouseReactDistance);
                 if (hitSomething && hit.collider.gameObject.CompareTag(_mouseTag))
                 {
-                    Debug.Log("mouse visible");
-                    return true;
+#if UNITY_EDITOR
+                    Debug.DrawLine(transform.position + _elephantEyeOffset,
+                        hit.collider.gameObject.transform.position, Color.white);
+#endif
+                    _shockCooldown.timeInSeconds = _shockedCooldownMS / 1000.0f;
+                    _shockCooldown.Start();
+                    miceInRange.Add(coll.gameObject);
+                    result = true;
                 }
+#if UNITY_EDITOR
+                else if (hitSomething)
+                {
+                    Debug.DrawLine(transform.position + _elephantEyeOffset, hit.point, Color.red);
+                }
+#endif
             }
         }
-        //Debug.Log("NO mice visible");
-        return false;
-        //       
-        //        bool hitSomething = Physics.Raycast(transform.position + _elephantEyeOffset, direction, out hit, _mouseReactDistance);
-        //#if UNITY_EDITOR
-        //        if (hitSomething)
-        //        {
-        //            Debug.DrawLine(transform.position + _elephantEyeOffset,
-        //                transform.position + _elephantEyeOffset + direction, Color.white);
-        //            Debug.DrawLine(transform.position + _elephantEyeOffset, hit.point, Color.red);
-        //            Debug.Log("hitSomething");
-        //        }
-        //        else
-        //        {
-        //            Debug.Log("hitSomething");
-        //            Debug.DrawLine(transform.position + _elephantEyeOffset,
-        //                transform.position + _elephantEyeOffset + direction, Color.green);
-        //        }
-        //#endif
+        return result;
     }
 
     private IEnumerator CamouflageTimeExceededChecker()
@@ -214,7 +243,8 @@ public class CamouflageController : MonoBehaviour
 
         if (OnElephantFallFromPedestal != null)
         {
-            OnElephantFallFromPedestal.Invoke();
+            Debug.Log("OnElephantFallFromPedestal");
+            OnElephantFallFromPedestal();
         }
     }
 

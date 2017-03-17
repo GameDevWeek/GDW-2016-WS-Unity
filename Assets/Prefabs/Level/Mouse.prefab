@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4964815338104792}
   - component: {fileID: 33586633798769426}
   - component: {fileID: 23593136826670852}
-  - component: {fileID: 135841635028854208}
+  - component: {fileID: 135974546914292178}
   m_Layer: 0
   m_Name: Mouse
   m_TagString: Mouse
@@ -36,7 +36,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1567160457807942}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 14.91, y: 1.17, z: -5}
+  m_LocalPosition: {x: -16.954044, y: 0.031000009, z: 13.863802}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 0}
@@ -80,15 +80,15 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1567160457807942}
   m_Mesh: {fileID: 4300000, guid: 68d286a816f398944ab646901f9f143c, type: 3}
---- !u!135 &135841635028854208
+--- !u!135 &135974546914292178
 SphereCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1567160457807942}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1
+  m_Radius: 0.09
   m_Center: {x: 0, y: 0, z: 0}
