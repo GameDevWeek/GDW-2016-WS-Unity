@@ -10082,7 +10082,7 @@ MonoBehaviour:
   searchingDuration: 5
   sightRange: 10
   fieldOfView: 90
-  toleratedSightrange: 8
+  toleratedSightrange: 3
   stoppingTime: 2
   wayPoints: {fileID: 11400000, guid: bea4d5db40e782245bfd1097877bd228, type: 2}
   currentWaypoint: 0
@@ -11458,6 +11458,21 @@ Prefab:
     - target: {fileID: 4160360606859032, guid: b7fa032e44a8ca245ac86e50cd8c4f87, type: 2}
       propertyPath: m_LocalScale.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114592613878568118, guid: b7fa032e44a8ca245ac86e50cd8c4f87,
+        type: 2}
+      propertyPath: colorOuterAlarmed.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114592613878568118, guid: b7fa032e44a8ca245ac86e50cd8c4f87,
+        type: 2}
+      propertyPath: colorOuterAlarmed.g
+      value: 0.93103445
+      objectReference: {fileID: 0}
+    - target: {fileID: 114592613878568118, guid: b7fa032e44a8ca245ac86e50cd8c4f87,
+        type: 2}
+      propertyPath: colorOuterAlarmed.a
+      value: 0.78431374
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b7fa032e44a8ca245ac86e50cd8c4f87, type: 2}
