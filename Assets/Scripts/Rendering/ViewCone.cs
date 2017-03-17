@@ -8,8 +8,13 @@ using System.Linq;
 [RequireComponent(typeof(MeshFilter))]
 public class ViewCone : MonoBehaviour {
 
-    public float MainViewRadius { get; set; }
-    public float FullViewRadius { get; set; }
+	public float MainViewRadius { get{return mainViewRadius;} set{mainViewRadius = value;} }
+	public float FullViewRadius { get{return fullViewRadius;} set{fullViewRadius=value;} }
+
+	[SerializeField]
+	private float mainViewRadius = 0;
+	[SerializeField]
+	private float fullViewRadius = 0;
 
     [SerializeField]
     private LayerMask viewBlockingLayers;
@@ -53,7 +58,7 @@ public class ViewCone : MonoBehaviour {
         meshFilter = GetComponent<MeshFilter>();
         coneMesh.subMeshCount = 2;
         Camera.main.depthTextureMode = DepthTextureMode.DepthNormals;
-        setAlarmed(false);
+        setAlarmed(false, 0);
     }
 
     private void Update()
@@ -74,7 +79,7 @@ public class ViewCone : MonoBehaviour {
 
         for (int i = 0; i < nrOfRaycasts; ++i)
         {
-            float angle = ((90 - (fieldOfView * 0.5f) + ((float)i / nrOfRaycasts) * fieldOfView)) % 360;
+			float angle = ((90 - (fieldOfView * 0.5f) + ((float)i / (nrOfRaycasts-1)) * fieldOfView)) % 360;
             Vector2 localDirection = MathUtility.DegreeToVector2(angle, 1);
             Vector3 globalDirection = transform.TransformDirection(new Vector3(localDirection.x, 0, localDirection.y));
 
@@ -119,6 +124,7 @@ public class ViewCone : MonoBehaviour {
             trianglesOuterCone[i + 4] = j + 2;
             trianglesOuterCone[i + 5] = j + 2 + nrOfRaycasts;
         }
+
         coneMesh.vertices = vertices;
         coneMesh.normals = normals;
         coneMesh.SetTriangles(trianglesMainCone, 0);
@@ -126,15 +132,23 @@ public class ViewCone : MonoBehaviour {
 
         coneMesh.uv = uv;
         meshFilter.mesh = coneMesh;
-        lineRenderer.Points = outlinePoints;
+
+		if (lineRenderer != null) {
+        	lineRenderer.Points = outlinePoints;
+		}
     }
 
-    public void setAlarmed(bool isAlarmed)
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="isAlarmed"></param>
+    /// <param name="t">Value between 0 and 1. 1 Means fully alarmed.</param>
+    public void setAlarmed(bool isAlarmed, float t)
     {
         if (isAlarmed)
         {
             meshRenderer.materials[0].color = colorAlarmed;
-            meshRenderer.materials[1].color = colorOuterAlarmed;
+            meshRenderer.materials[1].color = colorOuterAlarmed * (1 - t) + colorAlarmed * t;
         }
         else
         {
