@@ -275,9 +275,7 @@ MonoBehaviour:
   m_positionOffset: {x: 0, y: 0, z: 0}
   m_useDefaultInteractionRange: 0
   m_interactionRange: 3
-  m_laserBarriers:
-  - {fileID: 0}
-  - {fileID: 0}
+  m_laserBarriers: []
   m_switchOnMaterial: {fileID: 2100000, guid: 633c92916423d7b4c8a9e2ee8dd71ce3, type: 2}
   m_switchOffMaterial: {fileID: 2100000, guid: 3ab4bf0baccd32547bceada029efb062, type: 2}
   m_switchPoweredOn: 0
