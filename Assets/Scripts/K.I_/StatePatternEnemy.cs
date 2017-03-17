@@ -51,6 +51,8 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
     void Start()
     {
         currentState = patrolState;
+
+        viewCone.ViewRadius = sightRange;
     }
 
     void Update() {

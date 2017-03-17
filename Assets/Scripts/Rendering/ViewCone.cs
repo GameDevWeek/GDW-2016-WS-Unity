@@ -8,7 +8,7 @@ using System.Linq;
 [RequireComponent(typeof(MeshFilter))]
 public class ViewCone : MonoBehaviour {
 
-    [HideInInspector] public float viewRadius = 10.0f;
+    public float ViewRadius { get; set; }
 
     [SerializeField]
     private LayerMask viewBlockingLayers;
@@ -22,8 +22,6 @@ public class ViewCone : MonoBehaviour {
     private Color colorAlarmed = Color.red;
     [SerializeField]
     Color colorDefault = Color.grey;
-    [SerializeField]
-    private StatePatternEnemy enemy;
 
 
     private LineRenderer2D lineRenderer;
@@ -59,8 +57,6 @@ public class ViewCone : MonoBehaviour {
         {
             return;
         }
-        viewRadius = enemy.sightRange;
-        //Collider[] objectsInRange = Physics.OverlapSphere(transform.position, viewRadius, viewBlockingLayers);
         
         vertices[0] = Vector3.zero;
         vertices[vertices.Length - 1] = Vector3.zero;
@@ -77,13 +73,13 @@ public class ViewCone : MonoBehaviour {
             Vector2 localDirection = MathUtility.DegreeToVector2(angle, 1);
             Vector3 globalDirection = transform.TransformDirection(new Vector3(localDirection.x, 0, localDirection.y));
 
-            if (Physics.Raycast(transform.position, globalDirection, out hit, viewRadius, viewBlockingLayers))
+            if (Physics.Raycast(transform.position, globalDirection, out hit, ViewRadius, viewBlockingLayers))
             {
                 vertices[i + 1] = transform.InverseTransformPoint(hit.point - globalDirection * collisionOffset);
             }
             else
             {
-                vertices[i + 1] = new Vector3(localDirection.x * (viewRadius - collisionOffset), 0, localDirection.y * (viewRadius - collisionOffset));
+                vertices[i + 1] = new Vector3(localDirection.x * (ViewRadius - collisionOffset), 0, localDirection.y * (ViewRadius - collisionOffset));
             }
             normals[i + 1] = Vector3.up;
 
