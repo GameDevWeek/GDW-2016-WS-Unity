@@ -53,7 +53,7 @@ public class ViewCone : MonoBehaviour {
         meshFilter = GetComponent<MeshFilter>();
         coneMesh.subMeshCount = 2;
         Camera.main.depthTextureMode = DepthTextureMode.DepthNormals;
-        setAlarmed(false);
+        setAlarmed(false, 0);
     }
 
     private void Update()
@@ -129,12 +129,17 @@ public class ViewCone : MonoBehaviour {
         lineRenderer.Points = outlinePoints;
     }
 
-    public void setAlarmed(bool isAlarmed)
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="isAlarmed"></param>
+    /// <param name="t">Value between 0 and 1. 1 Means fully alarmed.</param>
+    public void setAlarmed(bool isAlarmed, float t)
     {
         if (isAlarmed)
         {
             meshRenderer.materials[0].color = colorAlarmed;
-            meshRenderer.materials[1].color = colorOuterAlarmed;
+            meshRenderer.materials[1].color = colorOuterAlarmed * (1 - t) + colorAlarmed * t;
         }
         else
         {
