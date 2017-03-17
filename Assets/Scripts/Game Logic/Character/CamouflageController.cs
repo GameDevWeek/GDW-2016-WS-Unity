@@ -68,11 +68,11 @@ public class CamouflageController : MonoBehaviour
         this.CamouflageModeActive = false;
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         if (!_shockCooldown.IsOver())
         {
-            _shockCooldown.Update(Time.fixedDeltaTime);
+            _shockCooldown.Update(Time.deltaTime);
             if (!CamouflageModeActive)
             {
                 return;
