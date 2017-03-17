@@ -42,6 +42,34 @@ public class ElephantMovement : MonoBehaviour {
             RigidbodyConstraints.FreezeRotationY | 
             RigidbodyConstraints.FreezeRotationZ |
             RigidbodyConstraints.FreezePositionY;
+
+        CamouflageController.OnElephantEntersCamouflageMode += OnElephantEntersCamouflageMode;
+        CamouflageController.OnElephantExitsCamouflageMode += OnElephantExitsCamouflageMode;
+        CamouflageController.OnElephantFallFromPedestal += OnElephantFallFromPedestal;
+        CamouflageController.OnStunnedCooldownOver += OnStunnedCooldownOver;
+    }
+
+    void OnDestroy() {
+        CamouflageController.OnElephantEntersCamouflageMode -= OnElephantEntersCamouflageMode;
+        CamouflageController.OnElephantExitsCamouflageMode -= OnElephantExitsCamouflageMode;
+        CamouflageController.OnElephantFallFromPedestal -= OnElephantFallFromPedestal;
+        CamouflageController.OnStunnedCooldownOver -= OnStunnedCooldownOver;
+    }
+
+    private void OnStunnedCooldownOver() {
+        SetStunned(false);
+    }
+
+    private void OnElephantFallFromPedestal() {
+        SetStunned(true);
+    }
+
+    private void OnElephantExitsCamouflageMode() {
+        SetStonePose(false);
+    }
+
+    private void OnElephantEntersCamouflageMode() {
+        SetStonePose(true);
     }
 
     public void LookAt(Vector3 position) {
@@ -108,6 +136,26 @@ public class ElephantMovement : MonoBehaviour {
         } else {
             m_animator.speed = 1;
         }
+    }
+
+    public void SetStonePose(bool stonePose) {
+        m_animator.SetBool("StonePose", stonePose);
+    }
+
+    public void SetStunned(bool stunned) {
+        m_animator.SetBool("Stunned", stunned);
+    }
+
+    public bool IsStunned() {
+        return m_animator.GetBool("Stunned");
+    }
+
+    public bool IsInStonePose() {
+        return m_animator.GetBool("StonePose");
+    }
+
+    public bool CanMove() {
+        return !IsInStonePose() && !IsStunned();
     }
 
     void ApplyExtraTurnRotation() {

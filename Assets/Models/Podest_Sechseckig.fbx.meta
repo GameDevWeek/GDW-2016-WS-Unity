@@ -1,71 +1,15 @@
 fileFormatVersion: 2
-guid: 3f6f76529795844f2a32dc49304e8c0d
-timeCreated: 1489679319
+guid: 7dbdf934e45d4b74ea12009054c2b610
+timeCreated: 1489770766
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: Arm Lower.L
-    100002: Arm Lower.L_end
-    100004: Arm Lower.R
-    100006: Arm Lower.R_end
-    100008: Arm Upper.L
-    100010: Arm Upper.R
-    100012: Base
-    100014: Base High
-    100016: Base Middle
-    100018: BaseLow
-    100020: Cube
-    100022: Ear.L
-    100024: Ear.L_end
-    100026: Ear.R
-    100028: Ear.R_end
-    100030: //RootNode
-    100032: Head
-    100034: Leg Lower.L
-    100036: Leg Lower.L_end
-    100038: Leg Lower.R
-    100040: Leg Lower.R_end
-    100042: Leg Upper.L
-    100044: Leg Upper.R
-    100046: snout 1
-    100048: snout 2
-    100050: snout 3
-    100052: snout 4
-    100054: snout 5
-    100056: snout 5_end
-    400000: Arm Lower.L
-    400002: Arm Lower.L_end
-    400004: Arm Lower.R
-    400006: Arm Lower.R_end
-    400008: Arm Upper.L
-    400010: Arm Upper.R
-    400012: Base
-    400014: Base High
-    400016: Base Middle
-    400018: BaseLow
-    400020: Cube
-    400022: Ear.L
-    400024: Ear.L_end
-    400026: Ear.R
-    400028: Ear.R_end
-    400030: //RootNode
-    400032: Head
-    400034: Leg Lower.L
-    400036: Leg Lower.L_end
-    400038: Leg Lower.R
-    400040: Leg Lower.R_end
-    400042: Leg Upper.L
-    400044: Leg Upper.R
-    400046: snout 1
-    400048: snout 2
-    400050: snout 3
-    400052: snout 4
-    400054: snout 5
-    400056: snout 5_end
-    4300000: Cube
-    9500000: //RootNode
-    13700000: Cube
+    100000: //RootNode
+    400000: //RootNode
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: Podest_Sechseckig
   materials:
     importMaterials: 1
     materialName: 0
@@ -90,7 +34,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 0.25
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1
@@ -128,7 +72,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

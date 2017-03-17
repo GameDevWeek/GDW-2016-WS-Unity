@@ -52,6 +52,7 @@ ModelImporter:
     7400018: Run
     7400020: Stunned
     7400022: Walk
+    7400024: JumpOnPedestal
     9500000: //RootNode
     13700000: Cube
   materials:
@@ -75,68 +76,6 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     clipAnimations:
-    - serializedVersion: 16
-      name: Default Take
-      takeName: Default Take
-      firstFrame: 0
-      lastFrame: 39
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask:
-      - path: 
-        weight: 1
-      - path: Base
-        weight: 1
-      - path: Base/BaseLow
-        weight: 1
-      - path: Base/BaseLow/Base_Middle
-        weight: 1
-      - path: Base/BaseLow/Base_Middle/Base_High
-        weight: 1
-      - path: Base/BaseLow/Base_Middle/Base_High/Arm_Upper_L
-        weight: 1
-      - path: Base/BaseLow/Base_Middle/Base_High/Arm_Upper_L/Arm_Lower_L
-        weight: 1
-      - path: Base/BaseLow/Base_Middle/Base_High/Arm_Upper_R
-        weight: 1
-      - path: Base/BaseLow/Base_Middle/Base_High/Arm_Upper_R/Arm_Lower_R
-        weight: 1
-      - path: Base/BaseLow/Base_Middle/Base_High/Head
-        weight: 1
-      - path: Base/BaseLow/Base_Middle/Base_High/Head/Ear_L
-        weight: 1
-      - path: Base/BaseLow/Base_Middle/Base_High/Head/Ear_R
-        weight: 1
-      - path: Base/BaseLow/Leg_Upper_L
-        weight: 1
-      - path: Base/BaseLow/Leg_Upper_L/Leg_Lower_L
-        weight: 1
-      - path: Base/BaseLow/Leg_Upper_R
-        weight: 1
-      - path: Base/BaseLow/Leg_Upper_R/Leg_Lower_R
-        weight: 1
-      - path: Cube
-        weight: 1
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: FunnyWalk
       takeName: FunnyWalk
@@ -706,7 +645,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -817,6 +756,68 @@ ModelImporter:
       - path: Cube
         weight: 1
       maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: JumpOnPedestal
+      takeName: Run
+      firstFrame: 0
+      lastFrame: 19
+      wrapMode: 0
+      orientationOffsetY: 279
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Base
+        weight: 1
+      - path: Base/BaseLow
+        weight: 1
+      - path: Base/BaseLow/Base_Middle
+        weight: 1
+      - path: Base/BaseLow/Base_Middle/Base_High
+        weight: 1
+      - path: Base/BaseLow/Base_Middle/Base_High/Arm_Upper_L
+        weight: 1
+      - path: Base/BaseLow/Base_Middle/Base_High/Arm_Upper_L/Arm_Lower_L
+        weight: 1
+      - path: Base/BaseLow/Base_Middle/Base_High/Arm_Upper_R
+        weight: 1
+      - path: Base/BaseLow/Base_Middle/Base_High/Arm_Upper_R/Arm_Lower_R
+        weight: 1
+      - path: Base/BaseLow/Base_Middle/Base_High/Head
+        weight: 1
+      - path: Base/BaseLow/Base_Middle/Base_High/Head/Ear_L
+        weight: 1
+      - path: Base/BaseLow/Base_Middle/Base_High/Head/Ear_R
+        weight: 1
+      - path: Base/BaseLow/Leg_Upper_L
+        weight: 1
+      - path: Base/BaseLow/Leg_Upper_L/Leg_Lower_L
+        weight: 1
+      - path: Base/BaseLow/Leg_Upper_R
+        weight: 1
+      - path: Base/BaseLow/Leg_Upper_R/Leg_Lower_R
+        weight: 1
+      - path: Cube
+        weight: 1
+      maskType: 3
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     isReadable: 1

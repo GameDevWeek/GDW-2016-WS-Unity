@@ -1,8 +1,11 @@
-﻿using UnityEditor;
 using UnityEngine;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 [CreateAssetMenu]
 public class Archievement : ScriptableObject{
+#if UNITY_EDITOR
     public string name;
     [TextArea] public string text;
 
@@ -31,4 +34,6 @@ public class Archievement : ScriptableObject{
             }
         }
     }
+#endif
 }
+

@@ -51,6 +51,8 @@ ModelImporter:
     7400004: Armature|Idle
     7400006: Armature|Run
     7400008: Armature|Walk
+    7400010: Armature|Run0
+    7400012: Armature|Walk0
     9500000: //RootNode
     13700000: Cube
   materials:
@@ -62,7 +64,7 @@ ModelImporter:
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
-    motionNodeName: 
+    motionNodeName: Armature/BaseLow
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
@@ -75,17 +77,17 @@ ModelImporter:
     extraExposedTransformPaths: []
     clipAnimations:
     - serializedVersion: 16
-      name: Armature|ArmatureAction
-      takeName: Armature|ArmatureAction
+      name: Armature|Walk0
+      takeName: Armature|Walk
       firstFrame: 0
-      lastFrame: 1
+      lastFrame: 30
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -139,7 +141,7 @@ ModelImporter:
         weight: 1
       - path: Cube
         weight: 1
-      maskType: 3
+      maskType: 0
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
@@ -289,7 +291,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -449,7 +451,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    rootMotionBoneName: 
+    rootMotionBoneName: BaseLow
     rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
     hasExtraRoot: 0
