@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 952d09221f5e54126bf0bc3386016bef, type: 3}
+  m_Name: wache5
+  m_EditorClassIdentifier: 
+  points:
+  - {x: 10.527987, y: 0, z: -6.8871784}
+  - {x: 5.9442415, y: 0, z: -2.7820463}
+  - {x: 10.350267, y: 0, z: 1.537409}
+  - {x: 14.993902, y: 0, z: -2.7318854}
+  pairs:
+  - First: 0
+    Second: 1
+  - First: 1
+    Second: 2
+  - First: 2
+    Second: 3
+  - First: 3
+    Second: 0

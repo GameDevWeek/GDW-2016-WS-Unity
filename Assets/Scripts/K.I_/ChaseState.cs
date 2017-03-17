@@ -42,7 +42,7 @@ public class ChaseState : IEnemyState
     private void Look()
     {
         RaycastHit hit;
-        Vector3 enemyToTarget = (enemy.chaseTarget.position + enemy.offset) - enemy.eyes.transform.position;
+        Vector3 enemyToTarget = enemy.chaseTarget.position - enemy.eyes.transform.position;
         if (enemy.canSeePlayer(out hit))
         {
             enemy.chaseTarget = hit.transform;
