@@ -16,8 +16,6 @@ public class TrunkControll : MonoBehaviour {
     private Animator m_animator;
     private ElephantMovement m_elefantmovement;
 
-    private float m_value = 0;
-
     [SerializeField]
     private float m_damping = 1.0f;
 
@@ -28,42 +26,42 @@ public class TrunkControll : MonoBehaviour {
     private float m_transitionSpeed = 0.5f;
     private float m_trunkStiffness = 0.0f;
 
+    private Cooldown m_stiffnessChangeCooldown = new Cooldown(0.1f);
+    private float m_rotationSpeedEpsilon = 0.1f;
+
     // Use this for initialization
     void Start () {
         m_animator = GetComponent<Animator>();
         m_elefantmovement = GetComponent<ElephantMovement>();
 
         foreach (var collisionNotfier in m_trunkRoot.GetComponentsInChildren<CollisionNotifier>()) {
-            collisionNotfier.OnCollisionStayNotification += OnCollisionStayNotification;
+            collisionNotfier.OnTriggerStayNotification += OnTriggerStayNotification;
         }
     }
 
     private void OnDestroy() {
         foreach (var collisionNotfier in m_trunkRoot.GetComponentsInChildren<CollisionNotifier>()) {
-            collisionNotfier.OnCollisionStayNotification -= OnCollisionStayNotification;
+            collisionNotfier.OnTriggerStayNotification -= OnTriggerStayNotification;
         }
     }
 
-    private void OnCollisionStayNotification(Collision collision) {
-        desiredTrunkStiffness = 0.0f;
-        Debug.Log("Yo");
+    private void OnTriggerStayNotification(Collider other) {
+        m_stiffnessChangeCooldown.Start();
     }
 
-    // Update is called once per frame
     void Update () {
-        //desiredTrunkStiffness = 1.0f;
+        if (m_controllWithSlider) {
+            m_animatorForTrunk.SetFloat("TrunkStiffness", desiredTrunkStiffness);
+            return;
+        }
 
-        //m_value -= m_damping * Time.deltaTime;
-        //m_value += Mathf.Abs(m_elefantmovement.GetRotationSpeed()) / 45.0f;
-        //m_value = Mathf.Clamp(m_value, 0, 2);
+        m_stiffnessChangeCooldown.Update(Time.deltaTime);
 
-        //if (!m_controllWithSlider)
-        //{
-        //    m_animatorForTrunk.SetFloat("TrunkStiffness", m_value); // m_animator.GetFloat("Forward") + 
-        //} else
-        //{
-        //    m_animatorForTrunk.SetFloat("TrunkStiffness", trunkStiffness);
-        //}
+        if (m_stiffnessChangeCooldown.IsOver() && Mathf.Abs(m_elefantmovement.GetRotationSpeed()) > m_rotationSpeedEpsilon) {
+            desiredTrunkStiffness = 1.0f;
+        } else {
+            desiredTrunkStiffness = 0.0f;
+        }
 
         float direction = 0.0f;
         if (m_trunkStiffness < desiredTrunkStiffness + Mathf.Epsilon) {
