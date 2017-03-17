@@ -3990,10 +3990,10 @@ Transform:
   - {fileID: 1094948067}
   - {fileID: 2007349296}
   - {fileID: 1682213951}
+  - {fileID: 707439906}
   - {fileID: 851972445}
   - {fileID: 2116290290}
   - {fileID: 554174713}
-  - {fileID: 707439906}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7457,6 +7457,11 @@ Prefab:
     - target: {fileID: 4092674785488184, guid: b32926f40a83740d2988f64a13e0da83, type: 2}
       propertyPath: m_RootOrder
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114495151443468016, guid: b32926f40a83740d2988f64a13e0da83,
+        type: 2}
+      propertyPath: m_offset.y
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b32926f40a83740d2988f64a13e0da83, type: 2}

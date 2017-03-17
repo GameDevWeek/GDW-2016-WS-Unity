@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.SceneManagement;
+﻿using UnityEngine;
 
 //Dieses Script gehört in die IngameMenuScene
 
-public class InGameMenu : MonoBehaviour
-{
+public class InGameMenu : MonoBehaviour {
+
+    [SerializeField] private RectTransform PauseMenu;
+
+    private bool paused;
 
     // Use this for initialization
     void Start()
@@ -18,22 +17,28 @@ public class InGameMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            paused = !paused;
+        }
+        if (!paused) {
+            PauseMenu.gameObject.SetActive(false);
+            Time.timeScale = 1;
+        }
+        else {
+            PauseMenu.gameObject.SetActive(true);
+            Time.timeScale = 0;
+        }
 
     }
 
     public void clickedButtonBackToGame()
     {
-        SceneManager.UnloadSceneAsync(0);       //Die Scene IngameMenu schließen
-        AddLoad_IngamePaused.setPause(false);   //In der Klasse AddLoad_IngamePaused pause-Variable auf false setzen, da sich das Spiel nun nicht mehr im Pausemodus befindet
-        Time.timeScale = 1;                     //pausierte Scene fortsetzen
+        paused = !paused;
     }
 
     public void clickedButtonRestartLevel()
     {
-        SceneManager.UnloadSceneAsync(0);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
-        AddLoad_IngamePaused.setPause(false);
-        Time.timeScale = 1;
+        paused = !paused;
     }
 
     public void clickedButtonExit()
