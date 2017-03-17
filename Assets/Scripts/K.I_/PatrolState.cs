@@ -42,6 +42,7 @@ public class PatrolState : IEnemyState
     {
         enemy.currentState = enemy.chaseState;
         searchTimer = 0f;
+        enemy.navMeshAgent.speed = enemy.chaseSpeed;
     }
 
     private void Look()

@@ -1857,10 +1857,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ec7412f597304a41b58b9c84a6188fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  standartSpeed: 2
+  chaseSpeed: 3
   searchingTurnSpeed: 120
   searchingDuration: 2
   sightRange: 10
-  toleratedSightrange: 5
+  toleratedSightrange: 10
   fieldOfView: 90
   stoppingTime: 2
   wayPoints: {fileID: 11400000, guid: 37f3e8748a6a445448e9b57073c99b31, type: 2}
