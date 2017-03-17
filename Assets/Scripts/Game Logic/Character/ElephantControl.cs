@@ -156,6 +156,10 @@ public class ElephantControl : MonoBehaviour {
     }
 
     private void FixedUpdate() {
+        if (!m_character.CanMove()) {
+            return;
+        }
+
         m_sprintCooldown.Update(Time.fixedDeltaTime);
         m_sprintDurationAfterSprintStopped.Update(Time.fixedDeltaTime);
 
@@ -174,7 +178,7 @@ public class ElephantControl : MonoBehaviour {
     }
 
     private void Update() {
-        if (m_shootPeanuts && Input.GetButtonDown("Shoot")) {
+        if (m_character.CanMove() && m_shootPeanuts && Input.GetButtonDown("Shoot")) {
             m_shootPeanuts.Fire();
         }
 
