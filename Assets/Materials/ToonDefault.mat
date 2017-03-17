@@ -72,7 +72,7 @@ Material:
     - first:
         name: _Ramp
       second:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: cd0e8ee65df908d4aa7125116177efc8, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
