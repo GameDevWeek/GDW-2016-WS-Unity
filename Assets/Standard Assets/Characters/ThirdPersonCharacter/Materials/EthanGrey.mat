@@ -8,7 +8,7 @@ Material:
   m_PrefabInternal: {fileID: 0}
   m_Name: EthanGrey
   m_Shader: {fileID: 45, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: _LIGHTMAPPING_STATIC_LIGHTMAPS _NORMALMAP _UVPRIM_UV1 _UVSEC_UV1
+  m_ShaderKeywords: _LIGHTMAPPING_STATIC_LIGHTMAPS _UVPRIM_UV1 _UVSEC_UV1
   m_LightmapFlags: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}

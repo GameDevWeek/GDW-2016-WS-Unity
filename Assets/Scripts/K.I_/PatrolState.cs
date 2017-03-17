@@ -17,6 +17,7 @@ public class PatrolState : IEnemyState
     public void UpdateState()
     {
         Look();
+        if(enemy.currentState == this)
         Patrol();
     }
 
@@ -41,6 +42,7 @@ public class PatrolState : IEnemyState
     {
         enemy.currentState = enemy.chaseState;
         searchTimer = 0f;
+        enemy.navMeshAgent.speed = enemy.chaseSpeed;
     }
 
     private void Look()
@@ -63,7 +65,7 @@ public class PatrolState : IEnemyState
                 searchTimer = 0f;
                 isLooking = false;
                 WantedLevel.Instance.RaiseWantedLevel();
-                enemy.viewCone.setAlarmed(true);
+                enemy.viewCone.setAlarmed(true, 1f);
                 ToChaseState();
             }
         }
@@ -87,6 +89,7 @@ public class PatrolState : IEnemyState
     {
         if (!isLooking) {
             searchTimer = 0f;
+            enemy.viewCone.setAlarmed(false, 0f);
             enemy.navMeshAgent.destination = enemy.wayPoints.points[enemy.currentWaypoint];
             enemy.navMeshAgent.Resume();
 
@@ -95,7 +98,6 @@ public class PatrolState : IEnemyState
                 int nxt;
                 enemy.wayPoints.GetNextPoint(enemy.currentWaypoint, out nxt);
                 enemy.currentWaypoint = nxt;
-                // nextWayPoint = (nextWayPoint + 1) % enemy.wayPoints.Length;
             }
         }
     }
@@ -105,11 +107,11 @@ public class PatrolState : IEnemyState
         enemy.navMeshAgent.Stop();
         isLooking = true;
         searchTimer += Time.deltaTime;
+        enemy.viewCone.setAlarmed(true, Mathf.Clamp(searchTimer / enemy.stoppingTime, 0f, 1f));
         if (searchTimer >= enemy.stoppingTime)
         {
             enemy.chaseTarget = hit.transform;
             searchTimer = 0f;
-            enemy.viewCone.setAlarmed(true);
             ToChaseState();
             isLooking = false;
         }

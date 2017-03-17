@@ -40,11 +40,9 @@ public class TopDownCamera : AbstractCamera {
 
 	private Vector2 m_lastLookAheadVelocity;
 
-	private Vector2 m_velocity;
+	private Vector3 m_velocity;
 
 	private Vector3 m_targetedPosition;
-
-	private Vector3 m_lastTargetedPosition;
 
 	private Vector3 m_lastTarget;
 
@@ -113,33 +111,35 @@ public class TopDownCamera : AbstractCamera {
 		var diff = realTarget - m_targetedPosition;
 		var screenTarget = m_camera.WorldToViewportPoint (realTarget)*2f - new Vector3(1,1,1);
 
+		var target = m_lastTarget;
+
 		if (m_moving_up || screenTarget.y >= m_noFollowDistance.y) {
 			m_moving_up = diff.y >= m_stopFollowDistance;
-			m_lastTarget.z = realTarget.z;
+			target.z = realTarget.z;
 		} else if (m_moving_down || screenTarget.y <= -m_noFollowDistance.y) {
 			m_moving_down = diff.y <= -m_stopFollowDistance;
-			m_lastTarget.z = realTarget.z;
+			target.z = realTarget.z;
 		}
 
 		if (m_moving_right || screenTarget.x >= m_noFollowDistance.x) {
 			m_moving_right = diff.x >= m_stopFollowDistance;
-			m_lastTarget.x = realTarget.x;
+			target.x = realTarget.x;
 		} else if (m_moving_left || screenTarget.x <= -m_noFollowDistance.x) {
 			m_moving_left = diff.x <= -m_stopFollowDistance;
-			m_lastTarget.x = realTarget.x;
+			target.x = realTarget.x;
 		}
 
-		UpdatePosition (m_lastTarget, deltaTime);
 
-		if ((m_lastTargetedPosition - m_targetedPosition).sqrMagnitude > 0.05f) {
-			m_targetedPosition = Vector3.Lerp (m_lastTargetedPosition, m_targetedPosition, m_LerpFactor * deltaTime);
+		if ((m_lastTarget - target).sqrMagnitude > 0.05f) {
+			target = Vector3.Lerp (m_lastTarget, target, m_LerpFactor * deltaTime);
 		}
-		m_lastTargetedPosition = m_targetedPosition;
+		m_lastTarget = target;
 
-		transform.position = m_targetedPosition + m_offset;
+		UpdatePosition (m_lastTarget + m_offset, deltaTime);
 		LimitPosition ();
 
-		transform.LookAt (transform.position - m_offset);
+		m_targetedPosition = transform.position - m_offset;
+		transform.LookAt (m_targetedPosition);
 	}
 
 	private Vector3 ViewportToWorldPos(float x, float y) {
@@ -184,17 +184,16 @@ public class TopDownCamera : AbstractCamera {
 	}
 
 	private void UpdatePosition(Vector3 target, float deltaTime) {
-		Vector2 accel = ComputeSpringAccel(new Vector2(m_targetedPosition.x, m_targetedPosition.z), new Vector2(target.x, target.z), m_velocity);
+		var accel = ComputeSpringAccel(transform.position, target, m_velocity);
 		if(accel.sqrMagnitude > m_maxAcceleration*m_maxAcceleration)
 			accel = accel.normalized * m_maxAcceleration;
 
 		m_velocity += accel * deltaTime;
-		m_targetedPosition.x += m_velocity.x * deltaTime;
-		m_targetedPosition.z += m_velocity.y * deltaTime;
+		transform.position += m_velocity * deltaTime;
 	}
 
 	// Computes the acceleration using a critical damping spring model
-	protected Vector2 ComputeSpringAccel(Vector2 pos, Vector2 target, Vector2 velocity) {
+	protected Vector3 ComputeSpringAccel(Vector3 pos, Vector3 target, Vector3 velocity) {
 		var dampingCoefficient = 2.0f * Mathf.Sqrt(m_springConstant);
 
 		var deltaAccel = (target - pos) * m_springConstant;
