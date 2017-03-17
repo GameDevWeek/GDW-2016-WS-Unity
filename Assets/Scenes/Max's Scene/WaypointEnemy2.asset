@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 952d09221f5e54126bf0bc3386016bef, type: 3}
+  m_Name: WaypointEnemy2
+  m_EditorClassIdentifier: 
+  points:
+  - {x: -10.330298, y: 0, z: -8.207041}
+  - {x: -14.5997925, y: 0, z: -1.7474043}
+  - {x: -4.41098, y: 0, z: -2.0531366}
+  - {x: -4.476187, y: 0, z: -8.271335}
+  pairs:
+  - First: 0
+    Second: 1
+  - First: 1
+    Second: 2
+  - First: 2
+    Second: 3
+  - First: 3
+    Second: 0

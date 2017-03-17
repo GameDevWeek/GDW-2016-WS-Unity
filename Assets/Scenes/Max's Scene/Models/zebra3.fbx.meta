@@ -1,0 +1,463 @@
+fileFormatVersion: 2
+guid: a00d58fdfdeac5d4a88163f00289dae3
+timeCreated: 1489758927
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Arm Lower.L
+    100002: Arm Lower.L_end
+    100004: Arm Lower.R
+    100006: Arm Lower.R_end
+    100008: Arm Upper.L
+    100010: Arm Upper.R
+    100012: Armature
+    100014: Base Mid
+    100016: BaseLow
+    100018: BaseTop
+    100020: Cube
+    100022: Head
+    100024: Head_end
+    100026: Leg Lower.L
+    100028: Leg Lower.L_end
+    100030: Leg Lower.R
+    100032: Leg Lower.R_end
+    100034: Leg Upper.L
+    100036: Leg Upper.R
+    100038: //RootNode
+    400000: Arm Lower.L
+    400002: Arm Lower.L_end
+    400004: Arm Lower.R
+    400006: Arm Lower.R_end
+    400008: Arm Upper.L
+    400010: Arm Upper.R
+    400012: Armature
+    400014: Base Mid
+    400016: BaseLow
+    400018: BaseTop
+    400020: Cube
+    400022: Head
+    400024: Head_end
+    400026: Leg Lower.L
+    400028: Leg Lower.L_end
+    400030: Leg Lower.R
+    400032: Leg Lower.R_end
+    400034: Leg Upper.L
+    400036: Leg Upper.R
+    400038: //RootNode
+    4300000: Cube
+    7400000: Armature|ArmatureAction
+    7400002: Armature|Base
+    7400004: Armature|Idle
+    7400006: Armature|Run
+    7400008: Armature|Walk
+    9500000: //RootNode
+    13700000: Cube
+  materials:
+    importMaterials: 1
+    materialName: 1
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Armature|ArmatureAction
+      takeName: Armature|ArmatureAction
+      firstFrame: 0
+      lastFrame: 1
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/BaseLow
+        weight: 1
+      - path: Armature/BaseLow/Base Mid
+        weight: 1
+      - path: Armature/BaseLow/Base Mid/BaseTop
+        weight: 1
+      - path: Armature/BaseLow/Base Mid/BaseTop/Arm Upper.L
+        weight: 1
+      - path: Armature/BaseLow/Base Mid/BaseTop/Arm Upper.L/Arm Lower.L
+        weight: 1
+      - path: Armature/BaseLow/Base Mid/BaseTop/Arm Upper.L/Arm Lower.L/Arm Lower.L_end
+        weight: 1
+      - path: Armature/BaseLow/Base Mid/BaseTop/Arm Upper.R
+        weight: 1
+      - path: Armature/BaseLow/Base Mid/BaseTop/Arm Upper.R/Arm Lower.R
+        weight: 1
+      - path: Armature/BaseLow/Base Mid/BaseTop/Arm Upper.R/Arm Lower.R/Arm Lower.R_end
+        weight: 1
+      - path: Armature/BaseLow/Base Mid/BaseTop/Head
+        weight: 1
+      - path: Armature/BaseLow/Base Mid/BaseTop/Head/Head_end
+        weight: 1
+      - path: Armature/BaseLow/Leg Upper.L
+        weight: 1
+      - path: Armature/BaseLow/Leg Upper.L/Leg Lower.L
+        weight: 1
+      - path: Armature/BaseLow/Leg Upper.L/Leg Lower.L/Leg Lower.L_end
+        weight: 1
+      - path: Armature/BaseLow/Leg Upper.R
+        weight: 1
+      - path: Armature/BaseLow/Leg Upper.R/Leg Lower.R
+        weight: 1
+      - path: Armature/BaseLow/Leg Upper.R/Leg Lower.R/Leg Lower.R_end
+        weight: 1
+      - path: Cube
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|Base
+      takeName: Armature|Base
+      firstFrame: 0
+      lastFrame: 1
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/BaseLow
+        weight: 1
+      - path: Armature/BaseLow/Base Mid
+        weight: 1
+      - path: Armature/BaseLow/Base Mid/BaseTop
+        weight: 1
+      - path: Armature/BaseLow/Base Mid/BaseTop/Arm Upper.L
+        weight: 1
+      - path: Armature/BaseLow/Base Mid/BaseTop/Arm Upper.L/Arm Lower.L
+        weight: 1
+      - path: Armature/BaseLow/Base Mid/BaseTop/Arm Upper.L/Arm Lower.L/Arm Lower.L_end
+        weight: 1
+      - path: Armature/BaseLow/Base Mid/BaseTop/Arm Upper.R
+        weight: 1
+      - path: Armature/BaseLow/Base Mid/BaseTop/Arm Upper.R/Arm Lower.R
+        weight: 1
+      - path: Armature/BaseLow/Base Mid/BaseTop/Arm Upper.R/Arm Lower.R/Arm Lower.R_end
+        weight: 1
+      - path: Armature/BaseLow/Base Mid/BaseTop/Head
+        weight: 1
+      - path: Armature/BaseLow/Base Mid/BaseTop/Head/Head_end
+        weight: 1
+      - path: Armature/BaseLow/Leg Upper.L
+        weight: 1
+      - path: Armature/BaseLow/Leg Upper.L/Leg Lower.L
+        weight: 1
+      - path: Armature/BaseLow/Leg Upper.L/Leg Lower.L/Leg Lower.L_end
+        weight: 1
+      - path: Armature/BaseLow/Leg Upper.R
+        weight: 1
+      - path: Armature/BaseLow/Leg Upper.R/Leg Lower.R
+        weight: 1
+      - path: Armature/BaseLow/Leg Upper.R/Leg Lower.R/Leg Lower.R_end
+        weight: 1
+      - path: Cube
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|Idle
+      takeName: Armature|Idle
+      firstFrame: 0
+      lastFrame: 60
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/BaseLow
+        weight: 1
+      - path: Armature/BaseLow/Base Mid
+        weight: 1
+      - path: Armature/BaseLow/Base Mid/BaseTop
+        weight: 1
+      - path: Armature/BaseLow/Base Mid/BaseTop/Arm Upper.L
+        weight: 1
+      - path: Armature/BaseLow/Base Mid/BaseTop/Arm Upper.L/Arm Lower.L
+        weight: 1
+      - path: Armature/BaseLow/Base Mid/BaseTop/Arm Upper.L/Arm Lower.L/Arm Lower.L_end
+        weight: 1
+      - path: Armature/BaseLow/Base Mid/BaseTop/Arm Upper.R
+        weight: 1
+      - path: Armature/BaseLow/Base Mid/BaseTop/Arm Upper.R/Arm Lower.R
+        weight: 1
+      - path: Armature/BaseLow/Base Mid/BaseTop/Arm Upper.R/Arm Lower.R/Arm Lower.R_end
+        weight: 1
+      - path: Armature/BaseLow/Base Mid/BaseTop/Head
+        weight: 1
+      - path: Armature/BaseLow/Base Mid/BaseTop/Head/Head_end
+        weight: 1
+      - path: Armature/BaseLow/Leg Upper.L
+        weight: 1
+      - path: Armature/BaseLow/Leg Upper.L/Leg Lower.L
+        weight: 1
+      - path: Armature/BaseLow/Leg Upper.L/Leg Lower.L/Leg Lower.L_end
+        weight: 1
+      - path: Armature/BaseLow/Leg Upper.R
+        weight: 1
+      - path: Armature/BaseLow/Leg Upper.R/Leg Lower.R
+        weight: 1
+      - path: Armature/BaseLow/Leg Upper.R/Leg Lower.R/Leg Lower.R_end
+        weight: 1
+      - path: Cube
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|Run
+      takeName: Armature|Run
+      firstFrame: 0
+      lastFrame: 30
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/BaseLow
+        weight: 1
+      - path: Armature/BaseLow/Base Mid
+        weight: 1
+      - path: Armature/BaseLow/Base Mid/BaseTop
+        weight: 1
+      - path: Armature/BaseLow/Base Mid/BaseTop/Arm Upper.L
+        weight: 1
+      - path: Armature/BaseLow/Base Mid/BaseTop/Arm Upper.L/Arm Lower.L
+        weight: 1
+      - path: Armature/BaseLow/Base Mid/BaseTop/Arm Upper.L/Arm Lower.L/Arm Lower.L_end
+        weight: 1
+      - path: Armature/BaseLow/Base Mid/BaseTop/Arm Upper.R
+        weight: 1
+      - path: Armature/BaseLow/Base Mid/BaseTop/Arm Upper.R/Arm Lower.R
+        weight: 1
+      - path: Armature/BaseLow/Base Mid/BaseTop/Arm Upper.R/Arm Lower.R/Arm Lower.R_end
+        weight: 1
+      - path: Armature/BaseLow/Base Mid/BaseTop/Head
+        weight: 1
+      - path: Armature/BaseLow/Base Mid/BaseTop/Head/Head_end
+        weight: 1
+      - path: Armature/BaseLow/Leg Upper.L
+        weight: 1
+      - path: Armature/BaseLow/Leg Upper.L/Leg Lower.L
+        weight: 1
+      - path: Armature/BaseLow/Leg Upper.L/Leg Lower.L/Leg Lower.L_end
+        weight: 1
+      - path: Armature/BaseLow/Leg Upper.R
+        weight: 1
+      - path: Armature/BaseLow/Leg Upper.R/Leg Lower.R
+        weight: 1
+      - path: Armature/BaseLow/Leg Upper.R/Leg Lower.R/Leg Lower.R_end
+        weight: 1
+      - path: Cube
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|Walk
+      takeName: Armature|Walk
+      firstFrame: 0
+      lastFrame: 30
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/BaseLow
+        weight: 1
+      - path: Armature/BaseLow/Base Mid
+        weight: 1
+      - path: Armature/BaseLow/Base Mid/BaseTop
+        weight: 1
+      - path: Armature/BaseLow/Base Mid/BaseTop/Arm Upper.L
+        weight: 1
+      - path: Armature/BaseLow/Base Mid/BaseTop/Arm Upper.L/Arm Lower.L
+        weight: 1
+      - path: Armature/BaseLow/Base Mid/BaseTop/Arm Upper.L/Arm Lower.L/Arm Lower.L_end
+        weight: 1
+      - path: Armature/BaseLow/Base Mid/BaseTop/Arm Upper.R
+        weight: 1
+      - path: Armature/BaseLow/Base Mid/BaseTop/Arm Upper.R/Arm Lower.R
+        weight: 1
+      - path: Armature/BaseLow/Base Mid/BaseTop/Arm Upper.R/Arm Lower.R/Arm Lower.R_end
+        weight: 1
+      - path: Armature/BaseLow/Base Mid/BaseTop/Head
+        weight: 1
+      - path: Armature/BaseLow/Base Mid/BaseTop/Head/Head_end
+        weight: 1
+      - path: Armature/BaseLow/Leg Upper.L
+        weight: 1
+      - path: Armature/BaseLow/Leg Upper.L/Leg Lower.L
+        weight: 1
+      - path: Armature/BaseLow/Leg Upper.L/Leg Lower.L/Leg Lower.L_end
+        weight: 1
+      - path: Armature/BaseLow/Leg Upper.R
+        weight: 1
+      - path: Armature/BaseLow/Leg Upper.R/Leg Lower.R
+        weight: 1
+      - path: Armature/BaseLow/Leg Upper.R/Leg Lower.R/Leg Lower.R_end
+        weight: 1
+      - path: Cube
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -58,9 +58,14 @@ BoxCollider:
   m_Size: {x: 0.0625, y: 1, z: 2.0485876}
   m_Center: {x: 0, y: 0, z: 1.0242938}
 =======
+<<<<<<< HEAD
+  m_Size: {x: 0.0625, y: 1, z: 2.0485876}
+  m_Center: {x: 0, y: 0, z: 1.0242938}
+=======
   m_Size: {x: 0.0625, y: 1, z: 0.7022804}
   m_Center: {x: 0, y: 0, z: 0.3511402}
 >>>>>>> 57697fb6f54cf566be4d08f9875d2c9aed707d85
+>>>>>>> 601bfe3e61383a3a049bf3e28993d9ee7391b182
 --- !u!82 &82894999121931202
 AudioSource:
   m_ObjectHideFlags: 1
@@ -208,8 +213,12 @@ LineRenderer:
 <<<<<<< HEAD
   - {x: -14.219, y: 0.577, z: 2.2205877}
 =======
+<<<<<<< HEAD
+  - {x: -14.219, y: 0.577, z: 2.2205877}
+=======
   - {x: -14.219, y: 0.57699984, z: 0.87428045}
 >>>>>>> 57697fb6f54cf566be4d08f9875d2c9aed707d85
+>>>>>>> 601bfe3e61383a3a049bf3e28993d9ee7391b182
   m_Parameters:
     serializedVersion: 2
     widthMultiplier: 0.1

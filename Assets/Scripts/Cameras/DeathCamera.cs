@@ -5,6 +5,9 @@ using System.Collections.Generic;
 public class DeathCamera : AbstractCamera {
 
 	[SerializeField]
+	private float m_distSpringConstant = 20;
+
+	[SerializeField]
 	private float m_targetDistance = 3.0f;
 
 	[SerializeField]
@@ -17,13 +20,11 @@ public class DeathCamera : AbstractCamera {
 	private float m_targetElevation = 0.5f;
 
 	[SerializeField]
-	private Vector3 m_targetOffset = new Vector3(0,0,0);
+	protected Vector3 m_targetOffset = new Vector3(0,0,0);
 
 	[SerializeField]
 	private float m_lerpFactor = 2.0f;
 
-
-	private List<AbstractCamera> m_prevCameras = new List<AbstractCamera>();
 
 	private float m_initialDistance;
 	private float m_distance;
@@ -39,8 +40,14 @@ public class DeathCamera : AbstractCamera {
 	private bool m_initialZoom = true;
 	private float m_timeAcc = 0f;
 
+	private Vector3 m_velocity = new Vector3();
+
 
 	public DeathCamera () {
+	}
+
+	protected Vector3 GetTargetPosition() {
+		return Target.position + m_targetOffset;
 	}
 
 	protected override void FollowTarget(float deltaTime) {
@@ -62,31 +69,18 @@ public class DeathCamera : AbstractCamera {
 
 		Vector3 polar = Util.PolarToVector(m_distance, m_elevation, m_azimuth);
 
-		var targetPos = Target.position + m_targetOffset;
+		var targetPos = GetTargetPosition ();
 
-		transform.position = Vector3.Lerp(transform.position, targetPos + polar, deltaTime*m_lerpFactor);
-		GetComponent<Transform>().LookAt(targetPos);
+		var smoothCamPos = Vector3.Lerp(transform.position, targetPos + polar, deltaTime*m_lerpFactor);
+
+		var accel = ComputeSpringAccel(transform.position, smoothCamPos, m_velocity);
+		m_velocity += accel * deltaTime;
+		transform.position += m_velocity * deltaTime;
+
+		GetComponent<Transform>().LookAt(transform.position - polar - m_targetOffset);
 	}
 
-	void OnDisable() {
-		foreach (var c in m_prevCameras) {
-			c.enabled = true;
-		}
-	}
-
-	void OnEnable() {
-		// disable other camera controllers
-		m_prevCameras.Clear();
-
-		var cameras = GetComponents<AbstractCamera> ();
-		foreach (var c in cameras) {
-			if (c != this && c.enabled) {
-				m_prevCameras.Add(c);
-				c.enabled = false;
-			}
-		}
-
-
+	protected virtual void OnEnable() {
 		var diffPolar = Util.VectorToPolar (transform.position - Target.position);
 
 		m_initialDistance = m_distance = diffPolar.radius;
@@ -112,4 +106,13 @@ public class DeathCamera : AbstractCamera {
 		m_initialZoom = true;
 	}
 
+	// Computes the acceleration using a critical damping spring model
+	protected Vector3 ComputeSpringAccel(Vector3 pos, Vector3 target, Vector3 velocity) {
+		float dampingCoefficient = 2.0f * Mathf.Sqrt(m_distSpringConstant);
+
+		Vector3 deltaAccel = (target - pos) * m_distSpringConstant;
+		Vector3 dampingAccel = -velocity * dampingCoefficient;
+
+		return deltaAccel + dampingAccel;
+	}
 }
