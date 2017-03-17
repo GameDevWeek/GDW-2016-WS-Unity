@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using System.IO;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 
 /// <summary>
 /// Adds a Menu item "Tools/Utils/GameTags and Layers to Code" to generate class files for untiy layers and tags

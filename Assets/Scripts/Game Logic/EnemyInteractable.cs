@@ -1,6 +1,8 @@
 using System;
-using UnityEditor;
 using UnityEngine;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 public class EnemyInteractable : Interactable {
 
@@ -65,12 +67,14 @@ public class EnemyInteractable : Interactable {
     //    UnityEditor.Handles.DrawLine(transform.position + m_vectorOffset, transform.position + transform.forward * Distance + m_vectorOffset);
     //}
 
+#if UNITY_EDITOR
     void OnDrawGizmos() {
         Handles.color = new Color(1.0f, 0.0f, 0.0f, 0.3f);
         Handles.DrawSolidArc(position, Vector3.up,
             Quaternion.AngleAxis(-m_backAngle * 0.5f, Vector3.up) * -transform.forward,
             m_backAngle, m_interactionRange);
     }
+#endif
 
     public override void Interact(Interactor interactor) {
         if (!IsStunPossible(interactor)) {
