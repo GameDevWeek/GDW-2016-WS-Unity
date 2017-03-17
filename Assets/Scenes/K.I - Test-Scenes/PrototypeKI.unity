@@ -2439,7 +2439,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mouseTag: Mouse
-  _mouseDistanceToReact: 3
+  _mouseReactDistance: 5
+  _shockedCooldownMS: 10000
+  _elephantEyeOffset: {x: 0, y: 0.5, z: 0}
   _camouflageMaxDurationMS: 0
 --- !u!114 &414742857
 MonoBehaviour:
@@ -2750,7 +2752,23 @@ Prefab:
       propertyPath: m_affectedRange
       value: 4
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114603409626044586, guid: 4f0fe6c325c762947a707a726a5f6992,
+        type: 2}
+      propertyPath: m_sprintCapsule
+      value: 
+      objectReference: {fileID: 414742853}
+    - target: {fileID: 114289991277569528, guid: 4f0fe6c325c762947a707a726a5f6992,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 136377722128185902, guid: 4f0fe6c325c762947a707a726a5f6992,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114289991277569528, guid: 4f0fe6c325c762947a707a726a5f6992, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 4f0fe6c325c762947a707a726a5f6992, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &520691900

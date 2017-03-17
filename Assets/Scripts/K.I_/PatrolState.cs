@@ -87,6 +87,7 @@ public class PatrolState : IEnemyState
     {
         if (!isLooking) {
             searchTimer = 0f;
+            enemy.viewCone.setAlarmed(false, 0f);
             enemy.navMeshAgent.destination = enemy.wayPoints.points[enemy.currentWaypoint];
             enemy.navMeshAgent.Resume();
 
@@ -95,7 +96,6 @@ public class PatrolState : IEnemyState
                 int nxt;
                 enemy.wayPoints.GetNextPoint(enemy.currentWaypoint, out nxt);
                 enemy.currentWaypoint = nxt;
-                // nextWayPoint = (nextWayPoint + 1) % enemy.wayPoints.Length;
             }
         }
     }
