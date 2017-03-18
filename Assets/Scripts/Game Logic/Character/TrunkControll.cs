@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Animator), typeof(ElephantMovement))]
+[RequireComponent(typeof(Animator), typeof(ElephantMovement), typeof(ElephantControl))]
 public class TrunkControll : MonoBehaviour {
     [SerializeField]
     private bool m_controllWithSlider = false;
@@ -28,6 +28,7 @@ public class TrunkControll : MonoBehaviour {
 
     private Cooldown m_stiffnessChangeCooldown = new Cooldown(0.1f);
     private float m_rotationSpeedEpsilon = 0.1f;
+    private ElephantControl m_elephantControl;
 
     // Use this for initialization
     void Start () {
@@ -37,6 +38,8 @@ public class TrunkControll : MonoBehaviour {
         foreach (var collisionNotfier in m_trunkRoot.GetComponentsInChildren<CollisionNotifier>()) {
             collisionNotfier.OnTriggerStayNotification += OnTriggerStayNotification;
         }
+
+        m_elephantControl = GetComponent<ElephantControl>();
     }
 
     private void OnDestroy() {
@@ -61,7 +64,8 @@ public class TrunkControll : MonoBehaviour {
 
         m_stiffnessChangeCooldown.Update(Time.deltaTime);
 
-        if (m_stiffnessChangeCooldown.IsOver() && Mathf.Abs(m_elefantmovement.GetRotationSpeed()) > m_rotationSpeedEpsilon) {
+        if (m_stiffnessChangeCooldown.IsOver() && Mathf.Abs(m_elefantmovement.GetRotationSpeed()) > m_rotationSpeedEpsilon ||
+            m_elephantControl.aiming) {
             desiredTrunkStiffness = 1.0f;
         } else {
             desiredTrunkStiffness = 0.0f;
