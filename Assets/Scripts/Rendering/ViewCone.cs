@@ -10,6 +10,7 @@ public class ViewCone : MonoBehaviour {
 
 	public float MainViewRadius { get{return mainViewRadius;} set{mainViewRadius = value;} }
 	public float FullViewRadius { get{return fullViewRadius;} set{fullViewRadius=value;} }
+    public float FieldOfView { get { return fieldOfView; } set { fieldOfView = value; } }
     public float ConeAlpha { get; set; }
 
 	[SerializeField]

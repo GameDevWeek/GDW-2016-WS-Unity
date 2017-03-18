@@ -1370,7 +1370,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_affectedRange: 3
-  m_audioClips: []
+  m_audioClips:
+  - {fileID: 8300000, guid: 707ff5fefa254d34c983b75d05216ec2, type: 3}
+  - {fileID: 8300000, guid: 9154f98248f37564aa865fa08a44bd58, type: 3}
+  - {fileID: 8300000, guid: 63eb8e57c156c3d44997f678f704b967, type: 3}
+  - {fileID: 8300000, guid: bd8bd97c69e6d5345be462622df2e86e, type: 3}
   m_affectedLayer:
     serializedVersion: 2
     m_Bits: 0
