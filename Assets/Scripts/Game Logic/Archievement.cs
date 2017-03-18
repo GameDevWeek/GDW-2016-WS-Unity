@@ -19,6 +19,8 @@ public class Archievement : ScriptableObject{
     public bool increment_instead_set;
     public float scaling;
 
+    public bool resetOnSceneLoad;
+
     [HideInInspector] public string assembly;
     [HideInInspector] public string classPath;
 
