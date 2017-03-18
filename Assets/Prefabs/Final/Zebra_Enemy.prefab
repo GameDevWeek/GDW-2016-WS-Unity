@@ -760,6 +760,8 @@ MonoBehaviour:
   m_positionOffset: {x: 0, y: 0, z: 0}
   m_useDefaultInteractionRange: 0
   m_interactionRange: 3
+  interactionIcon: {fileID: 0}
+  interactionIconScale: 1
   useInteractionRangeOnly: 0
   ignoreRaycastVisibility: 0
   m_cooldown:
@@ -767,6 +769,7 @@ MonoBehaviour:
   m_stunDuration:
     m_timeInSeconds: 5
   m_backAngle: 153.6
+  stunEnemyHitSound: {fileID: 0}
 --- !u!114 &114441439249423902
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -786,6 +789,7 @@ MonoBehaviour:
   toleratedSightrange: 5
   fieldOfView: 90
   stoppingTime: 2
+  playerIsCaughtDistance: 4
   wayPoints: {fileID: 11400000, guid: 37f3e8748a6a445448e9b57073c99b31, type: 2}
   currentWaypoint: 0
   eyes: {fileID: 4601993321777874}
@@ -796,6 +800,13 @@ MonoBehaviour:
   targetPos: {x: 0, y: 0, z: 0}
   chaseTarget: {fileID: 0}
   navMeshAgent: {fileID: 0}
+  audioSource: {fileID: 0}
+  enterChase:
+  - {fileID: 8300000, guid: 2b77910a799e4df44895a256a6a66219, type: 3}
+  - {fileID: 8300000, guid: 19d02be93b8f3be439156a14a30ee4a3, type: 3}
+  - {fileID: 8300000, guid: 6a4d3b00b751acd48a93cabd59729628, type: 3}
+  exitChase:
+  - {fileID: 8300000, guid: cc09276255656a64eac81d726768fa9b, type: 3}
 --- !u!114 &114481833139721180
 MonoBehaviour:
   m_ObjectHideFlags: 1
