@@ -7,9 +7,7 @@ Shader "Toon/Lit" {
 	}
 
 		SubShader{
-			Tags{ "Queue" = "Transparent" "IgnoreProjector" = "True" "RenderType" = "Transparent" }
-			//Blend SrcAlpha OneMinusSrcAlpha
-		//Cull Off
+			Tags{ "Queue" = "Transparent" "IgnoreProjector" = "True" "RenderType" = "Transparent" } 
 
 		LOD 200
 
