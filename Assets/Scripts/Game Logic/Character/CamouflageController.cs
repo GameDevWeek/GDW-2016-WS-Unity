@@ -1,7 +1,5 @@
-﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
 public class CamouflageController : MonoBehaviour
@@ -38,6 +36,9 @@ public class CamouflageController : MonoBehaviour
     public static event ExitsCamouflageModeEvent OnElephantExitsCamouflageMode;
     public delegate void ExitsCamouflageModeEvent();
 
+    public delegate void StunnedCooldownOver();
+    public static event StunnedCooldownOver OnStunnedCooldownOver;
+
     [SerializeField]
     private string _mouseTag = "Mouse";
     [SerializeField]
@@ -61,15 +62,36 @@ public class CamouflageController : MonoBehaviour
 
     public bool CamouflageModeActive { get; private set; }
 
+    [SerializeField]
+    private Cooldown m_stunnedCooldown = new Cooldown(2.0f);
+    private bool m_stunned = false;
+
+    public Cooldown stunnedCooldown {
+        get {
+            return m_stunnedCooldown;
+        }
+    }
+
     private void Awake()
     {
         this._enemiesInRange = new List<GameObject>();
         this._shockCooldown = new Cooldown();
         this.CamouflageModeActive = false;
+        m_stunnedCooldown.Start();
     }
 
     private void Update()
     {
+        if (m_stunned) {
+            m_stunnedCooldown.Update(Time.deltaTime);
+
+            if (m_stunnedCooldown.IsOver() && OnStunnedCooldownOver != null) {
+                OnStunnedCooldownOver();
+                m_stunned = false;
+                m_stunnedCooldown.Start();
+            }
+        }
+
         if (!_shockCooldown.IsOver())
         {
             _shockCooldown.Update(Time.deltaTime);
@@ -245,6 +267,7 @@ public class CamouflageController : MonoBehaviour
         {
             Debug.Log("OnElephantFallFromPedestal");
             OnElephantFallFromPedestal();
+            m_stunned = true;
         }
     }
 

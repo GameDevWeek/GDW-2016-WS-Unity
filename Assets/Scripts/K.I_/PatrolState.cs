@@ -17,6 +17,7 @@ public class PatrolState : IEnemyState
     public void UpdateState()
     {
         Look();
+        if(enemy.currentState == this)
         Patrol();
     }
 
@@ -41,6 +42,7 @@ public class PatrolState : IEnemyState
     {
         enemy.currentState = enemy.chaseState;
         searchTimer = 0f;
+        enemy.navMeshAgent.speed = enemy.chaseSpeed;
     }
 
     private void Look()
@@ -58,7 +60,6 @@ public class PatrolState : IEnemyState
             }
             else
             {
-
                 enemy.chaseTarget = hit.transform;          //Wenn Spieler unterm Toleranzbereich ist direkt chasen
                 searchTimer = 0f;
                 isLooking = false;
@@ -77,16 +78,12 @@ public class PatrolState : IEnemyState
         }
     }
         
-    
-            
-    
-
-
     //TODO Abfahrfolge der Wegpunkte zufällig machen
     void Patrol()
     {
         if (!isLooking) {
             searchTimer = 0f;
+            enemy.viewCone.setAlarmed(false, 0f);
             enemy.navMeshAgent.destination = enemy.wayPoints.points[enemy.currentWaypoint];
             enemy.navMeshAgent.Resume();
 
@@ -95,7 +92,6 @@ public class PatrolState : IEnemyState
                 int nxt;
                 enemy.wayPoints.GetNextPoint(enemy.currentWaypoint, out nxt);
                 enemy.currentWaypoint = nxt;
-                // nextWayPoint = (nextWayPoint + 1) % enemy.wayPoints.Length;
             }
         }
     }
@@ -110,13 +106,8 @@ public class PatrolState : IEnemyState
         {
             enemy.chaseTarget = hit.transform;
             searchTimer = 0f;
-            ToChaseState();
             isLooking = false;
+            ToChaseState();
         }
-    }
-
-    void castRays()
-    {
-
     }
 }

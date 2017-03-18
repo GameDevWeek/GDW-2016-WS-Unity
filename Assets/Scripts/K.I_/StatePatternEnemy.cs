@@ -5,18 +5,19 @@ using UnityEngine.AI;
 
 public class StatePatternEnemy : MonoBehaviour, INoiseListener {
 
+    public float standartSpeed = 2;
+    public float chaseSpeed = 3;
     public float searchingTurnSpeed = 120f;
     public float searchingDuration = 4f;
     public float sightRange = 10f;
-    public float fieldOfView = 90;
     public float toleratedSightrange = 5f;      //Muss kleiner sein als sightRange!!!
+    public float fieldOfView = 90;
     public float stoppingTime = 2f;
 
     public Waypoints wayPoints;
     [HideInInspector] public int currentWaypoint;
 
     public Transform eyes;
-    public Vector3 offset = new Vector3(0, .5f, 0);  //Damit man nicht auf die Schuhe des Spielers schaut
     public ViewCone viewCone;
     public LayerMask viewBlockingLayers;
 
@@ -31,7 +32,7 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
     [HideInInspector] public PatrolState patrolState;
     [HideInInspector] public NavMeshAgent navMeshAgent;
 
-    
+    private Animator enemyAnimator;
     
 
     private void Awake()
@@ -41,7 +42,9 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
         patrolState = new PatrolState(this);
 
         navMeshAgent = GetComponent<NavMeshAgent>();
-        
+        navMeshAgent.speed = standartSpeed;
+
+        enemyAnimator = GetComponent<Animator>();
     }
 
     void OnValidate() {
@@ -58,6 +61,16 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
 
     void Update() {
         currentState.UpdateState();
+        if (currentState != alertState && enemyAnimator != null)
+        {
+            enemyAnimator.SetFloat("BlendSpeed", (float) (navMeshAgent.velocity.magnitude/chaseSpeed));
+        }
+
+
+    }
+
+    public void StopMovement() {
+        enemyAnimator.SetFloat("BlendSpeed", 0.0f);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -91,6 +104,7 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
 
     public void Inform(NoiseSourceData data)    //Wenn ich im PatrolState etwas höre laufe ich auf
     {
+
         if (currentState == patrolState)
         {
             highestPriority = 0;        //Wenn ich irgendwann mal wieder in den patrolState komme ist jede Noise highestPrio
@@ -130,19 +144,13 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
     public bool canSeePlayer(out RaycastHit hit)
     {
         Vector3 enemyToPlayer = PlayerActor.Instance.transform.position - transform.position;
-
-
-
         float playerDistance = enemyToPlayer.magnitude;
         if (playerDistance <= sightRange)
         {
             float angleDistance = Vector3.Angle(enemyToPlayer, transform.forward);
             if (angleDistance < fieldOfView * 0.5f)
             {
-
                 float playerWidth = ((CapsuleCollider)PlayerActor.Instance.collider).radius;
-
-
 
                 Vector3 enemyToPlayerOrtho = new Vector3(enemyToPlayer.z, enemyToPlayer.y, -enemyToPlayer.x).normalized;
                 Vector3 playerPosLeft = PlayerActor.Instance.transform.position - enemyToPlayerOrtho * 0.5f * playerWidth;

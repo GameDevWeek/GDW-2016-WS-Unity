@@ -64,7 +64,7 @@ public class TrunkControll : MonoBehaviour {
         }
 
         float direction = 0.0f;
-        if (m_trunkStiffness < desiredTrunkStiffness + Mathf.Epsilon) {
+        if (m_trunkStiffness < desiredTrunkStiffness - Mathf.Epsilon) {
             direction = 1.0f;
         } else if (m_trunkStiffness > desiredTrunkStiffness + Mathf.Epsilon) {
             direction = - 1.0f;
