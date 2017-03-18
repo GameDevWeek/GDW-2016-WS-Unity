@@ -415,7 +415,6 @@ GameObject:
   - component: {fileID: 95856167306580842}
   - component: {fileID: 54622173655756810}
   - component: {fileID: 136266747651252150}
-  - component: {fileID: 120294529763460364}
   - component: {fileID: 82974733735348492}
   - component: {fileID: 114384192857228890}
   - component: {fileID: 114302045587487728}
@@ -428,7 +427,6 @@ GameObject:
   - component: {fileID: 114523559530140102}
   - component: {fileID: 114848429992145910}
   - component: {fileID: 114548738031474726}
-  - component: {fileID: 114654241842066516}
   m_Layer: 9
   m_Name: Elephant_New
   m_TagString: Player
@@ -1159,18 +1157,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 051cfb3b78edb364791425103f22b75b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114654241842066516
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1960445719896116}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b580e6213f063e34a93c64a466e62ad5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  collider: {fileID: 136266747651252150}
 --- !u!114 &114821812586447890
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1201,7 +1187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd4a770c6590e874780baa1657d92de8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_interactionDegree: 45
+  m_interactionDegree: 60
   m_positionOffset: {x: 0, y: 0, z: 0}
   m_interactionBlockerMask:
     serializedVersion: 2
@@ -1240,104 +1226,6 @@ MonoBehaviour:
     m_timeInSeconds: 0.5
   controlsMode: 0
   m_walkRadius: 0.4
---- !u!120 &120294529763460364
-LineRenderer:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1960445719896116}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_MotionVectors: 0
-  m_LightProbeUsage: 0
-  m_ReflectionProbeUsage: 0
-  m_Materials:
-  - {fileID: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
-  m_Positions:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 1}
-  m_Parameters:
-    serializedVersion: 2
-    widthMultiplier: 0.1
-    widthCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 2
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    colorGradient:
-      key0:
-        serializedVersion: 2
-        rgba: 4294967295
-      key1:
-        serializedVersion: 2
-        rgba: 4294967295
-      key2:
-        serializedVersion: 2
-        rgba: 0
-      key3:
-        serializedVersion: 2
-        rgba: 0
-      key4:
-        serializedVersion: 2
-        rgba: 0
-      key5:
-        serializedVersion: 2
-        rgba: 0
-      key6:
-        serializedVersion: 2
-        rgba: 0
-      key7:
-        serializedVersion: 2
-        rgba: 0
-      ctime0: 0
-      ctime1: 65535
-      ctime2: 0
-      ctime3: 0
-      ctime4: 0
-      ctime5: 0
-      ctime6: 0
-      ctime7: 0
-      atime0: 0
-      atime1: 65535
-      atime2: 0
-      atime3: 0
-      atime4: 0
-      atime5: 0
-      atime6: 0
-      atime7: 0
-      m_Mode: 0
-      m_NumColorKeys: 2
-      m_NumAlphaKeys: 2
-    numCornerVertices: 0
-    numCapVertices: 0
-    alignment: 0
-    textureMode: 0
-  m_UseWorldSpace: 1
 --- !u!136 &136111749876279316
 CapsuleCollider:
   m_ObjectHideFlags: 1
