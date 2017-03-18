@@ -146,11 +146,13 @@ public class ElephantControl : MonoBehaviour {
             if (m_sprintJustEnded) {
                 m_sprintCooldown.Start();
                 m_sprintDurationAfterSprintStopped.Start();
+                PlayerActor.Instance.sprintParticles.Stop();
             }
 
             if (m_sprintJustStarted) {
                 m_sprintDirection = direction;
-			}
+                PlayerActor.Instance.sprintParticles.Play();
+            }
 
             if (sprinting) {
                 m_character.LookTowards(m_sprintDirection);

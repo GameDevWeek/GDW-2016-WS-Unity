@@ -1,0 +1,724 @@
+fileFormatVersion: 2
+guid: 098a92f74dabf7d48921d4c77b49249a
+timeCreated: 1489851072
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Arm Lower.L
+    100002: Arm Lower.L_end
+    100004: Arm Lower.R
+    100006: Arm Lower.R_end
+    100008: Arm Upper.L
+    100010: Arm Upper.R
+    100012: Base
+    100014: Base High
+    100016: Base Middle
+    100018: BaseLow
+    100020: Cube
+    100022: Ear.L
+    100024: Ear.L_end
+    100026: Ear.R
+    100028: Ear.R_end
+    100030: //RootNode
+    100032: Head
+    100034: Leg Lower.L
+    100036: Leg Lower.L_end
+    100038: Leg Lower.R
+    100040: Leg Lower.R_end
+    100042: Leg Upper.L
+    100044: Leg Upper.R
+    400000: Arm Lower.L
+    400002: Arm Lower.L_end
+    400004: Arm Lower.R
+    400006: Arm Lower.R_end
+    400008: Arm Upper.L
+    400010: Arm Upper.R
+    400012: Base
+    400014: Base High
+    400016: Base Middle
+    400018: BaseLow
+    400020: Cube
+    400022: Ear.L
+    400024: Ear.L_end
+    400026: Ear.R
+    400028: Ear.R_end
+    400030: //RootNode
+    400032: Head
+    400034: Leg Lower.L
+    400036: Leg Lower.L_end
+    400038: Leg Lower.R
+    400040: Leg Lower.R_end
+    400042: Leg Upper.L
+    400044: Leg Upper.R
+    4300000: Cube
+    7400000: Base|Attack
+    7400002: Base|BaseAction
+    7400004: Base|Idle
+    7400006: Base|Knockback
+    7400008: Base|Pose
+    7400010: Base|Run
+    7400012: Base|ShinobiEntrance
+    7400014: Base|ShinobiWalk
+    9500000: //RootNode
+    13700000: Cube
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Base|Attack
+      takeName: Base|Attack
+      firstFrame: 0
+      lastFrame: 12
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Base
+        weight: 1
+      - path: Base/BaseLow
+        weight: 1
+      - path: Base/BaseLow/Base Middle
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Arm Upper.L
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Arm Upper.L/Arm Lower.L
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Arm Upper.L/Arm Lower.L/Arm Lower.L_end
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Arm Upper.R
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Arm Upper.R/Arm Lower.R
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Arm Upper.R/Arm Lower.R/Arm Lower.R_end
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head/Ear.L
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head/Ear.L/Ear.L_end
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head/Ear.R
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head/Ear.R/Ear.R_end
+        weight: 1
+      - path: Base/BaseLow/Leg Upper.L
+        weight: 1
+      - path: Base/BaseLow/Leg Upper.L/Leg Lower.L
+        weight: 1
+      - path: Base/BaseLow/Leg Upper.L/Leg Lower.L/Leg Lower.L_end
+        weight: 1
+      - path: Base/BaseLow/Leg Upper.R
+        weight: 1
+      - path: Base/BaseLow/Leg Upper.R/Leg Lower.R
+        weight: 1
+      - path: Base/BaseLow/Leg Upper.R/Leg Lower.R/Leg Lower.R_end
+        weight: 1
+      - path: Cube
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Base|BaseAction
+      takeName: Base|BaseAction
+      firstFrame: 0
+      lastFrame: 1
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Base
+        weight: 1
+      - path: Base/BaseLow
+        weight: 1
+      - path: Base/BaseLow/Base Middle
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Arm Upper.L
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Arm Upper.L/Arm Lower.L
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Arm Upper.L/Arm Lower.L/Arm Lower.L_end
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Arm Upper.R
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Arm Upper.R/Arm Lower.R
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Arm Upper.R/Arm Lower.R/Arm Lower.R_end
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head/Ear.L
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head/Ear.L/Ear.L_end
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head/Ear.R
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head/Ear.R/Ear.R_end
+        weight: 1
+      - path: Base/BaseLow/Leg Upper.L
+        weight: 1
+      - path: Base/BaseLow/Leg Upper.L/Leg Lower.L
+        weight: 1
+      - path: Base/BaseLow/Leg Upper.L/Leg Lower.L/Leg Lower.L_end
+        weight: 1
+      - path: Base/BaseLow/Leg Upper.R
+        weight: 1
+      - path: Base/BaseLow/Leg Upper.R/Leg Lower.R
+        weight: 1
+      - path: Base/BaseLow/Leg Upper.R/Leg Lower.R/Leg Lower.R_end
+        weight: 1
+      - path: Cube
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Base|Idle
+      takeName: Base|Idle
+      firstFrame: 0
+      lastFrame: 120
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Base
+        weight: 1
+      - path: Base/BaseLow
+        weight: 1
+      - path: Base/BaseLow/Base Middle
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Arm Upper.L
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Arm Upper.L/Arm Lower.L
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Arm Upper.L/Arm Lower.L/Arm Lower.L_end
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Arm Upper.R
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Arm Upper.R/Arm Lower.R
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Arm Upper.R/Arm Lower.R/Arm Lower.R_end
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head/Ear.L
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head/Ear.L/Ear.L_end
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head/Ear.R
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head/Ear.R/Ear.R_end
+        weight: 1
+      - path: Base/BaseLow/Leg Upper.L
+        weight: 1
+      - path: Base/BaseLow/Leg Upper.L/Leg Lower.L
+        weight: 1
+      - path: Base/BaseLow/Leg Upper.L/Leg Lower.L/Leg Lower.L_end
+        weight: 1
+      - path: Base/BaseLow/Leg Upper.R
+        weight: 1
+      - path: Base/BaseLow/Leg Upper.R/Leg Lower.R
+        weight: 1
+      - path: Base/BaseLow/Leg Upper.R/Leg Lower.R/Leg Lower.R_end
+        weight: 1
+      - path: Cube
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Base|Knockback
+      takeName: Base|Knockback
+      firstFrame: 0
+      lastFrame: 13
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Base
+        weight: 1
+      - path: Base/BaseLow
+        weight: 1
+      - path: Base/BaseLow/Base Middle
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Arm Upper.L
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Arm Upper.L/Arm Lower.L
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Arm Upper.L/Arm Lower.L/Arm Lower.L_end
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Arm Upper.R
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Arm Upper.R/Arm Lower.R
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Arm Upper.R/Arm Lower.R/Arm Lower.R_end
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head/Ear.L
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head/Ear.L/Ear.L_end
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head/Ear.R
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head/Ear.R/Ear.R_end
+        weight: 1
+      - path: Base/BaseLow/Leg Upper.L
+        weight: 1
+      - path: Base/BaseLow/Leg Upper.L/Leg Lower.L
+        weight: 1
+      - path: Base/BaseLow/Leg Upper.L/Leg Lower.L/Leg Lower.L_end
+        weight: 1
+      - path: Base/BaseLow/Leg Upper.R
+        weight: 1
+      - path: Base/BaseLow/Leg Upper.R/Leg Lower.R
+        weight: 1
+      - path: Base/BaseLow/Leg Upper.R/Leg Lower.R/Leg Lower.R_end
+        weight: 1
+      - path: Cube
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Base|Pose
+      takeName: Base|Pose
+      firstFrame: 0
+      lastFrame: 1
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Base
+        weight: 1
+      - path: Base/BaseLow
+        weight: 1
+      - path: Base/BaseLow/Base Middle
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Arm Upper.L
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Arm Upper.L/Arm Lower.L
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Arm Upper.L/Arm Lower.L/Arm Lower.L_end
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Arm Upper.R
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Arm Upper.R/Arm Lower.R
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Arm Upper.R/Arm Lower.R/Arm Lower.R_end
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head/Ear.L
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head/Ear.L/Ear.L_end
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head/Ear.R
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head/Ear.R/Ear.R_end
+        weight: 1
+      - path: Base/BaseLow/Leg Upper.L
+        weight: 1
+      - path: Base/BaseLow/Leg Upper.L/Leg Lower.L
+        weight: 1
+      - path: Base/BaseLow/Leg Upper.L/Leg Lower.L/Leg Lower.L_end
+        weight: 1
+      - path: Base/BaseLow/Leg Upper.R
+        weight: 1
+      - path: Base/BaseLow/Leg Upper.R/Leg Lower.R
+        weight: 1
+      - path: Base/BaseLow/Leg Upper.R/Leg Lower.R/Leg Lower.R_end
+        weight: 1
+      - path: Cube
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Base|Run
+      takeName: Base|Run
+      firstFrame: 0
+      lastFrame: 20
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Base
+        weight: 1
+      - path: Base/BaseLow
+        weight: 1
+      - path: Base/BaseLow/Base Middle
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Arm Upper.L
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Arm Upper.L/Arm Lower.L
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Arm Upper.L/Arm Lower.L/Arm Lower.L_end
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Arm Upper.R
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Arm Upper.R/Arm Lower.R
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Arm Upper.R/Arm Lower.R/Arm Lower.R_end
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head/Ear.L
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head/Ear.L/Ear.L_end
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head/Ear.R
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head/Ear.R/Ear.R_end
+        weight: 1
+      - path: Base/BaseLow/Leg Upper.L
+        weight: 1
+      - path: Base/BaseLow/Leg Upper.L/Leg Lower.L
+        weight: 1
+      - path: Base/BaseLow/Leg Upper.L/Leg Lower.L/Leg Lower.L_end
+        weight: 1
+      - path: Base/BaseLow/Leg Upper.R
+        weight: 1
+      - path: Base/BaseLow/Leg Upper.R/Leg Lower.R
+        weight: 1
+      - path: Base/BaseLow/Leg Upper.R/Leg Lower.R/Leg Lower.R_end
+        weight: 1
+      - path: Cube
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Base|ShinobiEntrance
+      takeName: Base|ShinobiEntrance
+      firstFrame: 0
+      lastFrame: 32
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Base
+        weight: 1
+      - path: Base/BaseLow
+        weight: 1
+      - path: Base/BaseLow/Base Middle
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Arm Upper.L
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Arm Upper.L/Arm Lower.L
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Arm Upper.L/Arm Lower.L/Arm Lower.L_end
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Arm Upper.R
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Arm Upper.R/Arm Lower.R
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Arm Upper.R/Arm Lower.R/Arm Lower.R_end
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head/Ear.L
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head/Ear.L/Ear.L_end
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head/Ear.R
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head/Ear.R/Ear.R_end
+        weight: 1
+      - path: Base/BaseLow/Leg Upper.L
+        weight: 1
+      - path: Base/BaseLow/Leg Upper.L/Leg Lower.L
+        weight: 1
+      - path: Base/BaseLow/Leg Upper.L/Leg Lower.L/Leg Lower.L_end
+        weight: 1
+      - path: Base/BaseLow/Leg Upper.R
+        weight: 1
+      - path: Base/BaseLow/Leg Upper.R/Leg Lower.R
+        weight: 1
+      - path: Base/BaseLow/Leg Upper.R/Leg Lower.R/Leg Lower.R_end
+        weight: 1
+      - path: Cube
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Base|ShinobiWalk
+      takeName: Base|ShinobiWalk
+      firstFrame: 0
+      lastFrame: 10
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Base
+        weight: 1
+      - path: Base/BaseLow
+        weight: 1
+      - path: Base/BaseLow/Base Middle
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Arm Upper.L
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Arm Upper.L/Arm Lower.L
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Arm Upper.L/Arm Lower.L/Arm Lower.L_end
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Arm Upper.R
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Arm Upper.R/Arm Lower.R
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Arm Upper.R/Arm Lower.R/Arm Lower.R_end
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head/Ear.L
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head/Ear.L/Ear.L_end
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head/Ear.R
+        weight: 1
+      - path: Base/BaseLow/Base Middle/Base High/Head/Ear.R/Ear.R_end
+        weight: 1
+      - path: Base/BaseLow/Leg Upper.L
+        weight: 1
+      - path: Base/BaseLow/Leg Upper.L/Leg Lower.L
+        weight: 1
+      - path: Base/BaseLow/Leg Upper.L/Leg Lower.L/Leg Lower.L_end
+        weight: 1
+      - path: Base/BaseLow/Leg Upper.R
+        weight: 1
+      - path: Base/BaseLow/Leg Upper.R/Leg Lower.R
+        weight: 1
+      - path: Base/BaseLow/Leg Upper.R/Leg Lower.R/Leg Lower.R_end
+        weight: 1
+      - path: Cube
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.5
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: BaseLow
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
