@@ -40,6 +40,8 @@ public class DeathCamera : AbstractCamera {
 	private bool m_initialZoom = true;
 	private float m_timeAcc = 0f;
 
+	private float m_showRotationDirection = 1f;
+
 	private Vector3 m_velocity = new Vector3();
 
 
@@ -64,7 +66,7 @@ public class DeathCamera : AbstractCamera {
 			}
 
 		} else {
-			m_azimuth += Mathf.Deg2Rad * m_showRotationSpeed * deltaTime;
+			m_azimuth += Mathf.Deg2Rad * m_showRotationSpeed * m_showRotationDirection * deltaTime;
 		}
 
 		Vector3 polar = Util.PolarToVector(m_distance, m_elevation, m_azimuth);
@@ -94,13 +96,14 @@ public class DeathCamera : AbstractCamera {
 
 		var azimuthDiff = m_targetAzimuth - m_initialAzimuth;
 		if (azimuthDiff > 180 * Mathf.Deg2Rad) {
-			azimuthDiff = 360 * Mathf.Deg2Rad - azimuthDiff;
+			azimuthDiff = -(360 * Mathf.Deg2Rad - azimuthDiff);
 
 		} else if (azimuthDiff < -180 * Mathf.Deg2Rad) {
 			azimuthDiff = 360 * Mathf.Deg2Rad + azimuthDiff;
 		}
 
 		m_targetAzimuth = m_initialAzimuth + azimuthDiff;
+		m_showRotationDirection = Mathf.Sign (m_targetAzimuth-m_initialAzimuth);
 
 		m_timeAcc = 0f;
 		m_initialZoom = true;
