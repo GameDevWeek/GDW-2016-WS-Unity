@@ -19,10 +19,12 @@ public class Shoot_Peanuts : MonoBehaviour {
 
     [SerializeField]
     private Transform m_shootOrigin;
+    private ElephantControl m_elephantControl;
 
     // Use this for initialization
     void Start() {
         peanutRigidbody = m_peanutPrefab.GetComponent<Rigidbody>();
+        m_elephantControl = GetComponent<ElephantControl>();
     }
 
     void Update() {
@@ -30,7 +32,7 @@ public class Shoot_Peanuts : MonoBehaviour {
     }
 
     public void Fire() {
-        if(! cooldown.IsOver() || ammo < 1) return;
+        if(!m_elephantControl.aiming || ! cooldown.IsOver() || ammo < 1) return;
 
         ammo -= 1;
         cooldown.Start();
