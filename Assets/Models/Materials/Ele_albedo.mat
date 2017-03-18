@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Ele_albedo
-  m_Shader: {fileID: 4800000, guid: 48dca5b99d113b8d11006bab44295342, type: 3}
+  m_Shader: {fileID: 4800000, guid: 1326d98c6ee2cab46a6f66d2466ca4ca, type: 3}
   m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 1
   m_CustomRenderQueue: -1
@@ -78,7 +78,7 @@ Material:
     - first:
         name: _Ramp
       second:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: cd0e8ee65df908d4aa7125116177efc8, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
