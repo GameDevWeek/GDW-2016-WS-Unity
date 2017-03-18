@@ -1392,6 +1392,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5c475f94aa81594fbd1621700461dcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_destructableName: Vase
   m_completeObject: {fileID: 1034012563282052}
   m_destrucedObject: {fileID: 1283180964413352}
 --- !u!114 &114009519649868230
@@ -1793,6 +1794,8 @@ MonoBehaviour:
   m_affectedLayer:
     serializedVersion: 2
     m_Bits: 4294967295
+  m_allowPlayingSounds: 1
+  priority: 0
 --- !u!114 &114824309597407294
 MonoBehaviour:
   m_ObjectHideFlags: 1

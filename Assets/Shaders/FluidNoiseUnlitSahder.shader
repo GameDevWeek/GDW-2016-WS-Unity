@@ -1,8 +1,9 @@
-﻿Shader "Unlit/NewUnlitShader"
+﻿Shader "Toon/Lit Simple Fluid"
 {
 	Properties
 	{
 		_MainTex ("Texture", 2D) = "white" {}
+		_NormalMap("Normal Map (RGB)", 2D) = "bump" {}
 	}
 	SubShader
 	{
@@ -77,6 +78,7 @@
 			};
 
 			sampler2D _MainTex;
+			sampler2D _NormalMap;
 			float4 _MainTex_ST;
 			
 			v2f vert (appdata v)
