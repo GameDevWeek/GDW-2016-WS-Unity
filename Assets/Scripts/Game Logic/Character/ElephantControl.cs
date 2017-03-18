@@ -175,6 +175,8 @@ public class ElephantControl : MonoBehaviour {
 
     private void FixedUpdate() {
         if (!m_character.CanMove()) {
+            m_character.Move(Vector3.zero, false);
+            m_character.StopSprint();
             return;
         }
 
