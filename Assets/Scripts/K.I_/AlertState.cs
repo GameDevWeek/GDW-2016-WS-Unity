@@ -7,11 +7,7 @@ public class AlertState : IEnemyState {
 
     private readonly StatePatternEnemy enemy;
     private float searchTimer;
-    private WantedLevel m_wantedLevel;
 
-    void OnStart() {
-        m_wantedLevel = GameObject.FindObjectOfType<WantedLevel>();
-    }
     public AlertState(StatePatternEnemy statePatternEnemy)
     {
         enemy = statePatternEnemy;
@@ -61,7 +57,7 @@ public class AlertState : IEnemyState {
             enemy.chaseTarget = hit.transform;
 
             enemy.navMeshAgent.SetDestination(enemy.targetPos);
-            m_wantedLevel.RaiseWantedLevel();
+            enemy.wantedLevel.RaiseWantedLevel();
             ToChaseState();
         }
     }
