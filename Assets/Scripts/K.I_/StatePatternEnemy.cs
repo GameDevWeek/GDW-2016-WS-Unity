@@ -71,6 +71,7 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
         {
             enemyAnimator.SetFloat("BlendSpeed", (float) (navMeshAgent.velocity.magnitude/chaseSpeed));
         }
+        //Debug.Log(navMeshAgent.velocity.magnitude);
 
 
     }
