@@ -283,21 +283,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 114346677199836808, guid: a11f4e40c62fde94cb98110341f0a50f,
-        type: 2}
-      propertyPath: lookObj
-      value: 
-      objectReference: {fileID: 1588293270}
-    - target: {fileID: 114848429992145910, guid: a11f4e40c62fde94cb98110341f0a50f,
-        type: 2}
-      propertyPath: particlePrefab
-      value: 
-      objectReference: {fileID: 2098443468}
-    - target: {fileID: 114848429992145910, guid: a11f4e40c62fde94cb98110341f0a50f,
-        type: 2}
-      propertyPath: sprintParticles
-      value: 
-      objectReference: {fileID: 2098443471}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a11f4e40c62fde94cb98110341f0a50f, type: 2}
   m_IsPrefabParent: 0
@@ -2350,48 +2335,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4803463186091220, guid: 5aac8364e9652e942bbcad7084c18add,
     type: 2}
   m_PrefabInternal: {fileID: 1428597524}
---- !u!1001 &583779099
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1096706308}
-    m_Modifications:
-    - target: {fileID: 4227314980305470, guid: 71cafebd45cc21445bca4ac8cabe4a7e, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4227314980305470, guid: 71cafebd45cc21445bca4ac8cabe4a7e, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4227314980305470, guid: 71cafebd45cc21445bca4ac8cabe4a7e, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4227314980305470, guid: 71cafebd45cc21445bca4ac8cabe4a7e, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 4227314980305470, guid: 71cafebd45cc21445bca4ac8cabe4a7e, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4227314980305470, guid: 71cafebd45cc21445bca4ac8cabe4a7e, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4227314980305470, guid: 71cafebd45cc21445bca4ac8cabe4a7e, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 4227314980305470, guid: 71cafebd45cc21445bca4ac8cabe4a7e, type: 2}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 71cafebd45cc21445bca4ac8cabe4a7e, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1001 &594758943
 Prefab:
   m_ObjectHideFlags: 0
@@ -2631,6 +2574,9 @@ MonoBehaviour:
   targetPos: {x: 0, y: 0, z: 0}
   chaseTarget: {fileID: 0}
   navMeshAgent: {fileID: 0}
+  audioSource: {fileID: 0}
+  enterChase: []
+  exitChase: []
 --- !u!23 &604912602
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2699,6 +2645,8 @@ MonoBehaviour:
   m_positionOffset: {x: 0, y: 0, z: 0}
   m_useDefaultInteractionRange: 0
   m_interactionRange: 3
+  interactionIcon: {fileID: 0}
+  interactionIconScale: 1
   useInteractionRangeOnly: 0
   ignoreRaycastVisibility: 0
   m_cooldown:
@@ -2706,6 +2654,7 @@ MonoBehaviour:
   m_stunDuration:
     m_timeInSeconds: 5
   m_backAngle: 30
+  stunEnemyHitSound: {fileID: 0}
 --- !u!1 &608055609
 GameObject:
   m_ObjectHideFlags: 0
@@ -6005,11 +5954,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114364450268544510, guid: e904190bad439714da2f178909463f45,
-        type: 2}
-      propertyPath: m_stunDuration
-      value: 5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e904190bad439714da2f178909463f45, type: 2}
   m_IsPrefabParent: 0
@@ -7310,11 +7254,6 @@ Transform:
   m_Father: {fileID: 983464297}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &1588293270 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4677023805961734, guid: e904190bad439714da2f178909463f45,
-    type: 2}
-  m_PrefabInternal: {fileID: 1264992399}
 --- !u!1001 &1590850806
 Prefab:
   m_ObjectHideFlags: 0
@@ -7620,7 +7559,7 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1634218726}
-  m_LocalRotation: {x: 0.5326752, y: 0.070340455, z: 0.83613276, w: -0.110415146}
+  m_LocalRotation: {x: 0.53267515, y: 0.07034045, z: 0.83613265, w: -0.11041513}
   m_LocalPosition: {x: 0.000022271464, y: -0.00006150465, z: 0.026027026}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -7679,9 +7618,12 @@ MonoBehaviour:
   m_positionOffset: {x: 0, y: 0, z: 0}
   m_useDefaultInteractionRange: 0
   m_interactionRange: 3
+  interactionIcon: {fileID: 0}
+  interactionIconScale: 1
   useInteractionRangeOnly: 0
   ignoreRaycastVisibility: 0
   ScoreValue: 199
+  collectionSound: {fileID: 0}
   m_collectableName: Jade Elefant
 --- !u!135 &1645117671
 SphereCollider:
@@ -8441,6 +8383,7 @@ MonoBehaviour:
   m_sprintSpeed: 2
   m_sprintAnimSpeedMultiplier: 2
   m_sprintCapsule: {fileID: 0}
+  allowToMove: 1
 --- !u!114 &1853797362
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8703,6 +8646,7 @@ MonoBehaviour:
   cooldown:
     m_timeInSeconds: 1
   ammo: 0
+  m_shootOrigin: {fileID: 0}
 --- !u!114 &1853797372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8724,6 +8668,7 @@ MonoBehaviour:
     m_Bits: 4294967295
   m_interactionRange: 3
   m_use2DDistance: 1
+  interactionIconPrefab: {fileID: 0}
 --- !u!1001 &1855943391
 Prefab:
   m_ObjectHideFlags: 0
@@ -9167,6 +9112,7 @@ MonoBehaviour:
   m_sprintSpeed: 2
   m_sprintAnimSpeedMultiplier: 2
   m_sprintCapsule: {fileID: 0}
+  allowToMove: 1
 --- !u!114 &2011954425
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9472,6 +9418,7 @@ MonoBehaviour:
   cooldown:
     m_timeInSeconds: 1
   ammo: 0
+  m_shootOrigin: {fileID: 0}
 --- !u!114 &2011954434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9831,16 +9778,6 @@ Transform:
   m_Father: {fileID: 732431194}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2098443468 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1864619623521456, guid: 71cafebd45cc21445bca4ac8cabe4a7e,
-    type: 2}
-  m_PrefabInternal: {fileID: 583779099}
---- !u!198 &2098443471 stripped
-ParticleSystem:
-  m_PrefabParentObject: {fileID: 198421318594291132, guid: 71cafebd45cc21445bca4ac8cabe4a7e,
-    type: 2}
-  m_PrefabInternal: {fileID: 583779099}
 --- !u!1 &2114469797
 GameObject:
   m_ObjectHideFlags: 0

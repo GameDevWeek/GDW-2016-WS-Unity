@@ -427,8 +427,8 @@ GameObject:
   - component: {fileID: 114523559530140102}
   - component: {fileID: 114848429992145910}
   - component: {fileID: 114548738031474726}
-  - component: {fileID: 114346677199836808}
   - component: {fileID: 114976065638104096}
+  - component: {fileID: 114314892893392030}
   m_Layer: 9
   m_Name: Elephant_New
   m_TagString: Player
@@ -565,7 +565,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1730462747054338}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: 0}
+  m_LocalPosition: {x: 0, y: 1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4592235420952300}
@@ -1060,7 +1060,23 @@ MonoBehaviour:
   m_destroy_Peanut_On_Collison: 1
   cooldown:
     m_timeInSeconds: 1
-  ammo: 0
+  ammo: 30
+  m_shootOrigin: {fileID: 4967942519144176}
+--- !u!114 &114314892893392030
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1960445719896116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c577f9d67604104f8234b7ac65dc81a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_head: {fileID: 4757996545322734}
+  updateHeadRotation: 0
+  desiredAngleInDeg: 0
+  headRotationSpeed: 360
 --- !u!114 &114316476566176562
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1072,27 +1088,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6a3ac984c093f84ba5feaf6c45e4da3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114346677199836808
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1960445719896116}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 997b88a39604d1c4dbc881074433a6cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ikActive: 0
-  rightHandObj: {fileID: 0}
-  leftHandObj: {fileID: 0}
-  lookObj: {fileID: 0}
-  lerpTimeLeftHand: 0
-  lerpTimeRightHand: 0
-  lerpTimeLookAt: 0
-  lerpTimeMultiplierLeftHand: 1
-  lerpTimeMultiplierRightHand: 1
-  lerpTimeMultiplierLookAt: 1
 --- !u!114 &114384192857228890
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1202,6 +1197,7 @@ MonoBehaviour:
   m_sprintSpeed: 3
   m_sprintAnimSpeedMultiplier: 3
   m_sprintCapsule: {fileID: 136976148551470844}
+  allowToMove: 1
 --- !u!114 &114829760651984464
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1239,8 +1235,10 @@ MonoBehaviour:
   collider: {fileID: 136266747651252150}
   shootPeanuts: {fileID: 114302045587487728}
   camouflageController: {fileID: 114548738031474726}
-  particlePrefab: {fileID: 0}
-  sprintParticles: {fileID: 0}
+  particlePrefab: {fileID: 1864619623521456, guid: 71cafebd45cc21445bca4ac8cabe4a7e,
+    type: 2}
+  sprintParticles: {fileID: 198421318594291132, guid: 71cafebd45cc21445bca4ac8cabe4a7e,
+    type: 2}
 --- !u!114 &114850527267441736
 MonoBehaviour:
   m_ObjectHideFlags: 1
