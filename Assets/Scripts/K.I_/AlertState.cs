@@ -40,9 +40,10 @@ public class AlertState : IEnemyState {
         enemy.currentState = enemy.chaseState;
         searchTimer = 0f;
         enemy.navMeshAgent.speed = enemy.chaseSpeed;
+        enemy.camouflageInRange();
     }
 
-    
+
 
     private void Look()
     {
@@ -53,7 +54,6 @@ public class AlertState : IEnemyState {
 
             enemy.navMeshAgent.SetDestination(enemy.targetPos);
             WantedLevel.Instance.RaiseWantedLevel();
-            enemy.camouflageInRange(hit);
             ToChaseState();
         }
     }

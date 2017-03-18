@@ -196,7 +196,7 @@ public class ElephantControl : MonoBehaviour {
 
     private void Update() {
         if (m_autoDetectControlsMode) {
-            if (Input.GetJoystickNames().Length > 0) {
+            if (Input.GetJoystickNames().Length > 0 && Input.GetJoystickNames()[0].Contains("Controller")) {
                 controlsMode = ControlsMode.Controller;
             } else {
                 controlsMode = ControlsMode.KeyboardMouse;
