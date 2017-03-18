@@ -21,10 +21,14 @@ public class EnemyInteractable : Interactable {
     public delegate void StunEvent(StunEventData data);
     public static event StunEvent OnStun;
 
+    private float time_stunned = 0f;
+    private static float maxStunTime;
+    public static event Action<float> stunTimeArchieved;
+
     [SerializeField]
     private Cooldown m_cooldown = new Cooldown(0.5f);
     [SerializeField]
-    private float m_stunDuration = 5.0f;
+    private Cooldown m_stunDuration = new Cooldown(5.0f);
 
     [SerializeField]
     private float m_backAngle = 30.0f;
@@ -32,6 +36,17 @@ public class EnemyInteractable : Interactable {
 
     void Update() {
         m_cooldown.Update(Time.deltaTime);
+
+        if (Stunned()) {
+            time_stunned += Time.deltaTime;
+
+            if (time_stunned > maxStunTime) {
+                maxStunTime = time_stunned;
+                if (stunTimeArchieved != null) stunTimeArchieved.Invoke(maxStunTime);
+            }
+
+
+        }
     }
 
 #if UNITY_EDITOR
@@ -66,7 +81,12 @@ public class EnemyInteractable : Interactable {
         stateEnemy.StopMovement();
         stateEnemy.enabled = false;
         navMeshAgent.enabled = false;
-        yield return new WaitForSeconds(m_stunDuration);
+        while (!m_stunDuration.IsOver()) {
+            m_stunDuration.Update(Time.deltaTime);
+            yield return null;
+        }
+
+        m_stunDuration.Start();
         stateEnemy.enabled = true;
         navMeshAgent.enabled = true;
         m_stunRoutine = null;
@@ -79,5 +99,11 @@ public class EnemyInteractable : Interactable {
 
     public bool Stunned() {
         return m_stunRoutine != null;
+    }
+
+    public Cooldown stunDuration {
+        get {
+            return m_stunDuration;
+        }
     }
 }

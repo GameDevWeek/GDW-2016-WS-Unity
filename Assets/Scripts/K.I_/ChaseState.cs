@@ -33,6 +33,7 @@ public class ChaseState : IEnemyState
     {
         enemy.currentState = enemy.alertState;
         enemy.navMeshAgent.speed = enemy.standartSpeed;
+        enemy.camouflageNotInRange();
     }
 
     public void ToChaseState()
@@ -48,11 +49,9 @@ public class ChaseState : IEnemyState
         {
             enemy.chaseTarget = hit.transform;
             WantedLevel.Instance.RaiseWantedLevel();
-            enemy.camouflageInRange(hit);
         }
         else
         {
-            enemy.camouflageNotInRange();
             ToAlertState();
         }
     }

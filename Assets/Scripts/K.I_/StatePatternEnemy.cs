@@ -33,7 +33,7 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
     [HideInInspector] public NavMeshAgent navMeshAgent;
 
     private Animator enemyAnimator;
-    
+    private ElephantMovement elephantMovement;
 
     private void Awake()
     {
@@ -45,6 +45,13 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
         navMeshAgent.speed = standartSpeed;
 
         enemyAnimator = GetComponent<Animator>();
+        elephantMovement = PlayerActor.Instance.GetComponent<ElephantMovement>();
+
+        if (wayPoints == null)
+            wayPoints = new Waypoints() {
+                points = new []{transform.position},
+                pairs = new []{new Pair() }
+            };
     }
 
     void OnValidate() {
@@ -65,6 +72,7 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
         {
             enemyAnimator.SetFloat("BlendSpeed", (float) (navMeshAgent.velocity.magnitude/chaseSpeed));
         }
+        //Debug.Log(navMeshAgent.velocity.magnitude);
 
 
     }
@@ -122,13 +130,13 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
     }
 
 
-    public void camouflageInRange(RaycastHit hit)
+    public void camouflageInRange()
     {
         camouflage = PlayerActor.Instance.GetComponent<CamouflageController>();
         if (camouflage != null)
         {
             camouflage.EnemyInRange(this.gameObject);
-            Debug.Log("Can't camouflage!");
+            // Debug.Log("Can't camouflage!");
         }
     }
 
@@ -137,7 +145,7 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
         if (camouflage != null)
         {
             camouflage.EnemyOutOfRange(this.gameObject);
-            Debug.Log("Can camouflage now!");
+            //Debug.Log("Can camouflage now!");
         }
     }
 
@@ -145,7 +153,7 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
     {
         Vector3 enemyToPlayer = PlayerActor.Instance.transform.position - transform.position;
         float playerDistance = enemyToPlayer.magnitude;
-        if (playerDistance <= sightRange)
+        if (playerDistance <= sightRange && !elephantMovement.IsInStonePose())
         {
             float angleDistance = Vector3.Angle(enemyToPlayer, transform.forward);
             if (angleDistance < fieldOfView * 0.5f)
