@@ -1,0 +1,10 @@
+
+
+READ ME
+
+
+Die fbx Dateien sind soweit es geht final.
+Falls ein altes Model ersetzt wird, wird es mit dem gleichen Namen hochgeladen und hinten wird eine 1 / 2 / ... angefügt. 
+Die Jeweils höchste Zahl zeigt die aktuellste Iteration und somit das In Game Model.
+
+Alle Modele die zersplittern sollen liegen als normales mesh  'Vase.fbx'  und  'Vase_split.fbx' vor.
