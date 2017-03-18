@@ -139,7 +139,7 @@ GameObject:
   - component: {fileID: 14745765}
   - component: {fileID: 14745764}
   - component: {fileID: 14745763}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2647,9 +2647,11 @@ MonoBehaviour:
   m_useDefaultInteractionRange: 0
   m_interactionRange: 3
   useInteractionRangeOnly: 0
+  ignoreRaycastVisibility: 0
   m_cooldown:
     m_timeInSeconds: 0.5
-  m_stunDuration: 0.5
+  m_stunDuration:
+    m_timeInSeconds: 5
   m_backAngle: 30
 --- !u!1 &608055609
 GameObject:
@@ -4080,7 +4082,7 @@ GameObject:
   - component: {fileID: 935360300}
   - component: {fileID: 935360299}
   - component: {fileID: 935360298}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Cube (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6800,7 +6802,7 @@ GameObject:
   - component: {fileID: 1500960830}
   - component: {fileID: 1500960829}
   - component: {fileID: 1500960828}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7613,6 +7615,7 @@ MonoBehaviour:
   m_useDefaultInteractionRange: 0
   m_interactionRange: 3
   useInteractionRangeOnly: 0
+  ignoreRaycastVisibility: 0
   ScoreValue: 199
 --- !u!4 &1646202122 stripped
 Transform:
@@ -8619,6 +8622,9 @@ MonoBehaviour:
   m_lifeSpan: 3
   m_offset: {x: 0, y: 1, z: 1}
   m_destroy_Peanut_On_Collison: 1
+  cooldown:
+    m_timeInSeconds: 1
+  ammo: 0
 --- !u!114 &1853797372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9385,6 +9391,9 @@ MonoBehaviour:
   m_lifeSpan: 3
   m_offset: {x: 0, y: 1, z: 1}
   m_destroy_Peanut_On_Collison: 1
+  cooldown:
+    m_timeInSeconds: 1
+  ammo: 0
 --- !u!114 &2011954434
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4803463186091220}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Wand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,7 +37,7 @@ GameObject:
   - component: {fileID: 33863281960799788}
   - component: {fileID: 23369619966085836}
   - component: {fileID: 65988965335561454}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
