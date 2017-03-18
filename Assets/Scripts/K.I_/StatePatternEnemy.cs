@@ -154,6 +154,9 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
 
     public void Inform(NoiseSourceData data)    //Wenn ich im PatrolState etwas höre laufe ich auf
     {
+        if (!enabled) {
+            return;
+        }
 
         if (currentState == patrolState)
         {
