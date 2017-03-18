@@ -13,6 +13,7 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
     public float toleratedSightrange = 5f;      //Muss kleiner sein als sightRange!!!
     public float fieldOfView = 90;
     public float stoppingTime = 2f;
+    public float playerIsCaughtDistance = 4f;
 
     public Waypoints wayPoints;
     [HideInInspector] public int currentWaypoint;
@@ -34,6 +35,22 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
 
     private Animator enemyAnimator;
     private ElephantMovement elephantMovement;
+    private bool caughtThePlayer;
+
+    //---Caught event stuff-----
+    public struct CaughtEventData
+    {
+        public bool caught;
+        public CaughtEventData(bool caught)
+        {
+            this.caught = caught;
+        }
+    }
+
+    public delegate void CaughtEvent(CaughtEventData data);
+    public static event CaughtEvent OnCaught;
+
+    //----------------------------
 
     private void Awake()
     {
@@ -184,5 +201,14 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
         }
         hit = new RaycastHit();
         return false;
+    }
+
+    public void caughtPlayer()
+    {
+        caughtThePlayer = true;
+        if (OnCaught != null)
+        {
+            OnCaught(new CaughtEventData(caughtThePlayer));
+        }
     }
 }
