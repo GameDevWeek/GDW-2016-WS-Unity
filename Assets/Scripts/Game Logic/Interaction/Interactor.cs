@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -22,6 +23,10 @@ public class Interactor : MonoBehaviour {
     private Interactable m_curInteractable;
     [SerializeField]
     private bool m_use2DDistance = true;
+    [SerializeField]
+    private SpriteRenderer interactionIconPrefab;
+
+    private SpriteRenderer interactionIcon;
 
     public Vector3 position {
         get {
@@ -114,6 +119,11 @@ public class Interactor : MonoBehaviour {
         }
     }
 
+    private void LateUpdate()
+    {
+        UpdateInteractionIcon();
+    }
+
     public void InteractionRequest() {
         if (m_curInteractable == null) {
             return;
@@ -128,5 +138,27 @@ public class Interactor : MonoBehaviour {
         Vector3 delta = Vector3.ProjectOnPlane(otherPos - position, Vector3.up);
 
         return Vector3.Angle(transform.forward, delta);
+    }
+
+    private void UpdateInteractionIcon()
+    {
+        if (m_curInteractable)
+        {
+            if (!interactionIcon)
+            {
+                interactionIcon = Instantiate(interactionIconPrefab.gameObject).GetComponent<SpriteRenderer>();
+            }
+            interactionIcon.transform.position = Camera.main.transform.position + ((m_curInteractable.position + new Vector3(0.9f, 0, 0.9f)) - Camera.main.transform.position).normalized * 1f;
+            interactionIcon.sprite = m_curInteractable.Icon;
+            interactionIcon.transform.localScale = interactionIconPrefab.transform.localScale * m_curInteractable.IconScale;
+        }
+        else
+        {
+            if (interactionIcon)
+            {
+                Destroy(interactionIcon.gameObject);
+                interactionIcon = null;
+            }
+        }
     }
 }
