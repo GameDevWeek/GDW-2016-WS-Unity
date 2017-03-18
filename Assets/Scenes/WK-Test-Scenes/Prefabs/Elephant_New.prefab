@@ -1217,7 +1217,7 @@ MonoBehaviour:
   m_positionOffset: {x: 0, y: 0, z: 0}
   m_interactionBlockerMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 8192
   m_interactableLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295

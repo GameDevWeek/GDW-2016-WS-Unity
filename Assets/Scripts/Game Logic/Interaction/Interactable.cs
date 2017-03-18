@@ -15,6 +15,8 @@ public abstract class Interactable : MonoBehaviour {
     [Tooltip("Line of sight and view angle of the interactor will be ignored.")]
     public bool useInteractionRangeOnly = false;
 
+    public bool ignoreRaycastVisibility = false;
+
     public Vector3 positionOffset {
         get { return m_positionOffset; }
         set { m_positionOffset = value; }
