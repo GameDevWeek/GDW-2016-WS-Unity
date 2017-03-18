@@ -1,0 +1,132 @@
+fileFormatVersion: 2
+guid: 5f6d3e820fac84213a4ec4176c2b639d
+timeCreated: 1489845590
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Arm Lower.L
+    100002: Arm Lower.L_end
+    100004: Arm Lower.R
+    100006: Arm Lower.R_end
+    100008: Arm Upper.L
+    100010: Arm Upper.R
+    100012: Base
+    100014: Base High
+    100016: Base Middle
+    100018: BaseLow
+    100020: Cube
+    100022: Ear.L
+    100024: Ear.L_end
+    100026: Ear.R
+    100028: Ear.R_end
+    100030: //RootNode
+    100032: Head
+    100034: Leg Lower.L
+    100036: Leg Lower.L_end
+    100038: Leg Lower.R
+    100040: Leg Lower.R_end
+    100042: Leg Upper.L
+    100044: Leg Upper.R
+    400000: Arm Lower.L
+    400002: Arm Lower.L_end
+    400004: Arm Lower.R
+    400006: Arm Lower.R_end
+    400008: Arm Upper.L
+    400010: Arm Upper.R
+    400012: Base
+    400014: Base High
+    400016: Base Middle
+    400018: BaseLow
+    400020: Cube
+    400022: Ear.L
+    400024: Ear.L_end
+    400026: Ear.R
+    400028: Ear.R_end
+    400030: //RootNode
+    400032: Head
+    400034: Leg Lower.L
+    400036: Leg Lower.L_end
+    400038: Leg Lower.R
+    400040: Leg Lower.R_end
+    400042: Leg Upper.L
+    400044: Leg Upper.R
+    4300000: Cube
+    7400000: Base|Attack
+    7400002: Base|BaseAction
+    7400004: Base|Idle
+    7400006: Base|Knockback
+    7400008: Base|Pose
+    7400010: Base|Run
+    7400012: Base|ShinobiEntrance
+    7400014: Base|ShinobiWalk
+    9500000: //RootNode
+    13700000: Cube
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

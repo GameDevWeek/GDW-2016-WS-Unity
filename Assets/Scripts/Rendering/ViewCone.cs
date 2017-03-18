@@ -10,6 +10,8 @@ public class ViewCone : MonoBehaviour {
 
 	public float MainViewRadius { get{return mainViewRadius;} set{mainViewRadius = value;} }
 	public float FullViewRadius { get{return fullViewRadius;} set{fullViewRadius=value;} }
+    public float FieldOfView { get { return fieldOfView; } set { fieldOfView = value; } }
+    public float ConeAlpha { get; set; }
 
 	[SerializeField]
 	private float mainViewRadius = 0;
@@ -47,6 +49,7 @@ public class ViewCone : MonoBehaviour {
 
     private void Start()
     {
+        ConeAlpha = 1f;
         vertices = new Vector3[nrOfRaycasts * 2 + 1];
         normals = new Vector3[nrOfRaycasts * 2 + 1];
         uv = new Vector2[nrOfRaycasts * 2 + 1];
@@ -145,15 +148,21 @@ public class ViewCone : MonoBehaviour {
     /// <param name="t">Value between 0 and 1. 1 Means fully alarmed.</param>
     public void setAlarmed(bool isAlarmed, float t)
     {
+        Color colorMain;
+        Color colorOuter;
         if (isAlarmed)
         {
-            meshRenderer.materials[0].color = colorAlarmed;
-            meshRenderer.materials[1].color = colorOuterAlarmed * (1 - t) + colorAlarmed * t;
+            colorMain = colorAlarmed;
+            colorOuter = colorOuterAlarmed * (1 - t) + colorAlarmed * t;
         }
         else
         {
-            meshRenderer.materials[0].color = colorDefault;
-            meshRenderer.materials[1].color = colorOuterDefault;
+            colorMain = colorDefault;
+            colorOuter = colorOuterDefault;
         }
+        colorMain.a *= ConeAlpha;
+        colorOuter.a *= ConeAlpha;
+        meshRenderer.materials[0].color = colorMain;
+        meshRenderer.materials[1].color = colorOuter;
     }
 }

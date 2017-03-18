@@ -5,13 +5,18 @@ using UnityEngine;
 public class PedestalInteractable : Interactable
 {
     private CamouflageController _camouflageController;
+    private PlayerActor m_playerActor;
+
+    private void Start() {
+        m_playerActor = GameObject.FindObjectOfType<PlayerActor>();
+    }
 
     private CamouflageController GetCamouflageController()
     {
         if (_camouflageController != null) return _camouflageController;
 
         // try to get instance
-        _camouflageController = PlayerActor.Instance.gameObject.GetComponent<CamouflageController>();
+        _camouflageController = m_playerActor.gameObject.GetComponent<CamouflageController>();
 
         if (_camouflageController == null)
         {

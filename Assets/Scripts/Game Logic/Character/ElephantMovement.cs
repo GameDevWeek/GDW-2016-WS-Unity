@@ -32,6 +32,7 @@ public class ElephantMovement : MonoBehaviour {
     [SerializeField]
     CapsuleCollider m_sprintCapsule;
     bool m_crouching;
+    public bool allowToMove=true;
 
     void Start() {
         m_animator = GetComponent<Animator>();
@@ -154,7 +155,8 @@ public class ElephantMovement : MonoBehaviour {
     }
 
     public bool CanMove() {
-        return !IsInStonePose() && !IsStunned() && !IsPunching() && !GaveUp();
+        
+        return allowToMove && !IsInStonePose() && !IsStunned() && !IsPunching() && !GaveUp();
     }
 
     public bool IsPunching() {

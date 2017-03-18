@@ -3,6 +3,7 @@ using Assets.Scripts.K.I_;
 using UnityEngine;
 using UnityEngine.AI;
 
+[RequireComponent(typeof(AudioSource))]
 public class StatePatternEnemy : MonoBehaviour, INoiseListener {
 
     public float standartSpeed = 2;
@@ -36,6 +37,13 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
     private Animator enemyAnimator;
     private ElephantMovement elephantMovement;
     private bool caughtThePlayer;
+    private bool firstWantedUp;
+    public PlayerActor playerActor;
+    public WantedLevel wantedLevel;
+
+    public AudioSource audioSource;
+    public AudioClip[] enterChase;
+    public AudioClip[] exitChase;
 
     //---Caught event stuff-----
     public struct CaughtEventData
@@ -52,8 +60,11 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
 
     //----------------------------
 
-    private void Awake()
-    {
+    private void Awake() {
+        audioSource = GetComponent<AudioSource>();
+        playerActor = GameObject.FindObjectOfType<PlayerActor>();
+        wantedLevel = GameObject.FindObjectOfType<WantedLevel>();
+
         chaseState = new ChaseState(this);
         alertState = new AlertState(this);
         patrolState = new PatrolState(this);
@@ -62,7 +73,7 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
         navMeshAgent.speed = standartSpeed;
 
         enemyAnimator = GetComponent<Animator>();
-        elephantMovement = PlayerActor.Instance.GetComponent<ElephantMovement>();
+        elephantMovement = playerActor.GetComponent<ElephantMovement>();
 
         if (wayPoints == null)
             wayPoints = new Waypoints() {
@@ -81,17 +92,24 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
 
         viewCone.MainViewRadius = toleratedSightrange;
         viewCone.FullViewRadius = sightRange;
+        viewCone.FieldOfView = fieldOfView;
     }
 
     void Update() {
         currentState.UpdateState();
+
+        //Stuff für den Animator
         if (currentState != alertState && enemyAnimator != null)
         {
             enemyAnimator.SetFloat("BlendSpeed", (float) (navMeshAgent.velocity.magnitude/chaseSpeed));
         }
-        //Debug.Log(navMeshAgent.velocity.magnitude);
 
-
+        //WantedLvl abfrage
+       if( wantedLevel.currentWantedStage > 0 && !firstWantedUp )
+        {
+            WantedLvlUp();
+            firstWantedUp = true;
+        }
     }
 
     public void StopMovement() {
@@ -107,13 +125,20 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
     {
         searchingTurnSpeed += 20f;
         sightRange += 5f;
-
+        toleratedSightrange += 5f;
+        viewCone.FieldOfView += 30f;
+        viewCone.FullViewRadius += 5f;
+        viewCone.MainViewRadius += 5f;
     }
 
     public void WantedLvlDown()
     {
         searchingTurnSpeed -= 20f;
         sightRange -= 5f;
+        toleratedSightrange -= 5f;
+        viewCone.FieldOfView -= 30f;
+        viewCone.FullViewRadius -= 5f;
+        viewCone.MainViewRadius -= 5f;
     }
 
     private void OnDrawGizmos() {
@@ -149,7 +174,7 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
 
     public void camouflageInRange()
     {
-        camouflage = PlayerActor.Instance.GetComponent<CamouflageController>();
+        camouflage = playerActor.GetComponent<CamouflageController>();
         if (camouflage != null)
         {
             camouflage.EnemyInRange(this.gameObject);
@@ -168,22 +193,22 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
 
     public bool canSeePlayer(out RaycastHit hit)
     {
-        Vector3 enemyToPlayer = PlayerActor.Instance.transform.position - transform.position;
+        Vector3 enemyToPlayer = playerActor.transform.position - transform.position;
         float playerDistance = enemyToPlayer.magnitude;
         if (playerDistance <= sightRange && !elephantMovement.IsInStonePose())
         {
             float angleDistance = Vector3.Angle(enemyToPlayer, transform.forward);
             if (angleDistance < fieldOfView * 0.5f)
             {
-                float playerWidth = ((CapsuleCollider)PlayerActor.Instance.collider).radius;
+                float playerWidth = ((CapsuleCollider)playerActor.collider).radius;
 
                 Vector3 enemyToPlayerOrtho = new Vector3(enemyToPlayer.z, enemyToPlayer.y, -enemyToPlayer.x).normalized;
-                Vector3 playerPosLeft = PlayerActor.Instance.transform.position - enemyToPlayerOrtho * 0.5f * playerWidth;
-                Vector3 playerPosRight = PlayerActor.Instance.transform.position + enemyToPlayerOrtho * 0.5f * playerWidth;
+                Vector3 playerPosLeft = playerActor.transform.position - enemyToPlayerOrtho * 0.5f * playerWidth;
+                Vector3 playerPosRight = playerActor.transform.position + enemyToPlayerOrtho * 0.5f * playerWidth;
 
                 Debug.DrawLine(transform.position, playerPosRight, Color.green);
                 Debug.DrawLine(transform.position, playerPosLeft, Color.green);
-                Debug.DrawLine(transform.position, PlayerActor.Instance.transform.position, Color.green);
+                Debug.DrawLine(transform.position, playerActor.transform.position, Color.green);
 
                 if ((Physics.Raycast(eyes.transform.position, enemyToPlayer.normalized, out hit, sightRange, viewBlockingLayers) &&
                     (hit.collider.CompareTag("Player"))))

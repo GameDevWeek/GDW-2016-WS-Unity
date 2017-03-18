@@ -17,9 +17,14 @@ public class Shoot_Peanuts : MonoBehaviour {
     public Cooldown cooldown= new Cooldown(1f);
     public int ammo = 0;
 
+    [SerializeField]
+    private Transform m_shootOrigin;
+    private ElephantControl m_elephantControl;
+
     // Use this for initialization
     void Start() {
         peanutRigidbody = m_peanutPrefab.GetComponent<Rigidbody>();
+        m_elephantControl = GetComponent<ElephantControl>();
     }
 
     void Update() {
@@ -27,7 +32,7 @@ public class Shoot_Peanuts : MonoBehaviour {
     }
 
     public void Fire() {
-        if(! cooldown.IsOver() || ammo < 1) return;
+        if(!m_elephantControl.aiming || ! cooldown.IsOver() || ammo < 1) return;
 
         ammo -= 1;
         cooldown.Start();
@@ -35,7 +40,9 @@ public class Shoot_Peanuts : MonoBehaviour {
         //transform the offset from wolrd location to local
         Vector3 worldOffset = transform.rotation * m_offset;
         Vector3 offsetPosition = transform.position + worldOffset;
-
+        if (m_shootOrigin) {
+            offsetPosition = m_shootOrigin.position;
+        }
         //Instantiate a clone of the given asset
         GameObject clone = Instantiate(m_peanutPrefab, offsetPosition, transform.rotation);
 

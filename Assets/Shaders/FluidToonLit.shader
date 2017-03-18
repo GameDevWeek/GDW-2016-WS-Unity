@@ -1,15 +1,18 @@
-﻿Shader "Toon/FluidLit"
+﻿Shader "Toon/Lit Fluid"
 {
 	Properties
 	{
 		_Color("Main Color", Color) = (0.5,0.5,0.5,1)
 		_MainTex("Base (RGB)", 2D) = "white" {}
+		_NormalMap("Normal Map (RGB)", 2D) = "bump" {}
 		_Ramp("Toon Ramp (RGB)", 2D) = "gray" {}
 	}
 	SubShader
 	{
 		Tags { "RenderType"="Opaque" }
 		LOD 100 
+
+		Cull Back
 
 		CGPROGRAM
 		#pragma target 3.0
@@ -85,6 +88,7 @@
 		}
 
 		sampler2D _MainTex;
+		sampler2D _NormalMap;
 		float4 _Color;
 
 		struct Input {
@@ -96,6 +100,7 @@
 			half4 c = tex2D(_MainTex, IN.uv_MainTex) * _Color;
 			o.Albedo = fluidColor(IN.worldPos) * c.rgb;
 			o.Alpha = c.a;
+			o.Normal = UnpackNormal(tex2D(_NormalMap, IN.uv_MainTex));
 		}
 		ENDCG
 	}

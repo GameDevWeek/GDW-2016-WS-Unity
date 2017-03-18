@@ -283,11 +283,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 114346677199836808, guid: a11f4e40c62fde94cb98110341f0a50f,
-        type: 2}
-      propertyPath: lookObj
-      value: 
-      objectReference: {fileID: 1588293270}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a11f4e40c62fde94cb98110341f0a50f, type: 2}
   m_IsPrefabParent: 0
@@ -2568,6 +2563,7 @@ MonoBehaviour:
   toleratedSightrange: 2
   fieldOfView: 90
   stoppingTime: 2
+  playerIsCaughtDistance: 4
   wayPoints: {fileID: 11400000, guid: 37f3e8748a6a445448e9b57073c99b31, type: 2}
   currentWaypoint: 0
   eyes: {fileID: 1065083542}
@@ -2578,6 +2574,9 @@ MonoBehaviour:
   targetPos: {x: 0, y: 0, z: 0}
   chaseTarget: {fileID: 0}
   navMeshAgent: {fileID: 0}
+  audioSource: {fileID: 0}
+  enterChase: []
+  exitChase: []
 --- !u!23 &604912602
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2646,6 +2645,8 @@ MonoBehaviour:
   m_positionOffset: {x: 0, y: 0, z: 0}
   m_useDefaultInteractionRange: 0
   m_interactionRange: 3
+  interactionIcon: {fileID: 0}
+  interactionIconScale: 1
   useInteractionRangeOnly: 0
   ignoreRaycastVisibility: 0
   m_cooldown:
@@ -2653,6 +2654,7 @@ MonoBehaviour:
   m_stunDuration:
     m_timeInSeconds: 5
   m_backAngle: 30
+  stunEnemyHitSound: {fileID: 0}
 --- !u!1 &608055609
 GameObject:
   m_ObjectHideFlags: 0
@@ -3856,6 +3858,7 @@ Transform:
   m_Children:
   - {fileID: 378525134}
   - {fileID: 288666675}
+  - {fileID: 2056305339}
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5505,15 +5508,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4097998469823174, guid: e86e41bb3a720d94cb33e224ea2561ad, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -18.6
+      value: -16.4
       objectReference: {fileID: 0}
     - target: {fileID: 4097998469823174, guid: e86e41bb3a720d94cb33e224ea2561ad, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1.03
+      value: -0.06
       objectReference: {fileID: 0}
     - target: {fileID: 4097998469823174, guid: e86e41bb3a720d94cb33e224ea2561ad, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 16.41
+      value: 14.2
       objectReference: {fileID: 0}
     - target: {fileID: 4097998469823174, guid: e86e41bb3a720d94cb33e224ea2561ad, type: 2}
       propertyPath: m_LocalRotation.x
@@ -5539,7 +5542,8 @@ Prefab:
       propertyPath: m_Name
       value: Jade_Elephant1 (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114249367854016126, guid: e86e41bb3a720d94cb33e224ea2561ad, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: e86e41bb3a720d94cb33e224ea2561ad, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &1227362427
@@ -5949,11 +5953,6 @@ Prefab:
     - target: {fileID: 4677023805961734, guid: e904190bad439714da2f178909463f45, type: 2}
       propertyPath: m_RootOrder
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114364450268544510, guid: e904190bad439714da2f178909463f45,
-        type: 2}
-      propertyPath: m_stunDuration
-      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e904190bad439714da2f178909463f45, type: 2}
@@ -6586,6 +6585,16 @@ Prefab:
     - target: {fileID: 4097998469823174, guid: e86e41bb3a720d94cb33e224ea2561ad, type: 2}
       propertyPath: m_RootOrder
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 114249367854016126, guid: e86e41bb3a720d94cb33e224ea2561ad,
+        type: 2}
+      propertyPath: m_collectableName
+      value: Jade Elefant
+      objectReference: {fileID: 0}
+    - target: {fileID: 114249367854016126, guid: e86e41bb3a720d94cb33e224ea2561ad,
+        type: 2}
+      propertyPath: ScoreValue
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e86e41bb3a720d94cb33e224ea2561ad, type: 2}
@@ -7245,11 +7254,6 @@ Transform:
   m_Father: {fileID: 983464297}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &1588293270 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4677023805961734, guid: e904190bad439714da2f178909463f45,
-    type: 2}
-  m_PrefabInternal: {fileID: 1264992399}
 --- !u!1001 &1590850806
 Prefab:
   m_ObjectHideFlags: 0
@@ -7614,9 +7618,25 @@ MonoBehaviour:
   m_positionOffset: {x: 0, y: 0, z: 0}
   m_useDefaultInteractionRange: 0
   m_interactionRange: 3
+  interactionIcon: {fileID: 0}
+  interactionIconScale: 1
   useInteractionRangeOnly: 0
   ignoreRaycastVisibility: 0
   ScoreValue: 199
+  collectionSound: {fileID: 0}
+  m_collectableName: Jade Elefant
+--- !u!135 &1645117671
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1645117666}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.007808596
+  m_Center: {x: 0.003067187, y: -0.0000062407917, z: 0.006712077}
 --- !u!4 &1646202122 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4575287784115104, guid: c063d3a0023b219499adf63bd7c5d678,
@@ -8363,6 +8383,7 @@ MonoBehaviour:
   m_sprintSpeed: 2
   m_sprintAnimSpeedMultiplier: 2
   m_sprintCapsule: {fileID: 0}
+  allowToMove: 1
 --- !u!114 &1853797362
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8625,6 +8646,7 @@ MonoBehaviour:
   cooldown:
     m_timeInSeconds: 1
   ammo: 0
+  m_shootOrigin: {fileID: 0}
 --- !u!114 &1853797372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8646,6 +8668,7 @@ MonoBehaviour:
     m_Bits: 4294967295
   m_interactionRange: 3
   m_use2DDistance: 1
+  interactionIconPrefab: {fileID: 0}
 --- !u!1001 &1855943391
 Prefab:
   m_ObjectHideFlags: 0
@@ -9089,6 +9112,7 @@ MonoBehaviour:
   m_sprintSpeed: 2
   m_sprintAnimSpeedMultiplier: 2
   m_sprintCapsule: {fileID: 0}
+  allowToMove: 1
 --- !u!114 &2011954425
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9394,6 +9418,7 @@ MonoBehaviour:
   cooldown:
     m_timeInSeconds: 1
   ammo: 0
+  m_shootOrigin: {fileID: 0}
 --- !u!114 &2011954434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9529,6 +9554,46 @@ Transform:
   m_PrefabParentObject: {fileID: 4511455084913786, guid: fb1971fafec90cb4c9eda4f08351d74a,
     type: 2}
   m_PrefabInternal: {fileID: 2041513771}
+--- !u!1 &2056305338
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 2056305339}
+  - component: {fileID: 2056305340}
+  m_Layer: 0
+  m_Name: ScoreSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2056305339
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2056305338}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 876330086}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2056305340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2056305338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c67b978a638198740a238415d5d98fd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2058940992
 GameObject:
   m_ObjectHideFlags: 0

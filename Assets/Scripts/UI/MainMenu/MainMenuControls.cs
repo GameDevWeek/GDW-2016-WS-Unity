@@ -40,10 +40,17 @@ public class MainMenuControls : MonoBehaviour {
         achievementsButtons.SetActive(true);
     }
 
-    public void clickedBack()
+    public void clickedBackAchievements()
     {
         achievementsButtons.SetActive(false);
         menuButtons.SetActive(true);
+    }
+
+    public void clickedBackCredits()
+    {
+        credits.SetActive(false);
+        menuButtons.SetActive(true);
+        menuText.SetActive(true);
     }
 
     public void clickedCredits()

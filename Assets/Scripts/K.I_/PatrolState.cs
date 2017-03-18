@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PatrolState : IEnemyState
@@ -18,7 +19,7 @@ public class PatrolState : IEnemyState
     public void UpdateState()
     {
         Look();
-        if(enemy.currentState == this)
+        if(enemy.currentState == this)  //War irgendwie nötig für den cone...
         Patrol();
     }
 
@@ -37,6 +38,9 @@ public class PatrolState : IEnemyState
     {
         enemy.currentState = enemy.alertState;
         searchTimer = 0f;
+
+        if(enemy.enterChase.Any())
+            enemy.audioSource.PlayOneShot(Util.RandomElement(enemy.enterChase));
     }
 
     public void ToChaseState()
@@ -45,22 +49,19 @@ public class PatrolState : IEnemyState
         searchTimer = 0f;
         enemy.navMeshAgent.speed = enemy.chaseSpeed;
         enemy.camouflageInRange();
+        
         if (!firstChase)
         {
-            WantedLevel.Instance.GuardIsNowVigilant();
+            enemy.wantedLevel.GuardIsNowVigilant();
             firstChase = true;
         }
     }
 
     private void Look()
     {
-
         RaycastHit hit;
         if (enemy.canSeePlayer(out hit))
         {
-
-            
-
             if (hit.distance >= enemy.toleratedSightrange)     //Wenn Spieler im Toleranzbereich erstmal stoppen und schauen
             {
                 StopAndLook(hit);
@@ -70,7 +71,7 @@ public class PatrolState : IEnemyState
                 enemy.chaseTarget = hit.transform;          //Wenn Spieler unterm Toleranzbereich ist direkt chasen
                 searchTimer = 0f;
                 isLooking = false;
-                WantedLevel.Instance.RaiseWantedLevel();
+                enemy.wantedLevel.RaiseWantedLevel();
                 enemy.viewCone.setAlarmed(true, 1f);
                 ToChaseState();
             }

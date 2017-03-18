@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 952d09221f5e54126bf0bc3386016bef, type: 3}
+  m_Name: Gegner ende
+  m_EditorClassIdentifier: 
+  points:
+  - {x: -0.8263049, y: 0, z: 16.250755}
+  - {x: -4.340781, y: 0, z: 11.278812}
+  - {x: 12.137917, y: 0, z: 10.990402}
+  - {x: 4.066596, y: 0, z: 20.169327}
+  pairs:
+  - First: 0
+    Second: 1
+  - First: 1
+    Second: 2
+  - First: 2
+    Second: 3
+  - First: 3
+    Second: 0
