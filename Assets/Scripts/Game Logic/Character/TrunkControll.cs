@@ -50,6 +50,10 @@ public class TrunkControll : MonoBehaviour {
     }
 
     void Update () {
+        if (m_elefantmovement.IsInStonePose()) {
+            return;
+        }
+
         if (m_controllWithSlider) {
             m_animatorForTrunk.SetFloat("TrunkStiffness", desiredTrunkStiffness);
             return;
