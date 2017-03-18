@@ -46,7 +46,7 @@ public class ChaseState : IEnemyState
         if (enemy.canSeePlayer(out hit))
         {
             enemy.chaseTarget = hit.transform;
-            WantedLevel.Instance.RaiseWantedLevel();
+            enemy.wantedLevel.RaiseWantedLevel();
 
             Vector3 enemyToPlayer = enemy.playerActor.transform.position - enemy.transform.position;
             float playerDistance = enemyToPlayer.magnitude;

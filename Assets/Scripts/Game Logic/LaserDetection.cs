@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,6 +17,7 @@ public class LaserDetection : MonoBehaviour {
     private NoiseSource noiseSource;
 
     public Vector3 direction = Vector3.forward;
+    private WantedLevel m_wantedLevel;
 
     private void OnValidate() {
         Awake();
@@ -32,6 +33,7 @@ public class LaserDetection : MonoBehaviour {
         m_laserBeam = GetComponent<LineRenderer>();
         m_collider = GetComponent<BoxCollider>();
         noiseSource = GetComponent<NoiseSource>();
+        m_wantedLevel = GameObject.FindObjectOfType<WantedLevel>();
     }
 
     // Use this for initialization
@@ -115,7 +117,7 @@ public class LaserDetection : MonoBehaviour {
         {
             Debug.Log("LASER ALARM ALARM");
             
-            WantedLevel.Instance.TriggerLaserAlert();
+            m_wantedLevel.TriggerLaserAlert();
 
             SendAlarm();
 

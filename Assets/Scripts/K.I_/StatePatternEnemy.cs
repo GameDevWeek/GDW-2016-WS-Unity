@@ -39,6 +39,7 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
     private bool caughtThePlayer;
     private bool firstWantedUp;
     public PlayerActor playerActor;
+    public WantedLevel wantedLevel;
 
     public AudioSource audioSource;
     public AudioClip[] enterChase;
@@ -62,6 +63,7 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
     private void Awake() {
         audioSource = GetComponent<AudioSource>();
         playerActor = GameObject.FindObjectOfType<PlayerActor>();
+        wantedLevel = GameObject.FindObjectOfType<WantedLevel>();
 
         chaseState = new ChaseState(this);
         alertState = new AlertState(this);
@@ -103,7 +105,7 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
         }
 
         //WantedLvl abfrage
-       if( WantedLevel.Instance.currentWantedStage > 0 && !firstWantedUp )
+       if( wantedLevel.currentWantedStage > 0 && !firstWantedUp )
         {
             WantedLvlUp();
             firstWantedUp = true;
