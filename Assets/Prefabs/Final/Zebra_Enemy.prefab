@@ -761,9 +761,11 @@ MonoBehaviour:
   m_useDefaultInteractionRange: 0
   m_interactionRange: 3
   useInteractionRangeOnly: 0
+  ignoreRaycastVisibility: 0
   m_cooldown:
     m_timeInSeconds: 0.5
-  m_invokationDelay: 0.5
+  m_stunDuration:
+    m_timeInSeconds: 5
   m_backAngle: 153.6
 --- !u!114 &114441439249423902
 MonoBehaviour:
