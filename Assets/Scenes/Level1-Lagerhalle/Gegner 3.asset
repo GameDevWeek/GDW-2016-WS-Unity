@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 952d09221f5e54126bf0bc3386016bef, type: 3}
+  m_Name: Gegner 3
+  m_EditorClassIdentifier: 
+  points:
+  - {x: 12.53645, y: 0, z: -7.5044355}
+  - {x: 12.604961, y: 0, z: -2.4907176}
+  - {x: 9.399717, y: 0, z: 0.3757267}
+  - {x: 4.3905554, y: 0, z: -1.3118222}
+  - {x: 0.49923134, y: 0, z: -2.4851947}
+  - {x: 0.3453767, y: 0, z: -8.549273}
+  - {x: 9.784282, y: 0, z: -9.016928}
+  pairs:
+  - First: 0
+    Second: 1
+  - First: 1
+    Second: 2
+  - First: 2
+    Second: 3
+  - First: 3
+    Second: 4
+  - First: 4
+    Second: 5
+  - First: 5
+    Second: 6
+  - First: 6
+    Second: 0
