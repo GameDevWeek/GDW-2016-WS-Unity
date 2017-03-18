@@ -8,7 +8,7 @@ public class AddLoad_IngamePaused : MonoBehaviour {
 
 
 	void Start () {
-	    SceneManager.LoadScene(UISceneName, LoadSceneMode.Additive);
+        SceneManager.LoadScene(UISceneName, LoadSceneMode.Additive);
 	}
 
 }

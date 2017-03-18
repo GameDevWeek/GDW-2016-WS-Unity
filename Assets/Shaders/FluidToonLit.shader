@@ -12,6 +12,8 @@
 		Tags { "RenderType"="Opaque" }
 		LOD 100 
 
+		Cull Back
+
 		CGPROGRAM
 		#pragma target 3.0
 		#pragma surface surf ToonRamp

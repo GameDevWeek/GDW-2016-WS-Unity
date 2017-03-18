@@ -160,7 +160,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 2
       time: 0
-      value: 0
+      value: 0.62
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -218,9 +218,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a76f3f01326dd4a40ac19f525fd74a89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_affectedRange: 3
-  m_audioClips: []
+  m_affectedRange: 12
+  m_audioClips:
+  - {fileID: 8300000, guid: 3583d1db41a1f3b4192d05ddeab58b4c, type: 3}
   m_affectedLayer:
     serializedVersion: 2
     m_Bits: 0
   m_allowPlayingSounds: 1
+  priority: 0

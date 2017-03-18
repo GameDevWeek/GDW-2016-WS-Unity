@@ -9,8 +9,8 @@ using UnityEngine.UI;
 public class ScoreSystem: Singleton<ScoreSystem>
 {
 
-    private Dictionary<string, int> m_collectableScores = new Dictionary<string, int>();
-    private Dictionary<string, int> m_destroyableScores = new Dictionary<string, int>();
+    private static Dictionary<string, int> m_collectableScores = new Dictionary<string, int>();
+    private static Dictionary<string, int> m_destroyableScores = new Dictionary<string, int>();
 
     private float m_levelTime = 0;
     private bool  m_countTime = true;
@@ -19,6 +19,47 @@ public class ScoreSystem: Singleton<ScoreSystem>
     {
         if(m_countTime)
         m_levelTime += Time.deltaTime;
+    }
+
+    public static int GetCollectableScore(string scoreName)
+    {
+        if (m_collectableScores.ContainsKey(scoreName))
+        {
+            return m_collectableScores[scoreName];
+        }
+        return -1;
+    }
+
+    public static int GetDestructibleScore(string scoreName)
+    {
+        if (m_destroyableScores.ContainsKey(scoreName))
+        {
+            return m_destroyableScores[scoreName];
+        }
+        return -1;
+    }
+
+    public static int GetScore(string scoreName)
+    {
+        int result = -1;
+
+        result = GetCollectableScore(scoreName);
+
+        if (result == -1)
+        {
+            result = GetDestructibleScore(scoreName);
+        } else
+        {
+            return result;
+        }
+
+        if (result == -1)
+        {
+            Debug.LogError("[ScoreSystem]: " + scoreName + " not available or wrong typed!");
+            Debug.LogError("[ScoreSystem]: available Keys" + m_collectableScores.Keys.ToString() + "\n" + m_destroyableScores.Keys.ToString());
+        }
+
+        return result;
     }
 
     // Use this for initialization
