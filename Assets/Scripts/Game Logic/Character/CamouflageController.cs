@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -40,7 +40,7 @@ public class CamouflageController : MonoBehaviour
     public static event StunnedCooldownOver OnStunnedCooldownOver;
 
     [SerializeField]
-    private string _mouseTag = "Mouse";
+    private string _mouseTag = GameTag.Mouse;
     [SerializeField]
     private int _mouseReactDistance = 5;
     [SerializeField]
@@ -55,6 +55,8 @@ public class CamouflageController : MonoBehaviour
     [Tooltip("Milliseconds: Maximum duration in ms for player in camouflage mode. If time is exceeded elephant will fall from pedestal.")]
     private int _camouflageMaxDurationMS = 7000;
 
+    private int milliseconds_left = 0;
+
     private Coroutine _camouflageTimeExceededChecker;
 
     private Cooldown _shockCooldown;
@@ -65,6 +67,16 @@ public class CamouflageController : MonoBehaviour
     [SerializeField]
     private Cooldown m_stunnedCooldown = new Cooldown(2.0f);
     private bool m_stunned = false;
+
+    public float PercentTimeLeft {
+        get { return (milliseconds_left / (float)_camouflageMaxDurationMS); }
+    }
+
+    public Cooldown stunnedCooldown {
+        get {
+            return m_stunnedCooldown;
+        }
+    }
 
     private void Awake()
     {
@@ -77,7 +89,6 @@ public class CamouflageController : MonoBehaviour
     private void Update()
     {
         if (m_stunned) {
-            Debug.Log("stunned");
             m_stunnedCooldown.Update(Time.deltaTime);
 
             if (m_stunnedCooldown.IsOver() && OnStunnedCooldownOver != null) {
@@ -246,7 +257,12 @@ public class CamouflageController : MonoBehaviour
 
     private IEnumerator CamouflageTimeExceededChecker()
     {
-        yield return new WaitForSeconds(_camouflageMaxDurationMS / 1000.0f);
+        milliseconds_left = _camouflageMaxDurationMS;
+        while (milliseconds_left > 0) {
+            milliseconds_left -= (int) (Time.deltaTime * 1000f);
+            yield return null;
+        }
+        milliseconds_left = 0;
 
         CamouflageTimeExceeded();
     }

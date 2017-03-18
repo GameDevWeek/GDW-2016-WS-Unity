@@ -3,6 +3,8 @@
  using System.Collections.Generic;
  [RequireComponent(typeof(SpriteRenderer))]
  
+
+ //Anmerkung von Thilo: Bitte draußen lassen, sieht scheiße aus!
  public class AutoStretchSprite : MonoBehaviour {
  
      /// <summary> Do you want the sprite to maintain the aspect ratio? </summary>

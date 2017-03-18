@@ -14,12 +14,24 @@ public class Shoot_Peanuts : MonoBehaviour {
 
     public static event Action peanutWasShot;
 
+    public Cooldown cooldown= new Cooldown(1f);
+    public int ammo = 0;
+
     // Use this for initialization
     void Start() {
         peanutRigidbody = m_peanutPrefab.GetComponent<Rigidbody>();
     }
 
+    void Update() {
+        cooldown.Update(Time.deltaTime);
+    }
+
     public void Fire() {
+        if(! cooldown.IsOver() || ammo < 1) return;
+
+        ammo -= 1;
+        cooldown.Start();
+
         //transform the offset from wolrd location to local
         Vector3 worldOffset = transform.rotation * m_offset;
         Vector3 offsetPosition = transform.position + worldOffset;
@@ -36,5 +48,7 @@ public class Shoot_Peanuts : MonoBehaviour {
 
         //Destroy clone after x seconds
         Destroy(clone, m_lifeSpan);
+
+
     }
 }

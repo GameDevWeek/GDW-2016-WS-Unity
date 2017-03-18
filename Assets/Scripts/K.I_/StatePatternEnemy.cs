@@ -69,6 +69,10 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
 
     }
 
+    public void StopMovement() {
+        enemyAnimator.SetFloat("BlendSpeed", 0.0f);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         currentState.OnTriggerEnter(other);
