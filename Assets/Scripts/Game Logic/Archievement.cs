@@ -5,7 +5,6 @@ using UnityEditor;
 
 [CreateAssetMenu]
 public class Archievement : ScriptableObject{
-#if UNITY_EDITOR
     public string name;
     [TextArea] public string text;
 
@@ -23,6 +22,7 @@ public class Archievement : ScriptableObject{
     [HideInInspector] public string assembly;
     [HideInInspector] public string classPath;
 
+    #if UNITY_EDITOR
     public void OnValidate() {
         property.PropType = SerProperty.Type.OBJECT;
         if (property.ObjectValue != null) {
@@ -34,6 +34,6 @@ public class Archievement : ScriptableObject{
             }
         }
     }
-#endif
+    #endif
 }
 
