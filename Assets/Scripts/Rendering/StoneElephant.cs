@@ -27,6 +27,11 @@ public class StoneElephant : MonoBehaviour {
     }
 
     private void OnElephantExitsCamouflageMode() {
+        if (m_toStoneRoutine != null) {
+            StopCoroutine(m_toStoneRoutine);
+            m_toStoneRoutine = null;
+        }
+
         SetMaterial(m_elephantRenderer, m_elephantMaterial);
         SetMaterial(m_trunkRenderer, m_elephantMaterial);
     }

@@ -152,7 +152,7 @@ public class ElephantControl : MonoBehaviour {
                 m_sprintDirection = direction;
 			}
 
-            if (m_sprinting && m_sprintCooldown.IsOver() || !m_sprintDurationAfterSprintStopped.IsOver()) {
+            if (sprinting) {
                 m_character.LookTowards(m_sprintDirection);
 
                 float t = m_sprintDurationAfterSprintStopped.IsOver() ? 0.0f : m_sprintDurationAfterSprintStopped.progress;
@@ -162,6 +162,12 @@ public class ElephantControl : MonoBehaviour {
 					Camera.main.GetComponent<CameraShake>().Shake();
 				}
             }
+        }
+    }
+
+    public bool sprinting {
+        get {
+            return m_sprinting && m_sprintCooldown.IsOver() || !m_sprintDurationAfterSprintStopped.IsOver();
         }
     }
 
@@ -202,9 +208,15 @@ public class ElephantControl : MonoBehaviour {
             m_shootPeanuts.Fire();
         }
 
-        if (Input.GetButtonDown("Interact")) {
+        if (Input.GetButtonDown("Interact") && CanInteract()) {
             m_interactor.InteractionRequest();
         }
+    }
+
+    public bool CanInteract() {
+        return !m_character.IsStunned() &&
+            !sprinting &&
+            !m_character.IsPunching();
     }
 
     private void HandleAiming() {
