@@ -37,7 +37,6 @@ public class NoiseSource : MonoBehaviour {
     }
 
     public void Play() {
-        Debug.Log("go: " + this.gameObject);
         var particleSystem = global::Spawner.Spawn("Sound Particle System", transform.position, Quaternion.Euler(90, 0, -45));
         if (particleSystem!= null)
         {
