@@ -427,6 +427,8 @@ GameObject:
   - component: {fileID: 114523559530140102}
   - component: {fileID: 114848429992145910}
   - component: {fileID: 114548738031474726}
+  - component: {fileID: 114346677199836808}
+  - component: {fileID: 114976065638104096}
   m_Layer: 9
   m_Name: Elephant_New
   m_TagString: Player
@@ -1067,6 +1069,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6a3ac984c093f84ba5feaf6c45e4da3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114346677199836808
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1960445719896116}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 997b88a39604d1c4dbc881074433a6cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ikActive: 0
+  rightHandObj: {fileID: 0}
+  leftHandObj: {fileID: 0}
+  lookObj: {fileID: 0}
+  lerpTimeLeftHand: 0
+  lerpTimeRightHand: 0
+  lerpTimeLookAt: 0
+  lerpTimeMultiplierLeftHand: 1
+  lerpTimeMultiplierRightHand: 1
+  lerpTimeMultiplierLookAt: 1
 --- !u!114 &114384192857228890
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1226,6 +1249,24 @@ MonoBehaviour:
     m_timeInSeconds: 0.5
   controlsMode: 0
   m_walkRadius: 0.4
+  m_autoDetectControlsMode: 1
+--- !u!114 &114976065638104096
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1960445719896116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 545a8a844398ae64794656fed0930ffc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_elephantMaterial: {fileID: 2100000, guid: c08481343273e254098e23895a1cca69, type: 2}
+  m_elephantStoneMaterial: {fileID: 2100000, guid: 7ed04938fc0d94c45a8d9beab2426646,
+    type: 2}
+  m_elephantRenderer: {fileID: 137184903141677002}
+  m_trunkRenderer: {fileID: 137445073710133760}
+  m_toStoneDelay: 1
 --- !u!136 &136111749876279316
 CapsuleCollider:
   m_ObjectHideFlags: 1

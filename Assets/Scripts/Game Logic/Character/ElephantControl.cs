@@ -5,7 +5,8 @@ using UnityStandardAssets.CrossPlatformInput;
 public class ElephantControl : MonoBehaviour {
     public enum ControlsMode {
         Controller,
-        KeyboardMouse
+        KeyboardMouse,
+        KeyboardMouseSpecial
     }
 
     private ElephantMovement m_character; // A reference to the ThirdPersonCharacter on the object
@@ -29,6 +30,8 @@ public class ElephantControl : MonoBehaviour {
     private float m_walkRadius = 0.4f;
     private Shoot_Peanuts m_shootPeanuts;
     private Interactor m_interactor;
+    [SerializeField, Tooltip("If a controller is connected then controller controls will be used otherwise Mouse-Keyboard.")]
+    private bool m_autoDetectControlsMode = true;
 
     private void Start() {
         m_sprintCooldown.End();
@@ -98,8 +101,17 @@ public class ElephantControl : MonoBehaviour {
         }
     }
 
-    private Vector3 desiredMouseLookDir {
+    private Vector3 desiredLookDir {
         get {
+            if (controlsMode == ControlsMode.Controller) {
+                var move = GetAxisMove();
+                if (move.magnitude > Mathf.Epsilon) {
+                    return move.normalized;
+                }
+
+                return transform.forward;
+            }
+
             return desiredMouseLookDelta.normalized;
         }
     }
@@ -114,10 +126,10 @@ public class ElephantControl : MonoBehaviour {
             }
         }
 
-        UpdateSprint(desiredMouseLookDir);
+        UpdateSprint(desiredLookDir);
 
         if (!m_sprinting && m_sprintDurationAfterSprintStopped.IsOver()) {
-            m_character.LookTowards(desiredMouseLookDir);
+            m_character.LookTowards(desiredLookDir);
             m_character.Move(move, IsCrouching());
         }
 
@@ -163,19 +175,28 @@ public class ElephantControl : MonoBehaviour {
 
         switch (controlsMode) {
             case ControlsMode.Controller:
+            case ControlsMode.KeyboardMouse:
                 if (Input.GetButton("TargetMode")) {
                     HandleAiming();
                 } else {
                     HandleControllerMovement();
                 }
                 break;
-            case ControlsMode.KeyboardMouse:
+            case ControlsMode.KeyboardMouseSpecial:
                 HandleMouseKeyboardMovement();
                 break;
         }
     }
 
     private void Update() {
+        if (m_autoDetectControlsMode) {
+            if (Input.GetJoystickNames().Length > 0) {
+                controlsMode = ControlsMode.Controller;
+            } else {
+                controlsMode = ControlsMode.KeyboardMouse;
+            }
+        }
+
         if (Time.timeScale < float.Epsilon) return;
         if (m_character.CanMove() && m_shootPeanuts && Input.GetButtonDown("Shoot")) {
             m_shootPeanuts.Fire();
@@ -188,7 +209,7 @@ public class ElephantControl : MonoBehaviour {
 
     private void HandleAiming() {
         m_character.Move(Vector3.zero, false);
-        m_character.LookTowards(desiredMouseLookDir);
+        m_character.LookTowards(desiredLookDir);
     }
 
     public Cooldown sprintCooldown {

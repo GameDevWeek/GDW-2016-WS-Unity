@@ -66,6 +66,12 @@ public class CamouflageController : MonoBehaviour
     private Cooldown m_stunnedCooldown = new Cooldown(2.0f);
     private bool m_stunned = false;
 
+    public Cooldown stunnedCooldown {
+        get {
+            return m_stunnedCooldown;
+        }
+    }
+
     private void Awake()
     {
         this._enemiesInRange = new List<GameObject>();
@@ -77,7 +83,6 @@ public class CamouflageController : MonoBehaviour
     private void Update()
     {
         if (m_stunned) {
-            Debug.Log("stunned");
             m_stunnedCooldown.Update(Time.deltaTime);
 
             if (m_stunnedCooldown.IsOver() && OnStunnedCooldownOver != null) {

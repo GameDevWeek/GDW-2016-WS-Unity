@@ -63,6 +63,7 @@ public class EnemyInteractable : Interactable {
 
         var stateEnemy = GetComponent<StatePatternEnemy>();
         var navMeshAgent = GetComponent<NavMeshAgent>();
+        stateEnemy.StopMovement();
         stateEnemy.enabled = false;
         navMeshAgent.enabled = false;
         yield return new WaitForSeconds(m_stunDuration);
