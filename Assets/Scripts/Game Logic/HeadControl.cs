@@ -5,12 +5,10 @@ using UnityEngine;
 public class HeadControl : MonoBehaviour {
     [SerializeField]
     private Transform m_head;
-    [SerializeField]
-    private Vector3 m_rotationAxis = Vector3.right;
 
     public bool updateHeadRotation = false;
     public float desiredAngleInDeg = 0.0f;
-    public float headRotationSpeed = 10.0f;
+    public float headRotationSpeed = 360.0f;
 
     private float m_curAngleInDeg = 0.0f;
 
