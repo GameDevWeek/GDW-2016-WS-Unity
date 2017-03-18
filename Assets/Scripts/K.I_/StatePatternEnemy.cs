@@ -45,6 +45,12 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
         navMeshAgent.speed = standartSpeed;
 
         enemyAnimator = GetComponent<Animator>();
+
+        if(wayPoints == null)
+            wayPoints = new Waypoints() {
+                points = new []{transform.position},
+                pairs = new []{new Pair() }
+            };
     }
 
     void OnValidate() {
@@ -128,7 +134,7 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
         if (camouflage != null)
         {
             camouflage.EnemyInRange(this.gameObject);
-            Debug.Log("Can't camouflage!");
+            // Debug.Log("Can't camouflage!");
         }
     }
 
