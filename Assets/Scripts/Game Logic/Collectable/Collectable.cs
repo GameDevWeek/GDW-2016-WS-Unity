@@ -8,6 +8,8 @@ public class Collectable : Interactable
     [SerializeField]
     public int ScoreValue;
 
+    public AudioClip collectionSound;
+
     public struct CollectableEventData
     {
         public GameObject collected;
@@ -26,6 +28,8 @@ public class Collectable : Interactable
     {
         if(OnCollect != null)
         OnCollect.Invoke(new CollectableEventData(gameObject));
+        if(collectionSound != null)
+            interactor.GetComponent<AudioSource>().PlayOneShot(collectionSound);
         Destroy(gameObject);
     }
 
