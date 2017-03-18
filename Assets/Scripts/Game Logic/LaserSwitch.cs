@@ -5,46 +5,53 @@ using UnityEngine;
 public class LaserSwitch : Interactable
 {
     [SerializeField]
-    private LaserDetection[] m_laser;
+    private LaserDetection[] m_laserBarriers;
 
     [SerializeField]
-    private Color m_switchOnColor;
+    private Material m_switchOnMaterial;
     [SerializeField]
-    private Color m_switchOffColor;
+    private Material m_switchOffMaterial;
 
     [SerializeField]
     private bool m_switchPoweredOn = true;
 
+    [SerializeField]
+    private Renderer m_renderer;
+
     // Use this for initialization
     void Start ()
     {
-        ChangeColor(m_switchPoweredOn ? m_switchOnColor : m_switchOffColor);
+        // Set color of switch light based on initial status
+        m_renderer.material = m_switchPoweredOn ? m_switchOnMaterial : m_switchOffMaterial;
+        // Set activation of related laser barriers based on initial status
+        SetBarrierActivation();
     }
 
     // Update is called once per frame
-	void Update () {
-
-	}
-
-    public void ChangeColor(Color c)
+	void Update ()
     {
-        gameObject.GetComponent<Renderer>().material.color = c;
+        // Test code
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            ToggleSwitch();
+        }
     }
 
     public void ToggleSwitch()
     {
+        // Toggle between on & off 
         m_switchPoweredOn = !m_switchPoweredOn;
-        ChangeColor(m_switchPoweredOn ? m_switchOnColor : m_switchOffColor);
-
-        SwitchLaser(m_switchPoweredOn);
+        // Change color of switch light based on current status
+        m_renderer.material = m_switchPoweredOn ? m_switchOnMaterial : m_switchOffMaterial;
+        // Set the activation of the associated laser barriers
+        SetBarrierActivation();
     }
-
-
-    public void SwitchLaser(bool b)
+    
+    private void SetBarrierActivation()
     {
-        foreach (var laser in m_laser)
+        foreach (var laser in m_laserBarriers)
         {
-            laser.SetActivation(b);
+            laser.SetActivation(m_switchPoweredOn);
         }
     }
 

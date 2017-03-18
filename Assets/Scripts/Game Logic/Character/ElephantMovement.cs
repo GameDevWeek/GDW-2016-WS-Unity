@@ -42,6 +42,34 @@ public class ElephantMovement : MonoBehaviour {
             RigidbodyConstraints.FreezeRotationY | 
             RigidbodyConstraints.FreezeRotationZ |
             RigidbodyConstraints.FreezePositionY;
+
+        CamouflageController.OnElephantEntersCamouflageMode += OnElephantEntersCamouflageMode;
+        CamouflageController.OnElephantExitsCamouflageMode += OnElephantExitsCamouflageMode;
+        CamouflageController.OnElephantFallFromPedestal += OnElephantFallFromPedestal;
+        CamouflageController.OnStunnedCooldownOver += OnStunnedCooldownOver;
+    }
+
+    void OnDestroy() {
+        CamouflageController.OnElephantEntersCamouflageMode -= OnElephantEntersCamouflageMode;
+        CamouflageController.OnElephantExitsCamouflageMode -= OnElephantExitsCamouflageMode;
+        CamouflageController.OnElephantFallFromPedestal -= OnElephantFallFromPedestal;
+        CamouflageController.OnStunnedCooldownOver -= OnStunnedCooldownOver;
+    }
+
+    private void OnStunnedCooldownOver() {
+        SetStunned(false);
+    }
+
+    private void OnElephantFallFromPedestal() {
+        SetStunned(true);
+    }
+
+    private void OnElephantExitsCamouflageMode() {
+        SetStonePose(false);
+    }
+
+    private void OnElephantEntersCamouflageMode() {
+        SetStonePose(true);
     }
 
     public void LookAt(Vector3 position) {
@@ -51,7 +79,6 @@ public class ElephantMovement : MonoBehaviour {
     public void LookTowards(Vector3 direction) {
         Vector3 d = Vector3.ProjectOnPlane(transform.InverseTransformDirection(direction), m_groundNormal);
         m_turnAmount = Mathf.Atan2(d.x, d.z);
-        GetComponent<LineRenderer>().SetPositions(new Vector3[] { transform.position, transform.position + direction });
         ApplyExtraTurnRotation();
     }
 
@@ -108,6 +135,42 @@ public class ElephantMovement : MonoBehaviour {
         } else {
             m_animator.speed = 1;
         }
+    }
+
+    public void SetStonePose(bool stonePose) {
+        m_animator.SetBool("StonePose", stonePose);
+    }
+
+    public void SetStunned(bool stunned) {
+        m_animator.SetBool("Stunned", stunned);
+    }
+
+    public bool IsStunned() {
+        return m_animator.GetBool("Stunned");
+    }
+
+    public bool IsInStonePose() {
+        return m_animator.GetBool("StonePose");
+    }
+
+    public bool CanMove() {
+        return !IsInStonePose() && !IsStunned() && !IsPunching() && !GaveUp();
+    }
+
+    public bool IsPunching() {
+        return m_animator.GetCurrentAnimatorStateInfo(0).IsName("Punch");
+    }
+
+    public void Punch() {
+        m_animator.SetTrigger("Punch");
+    }
+
+    public void GiveUp() {
+        m_animator.SetTrigger("GiveUp");
+    }
+
+    public bool GaveUp() {
+        return m_animator.GetCurrentAnimatorStateInfo(0).IsName("GiveUp");
     }
 
     void ApplyExtraTurnRotation() {

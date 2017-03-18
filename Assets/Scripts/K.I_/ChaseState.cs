@@ -32,6 +32,7 @@ public class ChaseState : IEnemyState
     public void ToAlertState()
     {
         enemy.currentState = enemy.alertState;
+        enemy.navMeshAgent.speed = enemy.standartSpeed;
     }
 
     public void ToChaseState()
