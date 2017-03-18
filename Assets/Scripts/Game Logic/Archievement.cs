@@ -1,5 +1,7 @@
-﻿using UnityEditor;
 using UnityEngine;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 [CreateAssetMenu]
 public class Archievement : ScriptableObject{
@@ -17,9 +19,12 @@ public class Archievement : ScriptableObject{
     public bool increment_instead_set;
     public float scaling;
 
+    public bool resetOnSceneLoad;
+
     [HideInInspector] public string assembly;
     [HideInInspector] public string classPath;
 
+    #if UNITY_EDITOR
     public void OnValidate() {
         property.PropType = SerProperty.Type.OBJECT;
         if (property.ObjectValue != null) {
@@ -31,4 +36,6 @@ public class Archievement : ScriptableObject{
             }
         }
     }
+    #endif
 }
+

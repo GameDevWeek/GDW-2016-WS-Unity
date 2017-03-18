@@ -3761,10 +3761,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 15
       objectReference: {fileID: 0}
-    - target: {fileID: 1401634305946232, guid: b32926f40a83740d2988f64a13e0da83, type: 2}
-      propertyPath: m_Name
-      value: Main Camera
-      objectReference: {fileID: 0}
+    - target: {fileID: 114146633211738556, guid: b32926f40a83740d2988f64a13e0da83,
+        type: 2}
+      propertyPath: m_target
+      value: 
+      objectReference: {fileID: 604912597}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b32926f40a83740d2988f64a13e0da83, type: 2}
   m_IsPrefabParent: 0

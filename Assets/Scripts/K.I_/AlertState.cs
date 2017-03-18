@@ -32,15 +32,18 @@ public class AlertState : IEnemyState {
     {
         enemy.currentState = enemy.patrolState;
         searchTimer = 0f;
+        enemy.navMeshAgent.speed = enemy.standartSpeed;
     }
 
     public void ToChaseState()
     {
         enemy.currentState = enemy.chaseState;
         searchTimer = 0f;
+        enemy.navMeshAgent.speed = enemy.chaseSpeed;
+        enemy.camouflageInRange();
     }
 
-    
+
 
     private void Look()
     {
@@ -51,7 +54,6 @@ public class AlertState : IEnemyState {
 
             enemy.navMeshAgent.SetDestination(enemy.targetPos);
             WantedLevel.Instance.RaiseWantedLevel();
-            enemy.camouflageInRange(hit);
             ToChaseState();
         }
     }
@@ -60,6 +62,9 @@ public class AlertState : IEnemyState {
     {
         if(enemy.navMeshAgent.remainingDistance < 1f) {
             enemy.navMeshAgent.Stop();
+            if(enemy.GetComponent<Animator>()!=null)
+            enemy.GetComponent<Animator>().SetFloat("BlendSpeed", -1);
+
             enemy.transform.Rotate(0, enemy.searchingTurnSpeed * Time.deltaTime, 0);
             searchTimer += Time.deltaTime;
 

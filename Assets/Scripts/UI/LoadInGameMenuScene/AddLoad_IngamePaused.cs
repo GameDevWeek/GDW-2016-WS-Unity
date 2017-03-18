@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 /*Das InGameMenu wird als additive Scene mit Escape geladen
@@ -13,43 +11,11 @@ using UnityEngine.SceneManagement;
  Dieses Script gehört in jede spielbare Levelscene!!!*/
 public class AddLoad_IngamePaused : MonoBehaviour {
 
-    private static bool pause = false;
-	// Use this for initialization
+    public string UISceneName;
+
+
 	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            if (!pause)
-            {
-                pausedOn();
-            }
-            else
-            {
-                pausedOff();
-            }
-        }
+	    SceneManager.LoadScene(UISceneName, LoadSceneMode.Additive);
 	}
 
-    public static void setPause(bool p)
-    {
-        pause = p;
-    }
-
-    public void pausedOn()
-    {
-        Time.timeScale = 0;
-        SceneManager.LoadScene(0, LoadSceneMode.Additive);
-        pause = true;
-    }
-
-    public void pausedOff()
-    {
-        Time.timeScale = 1;
-        SceneManager.UnloadSceneAsync(0);
-        pause = false;
-    }
 }

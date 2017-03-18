@@ -1,0 +1,157 @@
+fileFormatVersion: 2
+guid: 0353702a8bf780e409655a0bed8e6881
+timeCreated: 1489840556
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: TRex_Arm_Left
+    100002: TRex_Arm_Right
+    100004: TRex_big
+    100006: TRex_Foot_Left
+    100008: TRex_Foot_Right
+    100010: //RootNode
+    100012: TRex_Head_Bot
+    100014: TRex_Head_Top
+    100016: TRex_Leg_Left
+    100018: TRex_Leg_Right
+    100020: TRex_Neck
+    100022: TRex_Rip1
+    100024: TRex_Rip2
+    100026: TRex_Rip3
+    100028: TRex_Rip4
+    100030: TRex_Tail_Tip
+    100032: TRex_Tail_Upper
+    400000: TRex_Arm_Left
+    400002: TRex_Arm_Right
+    400004: TRex_big
+    400006: TRex_Foot_Left
+    400008: TRex_Foot_Right
+    400010: //RootNode
+    400012: TRex_Head_Bot
+    400014: TRex_Head_Top
+    400016: TRex_Leg_Left
+    400018: TRex_Leg_Right
+    400020: TRex_Neck
+    400022: TRex_Rip1
+    400024: TRex_Rip2
+    400026: TRex_Rip3
+    400028: TRex_Rip4
+    400030: TRex_Tail_Tip
+    400032: TRex_Tail_Upper
+    2300000: TRex_Arm_Left
+    2300002: TRex_Arm_Right
+    2300004: TRex_big
+    2300006: TRex_Foot_Left
+    2300008: TRex_Foot_Right
+    2300010: TRex_Head_Bot
+    2300012: TRex_Head_Top
+    2300014: TRex_Leg_Left
+    2300016: TRex_Leg_Right
+    2300018: TRex_Neck
+    2300020: TRex_Rip1
+    2300022: TRex_Rip2
+    2300024: TRex_Rip3
+    2300026: TRex_Rip4
+    2300028: TRex_Tail_Tip
+    2300030: TRex_Tail_Upper
+    3300000: TRex_Arm_Left
+    3300002: TRex_Arm_Right
+    3300004: TRex_big
+    3300006: TRex_Foot_Left
+    3300008: TRex_Foot_Right
+    3300010: TRex_Head_Bot
+    3300012: TRex_Head_Top
+    3300014: TRex_Leg_Left
+    3300016: TRex_Leg_Right
+    3300018: TRex_Neck
+    3300020: TRex_Rip1
+    3300022: TRex_Rip2
+    3300024: TRex_Rip3
+    3300026: TRex_Rip4
+    3300028: TRex_Tail_Tip
+    3300030: TRex_Tail_Upper
+    4300000: TRex_Rip4
+    4300002: TRex_Rip3
+    4300004: TRex_Rip2
+    4300006: TRex_Rip1
+    4300008: TRex_Neck
+    4300010: TRex_Tail_Upper
+    4300012: TRex_Tail_Tip
+    4300014: TRex_Leg_Left
+    4300016: TRex_Leg_Right
+    4300018: TRex_Foot_Left
+    4300020: TRex_Foot_Right
+    4300022: TRex_Arm_Left
+    4300024: TRex_Arm_Right
+    4300026: TRex_Head_Bot
+    4300028: TRex_Head_Top
+    4300030: TRex_big
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

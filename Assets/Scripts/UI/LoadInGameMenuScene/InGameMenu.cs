@@ -1,39 +1,56 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.SceneManagement;
+﻿using UnityEngine;
+using UnityEngine.UI;
 
 //Dieses Script gehört in die IngameMenuScene
 
-public class InGameMenu : MonoBehaviour
-{
+public class InGameMenu : MonoBehaviour {
 
-    // Use this for initialization
-    void Start()
-    {
-        //Input.GetButtonDown();
-    }
+    [SerializeField] private RectTransform PauseMenu;
+    [SerializeField] private Slider peanutCooldown;
+    [SerializeField] private Text peanutAmount;
+    [SerializeField] private Slider stealthDuration;
+    [SerializeField] private Slider wantedLevel;
+
+    private float[] wantedLimits = new[] {0f, 0.38f, 0.72f, 1f, 1f};
+
+
+    private bool paused;
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            paused = !paused;
+        }
+        if (!paused) {
+            PauseMenu.gameObject.SetActive(false);
+            Time.timeScale = 1;
+        }
+        else {
+            PauseMenu.gameObject.SetActive(true);
+            Time.timeScale = 0;
+        }
+
+
+        wantedLevel.value =  Mathf.Lerp(wantedLimits[WantedLevel.Instance.currentWantedStage],
+                    wantedLimits[WantedLevel.Instance.currentWantedStage + 1],
+            WantedLevel.Instance.currentTierPercent);
+
+        peanutCooldown.value = PlayerActor.Instance.shootPeanuts.cooldown.progress;
+        peanutAmount.text = "x" + PlayerActor.Instance.shootPeanuts.ammo;
+
+        stealthDuration.value = PlayerActor.Instance.camouflageController.PercentTimeLeft;
 
     }
 
     public void clickedButtonBackToGame()
     {
-        SceneManager.UnloadSceneAsync(0);       //Die Scene IngameMenu schließen
-        AddLoad_IngamePaused.setPause(false);   //In der Klasse AddLoad_IngamePaused pause-Variable auf false setzen, da sich das Spiel nun nicht mehr im Pausemodus befindet
-        Time.timeScale = 1;                     //pausierte Scene fortsetzen
+        paused = !paused;
     }
 
     public void clickedButtonRestartLevel()
     {
-        SceneManager.UnloadSceneAsync(0);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
-        AddLoad_IngamePaused.setPause(false);
-        Time.timeScale = 1;
+        paused = !paused;
     }
 
     public void clickedButtonExit()

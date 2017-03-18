@@ -6,8 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/MenuScreens/MainMenu.unity
+  - enabled: 1
+    path: Assets/Scenes/Loni_Museum_Scene/museum.unity
+  - enabled: 1
+    path: Assets/Scenes/MenuScreens/VictoryScreen.unity
+  - enabled: 1
     path: Assets/Scenes/InGameMenu/IngameMenu.unity
   - enabled: 1
-    path: Assets/Scenes/WK-Test-Scenes/Prototype2.unity
-  - enabled: 1
-    path: Assets/Scenes/WK-Test-Scenes/Prototype.unity
+    path: Assets/Scenes/MenuScreens/GameOverScreen.unity

@@ -31,6 +31,9 @@ GameObject:
   - component: {fileID: 114235749066562918}
   - component: {fileID: 114010960713027128}
   - component: {fileID: 114888308450083346}
+  - component: {fileID: 114477141043295970}
+  - component: {fileID: 114146633211738556}
+  - component: {fileID: 114541535607088118}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -209,11 +212,12 @@ MonoBehaviour:
   m_target: {fileID: 0}
   m_autoTargetPlayer: 1
   m_updateType: 1
-  m_targetDistance: 3
+  m_distSpringConstant: 20
+  m_targetDistance: 4
   m_showRotationSpeed: 10
   m_zoomSpeed: 2
-  m_targetElevation: 0.5
-  m_targetOffset: {x: 0, y: 1.8, z: 0}
+  m_targetElevation: 0.3
+  m_targetOffset: {x: 0, y: 3, z: 0}
   m_lerpFactor: 10
 --- !u!114 &114078467788004932
 MonoBehaviour:
@@ -229,6 +233,27 @@ MonoBehaviour:
   shader: {fileID: 4800000, guid: e9ba2083ad114a07d000fbfb8d76c639, type: 3}
   blurAmount: 0.6
   extraBlur: 0
+--- !u!114 &114146633211738556
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1071282897252280}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d295d828f6e44b2d853067ea2f33d98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_target: {fileID: 0}
+  m_autoTargetPlayer: 0
+  m_updateType: 0
+  m_distSpringConstant: 80
+  m_targetDistance: 4
+  m_showRotationSpeed: 15
+  m_zoomSpeed: 1
+  m_targetElevation: 0.4
+  m_targetOffset: {x: 0, y: 1.5, z: 0}
+  m_lerpFactor: 40
 --- !u!114 &114205348836881314
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -273,6 +298,20 @@ MonoBehaviour:
   downsample: 0
   rand: {fileID: 2800000, guid: a181ca8e3c62f3e4b8f183f6c586b032, type: 3}
   aoShader: {fileID: 4800000, guid: 95616c020c5604dda96cf76afbbc0272, type: 3}
+--- !u!114 &114477141043295970
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1071282897252280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a81158fa5f32458ba38cd6875adfe52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_frequency: 0.8
+  m_maxIntensity: 0.4
+  m_active: 0
 --- !u!114 &114495151443468016
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -298,6 +337,17 @@ MonoBehaviour:
   m_LerpFactor: 30
   m_roomCorrectionOffset: {x: 0.8, y: 0, z: 0}
   m_maxAcceleration: 60
+--- !u!114 &114541535607088118
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1071282897252280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd4b5af12bf374b5ca027cef146674ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114575464479687806
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -381,7 +431,7 @@ MonoBehaviour:
   m_invisibleSaturation: 0.3
   m_invisibleLuminance: 0.6
   m_invisibleTint: {r: 0.5, g: 0.64827585, b: 1, a: 1}
-  m_fullscreenTint: {r: 1, g: 1, b: 1, a: 0}
+  m_fullscreenTint: {r: 0.8455882, g: 0.19244422, b: 0, a: 0}
   m_shader: {fileID: 4800000, guid: d32d816159a674dd593d6245aa5a916b, type: 3}
   m_viewConeCamera: {fileID: 1995049591789020}
 --- !u!124 &124801058591981424

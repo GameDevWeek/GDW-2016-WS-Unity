@@ -20,7 +20,10 @@ public class ReplaceObjectTool : EditorWindow {
 
             var transforms = Selection.GetTransforms(SelectionMode.TopLevel);
 
+
             foreach (var transform in transforms) {
+                Undo.RecordObject(transform.gameObject, "Replacing with prefabs");
+
                 var ng = PrefabUtility.InstantiatePrefab(go) as GameObject;
                 ng.transform.position = transform.position;
                 ng.transform.rotation = transform.rotation;

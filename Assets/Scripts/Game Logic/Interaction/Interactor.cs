@@ -1,7 +1,9 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 
 public class Interactor : MonoBehaviour {
     [SerializeField]
@@ -18,6 +20,8 @@ public class Interactor : MonoBehaviour {
     [SerializeField]
     private float m_interactionRange = 3.0f;
     private Interactable m_curInteractable;
+    [SerializeField]
+    private bool m_use2DDistance = true;
 
     public Vector3 position {
         get {
@@ -25,6 +29,7 @@ public class Interactor : MonoBehaviour {
         }
     }
 
+#if UNITY_EDITOR
     void OnDrawGizmosSelected() {
         if(! this.enabled) return;
         Handles.color = new Color(1.0f, 0.0f, 1.0f, 0.3f);
@@ -32,21 +37,39 @@ public class Interactor : MonoBehaviour {
             Quaternion.AngleAxis(-m_interactionDegree * 0.5f, Vector3.up) * transform.forward, 
             m_interactionDegree, m_interactionRange);
     }
+#endif
 
     private bool IsVisible(Interactable interactable) {
-        if (DistanceTo(interactable) > interactable.GetInteractionRange(m_interactionRange)) {
+        if (!InRange(interactable)) {
             return false;
         }
 
+        if (interactable.ignoreRaycastVisibility) {
+            return true;
+        }
+
+        float distance = DistanceTo(interactable);
         RaycastHit hitInfo;
         bool hit = Physics.Raycast(position, (interactable.position - position).normalized, 
             out hitInfo, interactable.GetInteractionRange(m_interactionRange), m_interactionBlockerMask);
 
-        return hit && hitInfo.collider.GetComponent<Interactable>() == interactable;
+        return !hit ||
+            (hitInfo.collider.GetComponent<Interactable>() == interactable || 
+             hitInfo.distance >= distance);
     }
 
     private float DistanceTo(Interactable interactable) {
+        if (m_use2DDistance) {
+            return (Vector3.ProjectOnPlane(interactable.position, Vector3.up) - 
+                Vector3.ProjectOnPlane(position, Vector3.up)).magnitude;
+            
+        }
+
         return (interactable.position - position).magnitude;
+    }
+
+    private bool InRange(Interactable interactable) {
+        return DistanceTo(interactable) <= interactable.GetInteractionRange(m_interactionRange);
     }
 
     Interactable FindMinInteractable() {
@@ -60,6 +83,12 @@ public class Interactor : MonoBehaviour {
             var interactable = collider.GetComponent<Interactable>();
             if (interactable == null || !collider.gameObject) {
                 continue;
+            }
+            
+            if (interactable.useInteractionRangeOnly) {
+                if (InRange(interactable)) {
+                    return interactable;
+                }
             }
 
             float degree = DegreeTo(collider.gameObject);

@@ -5,8 +5,6 @@ using UnityEngine;
 public class ChaseState : IEnemyState
 {
     private readonly StatePatternEnemy enemy;
-    //private Vector3 m_chasePos;
-    // public Vector3 chasePos { get { return m_chasePos; } set { m_chasePos = value; } }
 
     public ChaseState(StatePatternEnemy statePatternEnemy)
     {
@@ -32,6 +30,8 @@ public class ChaseState : IEnemyState
     public void ToAlertState()
     {
         enemy.currentState = enemy.alertState;
+        enemy.navMeshAgent.speed = enemy.standartSpeed;
+        enemy.camouflageNotInRange();
     }
 
     public void ToChaseState()
@@ -42,16 +42,21 @@ public class ChaseState : IEnemyState
     private void Look()
     {
         RaycastHit hit;
-        Vector3 enemyToTarget = (enemy.chaseTarget.position + enemy.offset) - enemy.eyes.transform.position;
+        Vector3 enemyToTarget = enemy.chaseTarget.position - enemy.eyes.transform.position;
         if (enemy.canSeePlayer(out hit))
         {
             enemy.chaseTarget = hit.transform;
             WantedLevel.Instance.RaiseWantedLevel();
-            enemy.camouflageInRange(hit);
+
+            Vector3 enemyToPlayer = PlayerActor.Instance.transform.position - enemy.transform.position;
+            float playerDistance = enemyToPlayer.magnitude;
+            if (playerDistance <= enemy.playerIsCaughtDistance)
+                enemy.caughtPlayer();
+
+
         }
         else
         {
-            enemy.camouflageNotInRange();
             ToAlertState();
         }
     }
