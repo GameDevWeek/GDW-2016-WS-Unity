@@ -1058,6 +1058,9 @@ MonoBehaviour:
   m_lifeSpan: 3
   m_offset: {x: 0, y: 1, z: 1}
   m_destroy_Peanut_On_Collison: 1
+  cooldown:
+    m_timeInSeconds: 1
+  ammo: 0
 --- !u!114 &114316476566176562
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1214,7 +1217,7 @@ MonoBehaviour:
   m_positionOffset: {x: 0, y: 0, z: 0}
   m_interactionBlockerMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 8192
   m_interactableLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -1232,6 +1235,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collider: {fileID: 136266747651252150}
+  shootPeanuts: {fileID: 114302045587487728}
+  camouflageController: {fileID: 114548738031474726}
 --- !u!114 &114850527267441736
 MonoBehaviour:
   m_ObjectHideFlags: 1

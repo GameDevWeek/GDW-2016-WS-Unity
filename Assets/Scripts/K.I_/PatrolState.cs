@@ -8,6 +8,7 @@ public class PatrolState : IEnemyState
     private int nextWayPoint;
     private float searchTimer;
     private bool isLooking;
+    private bool firstChase = false;
 
     public PatrolState(StatePatternEnemy statePatternEnemy)
     {
@@ -43,6 +44,12 @@ public class PatrolState : IEnemyState
         enemy.currentState = enemy.chaseState;
         searchTimer = 0f;
         enemy.navMeshAgent.speed = enemy.chaseSpeed;
+        enemy.camouflageInRange();
+        if (!firstChase)
+        {
+            WantedLevel.Instance.GuardIsNowVigilant();
+            firstChase = true;
+        }
     }
 
     private void Look()
@@ -52,7 +59,7 @@ public class PatrolState : IEnemyState
         if (enemy.canSeePlayer(out hit))
         {
 
-            enemy.camouflageInRange(hit);
+            
 
             if (hit.distance >= enemy.toleratedSightrange)     //Wenn Spieler im Toleranzbereich erstmal stoppen und schauen
             {

@@ -44,11 +44,18 @@ public class Interactor : MonoBehaviour {
             return false;
         }
 
+        if (interactable.ignoreRaycastVisibility) {
+            return true;
+        }
+
+        float distance = DistanceTo(interactable);
         RaycastHit hitInfo;
         bool hit = Physics.Raycast(position, (interactable.position - position).normalized, 
             out hitInfo, interactable.GetInteractionRange(m_interactionRange), m_interactionBlockerMask);
 
-        return hit && hitInfo.collider.GetComponent<Interactable>() == interactable;
+        return !hit ||
+            (hitInfo.collider.GetComponent<Interactable>() == interactable || 
+             hitInfo.distance >= distance);
     }
 
     private float DistanceTo(Interactable interactable) {
