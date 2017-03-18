@@ -17,7 +17,7 @@ public class WantedLevel : Singleton<WantedLevel> {
     private float currentTimeBeforeReduction = 0f;
 
     [Tooltip("Number of Guards that, after alerted hard-trigger stage 1")]
-    [SerializeField] private int AlertedGuardsLimit = 3;
+    [SerializeField] private int alertedGuardsLimit = 3;
 
     private float timeInCurrentTier = 0f;
     private int alertedGuards = 0;
@@ -27,11 +27,11 @@ public class WantedLevel : Singleton<WantedLevel> {
     private void Update() {
 
         if (currentTier == 0) {
-            if (alertedGuards >= AlertedGuardsLimit) {
+            if (alertedGuards >= alertedGuardsLimit) {
                 timeInCurrentTier = 0f;
                 currentTier = 1;
             }else{
-                timeInCurrentTier = Mathf.Max(timeInTier[0] * alertedGuards / AlertedGuardsLimit, timeInCurrentTier);
+                timeInCurrentTier = Mathf.Max(timeInTier[0] * alertedGuards / alertedGuardsLimit, timeInCurrentTier);
             }
         }
 
@@ -58,8 +58,11 @@ public class WantedLevel : Singleton<WantedLevel> {
         }
     }
 
-    public void GuardIsNowVigilant() {
+    public bool GuardIsNowVigilant() {
         alertedGuards++;
+        if (alertedGuards >= alertedGuardsLimit)
+            return true;
+        return false;
     }
 
     public void TriggerLaserAlert() {
