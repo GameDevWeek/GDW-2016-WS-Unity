@@ -18,7 +18,7 @@ public class InGameMenu : MonoBehaviour {
 
     // Update is called once per frame
     void LateUpdate()
-    {
+	{
         if (Input.GetKeyDown(KeyCode.Escape)) {
             paused = !paused;
         }
@@ -40,7 +40,6 @@ public class InGameMenu : MonoBehaviour {
         peanutAmount.text = "x" + PlayerActor.Instance.shootPeanuts.ammo;
 
         stealthDuration.value = PlayerActor.Instance.camouflageController.PercentTimeLeft;
-
     }
 
     public void clickedButtonBackToGame()
