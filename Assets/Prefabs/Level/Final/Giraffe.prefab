@@ -2140,6 +2140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5c475f94aa81594fbd1621700461dcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_destructableName: Giraffe
   m_completeObject: {fileID: 1109350106285092}
   m_destrucedObject: {fileID: 1943616530520326}
 --- !u!136 &136834868545097576
