@@ -1405,7 +1405,7 @@ Prefab:
     - target: {fileID: 224573026886614072, guid: be08505d06a9244029ad0735c9ee6a7a,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 44.999878
+      value: 44.999817
       objectReference: {fileID: 0}
     - target: {fileID: 224573026886614072, guid: be08505d06a9244029ad0735c9ee6a7a,
         type: 2}
@@ -1952,11 +1952,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2647f009cdebea940aef023039644464, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PauseMenu: {fileID: 0}
-  peanutCooldown: {fileID: 0}
-  peanutAmount: {fileID: 0}
-  stealthDuration: {fileID: 0}
-  wantedLevel: {fileID: 0}
+  PauseMenu: {fileID: 202402983}
+  peanutCooldown: {fileID: 261381599}
+  peanutAmount: {fileID: 787657353}
+  stealthDuration: {fileID: 207037728}
+  wantedLevel: {fileID: 854874817}
 --- !u!4 &1454013427
 Transform:
   m_ObjectHideFlags: 0
