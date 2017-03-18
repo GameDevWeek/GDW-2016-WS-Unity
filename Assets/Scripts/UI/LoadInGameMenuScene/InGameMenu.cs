@@ -1,5 +1,6 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 //Dieses Script gehört in die IngameMenuScene
 
@@ -15,7 +16,14 @@ public class InGameMenu : MonoBehaviour {
 
 
     private bool paused;
+    private PlayerActor m_playerActor;
+    private WantedLevel m_wantedLevel;
 
+    void Start() {
+        m_playerActor = GameObject.FindObjectOfType<PlayerActor>();
+        m_wantedLevel = GameObject.FindObjectOfType<WantedLevel>();
+    
+    }
     // Update is called once per frame
     void LateUpdate()
 	{
@@ -31,15 +39,16 @@ public class InGameMenu : MonoBehaviour {
             Time.timeScale = 0;
         }
 
+	    if(m_wantedLevel == null) return; // hotfix
 
-        wantedLevel.value =  Mathf.Lerp(wantedLimits[WantedLevel.Instance.currentWantedStage],
-                    wantedLimits[WantedLevel.Instance.currentWantedStage + 1],
-            WantedLevel.Instance.currentTierPercent);
+        wantedLevel.value =  Mathf.Lerp(wantedLimits[m_wantedLevel.currentWantedStage],
+                    wantedLimits[m_wantedLevel.currentWantedStage + 1],
+            m_wantedLevel.currentTierPercent);
 
-        peanutCooldown.value = PlayerActor.Instance.shootPeanuts.cooldown.progress;
-        peanutAmount.text = "x" + PlayerActor.Instance.shootPeanuts.ammo;
+        peanutCooldown.value = m_playerActor.shootPeanuts.cooldown.progress;
+        peanutAmount.text = "x" + m_playerActor.shootPeanuts.ammo;
 
-        stealthDuration.value = PlayerActor.Instance.camouflageController.PercentTimeLeft;
+        stealthDuration.value = m_playerActor.camouflageController.PercentTimeLeft;
     }
 
     public void clickedButtonBackToGame()
@@ -48,8 +57,9 @@ public class InGameMenu : MonoBehaviour {
     }
 
     public void clickedButtonRestartLevel()
-    {
+	{
         paused = !paused;
+		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void clickedButtonExit()

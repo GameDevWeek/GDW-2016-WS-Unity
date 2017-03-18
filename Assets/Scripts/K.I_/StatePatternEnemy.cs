@@ -38,7 +38,8 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
     private ElephantMovement elephantMovement;
     private bool caughtThePlayer;
     private bool firstWantedUp;
-
+    public PlayerActor playerActor;
+    public WantedLevel wantedLevel;
 
     public AudioSource audioSource;
     public AudioClip[] enterChase;
@@ -61,6 +62,8 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
 
     private void Awake() {
         audioSource = GetComponent<AudioSource>();
+        playerActor = GameObject.FindObjectOfType<PlayerActor>();
+        wantedLevel = GameObject.FindObjectOfType<WantedLevel>();
 
         chaseState = new ChaseState(this);
         alertState = new AlertState(this);
@@ -70,7 +73,7 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
         navMeshAgent.speed = standartSpeed;
 
         enemyAnimator = GetComponent<Animator>();
-        elephantMovement = PlayerActor.Instance.GetComponent<ElephantMovement>();
+        elephantMovement = playerActor.GetComponent<ElephantMovement>();
 
         if (wayPoints == null)
             wayPoints = new Waypoints() {
@@ -102,7 +105,7 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
         }
 
         //WantedLvl abfrage
-       if( WantedLevel.Instance.currentWantedStage > 0 && !firstWantedUp )
+       if( wantedLevel.currentWantedStage > 0 && !firstWantedUp )
         {
             WantedLvlUp();
             firstWantedUp = true;
@@ -151,6 +154,9 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
 
     public void Inform(NoiseSourceData data)    //Wenn ich im PatrolState etwas höre laufe ich auf
     {
+        if (!enabled) {
+            return;
+        }
 
         if (currentState == patrolState)
         {
@@ -171,7 +177,7 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
 
     public void camouflageInRange()
     {
-        camouflage = PlayerActor.Instance.GetComponent<CamouflageController>();
+        camouflage = playerActor.GetComponent<CamouflageController>();
         if (camouflage != null)
         {
             camouflage.EnemyInRange(this.gameObject);
@@ -190,22 +196,22 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
 
     public bool canSeePlayer(out RaycastHit hit)
     {
-        Vector3 enemyToPlayer = PlayerActor.Instance.transform.position - transform.position;
+        Vector3 enemyToPlayer = playerActor.transform.position - transform.position;
         float playerDistance = enemyToPlayer.magnitude;
         if (playerDistance <= sightRange && !elephantMovement.IsInStonePose())
         {
             float angleDistance = Vector3.Angle(enemyToPlayer, transform.forward);
             if (angleDistance < fieldOfView * 0.5f)
             {
-                float playerWidth = ((CapsuleCollider)PlayerActor.Instance.collider).radius;
+                float playerWidth = ((CapsuleCollider)playerActor.collider).radius;
 
                 Vector3 enemyToPlayerOrtho = new Vector3(enemyToPlayer.z, enemyToPlayer.y, -enemyToPlayer.x).normalized;
-                Vector3 playerPosLeft = PlayerActor.Instance.transform.position - enemyToPlayerOrtho * 0.5f * playerWidth;
-                Vector3 playerPosRight = PlayerActor.Instance.transform.position + enemyToPlayerOrtho * 0.5f * playerWidth;
+                Vector3 playerPosLeft = playerActor.transform.position - enemyToPlayerOrtho * 0.5f * playerWidth;
+                Vector3 playerPosRight = playerActor.transform.position + enemyToPlayerOrtho * 0.5f * playerWidth;
 
                 Debug.DrawLine(transform.position, playerPosRight, Color.green);
                 Debug.DrawLine(transform.position, playerPosLeft, Color.green);
-                Debug.DrawLine(transform.position, PlayerActor.Instance.transform.position, Color.green);
+                Debug.DrawLine(transform.position, playerActor.transform.position, Color.green);
 
                 if ((Physics.Raycast(eyes.transform.position, enemyToPlayer.normalized, out hit, sightRange, viewBlockingLayers) &&
                     (hit.collider.CompareTag("Player"))))

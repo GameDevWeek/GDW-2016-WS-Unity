@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Name: wache3
   m_EditorClassIdentifier: 
   points:
-  - {x: -13.74846, y: 0, z: 9.0399}
+  - {x: -13.526154, y: 0, z: 8.49301}
   pairs: []

@@ -52,7 +52,7 @@ public class PatrolState : IEnemyState
         
         if (!firstChase)
         {
-            WantedLevel.Instance.GuardIsNowVigilant();
+            enemy.wantedLevel.GuardIsNowVigilant();
             firstChase = true;
         }
     }
@@ -71,7 +71,7 @@ public class PatrolState : IEnemyState
                 enemy.chaseTarget = hit.transform;          //Wenn Spieler unterm Toleranzbereich ist direkt chasen
                 searchTimer = 0f;
                 isLooking = false;
-                WantedLevel.Instance.RaiseWantedLevel();
+                enemy.wantedLevel.RaiseWantedLevel();
                 enemy.viewCone.setAlarmed(true, 1f);
                 ToChaseState();
             }
