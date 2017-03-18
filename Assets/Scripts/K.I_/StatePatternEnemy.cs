@@ -36,6 +36,7 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
     private Animator enemyAnimator;
     private ElephantMovement elephantMovement;
     private bool caughtThePlayer;
+    private bool firstWantedUp;
 
     //---Caught event stuff-----
     public struct CaughtEventData
@@ -81,17 +82,24 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
 
         viewCone.MainViewRadius = toleratedSightrange;
         viewCone.FullViewRadius = sightRange;
+        viewCone.FieldOfView = fieldOfView;
     }
 
     void Update() {
         currentState.UpdateState();
+
+        //Stuff für den Animator
         if (currentState != alertState && enemyAnimator != null)
         {
             enemyAnimator.SetFloat("BlendSpeed", (float) (navMeshAgent.velocity.magnitude/chaseSpeed));
         }
-        //Debug.Log(navMeshAgent.velocity.magnitude);
 
-
+        //WantedLvl abfrage
+       if( WantedLevel.Instance.currentWantedStage > 0 && !firstWantedUp )
+        {
+            WantedLvlUp();
+            firstWantedUp = true;
+        }
     }
 
     public void StopMovement() {
@@ -107,13 +115,20 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
     {
         searchingTurnSpeed += 20f;
         sightRange += 5f;
-
+        toleratedSightrange += 5f;
+        viewCone.FieldOfView += 30f;
+        viewCone.FullViewRadius += 5f;
+        viewCone.MainViewRadius += 5f;
     }
 
     public void WantedLvlDown()
     {
         searchingTurnSpeed -= 20f;
         sightRange -= 5f;
+        toleratedSightrange -= 5f;
+        viewCone.FieldOfView -= 30f;
+        viewCone.FullViewRadius -= 5f;
+        viewCone.MainViewRadius -= 5f;
     }
 
     private void OnDrawGizmos() {

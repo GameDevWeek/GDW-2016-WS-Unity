@@ -18,7 +18,7 @@ public class PatrolState : IEnemyState
     public void UpdateState()
     {
         Look();
-        if(enemy.currentState == this)
+        if(enemy.currentState == this)  //War irgendwie nötig für den cone...
         Patrol();
     }
 
@@ -45,6 +45,7 @@ public class PatrolState : IEnemyState
         searchTimer = 0f;
         enemy.navMeshAgent.speed = enemy.chaseSpeed;
         enemy.camouflageInRange();
+        
         if (!firstChase)
         {
             WantedLevel.Instance.GuardIsNowVigilant();
@@ -54,13 +55,9 @@ public class PatrolState : IEnemyState
 
     private void Look()
     {
-
         RaycastHit hit;
         if (enemy.canSeePlayer(out hit))
         {
-
-            
-
             if (hit.distance >= enemy.toleratedSightrange)     //Wenn Spieler im Toleranzbereich erstmal stoppen und schauen
             {
                 StopAndLook(hit);

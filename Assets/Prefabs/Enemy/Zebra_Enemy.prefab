@@ -783,12 +783,12 @@ MonoBehaviour:
   chaseSpeed: 3
   searchingTurnSpeed: 120
   searchingDuration: 4
-  sightRange: 10
-  toleratedSightrange: 5
+  sightRange: 5
+  toleratedSightrange: 3
   fieldOfView: 90
   stoppingTime: 2
   playerIsCaughtDistance: 4
-  wayPoints: {fileID: 11400000, guid: 37f3e8748a6a445448e9b57073c99b31, type: 2}
+  wayPoints: {fileID: 11400000, guid: 1b96c6bd8e2bd6b43ba8d45b71a0bd7f, type: 2}
   currentWaypoint: 0
   eyes: {fileID: 4783832913348610}
   viewCone: {fileID: 114161575816425640}
