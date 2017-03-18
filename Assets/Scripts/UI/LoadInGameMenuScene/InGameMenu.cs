@@ -31,6 +31,7 @@ public class InGameMenu : MonoBehaviour {
             Time.timeScale = 0;
         }
 
+	    if(WantedLevel.Instance == null) return; // hotfix
 
         wantedLevel.value =  Mathf.Lerp(wantedLimits[WantedLevel.Instance.currentWantedStage],
                     wantedLimits[WantedLevel.Instance.currentWantedStage + 1],
