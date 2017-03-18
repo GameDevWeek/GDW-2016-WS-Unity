@@ -1239,6 +1239,8 @@ MonoBehaviour:
   collider: {fileID: 136266747651252150}
   shootPeanuts: {fileID: 114302045587487728}
   camouflageController: {fileID: 114548738031474726}
+  particlePrefab: {fileID: 0}
+  sprintParticles: {fileID: 0}
 --- !u!114 &114850527267441736
 MonoBehaviour:
   m_ObjectHideFlags: 1
