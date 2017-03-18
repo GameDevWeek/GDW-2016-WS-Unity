@@ -123,7 +123,7 @@ public class ElephantMovement : MonoBehaviour {
     void UpdateAnimator(Vector3 move, float animSpeed) {
         // update the animator parameters
         m_animator.SetFloat("Forward", m_forwardAmount, 0.1f, Time.deltaTime);
-//         Debug.Log(m_forwardAmount);
+
         //m_rigidbody.velocity = transform.forward * m_forwardAmount * animSpeed;
         m_animator.SetFloat("Turn", m_turnAmount, 0.1f, Time.deltaTime);
         m_animator.SetBool("Crouch", m_crouching);

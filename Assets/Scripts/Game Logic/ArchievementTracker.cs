@@ -86,6 +86,11 @@ public class ArchievementTracker : Singleton<ArchievementTracker> {
         arch.currentValue = value;
     }
 
+    public List<Archievement> getAchievment()
+    {
+        return archievements;
+    }
+
     void OnDestroy() {
         foreach (var archievement in archievements) {
             if(! archievement.saveOnLocalMachine) continue;
