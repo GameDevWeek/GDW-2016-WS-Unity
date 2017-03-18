@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: JadeElefant
-  m_Shader: {fileID: 4800000, guid: 48dca5b99d113b8d11006bab44295342, type: 3}
+  m_Shader: {fileID: 4800000, guid: 5f01cd99169a5df4aa18136104d6b3d8, type: 3}
   m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 1
   m_CustomRenderQueue: -1
@@ -58,6 +58,12 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - first:
+        name: _NoiseTex
+      second:
+        m_Texture: {fileID: 2800000, guid: e80c3c84ea861404d8a427db8b7abf04, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
         name: _NormalMap
       second:
         m_Texture: {fileID: 0}
@@ -87,6 +93,12 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - first:
+        name: _ToonShade
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Floats:
     - first:
         name: _BumpScale
@@ -100,6 +112,12 @@ Material:
     - first:
         name: _DstBlend
       second: 0
+    - first:
+        name: _FogIntensity
+      second: 0.3
+    - first:
+        name: _FogSpeed
+      second: 0.05
     - first:
         name: _GlossMapScale
       second: 1
@@ -119,8 +137,14 @@ Material:
         name: _OcclusionStrength
       second: 1
     - first:
+        name: _Outline
+      second: 0.004
+    - first:
         name: _Parallax
       second: 0.02
+    - first:
+        name: _Pixels
+      second: 1
     - first:
         name: _SmoothnessTextureChannel
       second: 0
@@ -131,6 +155,9 @@ Material:
         name: _SrcBlend
       second: 1
     - first:
+        name: _TextureIntensity
+      second: 0.25
+    - first:
         name: _UVSec
       second: 0
     - first:
@@ -139,10 +166,16 @@ Material:
     m_Colors:
     - first:
         name: _Color
-      second: {r: 0.07586217, g: 1, b: 0, a: 1}
+      second: {r: 1, g: 0.8627451, b: 0.5686275, a: 1}
     - first:
         name: _EmissionColor
       second: {r: 0, g: 0, b: 0, a: 1}
+    - first:
+        name: _OutlineColor
+      second: {r: 0.875, g: 0.64844066, b: 0.16084558, a: 1}
+    - first:
+        name: _ScreenRes
+      second: {r: 0, g: 0, b: 0, a: 0}
     - first:
         name: _SpecColor
       second: {r: 0.2, g: 0.2, b: 0.2, a: 1}
