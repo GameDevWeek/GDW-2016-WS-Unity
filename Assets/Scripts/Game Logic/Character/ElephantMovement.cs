@@ -32,6 +32,7 @@ public class ElephantMovement : MonoBehaviour {
     [SerializeField]
     CapsuleCollider m_sprintCapsule;
     bool m_crouching;
+    public bool allowToMove=true;
 
     void Start() {
         m_animator = GetComponent<Animator>();
@@ -122,7 +123,7 @@ public class ElephantMovement : MonoBehaviour {
     void UpdateAnimator(Vector3 move, float animSpeed) {
         // update the animator parameters
         m_animator.SetFloat("Forward", m_forwardAmount, 0.1f, Time.deltaTime);
-
+        Debug.Log(m_forwardAmount);
         //m_rigidbody.velocity = transform.forward * m_forwardAmount * animSpeed;
         m_animator.SetFloat("Turn", m_turnAmount, 0.1f, Time.deltaTime);
         m_animator.SetBool("Crouch", m_crouching);
@@ -154,7 +155,8 @@ public class ElephantMovement : MonoBehaviour {
     }
 
     public bool CanMove() {
-        return !IsInStonePose() && !IsStunned() && !IsPunching() && !GaveUp();
+        
+        return allowToMove && !IsInStonePose() && !IsStunned() && !IsPunching() && !GaveUp();
     }
 
     public bool IsPunching() {
