@@ -99,6 +99,7 @@ MonoBehaviour:
   useInteractionRangeOnly: 0
   ignoreRaycastVisibility: 0
   ScoreValue: 0
+  m_collectableName: Jade Elefant
 --- !u!135 &135001409748805150
 SphereCollider:
   m_ObjectHideFlags: 1

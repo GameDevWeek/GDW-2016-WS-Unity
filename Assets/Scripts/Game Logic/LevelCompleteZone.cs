@@ -32,6 +32,19 @@ public class LevelCompleteZone : MonoBehaviour
 
     }
 
+    public struct LevelCompleteZoneEventData
+    {
+        public GameObject gameObject;
+
+        public LevelCompleteZoneEventData(GameObject gameObject)
+        {
+            this.gameObject = gameObject;
+        }
+    }
+
+    public delegate void LevelCompleteZoneEvent(LevelCompleteZoneEventData data);
+    public static event LevelCompleteZoneEvent OnLevelComplete;
+
     void OnTriggerEnter(Collider other)
     {
 
@@ -39,6 +52,8 @@ public class LevelCompleteZone : MonoBehaviour
         {
 
             Invoke("loadNextLevel", m_time);
+            if (OnLevelComplete != null)
+                OnLevelComplete.Invoke(new LevelCompleteZoneEventData(other.gameObject));
 
         }
     }
