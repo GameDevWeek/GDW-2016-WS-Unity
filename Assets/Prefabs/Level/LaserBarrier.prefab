@@ -123,8 +123,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.25, y: 1, z: 9.98428}
-  m_Center: {x: 0, y: 0, z: 4.99214}
+  m_Size: {x: 0.25, y: 1, z: 1.3307004}
+  m_Center: {x: 0, y: 0, z: 0.6653502}
 --- !u!82 &82814586108139732
 AudioSource:
   m_ObjectHideFlags: 1
@@ -268,7 +268,7 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 0, y: 0, z: 0}
-  - {x: 0.00000023841858, y: -0.00000011920929, z: 9.98428}
+  - {x: 0.000000029802322, y: 0.00000035762787, z: 1.3307005}
   m_Parameters:
     serializedVersion: 2
     widthMultiplier: 0.06
