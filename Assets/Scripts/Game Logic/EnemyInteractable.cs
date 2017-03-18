@@ -28,7 +28,7 @@ public class EnemyInteractable : Interactable {
     [SerializeField]
     private Cooldown m_cooldown = new Cooldown(0.5f);
     [SerializeField]
-    private float m_stunDuration = 5.0f;
+    private Cooldown m_stunDuration = new Cooldown(5.0f);
 
     [SerializeField]
     private float m_backAngle = 30.0f;
@@ -81,7 +81,12 @@ public class EnemyInteractable : Interactable {
         stateEnemy.StopMovement();
         stateEnemy.enabled = false;
         navMeshAgent.enabled = false;
-        yield return new WaitForSeconds(m_stunDuration);
+        while (!m_stunDuration.IsOver()) {
+            m_stunDuration.Update(Time.deltaTime);
+            yield return null;
+        }
+
+        m_stunDuration.Start();
         stateEnemy.enabled = true;
         navMeshAgent.enabled = true;
         m_stunRoutine = null;
@@ -94,5 +99,11 @@ public class EnemyInteractable : Interactable {
 
     public bool Stunned() {
         return m_stunRoutine != null;
+    }
+
+    public Cooldown stunDuration {
+        get {
+            return m_stunDuration;
+        }
     }
 }
