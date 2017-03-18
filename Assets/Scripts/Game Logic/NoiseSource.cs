@@ -47,7 +47,7 @@ public class NoiseSource : MonoBehaviour {
 
         if (m_allowPlayingSounds && m_audioClips.Any()) {
             var clip = Util.RandomElement(m_audioClips);
-            Debug.Log(clip.name);
+            //Debug.Log(clip.name);
             m_audioSource.PlayOneShot(clip);
         }
 
