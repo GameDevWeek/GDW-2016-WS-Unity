@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 
 //Dieses Script gehört in die IngameMenuScene
@@ -15,7 +15,11 @@ public class InGameMenu : MonoBehaviour {
 
 
     private bool paused;
+    private PlayerActor m_playerActor;
 
+    void Start() {
+        m_playerActor = GameObject.FindObjectOfType<PlayerActor>();
+    }
     // Update is called once per frame
     void LateUpdate()
 	{
@@ -37,10 +41,10 @@ public class InGameMenu : MonoBehaviour {
                     wantedLimits[WantedLevel.Instance.currentWantedStage + 1],
             WantedLevel.Instance.currentTierPercent);
 
-        peanutCooldown.value = PlayerActor.Instance.shootPeanuts.cooldown.progress;
-        peanutAmount.text = "x" + PlayerActor.Instance.shootPeanuts.ammo;
+        peanutCooldown.value = m_playerActor.shootPeanuts.cooldown.progress;
+        peanutAmount.text = "x" + m_playerActor.shootPeanuts.ammo;
 
-        stealthDuration.value = PlayerActor.Instance.camouflageController.PercentTimeLeft;
+        stealthDuration.value = m_playerActor.camouflageController.PercentTimeLeft;
     }
 
     public void clickedButtonBackToGame()

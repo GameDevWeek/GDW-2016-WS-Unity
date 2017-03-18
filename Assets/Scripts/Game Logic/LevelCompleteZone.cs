@@ -65,14 +65,17 @@ public class LevelCompleteZone : MonoBehaviour
 
             Time.timeScale = 0;
 
-            Invoke("loadNextLevel", m_time);
+            //Invoke("loadNextLevel", m_time);
+            StartCoroutine(loadNextLevel());
             if (OnLevelComplete != null)
                 OnLevelComplete.Invoke(new LevelCompleteZoneEventData(other.gameObject));
         }
     }
 
-    private void loadNextLevel()
+    private IEnumerator loadNextLevel()
     {
+        yield return new WaitForSecondsRealtime(m_time);
+
         Time.timeScale = 1;
         //todo: save data
         if (m_iterateSceneID)

@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -48,7 +48,7 @@ public class ChaseState : IEnemyState
             enemy.chaseTarget = hit.transform;
             WantedLevel.Instance.RaiseWantedLevel();
 
-            Vector3 enemyToPlayer = PlayerActor.Instance.transform.position - enemy.transform.position;
+            Vector3 enemyToPlayer = enemy.playerActor.transform.position - enemy.transform.position;
             float playerDistance = enemyToPlayer.magnitude;
             if (playerDistance <= enemy.playerIsCaughtDistance)
                 enemy.caughtPlayer();

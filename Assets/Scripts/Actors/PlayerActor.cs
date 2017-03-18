@@ -1,10 +1,10 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider))]
 [DisallowMultipleComponent]
-public class PlayerActor : Singleton<PlayerActor> {
+public class PlayerActor : MonoBehaviour {
 
     public Collider collider;
     public Shoot_Peanuts shootPeanuts;
