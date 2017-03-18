@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 
-[RequireComponent(typeof(ElephantMovement), typeof(Interactor))]
+[RequireComponent(typeof(ElephantMovement), typeof(Interactor), typeof(HeadControl))]
 public class ElephantControl : MonoBehaviour {
     public enum ControlsMode {
         Controller,
@@ -32,11 +32,21 @@ public class ElephantControl : MonoBehaviour {
     private Interactor m_interactor;
     [SerializeField, Tooltip("If a controller is connected then controller controls will be used otherwise Mouse-Keyboard.")]
     private bool m_autoDetectControlsMode = true;
+    private HeadControl m_headControl;
+    private TrunkControll m_trunkControl;
+    private bool m_isAiming = false;
+
+    public bool aiming {
+        get {
+            return m_isAiming;
+        }
+    }
 
     private void Start() {
         m_sprintCooldown.End();
         m_sprintDurationAfterSprintStopped.End();
         m_shootPeanuts = GetComponent<Shoot_Peanuts>();
+        m_trunkControl = GetComponent<TrunkControll>();
 
         // get the transform of the main camera
         if (Camera.main != null) {
@@ -50,6 +60,7 @@ public class ElephantControl : MonoBehaviour {
         // get the third person character ( this should never be null due to require component )
         m_character = GetComponent<ElephantMovement>();
         m_interactor = GetComponent<Interactor>();
+        m_headControl = GetComponent<HeadControl>();
     }
 
     private bool IsCrouching() {
@@ -190,6 +201,8 @@ public class ElephantControl : MonoBehaviour {
                     HandleAiming();
                 } else {
                     HandleControllerMovement();
+                    m_headControl.updateHeadRotation = false;
+                    m_isAiming = false;
                 }
                 break;
             case ControlsMode.KeyboardMouseSpecial:
@@ -226,6 +239,10 @@ public class ElephantControl : MonoBehaviour {
     private void HandleAiming() {
         m_character.Move(Vector3.zero, false);
         m_character.LookTowards(desiredLookDir);
+        var d = Vector3.ProjectOnPlane(transform.forward, Vector3.up);
+        float rotation = Mathf.Atan2(d.x, d.z);
+        m_headControl.SetHeadRotation(Mathf.Rad2Deg * rotation);
+        m_isAiming = true;
     }
 
     public Cooldown sprintCooldown {

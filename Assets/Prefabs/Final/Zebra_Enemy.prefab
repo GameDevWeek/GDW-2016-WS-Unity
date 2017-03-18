@@ -781,8 +781,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ec7412f597304a41b58b9c84a6188fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  standartSpeed: 2
-  chaseSpeed: 3
+  standartSpeed: 1.8
+  chaseSpeed: 2.2
   searchingTurnSpeed: 120
   searchingDuration: 4
   sightRange: 10

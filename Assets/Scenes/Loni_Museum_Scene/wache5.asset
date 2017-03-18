@@ -12,10 +12,18 @@ MonoBehaviour:
   m_Name: wache5
   m_EditorClassIdentifier: 
   points:
+<<<<<<< HEAD
+  - {x: 10.512992, y: 0, z: -5.920525}
+  - {x: 8.0263405, y: 0, z: -0.3906889}
+  - {x: 11.376904, y: 0, z: 1.8907785}
+  - {x: 14.851406, y: 0, z: -4.5392494}
+  - {x: 13.611973, y: 0, z: -6.9773927}
+=======
   - {x: 10.527987, y: 0, z: -6.8871784}
   - {x: 5.2127447, y: 0, z: -3.6035469}
   - {x: 10.462119, y: 0, z: 0.839895}
   - {x: 14.993902, y: 0, z: -2.7318854}
+>>>>>>> 699e2051d02489821f602c58abf1b6fae5795afd
   pairs:
   - First: 0
     Second: 1
@@ -24,4 +32,6 @@ MonoBehaviour:
   - First: 2
     Second: 3
   - First: 3
+    Second: 4
+  - First: 4
     Second: 0
