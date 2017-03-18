@@ -1930,7 +1930,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_affectedRange: 3
-  m_audioClips: []
+  m_audioClips:
+  - {fileID: 8300000, guid: 2136923a466e09846a31d6c435c159d2, type: 3}
+  - {fileID: 8300000, guid: 3583d1db41a1f3b4192d05ddeab58b4c, type: 3}
   m_affectedLayer:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -2425,4 +2427,4 @@ CapsuleCollider:
   m_Radius: 0.5
   m_Height: 1
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: -0.04}
+  m_Center: {x: 0, y: 0.12, z: -0.17}

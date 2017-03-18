@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PatrolState : IEnemyState
@@ -37,6 +38,9 @@ public class PatrolState : IEnemyState
     {
         enemy.currentState = enemy.alertState;
         searchTimer = 0f;
+
+        if(enemy.enterChase.Any())
+            enemy.audioSource.PlayOneShot(Util.RandomElement(enemy.enterChase));
     }
 
     public void ToChaseState()
