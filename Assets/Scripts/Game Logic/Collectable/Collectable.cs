@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[DisallowMultipleComponent]
 public class Collectable : Interactable
 {
     [SerializeField]
@@ -28,7 +29,7 @@ public class Collectable : Interactable
     {
         if (string.IsNullOrEmpty(m_collectableName))
         {
-            Debug.LogError("Collectable Name is Empty!");
+            Debug.LogError("["+ name +"] Collectable Name is Empty!", this.gameObject);
         }
     }
 

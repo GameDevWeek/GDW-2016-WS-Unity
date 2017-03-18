@@ -2568,6 +2568,7 @@ MonoBehaviour:
   toleratedSightrange: 2
   fieldOfView: 90
   stoppingTime: 2
+  playerIsCaughtDistance: 4
   wayPoints: {fileID: 11400000, guid: 37f3e8748a6a445448e9b57073c99b31, type: 2}
   currentWaypoint: 0
   eyes: {fileID: 1065083542}
@@ -5540,7 +5541,8 @@ Prefab:
       propertyPath: m_Name
       value: Jade_Elephant1 (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114249367854016126, guid: e86e41bb3a720d94cb33e224ea2561ad, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: e86e41bb3a720d94cb33e224ea2561ad, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &1227362427
@@ -6587,6 +6589,16 @@ Prefab:
     - target: {fileID: 4097998469823174, guid: e86e41bb3a720d94cb33e224ea2561ad, type: 2}
       propertyPath: m_RootOrder
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 114249367854016126, guid: e86e41bb3a720d94cb33e224ea2561ad,
+        type: 2}
+      propertyPath: m_collectableName
+      value: Jade Elefant
+      objectReference: {fileID: 0}
+    - target: {fileID: 114249367854016126, guid: e86e41bb3a720d94cb33e224ea2561ad,
+        type: 2}
+      propertyPath: ScoreValue
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e86e41bb3a720d94cb33e224ea2561ad, type: 2}
