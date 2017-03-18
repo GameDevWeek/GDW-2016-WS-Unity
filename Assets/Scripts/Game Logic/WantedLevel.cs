@@ -28,6 +28,7 @@ public class WantedLevel : Singleton<WantedLevel> {
 
         if (currentTier == 0) {
             if (alertedGuards >= AlertedGuardsLimit) {
+                timeInCurrentTier = 0f;
                 currentTier = 1;
             }else{
                 timeInCurrentTier = Mathf.Max(timeInTier[0] * alertedGuards / AlertedGuardsLimit, timeInCurrentTier);
@@ -41,10 +42,12 @@ public class WantedLevel : Singleton<WantedLevel> {
     }
 
     public void RaiseWantedLevel() {
+        if (!this.enabled)
+            return;
         timeInCurrentTier += Time.deltaTime;
         currentTimeBeforeReduction = 0f;
 
-        if (currentTierPercent > 1) {
+        if (currentTierPercent >= 1) {
             if (currentTier == 2) {
                 this.enabled = false;
                 // todo: gameOver;
@@ -60,7 +63,7 @@ public class WantedLevel : Singleton<WantedLevel> {
     }
 
     public void TriggerLaserAlert() {
-        if(currentTier < 2) return;
+        if(currentTier >= 2) return;
         timeInCurrentTier = 0f;
         currentTier = 2;
     }
