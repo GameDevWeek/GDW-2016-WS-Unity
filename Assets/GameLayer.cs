@@ -33,4 +33,6 @@ public static class GameLayer {
     public const int PlayerMask = 1 << 9;
     public const int Laser = 10;
     public const int LaserMask = 1 << 10;
+    public const int Ground = 11;
+    public const int GroundMask = 1 << 11;
  }
