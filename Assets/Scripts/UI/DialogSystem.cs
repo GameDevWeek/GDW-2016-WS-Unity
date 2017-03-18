@@ -36,10 +36,10 @@ public class DialogSystem : MonoBehaviour {
 	private float m_newlineDelay = 0.5f;
 
 	[SerializeField]
-	private int m_initialDelay = 1;
+	private float m_initialDelay = 1;
 
 	[SerializeField]
-	private int m_finalDelay = 4;
+	private float m_finalDelay = 4;
 
 	[SerializeField]
 	private Sprite[] m_speakerSpritesBg;
@@ -62,16 +62,33 @@ public class DialogSystem : MonoBehaviour {
 
 	private float m_characterDelayLeft;
 
+	private bool m_skipBlocked = true;
+
+	private bool m_dialogInProgress = false;
+
 
 	private void Start() {
 		m_audioSource = GetComponent<AudioSource>();
 
-		if (m_initialText != null) {
+		if (m_initialText != null && m_initialText.Length>0) {
 			StartDialog (m_initialText, m_initialSpeaker);
 		}
 	}
 
 	private void Update() {
+		if (!m_dialogInProgress) {
+			return;
+		}
+
+		if (Input.anyKey) {
+			if (!m_skipBlocked) {
+				Skip ();
+			}
+			m_skipBlocked = true;
+		} else {
+			m_skipBlocked = false;
+		}
+
 		if (m_text.Length > m_currentPosition) {
 			m_characterDelayLeft -= Time.unscaledDeltaTime;
 
@@ -116,6 +133,8 @@ public class DialogSystem : MonoBehaviour {
 		m_textBox.text = "";
 		m_characterDelayLeft = m_initialDelay;
 		m_currentPosition = 0;
+		m_skipBlocked = true;
+		m_dialogInProgress = true;
 
 		SetSprite (speaker, m_speakerImageBg, m_speakerSpritesBg);
 		SetSprite (speaker, m_speakerImageFg, m_speakerSpritesFg);
@@ -135,6 +154,10 @@ public class DialogSystem : MonoBehaviour {
 	}
 
 	public void Skip() {
+		if (!m_dialogInProgress) {
+			return;
+		}
+
 		if (m_text.Length > m_currentPosition) {
 			m_textBox.text = m_text;
 			m_currentPosition = m_text.Length;
@@ -145,7 +168,13 @@ public class DialogSystem : MonoBehaviour {
 		}
 	}
 
+	public bool IsDialogInProgress() {
+		return m_dialogInProgress;
+	}
+
 	private void OnDialogDone() {
+		m_dialogInProgress = false;
+
 		foreach (var go in m_showOnDialog) {
 			go.SetActive (false);
 		}

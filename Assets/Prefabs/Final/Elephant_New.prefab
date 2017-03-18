@@ -1223,6 +1223,8 @@ MonoBehaviour:
     m_Bits: 4294967295
   m_interactionRange: 3
   m_use2DDistance: 1
+  interactionIconPrefab: {fileID: 212441155644816578, guid: 8c93cea6a8f8fb243bc69f9820269048,
+    type: 2}
 --- !u!114 &114848429992145910
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1237,6 +1239,8 @@ MonoBehaviour:
   collider: {fileID: 136266747651252150}
   shootPeanuts: {fileID: 114302045587487728}
   camouflageController: {fileID: 114548738031474726}
+  particlePrefab: {fileID: 0}
+  sprintParticles: {fileID: 0}
 --- !u!114 &114850527267441736
 MonoBehaviour:
   m_ObjectHideFlags: 1
