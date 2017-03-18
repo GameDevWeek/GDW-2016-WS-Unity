@@ -8,7 +8,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MenuScreens/MainMenu.unity
   - enabled: 1
+    path: Assets/Scenes/Level1-Lagerhalle/Lagerhalle.unity
+  - enabled: 0
     path: Assets/Scenes/Loni_Museum_Scene/museum.unity
+  - enabled: 1
+    path: Assets/Scenes/Museum Marcel/MuseumLvl3.unity
   - enabled: 1
     path: Assets/Scenes/MenuScreens/VictoryScreen.unity
   - enabled: 1

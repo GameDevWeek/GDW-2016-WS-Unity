@@ -37,7 +37,7 @@ public class NoiseSource : MonoBehaviour {
     }
 
     public void Play() {
-        Debug.Log("go: " + this.gameObject);
+
         var particleSystem = global::Spawner.Spawn("Sound Particle System", transform.position, Quaternion.Euler(90, 0, -45));
         if (particleSystem!= null)
         {
@@ -47,7 +47,7 @@ public class NoiseSource : MonoBehaviour {
 
         if (m_allowPlayingSounds && m_audioClips.Any()) {
             var clip = Util.RandomElement(m_audioClips);
-            Debug.Log(clip.name);
+            //Debug.Log(clip.name);
             m_audioSource.PlayOneShot(clip);
         }
 
