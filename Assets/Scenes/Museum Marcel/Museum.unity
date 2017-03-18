@@ -2978,7 +2978,7 @@ Prefab:
         type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 697817213}
+      objectReference: {fileID: 1229969333}
     - target: {fileID: 65452255249665274, guid: 6fe39e2f4ee975a4fa06f61d161b1f22,
         type: 2}
       propertyPath: m_Size.z
@@ -5571,29 +5571,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8504176c17ceb4af4ba94059dabe3ead, type: 2}
   m_IsPrefabParent: 0
---- !u!21 &697817213
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: Mobile/Particles/Additive
-  m_Shader: {fileID: 10720, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 5
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  m_SavedProperties:
-    serializedVersion: 2
-    m_TexEnvs:
-    - first:
-        name: _MainTex
-      second:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats: []
-    m_Colors: []
 --- !u!1001 &719103403
 Prefab:
   m_ObjectHideFlags: 0
@@ -8513,6 +8490,29 @@ Transform:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: e6e923c80d8ec4f92bf51314bd736187, type: 3}
   m_PrefabInternal: {fileID: 2128932856}
+--- !u!21 &1170175011
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Mobile/Particles/Additive
+  m_Shader: {fileID: 10720, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  m_SavedProperties:
+    serializedVersion: 2
+    m_TexEnvs:
+    - first:
+        name: _MainTex
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats: []
+    m_Colors: []
 --- !u!4 &1170300904 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: e6e923c80d8ec4f92bf51314bd736187, type: 3}
@@ -8842,6 +8842,29 @@ Transform:
   m_PrefabParentObject: {fileID: 4296302545225562, guid: 25efcb558585a4ef08d22d4292f50225,
     type: 2}
   m_PrefabInternal: {fileID: 23989485}
+--- !u!21 &1229969333
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Mobile/Particles/Additive
+  m_Shader: {fileID: 10720, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  m_SavedProperties:
+    serializedVersion: 2
+    m_TexEnvs:
+    - first:
+        name: _MainTex
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats: []
+    m_Colors: []
 --- !u!1001 &1236150539
 Prefab:
   m_ObjectHideFlags: 0
@@ -8893,6 +8916,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 31.714544
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 5ff08bbb01bb844e08a8f82bf213645a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1caf2bd2d21b7804a9f9bd3970a0bcc5, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5ff08bbb01bb844e08a8f82bf213645a, type: 3}
   m_IsPrefabParent: 0
@@ -10565,6 +10592,10 @@ Prefab:
       propertyPath: m_Name
       value: Mumie (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 5ff08bbb01bb844e08a8f82bf213645a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1a979dfaaf2657449a75422464e2a4d8, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5ff08bbb01bb844e08a8f82bf213645a, type: 3}
   m_IsPrefabParent: 0
@@ -10959,29 +10990,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 25efcb558585a4ef08d22d4292f50225, type: 2}
   m_IsPrefabParent: 0
---- !u!21 &1549718959
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: Mobile/Particles/Additive
-  m_Shader: {fileID: 10720, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 5
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  m_SavedProperties:
-    serializedVersion: 2
-    m_TexEnvs:
-    - first:
-        name: _MainTex
-      second:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats: []
-    m_Colors: []
 --- !u!1 &1553153587
 GameObject:
   m_ObjectHideFlags: 0
@@ -11119,6 +11127,29 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a35db37f150b045beaff725170a8357a, type: 3}
   m_IsPrefabParent: 0
+--- !u!21 &1577261298
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Mobile/Particles/Additive
+  m_Shader: {fileID: 10720, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  m_SavedProperties:
+    serializedVersion: 2
+    m_TexEnvs:
+    - first:
+        name: _MainTex
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats: []
+    m_Colors: []
 --- !u!1001 &1579797556
 Prefab:
   m_ObjectHideFlags: 0
@@ -11315,7 +11346,7 @@ Prefab:
         type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2073442955}
+      objectReference: {fileID: 1170175011}
     - target: {fileID: 65452255249665274, guid: 6fe39e2f4ee975a4fa06f61d161b1f22,
         type: 2}
       propertyPath: m_Size.z
@@ -15713,29 +15744,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb1971fafec90cb4c9eda4f08351d74a, type: 2}
   m_IsPrefabParent: 0
---- !u!21 &2073442955
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: Mobile/Particles/Additive
-  m_Shader: {fileID: 10720, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 5
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  m_SavedProperties:
-    serializedVersion: 2
-    m_TexEnvs:
-    - first:
-        name: _MainTex
-      second:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats: []
-    m_Colors: []
 --- !u!1001 &2079497816
 Prefab:
   m_ObjectHideFlags: 0
@@ -16394,7 +16402,7 @@ Prefab:
         type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 1549718959}
+      objectReference: {fileID: 1577261298}
     - target: {fileID: 65452255249665274, guid: 6fe39e2f4ee975a4fa06f61d161b1f22,
         type: 2}
       propertyPath: m_Size.z
