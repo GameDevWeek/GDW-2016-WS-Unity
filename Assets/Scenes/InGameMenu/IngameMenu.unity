@@ -823,6 +823,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PauseMenu: {fileID: 202402983}
+  peanutCooldown: {fileID: 261381599}
+  peanutAmount: {fileID: 787657353}
+  stealthDuration: {fileID: 207037728}
+  wantedLevel: {fileID: 854874817}
+  wantedLevel2: 0.38
+  wantedLevel3: 0.72
 --- !u!1 &656625187
 GameObject:
   m_ObjectHideFlags: 0
@@ -957,7 +963,7 @@ MonoBehaviour:
   m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 1
+  m_FillAmount: 0.39
   m_FillClockwise: 1
   m_FillOrigin: 0
 --- !u!222 &784358691
@@ -1199,7 +1205,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 1
+  m_Value: 0.39
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
