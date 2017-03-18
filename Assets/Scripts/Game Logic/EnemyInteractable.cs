@@ -21,6 +21,10 @@ public class EnemyInteractable : Interactable {
     public delegate void StunEvent(StunEventData data);
     public static event StunEvent OnStun;
 
+    private float time_stunned = 0f;
+    private static float maxStunTime;
+    public static event Action<float> stunTimeArchieved;
+
     [SerializeField]
     private Cooldown m_cooldown = new Cooldown(0.5f);
     [SerializeField]
@@ -32,6 +36,17 @@ public class EnemyInteractable : Interactable {
 
     void Update() {
         m_cooldown.Update(Time.deltaTime);
+
+        if (Stunned()) {
+            time_stunned += Time.deltaTime;
+
+            if (time_stunned > maxStunTime) {
+                maxStunTime = time_stunned;
+                if (stunTimeArchieved != null) stunTimeArchieved.Invoke(maxStunTime);
+            }
+
+
+        }
     }
 
 #if UNITY_EDITOR

@@ -11,15 +11,13 @@ public class InGameMenu : MonoBehaviour {
     [SerializeField] private Slider stealthDuration;
     [SerializeField] private Slider wantedLevel;
 
-    [SerializeField] private float wantedLevel2 = 0.38f;
-    [SerializeField] private float wantedLevel3 = 0.72f;
-
+    private float[] wantedLimits = new[] {0f, 0.38f, 0.72f, 1f, 1f};
 
 
     private bool paused;
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
         if (Input.GetKeyDown(KeyCode.Escape)) {
             paused = !paused;
@@ -33,18 +31,10 @@ public class InGameMenu : MonoBehaviour {
             Time.timeScale = 0;
         }
 
-        if (WantedLevel.Instance.CurrentWantedStage == 0) {
-            wantedLevel.value = 0;
-        } else if (WantedLevel.Instance.CurrentWantedStage == 1) {
-            wantedLevel.value = Mathf.Lerp(0, wantedLevel2, WantedLevel.Instance.PercentCurrentWantedLevel);
-        }
-        else if (WantedLevel.Instance.CurrentWantedStage == 2) {
-            wantedLevel.value = Mathf.Lerp(wantedLevel2, wantedLevel3, WantedLevel.Instance.PercentCurrentWantedLevel);
-        }
-        else if (WantedLevel.Instance.CurrentWantedStage == 3) {
-            wantedLevel.value = 1;
-        }
 
+        wantedLevel.value =  Mathf.Lerp(wantedLimits[WantedLevel.Instance.currentWantedStage],
+                    wantedLimits[WantedLevel.Instance.currentWantedStage + 1],
+            WantedLevel.Instance.currentTierPercent);
 
         peanutCooldown.value = PlayerActor.Instance.shootPeanuts.cooldown.progress;
         peanutAmount.text = "x" + PlayerActor.Instance.shootPeanuts.ammo;
