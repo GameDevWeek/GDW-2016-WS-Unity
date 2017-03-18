@@ -1,6 +1,6 @@
-﻿using UnityEngine;
+using UnityEngine;
 
-public class WantedLevel : Singleton<WantedLevel> {
+public class WantedLevel : MonoBehaviour {
 
 
 

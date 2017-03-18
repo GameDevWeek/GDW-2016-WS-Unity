@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -57,7 +57,7 @@ public class AlertState : IEnemyState {
             enemy.chaseTarget = hit.transform;
 
             enemy.navMeshAgent.SetDestination(enemy.targetPos);
-            WantedLevel.Instance.RaiseWantedLevel();
+            enemy.wantedLevel.RaiseWantedLevel();
             ToChaseState();
         }
     }

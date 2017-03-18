@@ -35,6 +35,7 @@ public class ElephantControl : MonoBehaviour {
     private HeadControl m_headControl;
     private TrunkControll m_trunkControl;
     private bool m_isAiming = false;
+    private PlayerActor m_playerActor;
 
     public bool aiming {
         get {
@@ -43,6 +44,7 @@ public class ElephantControl : MonoBehaviour {
     }
 
     private void Start() {
+        m_playerActor = GetComponent<PlayerActor>();
         m_sprintCooldown.End();
         m_sprintDurationAfterSprintStopped.End();
         m_shootPeanuts = GetComponent<Shoot_Peanuts>();
@@ -157,12 +159,12 @@ public class ElephantControl : MonoBehaviour {
             if (m_sprintJustEnded) {
                 m_sprintCooldown.Start();
                 m_sprintDurationAfterSprintStopped.Start();
-                PlayerActor.Instance.sprintParticles.Stop();
+                m_playerActor.sprintParticles.Stop();
             }
 
             if (m_sprintJustStarted) {
                 m_sprintDirection = direction;
-                PlayerActor.Instance.sprintParticles.Play();
+                m_playerActor.sprintParticles.Play();
             }
 
             if (sprinting) {
