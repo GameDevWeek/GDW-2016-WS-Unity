@@ -38,6 +38,26 @@ public class WantedLevel : Singleton<WantedLevel>
     // If the guards can't see the player and wanted level is still stagnating
     private bool m_wantedLevelIsStagnating;
 
+
+    public int CurrentWantedStage {
+        /* returns a value between 0 and 1 for the current wanted stage */
+        get { return m_currentAlertTier;  }
+    }
+
+    private float CurrentWantedLimit {
+        get {
+            if (m_currentAlertTier == 0) return m_minWantedLvlAlert1;
+            if (m_currentAlertTier == 1) return m_minWantedLvlAlert2;
+            if (m_currentAlertTier == 2) return m_minWantedLvlAlert3;
+            return 1;
+        }
+    }
+
+    public float PercentCurrentWantedLevel {
+        /* returns a value between 0 and 1 for the current wanted stage */
+        get { return m_currentWantedLevel / CurrentWantedLimit; }
+    }
+
     private void Start()
     {
         // Minimum wanted level for alert 1 depends on vigilant guards

@@ -190,6 +190,7 @@ GameObject:
   - component: {fileID: 23017060737734518}
   - component: {fileID: 195197553863956536}
   - component: {fileID: 136219029376806026}
+  - component: {fileID: 114364450268544510}
   m_Layer: 0
   m_Name: Zebra_Enemy
   m_TagString: Enemy
@@ -578,7 +579,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1410314156727270}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.500259, y: 0.001, z: 4.61}
+  m_LocalPosition: {x: -10.37, y: 0.001, z: 10.26}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4845387258763008}
@@ -744,6 +745,26 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114364450268544510
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1410314156727270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46818245cd379bd4cba7c70f797af578, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionActive: 1
+  m_positionOffset: {x: 0, y: 0, z: 0}
+  m_useDefaultInteractionRange: 0
+  m_interactionRange: 3
+  useInteractionRangeOnly: 0
+  m_cooldown:
+    m_timeInSeconds: 0.5
+  m_invokationDelay: 0.5
+  m_backAngle: 153.6
 --- !u!114 &114441439249423902
 MonoBehaviour:
   m_ObjectHideFlags: 1
