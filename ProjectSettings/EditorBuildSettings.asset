@@ -11,3 +11,9 @@ EditorBuildSettings:
     path: Assets/Scenes/WK-Test-Scenes/Prototype2.unity
   - enabled: 1
     path: Assets/Scenes/WK-Test-Scenes/Prototype.unity
+  - enabled: 1
+    path: Assets/Scenes/MenuScreens/VictoryScreen.unity
+  - enabled: 1
+    path: Assets/Scenes/MenuScreens/MainMenu.unity
+  - enabled: 1
+    path: Assets/Scenes/MenuScreens/GameOverScreen.unity
