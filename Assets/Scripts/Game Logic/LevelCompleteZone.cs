@@ -84,7 +84,6 @@ public class LevelCompleteZone : MonoBehaviour
             SceneManager.LoadScene(m_scene);
         }
 
-
     }
 
 }

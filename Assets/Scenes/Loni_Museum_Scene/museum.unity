@@ -2197,7 +2197,7 @@ Light:
   serializedVersion: 7
   m_Type: 1
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 0.18
+  m_Intensity: 0.5
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -2731,19 +2731,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 7003bae490a074761add50c0b6f70980, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.013815859
+      value: -0.01381586
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 7003bae490a074761add50c0b6f70980, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.39563438
+      value: 0.3956344
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 7003bae490a074761add50c0b6f70980, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.032048356
+      value: 0.03204836
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 7003bae490a074761add50c0b6f70980, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.91774476
+      value: 0.9177448
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 7003bae490a074761add50c0b6f70980, type: 3}
       propertyPath: m_RootOrder
@@ -5673,8 +5673,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_time: 1
-  m_scene: MusemLvl3
+  m_scene: MuseumLvl3
   m_iterateSceneID: 0
+  scene: {fileID: 102900000, guid: 088fa87a431bf4c8eb566cccf35c3381, type: 3}
 --- !u!4 &1357415170
 Transform:
   m_ObjectHideFlags: 0
