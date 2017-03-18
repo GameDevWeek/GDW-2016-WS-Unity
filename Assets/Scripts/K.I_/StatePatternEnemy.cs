@@ -3,6 +3,7 @@ using Assets.Scripts.K.I_;
 using UnityEngine;
 using UnityEngine.AI;
 
+[RequireComponent(typeof(AudioSource))]
 public class StatePatternEnemy : MonoBehaviour, INoiseListener {
 
     public float standartSpeed = 2;
@@ -38,6 +39,11 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
     private bool caughtThePlayer;
     private bool firstWantedUp;
 
+
+    public AudioSource audioSource;
+    public AudioClip[] enterChase;
+    public AudioClip[] exitChase;
+
     //---Caught event stuff-----
     public struct CaughtEventData
     {
@@ -53,8 +59,9 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
 
     //----------------------------
 
-    private void Awake()
-    {
+    private void Awake() {
+        audioSource = GetComponent<AudioSource>();
+
         chaseState = new ChaseState(this);
         alertState = new AlertState(this);
         patrolState = new PatrolState(this);

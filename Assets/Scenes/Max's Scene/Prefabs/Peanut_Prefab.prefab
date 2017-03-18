@@ -27,7 +27,7 @@ GameObject:
   - component: {fileID: 82804589742076330}
   - component: {fileID: 114738950681663444}
   - component: {fileID: 114138761725542778}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Peanut_Prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}

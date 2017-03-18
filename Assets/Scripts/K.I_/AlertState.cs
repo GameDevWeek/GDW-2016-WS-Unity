@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class AlertState : IEnemyState {
@@ -41,6 +42,9 @@ public class AlertState : IEnemyState {
         searchTimer = 0f;
         enemy.navMeshAgent.speed = enemy.chaseSpeed;
         enemy.camouflageInRange();
+
+        if(enemy.enterChase.Any())
+            enemy.audioSource.PlayOneShot(Util.RandomElement(enemy.enterChase));
     }
 
 

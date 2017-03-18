@@ -7,7 +7,6 @@ using UnityEngine.Scripting;
 
 
 public class ArchievementTracker : Singleton<ArchievementTracker> {
-#if UNITY_EDITOR
     [SerializeField] private List<Archievement> archievements = new List<Archievement>();
     private List<Invoker> invokers = new List<Invoker>();
 
@@ -87,6 +86,11 @@ public class ArchievementTracker : Singleton<ArchievementTracker> {
         arch.currentValue = value;
     }
 
+    public List<Archievement> getAchievment()
+    {
+        return archievements;
+    }
+
     void OnDestroy() {
         foreach (var archievement in archievements) {
             if(! archievement.saveOnLocalMachine) continue;
@@ -95,5 +99,4 @@ public class ArchievementTracker : Singleton<ArchievementTracker> {
         }
 
     }
-#endif
 }
