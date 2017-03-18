@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Peanut
+  m_Name: Peanut_Jade
   m_Shader: {fileID: 4800000, guid: d742bece568296b448f240237d519686, type: 3}
   m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 1
