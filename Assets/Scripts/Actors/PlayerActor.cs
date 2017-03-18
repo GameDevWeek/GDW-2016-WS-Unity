@@ -9,12 +9,16 @@ public class PlayerActor : Singleton<PlayerActor> {
     public Collider collider;
     public Shoot_Peanuts shootPeanuts;
     public CamouflageController camouflageController;
+    public GameObject particlePrefab;
+    [HideInInspector]
+    public ParticleSystem sprintParticles;
 
     void OnValidate()
     {
         collider = collider == null ? GetComponent<Collider>() : collider;
         shootPeanuts = shootPeanuts == null ? GetComponent<Shoot_Peanuts>() : shootPeanuts;
         camouflageController = camouflageController == null ? GetComponent<CamouflageController>() : camouflageController;
+        sprintParticles = sprintParticles == null ? particlePrefab.GetComponent<ParticleSystem>() : sprintParticles;
     }
 
 

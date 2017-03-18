@@ -34,6 +34,8 @@ public class EnemyInteractable : Interactable {
     private float m_backAngle = 30.0f;
     private Coroutine m_stunRoutine;
 
+    public AudioClip stunEnemyHitSound;
+
     void Update() {
         m_cooldown.Update(Time.deltaTime);
 
@@ -81,6 +83,7 @@ public class EnemyInteractable : Interactable {
         stateEnemy.StopMovement();
         stateEnemy.enabled = false;
         navMeshAgent.enabled = false;
+        interactor.GetComponent<AudioSource>().PlayOneShot(stunEnemyHitSound);
         while (!m_stunDuration.IsOver()) {
             m_stunDuration.Update(Time.deltaTime);
             yield return null;

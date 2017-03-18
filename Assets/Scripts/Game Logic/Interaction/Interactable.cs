@@ -11,6 +11,10 @@ public abstract class Interactable : MonoBehaviour {
     private bool m_useDefaultInteractionRange;
     [SerializeField]
     protected float m_interactionRange = 3.0f;
+    [SerializeField]
+    protected Sprite interactionIcon;
+    [SerializeField]
+    protected float interactionIconScale = 1f;
 
     [Tooltip("Line of sight and view angle of the interactor will be ignored.")]
     public bool useInteractionRangeOnly = false;
@@ -21,6 +25,9 @@ public abstract class Interactable : MonoBehaviour {
         get { return m_positionOffset; }
         set { m_positionOffset = value; }
     }
+
+    public Sprite Icon { get { return interactionIcon; } }
+    public float IconScale { get { return interactionIconScale; } }
 
     public float GetInteractionRange(float defaultRange) {
         return m_useDefaultInteractionRange ? defaultRange : m_interactionRange;

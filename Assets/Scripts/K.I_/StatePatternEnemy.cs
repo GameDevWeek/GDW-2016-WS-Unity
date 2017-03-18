@@ -3,6 +3,7 @@ using Assets.Scripts.K.I_;
 using UnityEngine;
 using UnityEngine.AI;
 
+[RequireComponent(typeof(AudioSource))]
 public class StatePatternEnemy : MonoBehaviour, INoiseListener {
 
     public float standartSpeed = 2;
@@ -13,6 +14,7 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
     public float toleratedSightrange = 5f;      //Muss kleiner sein als sightRange!!!
     public float fieldOfView = 90;
     public float stoppingTime = 2f;
+    public float playerIsCaughtDistance = 4f;
 
     public Waypoints wayPoints;
     [HideInInspector] public int currentWaypoint;
@@ -34,9 +36,32 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
 
     private Animator enemyAnimator;
     private ElephantMovement elephantMovement;
+    private bool caughtThePlayer;
+    private bool firstWantedUp;
 
-    private void Awake()
+
+    public AudioSource audioSource;
+    public AudioClip[] enterChase;
+    public AudioClip[] exitChase;
+
+    //---Caught event stuff-----
+    public struct CaughtEventData
     {
+        public bool caught;
+        public CaughtEventData(bool caught)
+        {
+            this.caught = caught;
+        }
+    }
+
+    public delegate void CaughtEvent(CaughtEventData data);
+    public static event CaughtEvent OnCaught;
+
+    //----------------------------
+
+    private void Awake() {
+        audioSource = GetComponent<AudioSource>();
+
         chaseState = new ChaseState(this);
         alertState = new AlertState(this);
         patrolState = new PatrolState(this);
@@ -64,17 +89,24 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
 
         viewCone.MainViewRadius = toleratedSightrange;
         viewCone.FullViewRadius = sightRange;
+        viewCone.FieldOfView = fieldOfView;
     }
 
     void Update() {
         currentState.UpdateState();
+
+        //Stuff für den Animator
         if (currentState != alertState && enemyAnimator != null)
         {
             enemyAnimator.SetFloat("BlendSpeed", (float) (navMeshAgent.velocity.magnitude/chaseSpeed));
         }
-        //Debug.Log(navMeshAgent.velocity.magnitude);
 
-
+        //WantedLvl abfrage
+       if( WantedLevel.Instance.currentWantedStage > 0 && !firstWantedUp )
+        {
+            WantedLvlUp();
+            firstWantedUp = true;
+        }
     }
 
     public void StopMovement() {
@@ -90,13 +122,20 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
     {
         searchingTurnSpeed += 20f;
         sightRange += 5f;
-
+        toleratedSightrange += 5f;
+        viewCone.FieldOfView += 30f;
+        viewCone.FullViewRadius += 5f;
+        viewCone.MainViewRadius += 5f;
     }
 
     public void WantedLvlDown()
     {
         searchingTurnSpeed -= 20f;
         sightRange -= 5f;
+        toleratedSightrange -= 5f;
+        viewCone.FieldOfView -= 30f;
+        viewCone.FullViewRadius -= 5f;
+        viewCone.MainViewRadius -= 5f;
     }
 
     private void OnDrawGizmos() {
@@ -184,5 +223,14 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
         }
         hit = new RaycastHit();
         return false;
+    }
+
+    public void caughtPlayer()
+    {
+        caughtThePlayer = true;
+        if (OnCaught != null)
+        {
+            OnCaught(new CaughtEventData(caughtThePlayer));
+        }
     }
 }

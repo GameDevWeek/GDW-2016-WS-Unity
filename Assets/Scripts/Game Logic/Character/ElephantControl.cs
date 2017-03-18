@@ -157,11 +157,13 @@ public class ElephantControl : MonoBehaviour {
             if (m_sprintJustEnded) {
                 m_sprintCooldown.Start();
                 m_sprintDurationAfterSprintStopped.Start();
+                PlayerActor.Instance.sprintParticles.Stop();
             }
 
             if (m_sprintJustStarted) {
                 m_sprintDirection = direction;
-			}
+                PlayerActor.Instance.sprintParticles.Play();
+            }
 
             if (sprinting) {
                 m_character.LookTowards(m_sprintDirection);
@@ -184,6 +186,8 @@ public class ElephantControl : MonoBehaviour {
 
     private void FixedUpdate() {
         if (!m_character.CanMove()) {
+            m_character.Move(Vector3.zero, false);
+            m_character.StopSprint();
             return;
         }
 
