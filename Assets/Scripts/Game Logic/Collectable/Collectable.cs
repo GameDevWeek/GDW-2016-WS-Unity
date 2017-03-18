@@ -3,12 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[DisallowMultipleComponent]
 public class Collectable : Interactable
 {
     [SerializeField]
     public int ScoreValue;
 
     public AudioClip collectionSound;
+
+    [SerializeField]
+    private string m_collectableName;
 
     public struct CollectableEventData
     {
@@ -22,6 +26,19 @@ public class Collectable : Interactable
 
     public delegate void CollectableEvent(CollectableEventData data);
     public static event CollectableEvent OnCollect;
+
+    private void OnValidate()
+    {
+        if (string.IsNullOrEmpty(m_collectableName))
+        {
+            Debug.LogError("["+ name +"] Collectable Name is Empty!", this.gameObject);
+        }
+    }
+
+    public String getCollectableName()
+    {
+        return m_collectableName;
+    }
 
 
     public override void Interact(Interactor interactor)

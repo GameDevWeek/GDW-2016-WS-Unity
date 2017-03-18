@@ -2096,6 +2096,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5c475f94aa81594fbd1621700461dcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_destructableName: T-Rex
   m_completeObject: {fileID: 1900830124859544}
   m_destrucedObject: {fileID: 1209076882330246}
 --- !u!114 &114444934780609566

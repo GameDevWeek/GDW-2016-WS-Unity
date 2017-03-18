@@ -1802,6 +1802,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5c475f94aa81594fbd1621700461dcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_destructableName: Tasse
   m_completeObject: {fileID: 1322615648880694}
   m_destrucedObject: {fileID: 1116837258758602}
 --- !u!114 &114842633041766528

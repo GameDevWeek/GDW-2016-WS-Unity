@@ -5,9 +5,24 @@ using UnityEngine;
 [RequireComponent(typeof(NoiseSource))]
 public class DestructibleObject : MonoBehaviour {
     [SerializeField]
+    private string m_destructableName;
+    [SerializeField]
     private GameObject m_completeObject;
     [SerializeField]
     private GameObject m_destrucedObject;
+    
+    public struct DestructionEventData
+    {
+        public GameObject destroyed;
+
+        public DestructionEventData(GameObject destroyed)
+        {
+            this.destroyed = destroyed;
+        }
+    }
+
+    public delegate void DestructionEvent(DestructionEventData data);
+    public static event DestructionEvent OnDestruction;
 
     public void DestroyObject(Vector3 force) {
         if (!m_completeObject.activeSelf) {
@@ -24,6 +39,22 @@ public class DestructibleObject : MonoBehaviour {
             var rb = dTransform.GetChild(i).GetComponent<Rigidbody>();
             //rb.AddForce(force);
             rb.AddExplosionForce(100.0f, transform.position, 3.0f);
+        }
+
+        if (OnDestruction != null)
+            OnDestruction.Invoke(new DestructionEventData(this.gameObject));
+    }
+
+    public string GetDestructableName()
+    {
+        return m_destructableName;
+    }
+
+    private void OnValidate()
+    {
+        if (string.IsNullOrEmpty(m_destructableName))
+        {
+            Debug.LogError("[" + name + "] Destructable Name is Empty!", this.gameObject);
         }
     }
 }
