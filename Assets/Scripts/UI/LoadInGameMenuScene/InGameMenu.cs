@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 //Dieses Script gehört in die IngameMenuScene
 
@@ -50,6 +51,7 @@ public class InGameMenu : MonoBehaviour {
     public void clickedButtonRestartLevel()
     {
         paused = !paused;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
     }
 
     public void clickedButtonExit()

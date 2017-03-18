@@ -3,14 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MainMenuAchievements : MonoBehaviour {
+    List<Archievement> achievements;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    private void Start()
+    {
+        achievements = ArchievementTracker.Instance.getAchievment();
+    }
+
+
 }
