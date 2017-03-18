@@ -52,6 +52,15 @@ public class SpeechBubbles : MonoBehaviour
         {
             if (other.tag == "Player")
             {
+                activateDialog();
+            }
+        }
+    }
+
+    
+      public  void activateDialog()
+    {
+       
                 string initalText;
                 if (english_German)
                 {
@@ -66,8 +75,9 @@ public class SpeechBubbles : MonoBehaviour
                 cameraController.EnableSpectatorCam(m_dialogTarget.transform);
                 GameObject.FindObjectOfType<DialogSystem>().StartDialog(initalText, m_speaker);
                 focusOnTarget = true;
-            }
+            
         }
     }
 
-}
+
+
