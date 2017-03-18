@@ -58,11 +58,8 @@ public class WantedLevel : Singleton<WantedLevel> {
         }
     }
 
-    public bool GuardIsNowVigilant() {
+    public void GuardIsNowVigilant() {
         alertedGuards++;
-        if (alertedGuards >= alertedGuardsLimit)
-            return true;
-        return false;
     }
 
     public void TriggerLaserAlert() {
