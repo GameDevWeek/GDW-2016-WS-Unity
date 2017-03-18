@@ -6,14 +6,10 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
-
 public class ScoreSystem: Singleton<ScoreSystem>
 {
-#if UNITY_EDITOR
-    private Dictionary<String, int> m_collectableScores = new Dictionary<String, int>();
+
+    private Dictionary<string, int> m_collectableScores = new Dictionary<string, int>();
 
     private void Update()
     {
@@ -28,19 +24,18 @@ public class ScoreSystem: Singleton<ScoreSystem>
 
         foreach (Collectable c in collectables)
         {
-            if(!m_collectableScores.ContainsKey(PrefabUtility.GetPrefabParent(c.gameObject).name))
-            m_collectableScores.Add(PrefabUtility.GetPrefabParent(c.gameObject).name, 0);
+            if(!m_collectableScores.ContainsKey(c.getCollectableName()))
+            m_collectableScores.Add(c.getCollectableName(), 0);
         }
     }
 
     private void OnCollect(Collectable.CollectableEventData data)
     {
-        String prefabName = PrefabUtility.GetPrefabParent(data.collected).name;
-        int oldValue = m_collectableScores[prefabName];
-        m_collectableScores[prefabName] += data.collected.GetComponent<Collectable>().ScoreValue;
+        String collectableName = data.collected.GetComponent<Collectable>().getCollectableName();
+        int oldValue = m_collectableScores[collectableName];
+        m_collectableScores[collectableName] += data.collected.GetComponent<Collectable>().ScoreValue;
 
-        Debug.Log("[ScoreSystem] update Score for "+ PrefabUtility.GetPrefabParent(data.collected).name + " from " + oldValue + " to " + m_collectableScores[prefabName]);
+        Debug.Log("[ScoreSystem] update Score for "+ collectableName + " from " + oldValue + " to " + m_collectableScores[collectableName]);
     }
-#endif
 }
 

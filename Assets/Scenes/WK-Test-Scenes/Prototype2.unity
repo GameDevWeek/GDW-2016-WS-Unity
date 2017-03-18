@@ -3854,6 +3854,7 @@ Transform:
   m_Children:
   - {fileID: 378525134}
   - {fileID: 288666675}
+  - {fileID: 2056305339}
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5503,15 +5504,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4097998469823174, guid: e86e41bb3a720d94cb33e224ea2561ad, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -18.6
+      value: -16.4
       objectReference: {fileID: 0}
     - target: {fileID: 4097998469823174, guid: e86e41bb3a720d94cb33e224ea2561ad, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1.03
+      value: -0.06
       objectReference: {fileID: 0}
     - target: {fileID: 4097998469823174, guid: e86e41bb3a720d94cb33e224ea2561ad, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 16.41
+      value: 14.2
       objectReference: {fileID: 0}
     - target: {fileID: 4097998469823174, guid: e86e41bb3a720d94cb33e224ea2561ad, type: 2}
       propertyPath: m_LocalRotation.x
@@ -7614,6 +7615,19 @@ MonoBehaviour:
   m_interactionRange: 3
   useInteractionRangeOnly: 0
   ScoreValue: 199
+  m_collectableName: Jade Elefant
+--- !u!135 &1645117671
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1645117666}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.007808596
+  m_Center: {x: 0.003067187, y: -0.0000062407917, z: 0.006712077}
 --- !u!4 &1646202122 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4575287784115104, guid: c063d3a0023b219499adf63bd7c5d678,
@@ -8619,6 +8633,9 @@ MonoBehaviour:
   m_lifeSpan: 3
   m_offset: {x: 0, y: 1, z: 1}
   m_destroy_Peanut_On_Collison: 1
+  cooldown:
+    m_timeInSeconds: 1
+  ammo: 0
 --- !u!114 &1853797372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9385,6 +9402,9 @@ MonoBehaviour:
   m_lifeSpan: 3
   m_offset: {x: 0, y: 1, z: 1}
   m_destroy_Peanut_On_Collison: 1
+  cooldown:
+    m_timeInSeconds: 1
+  ammo: 0
 --- !u!114 &2011954434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9520,6 +9540,46 @@ Transform:
   m_PrefabParentObject: {fileID: 4511455084913786, guid: fb1971fafec90cb4c9eda4f08351d74a,
     type: 2}
   m_PrefabInternal: {fileID: 2041513771}
+--- !u!1 &2056305338
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 2056305339}
+  - component: {fileID: 2056305340}
+  m_Layer: 0
+  m_Name: ScoreSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2056305339
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2056305338}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 876330086}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2056305340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2056305338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c67b978a638198740a238415d5d98fd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2058940992
 GameObject:
   m_ObjectHideFlags: 0
