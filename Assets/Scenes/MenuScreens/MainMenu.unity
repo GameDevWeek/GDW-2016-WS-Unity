@@ -597,6 +597,7 @@ GameObject:
   - component: {fileID: 276271215}
   - component: {fileID: 276271214}
   - component: {fileID: 276271213}
+  - component: {fileID: 276271216}
   m_Layer: 5
   m_Name: PanelCredits
   m_TagString: Untagged
@@ -656,6 +657,23 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!95 &276271216
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 276271212}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7b67a3b2dd2fc9141ac65231f840dd93, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &277476486
 GameObject:
   m_ObjectHideFlags: 0
@@ -1465,6 +1483,7 @@ GameObject:
   - component: {fileID: 788905851}
   - component: {fileID: 788905853}
   - component: {fileID: 788905852}
+  - component: {fileID: 788905854}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -1487,8 +1506,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 448, y: 0}
-  m_SizeDelta: {x: 700, y: 700}
+  m_AnchoredPosition: {x: -408.2, y: -2080}
+  m_SizeDelta: {x: 700, y: 3100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &788905852
 MonoBehaviour:
@@ -1502,7 +1521,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1511,10 +1530,10 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: e186f096d08b97f46a8934eb048e4f00, type: 3}
-    m_FontSize: 14
+    m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 3
     m_MaxSize: 40
     m_Alignment: 0
     m_AlignByGeometry: 0
@@ -1522,13 +1541,37 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: "Grafik Design\r\n\nDaniel Simon\r\nManuel Merscheid\r\nTeresa Eisinger\r\n\r\n\n\n\nLevel
+    Design\r\n\nBacher Said\r\nMarcel Nist\r\nSusanne Fischer\r\n\r\n\n\n\nLogo Design\r\n\nKatharina
+    Wanner\r\n\n\n\n\r\nSound Design\r\n\nMinh Duc Dao\r\nJason Merse\r\n\n\n\n\r\nOrganisation\r\n\nKore
+    Kaluzynski\r\nJerome J\xE4hnig\r\nKatharina Wanner\r\nMinh Duc Dao\r\n\r\n\n\n\nRendering
+    \r\n\nArmin Willer\r\nFlorian Oetke\r\nTobias Rogalski\r\n\r\n\n\n\nMen\xFC/HUD\r\n\nDustin
+    Zimmermann\r\nThilo Bartel\r\nKristin Bleydorn\r\n\n\n\n\r\nGame Logic, KI & Physik\n\nOliver
+    Biwer\r\nWladimir Kr\xF6ker\r\nDennis Grass\r\nMaximilian Kiesel\r\nAndreas Hegert\r\nDaniel
+    Reiners\r\nTobias Heiles\r\n\r\n\n\n\nInput\r\n\nJason Merse\r\nThilo Bartel"
 --- !u!222 &788905853
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 788905850}
+--- !u!95 &788905854
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 788905850}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d0a4828d8fae8a44fb49c8e3da41bf82, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &827185238
 GameObject:
   m_ObjectHideFlags: 0
