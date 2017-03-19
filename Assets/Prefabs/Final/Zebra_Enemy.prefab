@@ -784,7 +784,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -808,7 +808,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
 --- !u!95 &95632143784053622
 Animator:
   serializedVersion: 3
@@ -881,10 +881,12 @@ MonoBehaviour:
   targetPos: {x: 0, y: 0, z: 0}
   chaseTarget: {fileID: 0}
   navMeshAgent: {fileID: 0}
+  playerActor: {fileID: 0}
+  wantedLevel: {fileID: 0}
   audioSource: {fileID: 0}
   enterChase:
   - {fileID: 8300000, guid: 2b77910a799e4df44895a256a6a66219, type: 3}
-  - {fileID: 8300000, guid: 19d02be93b8f3be439156a14a30ee4a3, type: 3}
+  - {fileID: 0}
   - {fileID: 8300000, guid: 6a4d3b00b751acd48a93cabd59729628, type: 3}
   exitChase:
   - {fileID: 8300000, guid: cc09276255656a64eac81d726768fa9b, type: 3}

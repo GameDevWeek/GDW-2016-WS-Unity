@@ -14,6 +14,11 @@ public class ChaseState : IEnemyState
     public void UpdateState()
     {
         Look();
+
+        if (!enemy.enabled) {
+            return;
+        }
+
         Chase();
     }
 
@@ -50,8 +55,8 @@ public class ChaseState : IEnemyState
 
             Vector3 enemyToPlayer = enemy.playerActor.transform.position - enemy.transform.position;
             float playerDistance = enemyToPlayer.magnitude;
-            if (playerDistance <= enemy.playerIsCaughtDistance)
-                enemy.caughtPlayer();
+            //if (playerDistance <= enemy.playerIsCaughtDistance)
+            //    enemy.caughtPlayer();
 
 
         }

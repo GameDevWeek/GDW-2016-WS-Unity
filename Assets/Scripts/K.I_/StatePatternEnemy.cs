@@ -5,6 +5,35 @@ using UnityEngine.AI;
 
 [RequireComponent(typeof(AudioSource))]
 public class StatePatternEnemy : MonoBehaviour, INoiseListener {
+    public void OnCollisionEnter(Collision collision) {
+        if (collision.gameObject && collision.gameObject.GetComponent<PlayerActor>()) {
+            caughtPlayer();
+            return;
+        }
+    }
+
+    public class CaughtPlayerState : IEnemyState {
+        private readonly StatePatternEnemy enemy;
+
+        public CaughtPlayerState(StatePatternEnemy statePatternEnemy) {
+            enemy = statePatternEnemy;
+        }
+        public void OnTriggerEnter(Collider other) {
+        }
+
+        public void ToAlertState() {
+        }
+
+        public void ToChaseState() {
+        }
+
+        public void ToPatrolState() {
+        }
+
+        public void UpdateState() {
+            enemy.LookTowards((enemy.playerActor.transform.position - enemy.transform.position).normalized);
+        }
+    }
 
     public float standartSpeed = 2;
     public float chaseSpeed = 3;
@@ -17,7 +46,8 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
     public float playerIsCaughtDistance = 4f;
 
     public Waypoints wayPoints;
-    [HideInInspector] public int currentWaypoint;
+    [HideInInspector]
+    public int currentWaypoint;
 
     public Transform eyes;
     public ViewCone viewCone;
@@ -26,13 +56,21 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
     private int highestPriority = 0;
     private CamouflageController camouflage;
 
-    [HideInInspector] public Vector3 targetPos; 
-    [HideInInspector] public Transform chaseTarget;
-    [HideInInspector] public IEnemyState currentState;
-    [HideInInspector] public ChaseState chaseState;
-    [HideInInspector] public AlertState alertState;
-    [HideInInspector] public PatrolState patrolState;
-    [HideInInspector] public NavMeshAgent navMeshAgent;
+    [HideInInspector]
+    public Vector3 targetPos;
+    [HideInInspector]
+    public Transform chaseTarget;
+    [HideInInspector]
+    public IEnemyState currentState;
+    [HideInInspector]
+    public ChaseState chaseState;
+    [HideInInspector]
+    public AlertState alertState;
+    [HideInInspector]
+    public PatrolState patrolState;
+    [HideInInspector]
+    public NavMeshAgent navMeshAgent;
+    private CaughtPlayerState m_caughtPlayerState;
 
     private Animator enemyAnimator;
     private ElephantMovement elephantMovement;
@@ -46,11 +84,9 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
     public AudioClip[] exitChase;
 
     //---Caught event stuff-----
-    public struct CaughtEventData
-    {
+    public struct CaughtEventData {
         public bool caught;
-        public CaughtEventData(bool caught)
-        {
+        public CaughtEventData(bool caught) {
             this.caught = caught;
         }
     }
@@ -68,6 +104,7 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
         chaseState = new ChaseState(this);
         alertState = new AlertState(this);
         patrolState = new PatrolState(this);
+        m_caughtPlayerState = new CaughtPlayerState(this);
 
         navMeshAgent = GetComponent<NavMeshAgent>();
         navMeshAgent.speed = standartSpeed;
@@ -77,8 +114,8 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
 
         if (wayPoints == null)
             wayPoints = new Waypoints() {
-                points = new []{transform.position},
-                pairs = new []{new Pair() }
+                points = new[] { transform.position },
+                pairs = new[] { new Pair() }
             };
     }
 
@@ -86,27 +123,35 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
         currentState = patrolState;
     }
 
-    void Start()
-    {
+    void Start() {
         currentState = patrolState;
 
         viewCone.MainViewRadius = toleratedSightrange;
         viewCone.FullViewRadius = sightRange;
         viewCone.FieldOfView = fieldOfView;
+
+        OnCaught += StatePatternEnemy_OnCaught;
+    }
+
+    private void StatePatternEnemy_OnCaught(CaughtEventData data) {
+        GetComponent<NavMeshAgent>().enabled = false;
+
+        currentState = m_caughtPlayerState;
+    }
+    void OnDestroy() {
+        OnCaught -= StatePatternEnemy_OnCaught;
     }
 
     void Update() {
         currentState.UpdateState();
 
         //Stuff für den Animator
-        if (currentState != alertState && enemyAnimator != null)
-        {
-            enemyAnimator.SetFloat("BlendSpeed", (float) (navMeshAgent.velocity.magnitude/chaseSpeed));
+        if (currentState != alertState && enemyAnimator != null) {
+            enemyAnimator.SetFloat("BlendSpeed", (float)(navMeshAgent.velocity.magnitude / chaseSpeed));
         }
 
         //WantedLvl abfrage
-       if( wantedLevel.currentWantedStage > 0 && !firstWantedUp )
-        {
+        if (wantedLevel.currentWantedStage > 0 && !firstWantedUp) {
             WantedLvlUp();
             firstWantedUp = true;
         }
@@ -116,13 +161,15 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
         enemyAnimator.SetFloat("BlendSpeed", 0.0f);
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
+    private void OnTriggerEnter(Collider other) {
+        if (other.GetComponent<PlayerActor>()) {
+            caughtPlayer();
+            return;
+        }
         currentState.OnTriggerEnter(other);
     }
 
-    public void WantedLvlUp()
-    {
+    public void WantedLvlUp() {
         searchingTurnSpeed += 20f;
         sightRange += 5f;
         toleratedSightrange += 5f;
@@ -131,8 +178,7 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
         viewCone.MainViewRadius += 5f;
     }
 
-    public void WantedLvlDown()
-    {
+    public void WantedLvlDown() {
         searchingTurnSpeed -= 20f;
         sightRange -= 5f;
         toleratedSightrange -= 5f;
@@ -142,9 +188,9 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
     }
 
     private void OnDrawGizmos() {
-        if(currentState == this.alertState)
+        if (currentState == this.alertState)
             Gizmos.color = Color.yellow;
-        else if(currentState == this.chaseState)
+        else if (currentState == this.chaseState)
             Gizmos.color = Color.red;
         else
             Gizmos.color = Color.green;
@@ -158,51 +204,41 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
             return;
         }
 
-        if (currentState == patrolState)
-        {
+        if (currentState == patrolState) {
             highestPriority = 0;        //Wenn ich irgendwann mal wieder in den patrolState komme ist jede Noise highestPrio
             navMeshAgent.SetDestination(data.initialPosition);
             viewCone.setAlarmed(true, 1f);
             currentState = alertState;
-        }
-        else if (currentState == alertState && data.priority>=highestPriority)
-        {
+        } else if (currentState == alertState && data.priority >= highestPriority) {
             highestPriority = data.priority;
             navMeshAgent.SetDestination(data.initialPosition);
             navMeshAgent.Resume();
         }
-        
+
     }
 
 
-    public void camouflageInRange()
-    {
+    public void camouflageInRange() {
         camouflage = playerActor.GetComponent<CamouflageController>();
-        if (camouflage != null)
-        {
+        if (camouflage != null) {
             camouflage.EnemyInRange(this.gameObject);
             // Debug.Log("Can't camouflage!");
         }
     }
 
-    public void camouflageNotInRange()
-    {
-        if (camouflage != null)
-        {
+    public void camouflageNotInRange() {
+        if (camouflage != null) {
             camouflage.EnemyOutOfRange(this.gameObject);
             //Debug.Log("Can camouflage now!");
         }
     }
 
-    public bool canSeePlayer(out RaycastHit hit)
-    {
+    public bool canSeePlayer(out RaycastHit hit) {
         Vector3 enemyToPlayer = playerActor.transform.position - transform.position;
         float playerDistance = enemyToPlayer.magnitude;
-        if (playerDistance <= sightRange && !elephantMovement.IsInStonePose())
-        {
+        if (playerDistance <= sightRange && !elephantMovement.IsInStonePose()) {
             float angleDistance = Vector3.Angle(enemyToPlayer, transform.forward);
-            if (angleDistance < fieldOfView * 0.5f)
-            {
+            if (angleDistance < fieldOfView * 0.5f) {
                 float playerWidth = ((CapsuleCollider)playerActor.collider).radius;
 
                 Vector3 enemyToPlayerOrtho = new Vector3(enemyToPlayer.z, enemyToPlayer.y, -enemyToPlayer.x).normalized;
@@ -231,12 +267,17 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
         return false;
     }
 
-    public void caughtPlayer()
-    {
+    public void caughtPlayer() {
         caughtThePlayer = true;
-        if (OnCaught != null)
-        {
+        if (OnCaught != null) {
             OnCaught(new CaughtEventData(caughtThePlayer));
         }
+    }
+
+    public void LookTowards(Vector3 direction) {
+        Vector3 d = Vector3.ProjectOnPlane(transform.InverseTransformDirection(direction), Vector3.up);
+        float turnAmount = Mathf.Atan2(d.x, d.z);
+        float turnSpeed = 180.0f;
+        transform.Rotate(0, turnAmount * turnSpeed * Time.deltaTime, 0);
     }
 }
