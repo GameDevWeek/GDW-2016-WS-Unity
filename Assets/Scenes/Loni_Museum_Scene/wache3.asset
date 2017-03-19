@@ -13,4 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   points:
   - {x: -13.526154, y: 0, z: 8.49301}
-  pairs: []
+  - {x: -13.887606, y: 0, z: 8.039664}
+  pairs:
+  - First: 0
+    Second: 1
