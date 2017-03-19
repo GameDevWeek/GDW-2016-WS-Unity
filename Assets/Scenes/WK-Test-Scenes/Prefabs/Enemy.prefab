@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33895096984456002}
   - component: {fileID: 65335122903595520}
   - component: {fileID: 23906934100994918}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Eyes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 23652675082076568}
   - component: {fileID: 33733538811884866}
   - component: {fileID: 114923329981682826}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: ViewCone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4271297265960864}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -73,7 +73,7 @@ GameObject:
   - component: {fileID: 33086076207764344}
   - component: {fileID: 23917476989017912}
   - component: {fileID: 114949920934355228}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: ConeOutline
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,7 +88,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4528364020459232}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 33686647099994958}
   - component: {fileID: 135620810145368666}
   - component: {fileID: 23501418529175738}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: DebugFlag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -129,7 +129,7 @@ GameObject:
   - component: {fileID: 114064594904998212}
   - component: {fileID: 114367228579651596}
   - component: {fileID: 114686116302189880}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: EnemyDummy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -497,6 +497,11 @@ MonoBehaviour:
   targetPos: {x: 0, y: 0, z: 0}
   chaseTarget: {fileID: 0}
   navMeshAgent: {fileID: 195840971741472034}
+  playerActor: {fileID: 0}
+  wantedLevel: {fileID: 0}
+  audioSource: {fileID: 0}
+  enterChase: []
+  exitChase: []
 --- !u!114 &114614723104199594
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -523,6 +528,8 @@ MonoBehaviour:
   m_positionOffset: {x: 0, y: 0, z: 0}
   m_useDefaultInteractionRange: 0
   m_interactionRange: 3
+  interactionIcon: {fileID: 0}
+  interactionIconScale: 1
   useInteractionRangeOnly: 0
   ignoreRaycastVisibility: 0
   m_cooldown:
@@ -530,6 +537,7 @@ MonoBehaviour:
   m_stunDuration:
     m_timeInSeconds: 5
   m_backAngle: 30
+  stunEnemyHitSound: {fileID: 0}
 --- !u!114 &114923329981682826
 MonoBehaviour:
   m_ObjectHideFlags: 1

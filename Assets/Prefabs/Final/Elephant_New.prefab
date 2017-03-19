@@ -1022,7 +1022,7 @@ MonoBehaviour:
   fullViewRadius: 20
   viewBlockingLayers:
     serializedVersion: 2
-    m_Bits: 2147483135
+    m_Bits: 2147416575
   nrOfRaycasts: 120
   fieldOfView: 360
   collisionOffset: -0.2

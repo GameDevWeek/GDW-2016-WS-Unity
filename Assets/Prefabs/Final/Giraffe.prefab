@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 64547691528422588}
   - component: {fileID: 114004000010308606}
   - component: {fileID: 114165652642921074}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GiraffenStatue_cell.006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 4554891547055622}
   - component: {fileID: 33149116123558406}
   - component: {fileID: 23112708561132160}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GiraffenStatue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63,7 +63,7 @@ GameObject:
   - component: {fileID: 64771207565566114}
   - component: {fileID: 114865714504443306}
   - component: {fileID: 114251303405235772}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GiraffenStatue_cell.008
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84,7 +84,7 @@ GameObject:
   - component: {fileID: 64991575862743828}
   - component: {fileID: 114448436112094498}
   - component: {fileID: 114775990116864568}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GiraffenStatue_cell.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,7 +105,7 @@ GameObject:
   - component: {fileID: 64614426476583762}
   - component: {fileID: 114793831558845540}
   - component: {fileID: 114289358918863990}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GiraffenStatue_cell.013
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126,7 +126,7 @@ GameObject:
   - component: {fileID: 64774237563783904}
   - component: {fileID: 114730817830082350}
   - component: {fileID: 114250475119124468}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GiraffenStatue_cell.011
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -147,7 +147,7 @@ GameObject:
   - component: {fileID: 64782086781147192}
   - component: {fileID: 114931496571586428}
   - component: {fileID: 114193150516087808}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GiraffenStatue_cell.010
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -168,7 +168,7 @@ GameObject:
   - component: {fileID: 64928373540655998}
   - component: {fileID: 114825557036139396}
   - component: {fileID: 114784065801504346}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GiraffenStatue_cell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -189,7 +189,7 @@ GameObject:
   - component: {fileID: 64770863404533632}
   - component: {fileID: 114546766713437994}
   - component: {fileID: 114427084493039352}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GiraffenStatue_cell.009
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -210,7 +210,7 @@ GameObject:
   - component: {fileID: 64023126838126246}
   - component: {fileID: 114042299910933766}
   - component: {fileID: 114310443080629072}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GiraffenStatue_cell.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -229,7 +229,7 @@ GameObject:
   - component: {fileID: 82653724163167340}
   - component: {fileID: 114946229757348474}
   - component: {fileID: 114951056492443438}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Giraffe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -250,7 +250,7 @@ GameObject:
   - component: {fileID: 64012908558965782}
   - component: {fileID: 114763891005758202}
   - component: {fileID: 114784824340268652}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GiraffenStatue_cell.012
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -271,7 +271,7 @@ GameObject:
   - component: {fileID: 64760737308265046}
   - component: {fileID: 114237145666488642}
   - component: {fileID: 114236538681898154}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GiraffenStatue_cell.007
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -292,7 +292,7 @@ GameObject:
   - component: {fileID: 64195234889045500}
   - component: {fileID: 114819223922502836}
   - component: {fileID: 114300707529534380}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GiraffenStatue_cell.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -313,7 +313,7 @@ GameObject:
   - component: {fileID: 64160873347735794}
   - component: {fileID: 114055942747166588}
   - component: {fileID: 114412462657127466}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GiraffenStatue_cell.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -328,7 +328,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4290927171938364}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Giraffe_Fractured
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -349,7 +349,7 @@ GameObject:
   - component: {fileID: 64872565026557766}
   - component: {fileID: 114806805754077666}
   - component: {fileID: 114679913583362952}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GiraffenStatue_cell.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}

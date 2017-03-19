@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4038706046083592}
   - component: {fileID: 33761391644956982}
   - component: {fileID: 23831467404388314}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Toilette
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 64401617999898392}
   - component: {fileID: 114049658714698276}
   - component: {fileID: 114217676909563678}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Toilette_Vorne
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63,7 +63,7 @@ GameObject:
   - component: {fileID: 64178275803189744}
   - component: {fileID: 114788635545797850}
   - component: {fileID: 114188763168237376}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Toilette_Sitz
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -82,7 +82,7 @@ GameObject:
   - component: {fileID: 114438238753787384}
   - component: {fileID: 114306413929536136}
   - component: {fileID: 136511359528715954}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Toilette
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: 64135517366522394}
   - component: {fileID: 114511663281806546}
   - component: {fileID: 114016434300423756}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Toilette_Deckel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118,7 +118,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4899630141319214}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Toilette_Fractured
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -139,7 +139,7 @@ GameObject:
   - component: {fileID: 64636919204590470}
   - component: {fileID: 114190801807137044}
   - component: {fileID: 114259522432861408}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Toilette_Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}

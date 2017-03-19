@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4540473920322464}
   - component: {fileID: 33962511537087540}
   - component: {fileID: 23252373219049948}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Complete
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 114092404784105818}
   - component: {fileID: 114650749464747200}
   - component: {fileID: 114559522517366830}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Vase_HP_Fracture_cell.071
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67,7 +67,7 @@ GameObject:
   - component: {fileID: 114009519649868230}
   - component: {fileID: 114569943730164036}
   - component: {fileID: 114632448318609418}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Vase_HP_Fracture_cell.068
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -82,7 +82,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4788862033077162}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Destructed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,7 +105,7 @@ GameObject:
   - component: {fileID: 114079984614983944}
   - component: {fileID: 114034294704549878}
   - component: {fileID: 114947341146926720}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Vase_HP_Fracture_cell.069
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -128,7 +128,7 @@ GameObject:
   - component: {fileID: 114693501041046470}
   - component: {fileID: 114847269368698586}
   - component: {fileID: 114824309597407294}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Vase_HP_Fracture_cell.067
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -151,7 +151,7 @@ GameObject:
   - component: {fileID: 114978789162126740}
   - component: {fileID: 114453170731461098}
   - component: {fileID: 114196272581001686}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Vase_HP_Fracture_cell.065
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -174,7 +174,7 @@ GameObject:
   - component: {fileID: 114786973342539826}
   - component: {fileID: 114483326922803082}
   - component: {fileID: 114895728054761634}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Vase_HP_Fracture_cell.073
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -193,7 +193,7 @@ GameObject:
   - component: {fileID: 114009450031270262}
   - component: {fileID: 82860570977519310}
   - component: {fileID: 114820635189720482}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Vase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -216,7 +216,7 @@ GameObject:
   - component: {fileID: 114895603265803150}
   - component: {fileID: 114674226250122140}
   - component: {fileID: 114147382877981222}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Vase_HP_Fracture_cell.066
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -239,7 +239,7 @@ GameObject:
   - component: {fileID: 114318036926333632}
   - component: {fileID: 114814065447970164}
   - component: {fileID: 114118536624038688}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Vase_HP_Fracture_cell.064
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -262,7 +262,7 @@ GameObject:
   - component: {fileID: 114602252361315926}
   - component: {fileID: 114866433215167332}
   - component: {fileID: 114707725458924542}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Vase_HP_Fracture_cell.070
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -285,7 +285,7 @@ GameObject:
   - component: {fileID: 114528997388115586}
   - component: {fileID: 114575249838134498}
   - component: {fileID: 114128818973938476}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Vase_HP_Fracture_cell.072
   m_TagString: Untagged
   m_Icon: {fileID: 0}

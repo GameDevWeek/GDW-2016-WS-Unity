@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 23484678886828344}
   - component: {fileID: 135001409748805150}
   - component: {fileID: 114249367854016126}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Jade_Elephant1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,9 +96,12 @@ MonoBehaviour:
   m_positionOffset: {x: 0, y: 0, z: 0}
   m_useDefaultInteractionRange: 0
   m_interactionRange: 3
+  interactionIcon: {fileID: 0}
+  interactionIconScale: 1
   useInteractionRangeOnly: 0
   ignoreRaycastVisibility: 0
   ScoreValue: 0
+  collectionSound: {fileID: 0}
   m_collectableName: Jade Elefant
 --- !u!135 &135001409748805150
 SphereCollider:

@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4845387258763008}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Armature
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -35,7 +35,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4907871108272872}
   - component: {fileID: 137289013099648154}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50,7 +50,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4439325161921042}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Arm Lower.R_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -65,7 +65,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4718175828806088}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Arm Lower.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -80,7 +80,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4671796330043930}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4326432092916376}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Head_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -110,7 +110,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4285842397893038}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Arm Lower.L_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125,7 +125,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4141277605018226}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Leg Lower.L_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -140,7 +140,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4440331113352360}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Leg Upper.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -155,7 +155,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4542367064918052}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: BaseTop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -170,7 +170,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4665279847765880}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Leg Lower.R_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -189,9 +189,9 @@ GameObject:
   - component: {fileID: 114441439249423902}
   - component: {fileID: 23017060737734518}
   - component: {fileID: 195197553863956536}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Zebra_Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -204,7 +204,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4601993321777874}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Eyes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -219,7 +219,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4449084711350606}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Arm Upper.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -234,7 +234,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4640448702945864}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Leg Lower.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -249,7 +249,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4760485357432334}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: BaseLow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -264,7 +264,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4062342469096346}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Leg Lower.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -279,7 +279,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4146985174711580}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Base Mid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -297,7 +297,7 @@ GameObject:
   - component: {fileID: 23871015271778500}
   - component: {fileID: 33473662866315208}
   - component: {fileID: 114481833139721180}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: ViewCone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -312,7 +312,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4426465123194802}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Leg Upper.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -327,7 +327,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4225407245990726}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Arm Upper.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -342,7 +342,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4414339487135440}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Arm Lower.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -762,16 +762,22 @@ MonoBehaviour:
   toleratedSightrange: 5
   fieldOfView: 90
   stoppingTime: 2
+  playerIsCaughtDistance: 4
   wayPoints: {fileID: 11400000, guid: 37f3e8748a6a445448e9b57073c99b31, type: 2}
   currentWaypoint: 0
   eyes: {fileID: 4601993321777874}
   viewCone: {fileID: 114481833139721180}
   viewBlockingLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 2147269627
   targetPos: {x: 0, y: 0, z: 0}
   chaseTarget: {fileID: 0}
   navMeshAgent: {fileID: 0}
+  playerActor: {fileID: 0}
+  wantedLevel: {fileID: 0}
+  audioSource: {fileID: 0}
+  enterChase: []
+  exitChase: []
 --- !u!114 &114481833139721180
 MonoBehaviour:
   m_ObjectHideFlags: 1
