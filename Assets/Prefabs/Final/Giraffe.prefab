@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 64547691528422588}
   - component: {fileID: 114004000010308606}
   - component: {fileID: 114165652642921074}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GiraffenStatue_cell.006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 4554891547055622}
   - component: {fileID: 33149116123558406}
   - component: {fileID: 23112708561132160}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: GiraffenStatue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -229,7 +229,7 @@ GameObject:
   - component: {fileID: 82653724163167340}
   - component: {fileID: 114946229757348474}
   - component: {fileID: 114951056492443438}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Giraffe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -585,7 +585,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1588902864229916}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.64, y: 1.3, z: 2.32}
+  m_LocalPosition: {x: -12.159159, y: 13.769464, z: -20.576538}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4554891547055622}

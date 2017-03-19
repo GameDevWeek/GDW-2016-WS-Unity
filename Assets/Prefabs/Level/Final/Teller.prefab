@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 54828167443661864}
   - component: {fileID: 114219968108619816}
   - component: {fileID: 114976124811438130}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Teller_cell.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -128,7 +128,7 @@ GameObject:
   - component: {fileID: 114230607909626604}
   - component: {fileID: 114147306116286438}
   - component: {fileID: 136518890836479896}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Teller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -208,7 +208,7 @@ GameObject:
   - component: {fileID: 4787729077636232}
   - component: {fileID: 33616896119441322}
   - component: {fileID: 23048933438322110}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Teller1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -357,7 +357,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1459939928540706}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.482543, y: 1.61, z: 19.71}
+  m_LocalPosition: {x: -11.945974, y: 13.602108, z: -20.500858}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4787729077636232}
