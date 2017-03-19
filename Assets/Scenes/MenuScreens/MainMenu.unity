@@ -2530,13 +2530,13 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Credits\r\n\r\nProgramming\r\n\r\nRendering\r\n\r\nFlorian Oetke\r\nTobias
-    Rogalski\r\nArmin Willer\r\n\r\nGamelogic, Physic and AI\r\n\r\nOliver Biwer\r\nWladimir
-    Kr\xF6ker\r\nDaniel Reiners\r\nMaximilian Kiesel\r\nAndreas Hergert\r\nTobias
-    Heiles\r\nDennis Grass\r\n\r\nMenu and HUD\r\n\r\nDustin Zimmermann\r\nThilo Bartel\r\n\r\nInput\r\n\r\nThilo
-    Bartel\r\nJason Merse\r\n\r\n\r\nDesign\r\n\r\nLevel Design\r\n\r\nBacher Said\r\nSusanne
-    'Loni' Fischer\r\nMarcel Nist\r\n\r\nSound Design\r\n\r\nMinh Duc Dao\r\nJason
-    Merse\r\nSandra Wayand\r\nKor\xE9 Kaluzynski\r\n\r\nSynchronisation\r\n\r\nNinja
+  m_Text: "Credits\r\n\r\nProgramming\r\n\r___________\n\nRendering\r\n\r\nFlorian
+    Oetke\r\nTobias Rogalski\r\nArmin Willer\r\n\r\nGamelogic, Physic and AI\r\n\r\nOliver
+    Biwer\r\nWladimir Kr\xF6ker\r\nDaniel Reiners\r\nMaximilian Kiesel\r\nAndreas
+    Hergert\r\nTobias Heiles\r\nDennis Grass\r\n\r\nMenu and HUD\r\n\r\nDustin Zimmermann\r\nThilo
+    Bartel\r\n\r\nInput\r\n\r\nThilo Bartel\r\nJason Merse\r\n\r\n\r\nDesign\r\n______\n\r\nLevel
+    Design\r\n\r\nBacher Said\r\nSusanne 'Loni' Fischer\r\nMarcel Nist\r\n\r\nSound
+    Design\r\n\r\nMinh Duc Dao\r\nJason Merse\r\nSandra Wayand\r\nKor\xE9 Kaluzynski\r\n\r\nSynchronisation\r\n\r\nNinja
     Elephant : Oliver Biwer\r\nZebra Guard : Jerome J\xE4hnig\r\n\r\n3D Assets\r\n\r\nDaniel
     Simon - Environment \r\nTess Eisinger - Environment\r\nManuel Merscheid \n- Character
     Modeling and Animation\r\n\r\n2D Assets\r\n\nManuel Merscheid \n- Interface and
