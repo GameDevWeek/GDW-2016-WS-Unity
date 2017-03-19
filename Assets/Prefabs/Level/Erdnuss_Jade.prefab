@@ -129,5 +129,5 @@ MonoBehaviour:
   ignoreRaycastVisibility: 0
   ScoreValue: 0
   collectionSound: {fileID: 0}
-  m_collectableName: 
+  m_collectableName: Erdnuss Jade
   isWinItem: 1
