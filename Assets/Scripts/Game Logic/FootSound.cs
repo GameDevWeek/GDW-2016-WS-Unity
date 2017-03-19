@@ -41,6 +41,7 @@ public class FootSound : MonoBehaviour {
     {
         if (!m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Sprint"))
         {
+            CurrentFootRight = FootSoundPairs[0].FootRight;
             Mathf.Clamp01(intensity);
             m_audioSource.volume = intensity;
             m_audioSource.PlayOneShot(CurrentFootRight);
