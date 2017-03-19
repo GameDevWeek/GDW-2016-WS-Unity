@@ -11,6 +11,7 @@ public class MainMenuControls : MonoBehaviour {
     public GameObject elephant3d;
     private bool view2d = false;
     private bool view3d = true;
+	public GameObject Sub;
 
     public void Update()
     {
@@ -51,12 +52,14 @@ public class MainMenuControls : MonoBehaviour {
         credits.SetActive(false);
         menuButtons.SetActive(true);
         menuText.SetActive(true);
+		Sub.SetActive (true);
     }
 
     public void clickedCredits()
     {
         menuButtons.SetActive(false);
         menuText.SetActive(false);
+		Sub.SetActive (false);
         credits.SetActive(true);
     }
 }
