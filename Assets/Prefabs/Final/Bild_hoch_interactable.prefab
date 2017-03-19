@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 135069670388379614}
   - component: {fileID: 114738008297980506}
   m_Layer: 0
-  m_Name: Bild_hoch
+  m_Name: Bild_hoch_interactable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
