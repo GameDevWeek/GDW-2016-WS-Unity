@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 64547691528422588}
   - component: {fileID: 114004000010308606}
   - component: {fileID: 114165652642921074}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: GiraffenStatue_cell.006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
