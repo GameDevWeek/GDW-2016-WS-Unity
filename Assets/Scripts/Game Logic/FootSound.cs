@@ -42,7 +42,8 @@ public class FootSound : MonoBehaviour {
         Mathf.Clamp01(intensity);
         m_audioSource.volume = intensity;
         m_audioSource.PlayOneShot(CurrentFootRight);
-      //  m_NoiseSource.Play();
+        if(m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Sprint"))
+            m_NoiseSource.Play();
     }
 
     private void OnCollisionEnter(Collision collision)

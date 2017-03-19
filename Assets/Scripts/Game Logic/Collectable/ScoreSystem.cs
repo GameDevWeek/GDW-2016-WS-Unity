@@ -55,8 +55,10 @@ public class ScoreSystem: Singleton<ScoreSystem>
 
         if (result == -1)
         {
+            
             Debug.LogError("[ScoreSystem]: " + scoreName + " not available or wrong typed!");
             Debug.LogError("[ScoreSystem]: available Keys" + m_collectableScores.Keys.ToString() + "\n" + m_destroyableScores.Keys.ToString());
+            return 0;
         }
 
         return result;
