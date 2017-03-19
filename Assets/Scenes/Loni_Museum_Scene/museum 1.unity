@@ -1240,6 +1240,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 3.555
       objectReference: {fileID: 0}
+    - target: {fileID: 100014, guid: 670a78efb68a74721ae6581748ac1612, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 670a78efb68a74721ae6581748ac1612, type: 3}
   m_IsPrefabParent: 0
@@ -1637,9 +1641,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_time: 1
-  m_scene: Museum
+  m_scene: erdnusslevel
   m_iterateSceneID: 0
-  scene: {fileID: 102900000, guid: 210e7e42756756346b8129fadd7e7c6d, type: 3}
+  scene: {fileID: 102900000, guid: f6494b70fc5214a898f9308bdcc598da, type: 3}
 --- !u!4 &270190813
 Transform:
   m_ObjectHideFlags: 0
