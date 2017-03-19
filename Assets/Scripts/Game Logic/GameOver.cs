@@ -10,11 +10,13 @@ public class GameOver : MonoBehaviour {
     private Coroutine m_giveUpRoutine;
     [SerializeField]
     private float m_sceneChangeDelay = 5.0f;
+    private WantedLevel m_wantedLevel;
 
     // Use this for initialization
     void Start() {
         m_elephantMovement = GameObject.FindObjectOfType<ElephantMovement>();
         m_sceneLoader = GameObject.FindObjectOfType<SceneLoaderScript>();
+        m_wantedLevel = GameObject.FindObjectOfType<WantedLevel>();
         StatePatternEnemy.OnCaught += OnCaught;
     }
 
@@ -23,11 +25,9 @@ public class GameOver : MonoBehaviour {
     }
 
     private void OnCaught(StatePatternEnemy.CaughtEventData data) {
-        if (m_giveUpRoutine != null) {
-            return;
-        }
 
-        m_giveUpRoutine = StartCoroutine(GiveUpRoutine());
+
+        
     }
 
     IEnumerator GiveUpRoutine() {
@@ -40,8 +40,18 @@ public class GameOver : MonoBehaviour {
         m_sceneLoader.LoadSceneSingle(gameOverScene);
     }
 
+    public void EndGame() {
+        if (m_giveUpRoutine != null) {
+            return;
+        }
+
+        m_giveUpRoutine = StartCoroutine(GiveUpRoutine());
+    }
+
     // Update is called once per frame
     void Update() {
-
+        if (m_wantedLevel.currentWantedStage == 2) {
+            EndGame();
+        }
     }
 }

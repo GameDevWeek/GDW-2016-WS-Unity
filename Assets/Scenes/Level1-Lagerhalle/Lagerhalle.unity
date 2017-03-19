@@ -1242,9 +1242,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_time: 1
-  m_scene: Museum1
+  m_scene: Museum
   m_iterateSceneID: 0
-  scene: {fileID: 102900000, guid: 516c5b4b2a8bfbc44b09e1ae100fdaf7, type: 3}
+  scene: {fileID: 102900000, guid: 210e7e42756756346b8129fadd7e7c6d, type: 3}
 --- !u!4 &332196174
 Transform:
   m_ObjectHideFlags: 0

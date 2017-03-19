@@ -12,10 +12,12 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Loni_Museum_Scene/museum.unity
   - enabled: 1
+    path: Assets/Scenes/Museum Marcel/Museum.unity
+  - enabled: 0
     path: Assets/Scenes/Museum Marcel/MuseumLvl3.unity
   - enabled: 1
     path: Assets/Scenes/MenuScreens/VictoryScreen.unity
   - enabled: 1
-    path: Assets/Scenes/InGameMenu/IngameMenu.unity
+    path: Assets/Scenes/MenuScreens/IngameMenu.unity
   - enabled: 1
     path: Assets/Scenes/MenuScreens/GameOverScreen.unity
