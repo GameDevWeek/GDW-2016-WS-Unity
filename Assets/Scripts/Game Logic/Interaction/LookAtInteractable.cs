@@ -11,9 +11,12 @@ public class LookAtInteractable : Interactable {
 
 	private CameraController m_cameraController;
 
+	private ElephantMovement m_elephantMovement;
+
 
 	private void Start() {
 		m_cameraController = GameObject.FindObjectOfType<CameraController> ();
+		m_elephantMovement = GameObject.FindObjectOfType<ElephantMovement>();
 	}
 
 	public override void Interact(Interactor interactor) {
@@ -25,6 +28,7 @@ public class LookAtInteractable : Interactable {
 	}
 
 	IEnumerator InteractRoutine() {
+		m_elephantMovement.allowToMove = false;
 		m_cameraController.EnableSpectatorCam (transform, false);
 
 		yield return new WaitForSecondsRealtime(1);
@@ -35,6 +39,7 @@ public class LookAtInteractable : Interactable {
 			yield return new WaitForSecondsRealtime(0.5f);
 		}
 
+		m_elephantMovement.allowToMove = true;
 		m_cameraController.EnableNormalCam ();
 	}
 
