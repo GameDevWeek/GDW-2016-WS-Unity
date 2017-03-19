@@ -31,10 +31,10 @@ public class FootSound : MonoBehaviour {
 
     public void FootSoundLeft(float intensity)
     {
-        Mathf.Clamp01(intensity);
+      /*  Mathf.Clamp01(intensity);
         m_audioSource.volume = intensity;
         m_audioSource.PlayOneShot(CurrentFootLeft);
-        m_NoiseSource.Play();
+        m_NoiseSource.Play();*/
     }
 
     public void FootSoundRight(float intensity)
@@ -42,7 +42,7 @@ public class FootSound : MonoBehaviour {
         Mathf.Clamp01(intensity);
         m_audioSource.volume = intensity;
         m_audioSource.PlayOneShot(CurrentFootRight);
-        m_NoiseSource.Play();
+      //  m_NoiseSource.Play();
     }
 
     private void OnCollisionEnter(Collision collision)
