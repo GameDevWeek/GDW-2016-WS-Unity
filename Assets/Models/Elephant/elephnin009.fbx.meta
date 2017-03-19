@@ -105,14 +105,14 @@ ModelImporter:
         functionName: FootSoundLeft
         data: 
         objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0.05
+        floatParameter: 1
         intParameter: 0
         messageOptions: 0
       - time: 0.8533333
         functionName: FootSoundRight
         data: 
         objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0.05
+        floatParameter: 1
         intParameter: 0
         messageOptions: 0
       transformMask:

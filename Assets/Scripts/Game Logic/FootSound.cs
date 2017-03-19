@@ -39,11 +39,21 @@ public class FootSound : MonoBehaviour {
 
     public void FootSoundRight(float intensity)
     {
-        Mathf.Clamp01(intensity);
-        m_audioSource.volume = intensity;
-        m_audioSource.PlayOneShot(CurrentFootRight);
-        if(m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Sprint"))
+        if (!m_Animator.GetCurrentAnimatorStateInfo(0).IsName("Sprint"))
+        {
+            CurrentFootRight = FootSoundPairs[0].FootRight;
+            Mathf.Clamp01(intensity);
+            m_audioSource.volume = intensity;
+            m_audioSource.PlayOneShot(CurrentFootRight);
+        }
+        else
+        {
+            CurrentFootRight = FootSoundPairs[1].FootRight;
+            Mathf.Clamp01(intensity);
+            m_audioSource.volume = intensity;
+            m_audioSource.PlayOneShot(CurrentFootRight);
             m_NoiseSource.Play();
+        }
     }
 
     private void OnCollisionEnter(Collision collision)

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,15 +17,19 @@ public class Collectable : Interactable
     public struct CollectableEventData
     {
         public GameObject collected;
+        public bool winItem;
 
-        public CollectableEventData(GameObject collected)
+        public CollectableEventData(GameObject collected, bool winItem)
         {
             this.collected = collected;
+            this.winItem = winItem;
         }
     }
 
     public delegate void CollectableEvent(CollectableEventData data);
     public static event CollectableEvent OnCollect;
+    [SerializeField]
+    public bool isWinItem = false;
 
     private void OnValidate()
     {
@@ -44,7 +48,7 @@ public class Collectable : Interactable
     public override void Interact(Interactor interactor)
     {
         if(OnCollect != null)
-        OnCollect.Invoke(new CollectableEventData(gameObject));
+        OnCollect.Invoke(new CollectableEventData(gameObject, isWinItem));
         if(collectionSound != null)
             interactor.GetComponent<AudioSource>().PlayOneShot(collectionSound);
         Destroy(gameObject);

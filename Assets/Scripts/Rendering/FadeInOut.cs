@@ -31,43 +31,46 @@ public class FadeInOut : MonoBehaviour {
     {
         float fadingSpeed = 1.0f / fadeTime;
 
-        var rendererList = rendererObjects.ToList();
-
-		while(rendererList.Count > 0)
+        if(rendererObjects != null)
         {
-            List<bool> done = new List<bool>();
-			for(int i = 0; i < rendererList.Count; ++i)
-			{
-                for (int j = 0; j < rendererList[i].materials.Length; ++j)
-                {
-                    if(rendererList[i].materials[j] == null)
+            var rendererList = rendererObjects.ToList();
+
+		    while(rendererList.Count > 0)
+            {
+                List<bool> done = new List<bool>();
+			    for(int i = 0; i < rendererList.Count; ++i)
+			    {
+                    for (int j = 0; j < rendererList[i].materials.Length; ++j)
                     {
-                        continue;
-                    }
+                        if(rendererList[i].materials[j] == null)
+                        {
+                            continue;
+                        }
                     
-                    Color color = rendererList[i].materials[j].color;
-                    float fadeStep = fadingSpeed * Mathf.Sign(targetAlpha - color.a);
-                    color.a = Mathf.Clamp(color.a + Time.deltaTime * fadeStep, 0f, 1f);
-                    rendererList[i].materials[j].color = color;
+                        Color color = rendererList[i].materials[j].color;
+                        float fadeStep = fadingSpeed * Mathf.Sign(targetAlpha - color.a);
+                        color.a = Mathf.Clamp(color.a + Time.deltaTime * fadeStep, 0f, 1f);
+                        rendererList[i].materials[j].color = color;
+                    }
+                    done.Add(rendererList[i].materials.All(mat => mat == null || Mathf.Abs(mat.color.a - targetAlpha) < 0.001f));
                 }
-                done.Add(rendererList[i].materials.All(mat => mat == null || Mathf.Abs(mat.color.a - targetAlpha) < 0.001f));
-            }
 
-            for(int i = done.Count - 1; i >= 0; --i)
-            {
-                if(done[i])
+                for(int i = done.Count - 1; i >= 0; --i)
                 {
-                    rendererList.RemoveAt(i);
+                    if(done[i])
+                    {
+                        rendererList.RemoveAt(i);
+                    }
                 }
-            }
 
-            for(int i = 0; i < cones.Length; ++i)
-            {
-                float fadeStep = fadingSpeed * Mathf.Sign(targetAlpha - cones[i].ConeAlpha);
-                cones[i].ConeAlpha = Mathf.Clamp(cones[i].ConeAlpha + Time.deltaTime * fadeStep, 0f, 1f);
-            }
+                for(int i = 0; i < cones.Length; ++i)
+                {
+                    float fadeStep = fadingSpeed * Mathf.Sign(targetAlpha - cones[i].ConeAlpha);
+                    cones[i].ConeAlpha = Mathf.Clamp(cones[i].ConeAlpha + Time.deltaTime * fadeStep, 0f, 1f);
+                }
 
-            yield return null;
+                yield return null;
+            }
         }
     }
 

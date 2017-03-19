@@ -851,6 +851,9 @@ MonoBehaviour:
     m_timeInSeconds: 5
   m_backAngle: 153.6
   stunEnemyHitSound: {fileID: 8300000, guid: 1d3dfecdc4b11b2498a284bba4fe21cb, type: 3}
+  stunIndicatorPrefab: {fileID: 1501870214390336, guid: c2ebf4e91073c644a9275b62ae290b3d,
+    type: 2}
+  stunIndicatorOffset: {x: 0, y: 4.2, z: 0}
 --- !u!114 &114441439249423902
 MonoBehaviour:
   m_ObjectHideFlags: 1
