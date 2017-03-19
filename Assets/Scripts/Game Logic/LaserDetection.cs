@@ -13,6 +13,7 @@ public class LaserDetection : MonoBehaviour {
 
     private BoxCollider m_collider;
 
+    [SerializeField]
     private bool m_isActive = true;
     private NoiseSource noiseSource;
 
@@ -24,6 +25,7 @@ public class LaserDetection : MonoBehaviour {
         this.gameObject.layer = GameLayer.Laser;
         this.direction.Normalize();
         this.m_collider.isTrigger = true;
+        SetActivation(m_isActive);
         Start();
 
 
@@ -87,12 +89,6 @@ public class LaserDetection : MonoBehaviour {
                 m_collider.center = direction * (hit.distance / 2);
             }
         }
-
-        // Test code
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            SetActivation(!m_isActive);
-        }
     }
 
     public void SetActivation(bool active)
@@ -109,6 +105,11 @@ public class LaserDetection : MonoBehaviour {
             m_laserBeam.enabled = false;
             m_collider.enabled = false;
         }
+    }
+
+    public void Toggle() {
+        m_isActive = !m_isActive;
+        SetActivation(m_isActive);
     }
 
     private void OnTriggerEnter(Collider other)

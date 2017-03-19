@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -24,7 +24,8 @@ public class LaserSwitch : Interactable
         // Set color of switch light based on initial status
         m_renderer.material = m_switchPoweredOn ? m_switchOnMaterial : m_switchOffMaterial;
         // Set activation of related laser barriers based on initial status
-        SetBarrierActivation();
+        //SetBarrierActivation();
+        //ToggleSwitch();
     }
 
     // Update is called once per frame
@@ -51,7 +52,8 @@ public class LaserSwitch : Interactable
     {
         foreach (var laser in m_laserBarriers)
         {
-            laser.SetActivation(m_switchPoweredOn);
+            laser.Toggle();
+            //laser.SetActivation(m_switchPoweredOn);
         }
     }
 

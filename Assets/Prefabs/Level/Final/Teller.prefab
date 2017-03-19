@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 54846476090686570}
   - component: {fileID: 114476448077611170}
   - component: {fileID: 114810701000356496}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Teller_cell.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67,7 +67,7 @@ GameObject:
   - component: {fileID: 54927507465042024}
   - component: {fileID: 114209889039397166}
   - component: {fileID: 114613218636942218}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Teller_cell.009
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 54173082930072238}
   - component: {fileID: 114634486811704312}
   - component: {fileID: 114516601577020586}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Teller_cell.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 54292828060349962}
   - component: {fileID: 114510864944951196}
   - component: {fileID: 114710728943142306}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Teller_cell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -128,7 +128,7 @@ GameObject:
   - component: {fileID: 114230607909626604}
   - component: {fileID: 114147306116286438}
   - component: {fileID: 136518890836479896}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Teller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -149,7 +149,7 @@ GameObject:
   - component: {fileID: 54861431633005312}
   - component: {fileID: 114914407332816200}
   - component: {fileID: 114525912087711322}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Teller_cell.007
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -170,7 +170,7 @@ GameObject:
   - component: {fileID: 54142740609770654}
   - component: {fileID: 114620223387210350}
   - component: {fileID: 114071968321789224}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Teller_cell.008
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -191,7 +191,7 @@ GameObject:
   - component: {fileID: 54233091261543342}
   - component: {fileID: 114261828001460352}
   - component: {fileID: 114720839206037672}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Teller_cell.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -208,7 +208,7 @@ GameObject:
   - component: {fileID: 4787729077636232}
   - component: {fileID: 33616896119441322}
   - component: {fileID: 23048933438322110}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Teller1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -229,7 +229,7 @@ GameObject:
   - component: {fileID: 54633782369037200}
   - component: {fileID: 114142915736009666}
   - component: {fileID: 114282132302144042}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Teller_cell.006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -250,7 +250,7 @@ GameObject:
   - component: {fileID: 54823512037448386}
   - component: {fileID: 114070968869657280}
   - component: {fileID: 114711385098105178}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Teller_cell.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -265,7 +265,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4426030219694370}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Teller_Fractured
   m_TagString: Untagged
   m_Icon: {fileID: 0}
