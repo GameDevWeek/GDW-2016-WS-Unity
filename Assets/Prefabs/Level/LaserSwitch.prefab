@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4317505498967228}
   - component: {fileID: 114171396407305008}
+  - component: {fileID: 65933202699843480}
   m_Layer: 0
   m_Name: LaserSwitch
   m_TagString: Untagged
@@ -112,7 +113,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1063039811217768}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 26.52, y: 0.86, z: 10.39}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4133981329316938}
@@ -260,6 +261,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &65933202699843480
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1063039811217768}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114171396407305008
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -275,8 +288,13 @@ MonoBehaviour:
   m_positionOffset: {x: 0, y: 0, z: 0}
   m_useDefaultInteractionRange: 0
   m_interactionRange: 3
-  m_laserBarriers: []
+  interactionIcon: {fileID: 0}
+  interactionIconScale: 1
+  useInteractionRangeOnly: 0
+  ignoreRaycastVisibility: 0
+  m_laserBarriers:
+  - {fileID: 0}
   m_switchOnMaterial: {fileID: 2100000, guid: 633c92916423d7b4c8a9e2ee8dd71ce3, type: 2}
   m_switchOffMaterial: {fileID: 2100000, guid: 3ab4bf0baccd32547bceada029efb062, type: 2}
-  m_switchPoweredOn: 0
+  m_switchPoweredOn: 1
   m_renderer: {fileID: 23846734931092118}

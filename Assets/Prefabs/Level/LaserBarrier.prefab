@@ -216,6 +216,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa61d5c47f84f8745ae6f87f12aac159, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_isActive: 1
   direction: {x: 0, y: 0, z: 1}
 --- !u!114 &114708516307305090
 MonoBehaviour:
