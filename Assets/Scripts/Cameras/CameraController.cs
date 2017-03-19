@@ -26,7 +26,7 @@ public class CameraController : MonoBehaviour  {
 		m_spectator.enabled = false;
 	}
 
-	public void EnableSpectatorCam(Transform target, bool rotate=false) {
+	public void EnableSpectatorCam(Transform target, bool rotate=true) {
 		m_topDown.enabled = false;
 		m_death.enabled = false;
 		m_spectator.SetTarget (target);

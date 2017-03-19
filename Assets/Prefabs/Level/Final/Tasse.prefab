@@ -162,7 +162,7 @@ GameObject:
   - component: {fileID: 4487910551663478}
   - component: {fileID: 33940808382920818}
   - component: {fileID: 23076238848799050}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Tasse 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -244,7 +244,7 @@ GameObject:
   - component: {fileID: 114491721874323672}
   - component: {fileID: 114827929870048446}
   - component: {fileID: 136427872186131828}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Tasse
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -360,7 +360,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1456187060031964}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.61, y: 1.387, z: 13.43}
+  m_LocalPosition: {x: -11.296671, y: 13.171073, z: -20.27426}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4487910551663478}
