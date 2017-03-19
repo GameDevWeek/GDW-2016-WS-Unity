@@ -1,1 +1,5 @@
+<<<<<<< HEAD
+m_EditorVersion: 5.5.2xf1Linux
+=======
 m_EditorVersion: 5.5.2f1
+>>>>>>> 1276adeaae60ef1f3157af3afdaba5f79c3750c5
