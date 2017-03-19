@@ -25,7 +25,10 @@ public class GameOver : MonoBehaviour {
     }
 
     private void OnCollect(Collectable.CollectableEventData data) {
-        WinGame();
+        if (data.winItem) {
+            WinGame();
+        }
+        
     }
 
     void OnDestroy() {
