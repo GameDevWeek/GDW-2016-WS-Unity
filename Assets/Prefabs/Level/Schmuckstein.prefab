@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33429940888153750}
   - component: {fileID: 65893532994924830}
   - component: {fileID: 23401312007352754}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Schmuckstein
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,8 +36,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1789118466198380}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13.269, y: 2.148, z: -2.86}
-  m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
+  m_LocalPosition: {x: -13.742, y: 0.543, z: 12.874}
+  m_LocalScale: {x: 0.48847544, y: 0.4884752, z: 1.0361747}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
