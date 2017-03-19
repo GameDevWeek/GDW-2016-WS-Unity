@@ -1165,8 +1165,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FootSoundPairs:
   - GroundTag: Ground
-    FootLeft: {fileID: 8300000, guid: 42e65e088b3f4374e851b8dbd38f3df9, type: 3}
-    FootRight: {fileID: 8300000, guid: 42e65e088b3f4374e851b8dbd38f3df9, type: 3}
+    FootLeft: {fileID: 8300000, guid: 17744b57f89d81a4090b60d682ace204, type: 3}
+    FootRight: {fileID: 8300000, guid: 17744b57f89d81a4090b60d682ace204, type: 3}
+  - GroundTag: Ground
+    FootLeft: {fileID: 8300000, guid: 60bdd50f4540be443826997cb445f699, type: 3}
+    FootRight: {fileID: 8300000, guid: 60bdd50f4540be443826997cb445f699, type: 3}
 --- !u!114 &114638832166408686
 MonoBehaviour:
   m_ObjectHideFlags: 1
