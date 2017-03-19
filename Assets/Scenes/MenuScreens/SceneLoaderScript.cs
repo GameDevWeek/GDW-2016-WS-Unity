@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SceneLoaderScript : MonoBehaviour {
 
-
+    private static string m_prevScene;
 
 	// Use this for initialization
 	void Start () {
@@ -18,13 +18,28 @@ public class SceneLoaderScript : MonoBehaviour {
 
 	public void LoadSceneAdditive(string sc)
 	{
-		UnityEngine.SceneManagement.SceneManager.LoadScene(sc, UnityEngine.SceneManagement.LoadSceneMode.Additive);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(sc, UnityEngine.SceneManagement.LoadSceneMode.Additive);
 	}
 
 	public void LoadSceneSingle(string sc)
 	{
-		UnityEngine.SceneManagement.SceneManager.LoadScene(sc, UnityEngine.SceneManagement.LoadSceneMode.Single);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(sc, UnityEngine.SceneManagement.LoadSceneMode.Single);
 	}
+
+    public void ResetTimeScale()
+    {
+        Time.timeScale = 1;
+    }
+
+    public void SetCurrentSceneAsPrefScene()
+    {
+        m_prevScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+    }
+
+    public void LoadPrevScene()
+    {
+        LoadSceneSingle(m_prevScene);
+    }
 
 	public void Quit()
 	{

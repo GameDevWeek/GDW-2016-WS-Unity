@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 64398158240460496}
   - component: {fileID: 114791947992926416}
   - component: {fileID: 114031369448657390}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tasse_cell.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 64278904802219486}
   - component: {fileID: 114984657582234784}
   - component: {fileID: 114425272818418882}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tasse_cell.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67,7 +67,7 @@ GameObject:
   - component: {fileID: 64155158256878680}
   - component: {fileID: 114464539242932262}
   - component: {fileID: 114333324333729624}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tasse_cell.009
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -82,7 +82,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4740017458813612}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tasse_Fractured
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: 64488689770924344}
   - component: {fileID: 114981808314352570}
   - component: {fileID: 114366440540315668}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tasse_cell.011
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 64436031209029324}
   - component: {fileID: 114581971087191220}
   - component: {fileID: 114786992728569624}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tasse_cell.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -145,7 +145,7 @@ GameObject:
   - component: {fileID: 64063440040826130}
   - component: {fileID: 114199463244598744}
   - component: {fileID: 114711916756734464}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tasse_cell.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -162,7 +162,7 @@ GameObject:
   - component: {fileID: 4487910551663478}
   - component: {fileID: 33940808382920818}
   - component: {fileID: 23076238848799050}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tasse 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -183,7 +183,7 @@ GameObject:
   - component: {fileID: 64916115019266334}
   - component: {fileID: 114986135605322424}
   - component: {fileID: 114055227189652670}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tasse_cell.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -204,7 +204,7 @@ GameObject:
   - component: {fileID: 64409813712356790}
   - component: {fileID: 114588252764219124}
   - component: {fileID: 114436419749815836}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tasse_cell.010
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -225,7 +225,7 @@ GameObject:
   - component: {fileID: 64200927603860610}
   - component: {fileID: 114634709924607670}
   - component: {fileID: 114533047378218284}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tasse_cell.006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -244,7 +244,7 @@ GameObject:
   - component: {fileID: 114491721874323672}
   - component: {fileID: 114827929870048446}
   - component: {fileID: 136427872186131828}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tasse
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -265,7 +265,7 @@ GameObject:
   - component: {fileID: 64326963740722830}
   - component: {fileID: 114343829630368668}
   - component: {fileID: 114756626448944938}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tasse_cell.008
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -286,7 +286,7 @@ GameObject:
   - component: {fileID: 64731608596905952}
   - component: {fileID: 114842633041766528}
   - component: {fileID: 114777220162785416}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tasse_cell.007
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -307,7 +307,7 @@ GameObject:
   - component: {fileID: 64799830576406510}
   - component: {fileID: 114701318038773680}
   - component: {fileID: 114814440654259960}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tasse_cell
   m_TagString: Untagged
   m_Icon: {fileID: 0}

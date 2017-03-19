@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33218427750024976}
   - component: {fileID: 23695757595194286}
   - component: {fileID: 114132759915358282}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Erdnuss_Normal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
