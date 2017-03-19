@@ -6,8 +6,11 @@ public class GameOver : MonoBehaviour {
 
     private ElephantMovement m_elephantMovement;
     public string gameOverScene = "GameOverScreen";
+    public string winScene = "VictoryScreen";
+
     private SceneLoaderScript m_sceneLoader;
     private Coroutine m_giveUpRoutine;
+    private Coroutine m_winRoutine;
     [SerializeField]
     private float m_sceneChangeDelay = 5.0f;
     private WantedLevel m_wantedLevel;
@@ -18,10 +21,16 @@ public class GameOver : MonoBehaviour {
         m_sceneLoader = GameObject.FindObjectOfType<SceneLoaderScript>();
         m_wantedLevel = GameObject.FindObjectOfType<WantedLevel>();
         StatePatternEnemy.OnCaught += OnCaught;
+        Collectable.OnCollect += OnCollect;
+    }
+
+    private void OnCollect(Collectable.CollectableEventData data) {
+        WinGame();
     }
 
     void OnDestroy() {
         StatePatternEnemy.OnCaught -= OnCaught;
+        Collectable.OnCollect -= OnCollect;
     }
 
     private void OnCaught(StatePatternEnemy.CaughtEventData data) {
@@ -37,6 +46,20 @@ public class GameOver : MonoBehaviour {
 
         m_sceneLoader.SetCurrentSceneAsPrefScene();
         m_sceneLoader.LoadSceneSingle(gameOverScene);
+    }
+
+    public void WinGame() {
+        if (m_winRoutine != null) {
+            return;
+        }
+
+        m_winRoutine = StartCoroutine(WinRoutine());
+    }
+
+    IEnumerator WinRoutine() {
+        m_sceneLoader.SetCurrentSceneAsPrefScene();
+        m_sceneLoader.LoadSceneSingle(winScene);
+        yield return null;
     }
 
     public void EndGame() {
