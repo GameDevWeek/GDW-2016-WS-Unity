@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 54828167443661864}
   - component: {fileID: 114219968108619816}
   - component: {fileID: 114976124811438130}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Teller_cell.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
