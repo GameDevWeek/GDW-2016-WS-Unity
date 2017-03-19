@@ -5,13 +5,6 @@ using UnityEngine.AI;
 
 [RequireComponent(typeof(AudioSource))]
 public class StatePatternEnemy : MonoBehaviour, INoiseListener {
-    public void OnCollisionEnter(Collision collision) {
-        if (collision.gameObject && collision.gameObject.GetComponent<PlayerActor>()) {
-            caughtPlayer();
-            return;
-        }
-    }
-
     public class CaughtPlayerState : IEnemyState {
         private readonly StatePatternEnemy enemy;
 
@@ -82,6 +75,7 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
     public AudioSource audioSource;
     public AudioClip[] enterChase;
     public AudioClip[] exitChase;
+    private EnemyInteractable m_enemyInteractable;
 
     //---Caught event stuff-----
     public struct CaughtEventData {
@@ -94,9 +88,21 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
     public delegate void CaughtEvent(CaughtEventData data);
     public static event CaughtEvent OnCaught;
 
+    public void OnCollisionEnter(Collision collision) {
+        RaycastHit hit;
+        if (collision.gameObject &&
+            collision.gameObject.GetComponent<PlayerActor>() &&
+            canSeePlayer(out hit) &&
+            !m_enemyInteractable.Stunned()) {
+            caughtPlayer();
+            return;
+        }
+    }
+
     //----------------------------
 
     private void Awake() {
+        m_enemyInteractable = GetComponent<EnemyInteractable>();
         audioSource = GetComponent<AudioSource>();
         playerActor = GameObject.FindObjectOfType<PlayerActor>();
         wantedLevel = GameObject.FindObjectOfType<WantedLevel>();
@@ -135,6 +141,7 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
 
     private void StatePatternEnemy_OnCaught(CaughtEventData data) {
         GetComponent<NavMeshAgent>().enabled = false;
+        StopMovement();
 
         currentState = m_caughtPlayerState;
     }
@@ -158,12 +165,11 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
     }
 
     public void StopMovement() {
-        enemyAnimator.SetFloat("BlendSpeed", 0.0f);
+        enemyAnimator.SetFloat("BlendSpeed", -1.0f);
     }
 
     private void OnTriggerEnter(Collider other) {
-        if (other.GetComponent<PlayerActor>()) {
-            caughtPlayer();
+        if (caughtThePlayer) {
             return;
         }
         currentState.OnTriggerEnter(other);

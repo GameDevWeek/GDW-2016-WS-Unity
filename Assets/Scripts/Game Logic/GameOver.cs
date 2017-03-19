@@ -25,9 +25,7 @@ public class GameOver : MonoBehaviour {
     }
 
     private void OnCaught(StatePatternEnemy.CaughtEventData data) {
-
-
-        
+        EndGame();
     }
 
     IEnumerator GiveUpRoutine() {
