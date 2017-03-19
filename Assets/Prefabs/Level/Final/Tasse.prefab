@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 64398158240460496}
   - component: {fileID: 114791947992926416}
   - component: {fileID: 114031369448657390}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Tasse_cell.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}

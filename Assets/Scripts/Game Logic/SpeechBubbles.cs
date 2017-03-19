@@ -9,8 +9,8 @@ public class SpeechBubbles : MonoBehaviour
     [SerializeField] private GameObject m_mainCamera;
     [SerializeField] private GameObject m_dialogTarget;
     [SerializeField] private GameObject m_player;
-    [SerializeField] private string m_initalTextGerman;
-    [SerializeField] private string m_initalTextEnglish;
+	[SerializeField] [TextArea(3,10)] private string m_initalTextGerman;
+	[SerializeField] [TextArea(3,10)] private string m_initalTextEnglish;
     [SerializeField] private bool english_German;
     [SerializeField] private Speaker m_speaker;
    

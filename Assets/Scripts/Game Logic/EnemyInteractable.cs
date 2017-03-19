@@ -36,6 +36,13 @@ public class EnemyInteractable : Interactable {
 
     public AudioClip stunEnemyHitSound;
 
+    [SerializeField]
+    private GameObject stunIndicatorPrefab;
+    [SerializeField]
+    private Vector3 stunIndicatorOffset;
+
+    private FadeAndDestroy stunIndicatorDestroyComp;
+
     void Update() {
         m_cooldown.Update(Time.deltaTime);
 
@@ -84,6 +91,21 @@ public class EnemyInteractable : Interactable {
         stateEnemy.enabled = false;
         navMeshAgent.enabled = false;
         interactor.GetComponent<AudioSource>().PlayOneShot(stunEnemyHitSound);
+
+        if (stunIndicatorDestroyComp == null)
+        {
+            // Spawn stun indicator
+            GameObject go = Instantiate<GameObject>(stunIndicatorPrefab);
+            go.transform.parent = transform;
+            go.transform.localPosition = stunIndicatorOffset;
+            stunIndicatorDestroyComp = go.GetComponent<FadeAndDestroy>();
+            stunIndicatorDestroyComp.FadeInOutAndDestroy(0.15f, m_stunDuration.timeInSeconds - 0.5f, 0.35f);
+        }
+        else
+        {
+            stunIndicatorDestroyComp.ResetDuration();
+        }
+
         while (!m_stunDuration.IsOver()) {
             m_stunDuration.Update(Time.deltaTime);
             yield return null;
@@ -93,6 +115,7 @@ public class EnemyInteractable : Interactable {
         stateEnemy.enabled = true;
         navMeshAgent.enabled = true;
         m_stunRoutine = null;
+        stunIndicatorDestroyComp = null;
     }
 
     public bool IsStunPossible(Interactor stunner) {
