@@ -377,11 +377,11 @@ MonoBehaviour:
   m_updateType: 1
   m_distSpringConstant: 20
   m_targetDistance: 4
-  m_showRotationSpeed: 10
-  m_zoomSpeed: 2
+  m_showRotationSpeed: 20
+  m_zoomSpeed: 1
   m_targetElevation: 0.3
-  m_targetOffset: {x: 0, y: 3, z: 0}
-  m_lerpFactor: 10
+  m_targetOffset: {x: 0, y: 4, z: 0}
+  m_lerpFactor: 100
 --- !u!114 &114078467788004932
 MonoBehaviour:
   m_ObjectHideFlags: 1

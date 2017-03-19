@@ -64,6 +64,6 @@ public class InGameMenu : MonoBehaviour {
 
     public void clickedButtonExit()
     {
-        Application.Quit();
+        paused = false;
     }
 }

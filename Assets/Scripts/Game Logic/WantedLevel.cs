@@ -50,7 +50,6 @@ public class WantedLevel : MonoBehaviour {
         if (currentTierPercent >= 1) {
             if (currentTier == 2) {
                 this.enabled = false;
-                // todo: gameOver;
                 return;
             }
             currentTier++;

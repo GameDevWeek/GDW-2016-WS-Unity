@@ -35,6 +35,7 @@ public class GameOver : MonoBehaviour {
 
         yield return new WaitForSecondsRealtime(m_sceneChangeDelay);
 
+        m_sceneLoader.SetCurrentSceneAsPrefScene();
         m_sceneLoader.LoadSceneSingle(gameOverScene);
     }
 
