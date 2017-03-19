@@ -579,9 +579,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1410314156727270}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.37, y: 0.001, z: 10.26}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 15.031224, y: 0, z: 47.27934}
+  m_LocalScale: {x: 1.25, y: 1.25, z: 1.25}
   m_Children:
   - {fileID: 4845387258763008}
   - {fileID: 4907871108272872}
@@ -850,7 +850,7 @@ MonoBehaviour:
   m_stunDuration:
     m_timeInSeconds: 5
   m_backAngle: 153.6
-  stunEnemyHitSound: {fileID: 0}
+  stunEnemyHitSound: {fileID: 8300000, guid: 1d3dfecdc4b11b2498a284bba4fe21cb, type: 3}
 --- !u!114 &114441439249423902
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -871,7 +871,7 @@ MonoBehaviour:
   fieldOfView: 90
   stoppingTime: 2
   playerIsCaughtDistance: 4
-  wayPoints: {fileID: 11400000, guid: 37f3e8748a6a445448e9b57073c99b31, type: 2}
+  wayPoints: {fileID: 11400000, guid: 8c5df6b33832246429b81a5827e2a61a, type: 2}
   currentWaypoint: 0
   eyes: {fileID: 4601993321777874}
   viewCone: {fileID: 114481833139721180}

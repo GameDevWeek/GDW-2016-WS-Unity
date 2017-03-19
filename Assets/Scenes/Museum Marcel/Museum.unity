@@ -3065,7 +3065,7 @@ Prefab:
         type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 1684142755}
+      objectReference: {fileID: 1969839094}
     - target: {fileID: 65452255249665274, guid: 6fe39e2f4ee975a4fa06f61d161b1f22,
         type: 2}
       propertyPath: m_Size.z
@@ -4372,29 +4372,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e904190bad439714da2f178909463f45, type: 2}
   m_IsPrefabParent: 0
---- !u!21 &530976807
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: Mobile/Particles/Additive
-  m_Shader: {fileID: 10720, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 5
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  m_SavedProperties:
-    serializedVersion: 2
-    m_TexEnvs:
-    - first:
-        name: _MainTex
-      second:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats: []
-    m_Colors: []
 --- !u!4 &541306431 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4296302545225562, guid: 25efcb558585a4ef08d22d4292f50225,
@@ -7793,24 +7770,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114441439249423902, guid: e904190bad439714da2f178909463f45,
-        type: 2}
-      propertyPath: wayPoints
-      value: 
-      objectReference: {fileID: 11400000, guid: 8c5df6b33832246429b81a5827e2a61a,
-        type: 2}
-    - target: {fileID: 4677023805961734, guid: e904190bad439714da2f178909463f45, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 1.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 4677023805961734, guid: e904190bad439714da2f178909463f45, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 1.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 4677023805961734, guid: e904190bad439714da2f178909463f45, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 1.25
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e904190bad439714da2f178909463f45, type: 2}
   m_IsPrefabParent: 0
@@ -7835,6 +7794,24 @@ Transform:
   m_PrefabParentObject: {fileID: 4511455084913786, guid: fb1971fafec90cb4c9eda4f08351d74a,
     type: 2}
   m_PrefabInternal: {fileID: 354440063}
+--- !u!1 &1030035086 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1410314156727270, guid: e904190bad439714da2f178909463f45,
+    type: 2}
+  m_PrefabInternal: {fileID: 903545718}
+--- !u!136 &1030035087
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1030035086}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.41, z: 0}
 --- !u!4 &1030978981
 Transform:
   m_ObjectHideFlags: 0
@@ -9090,29 +9067,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4296302545225562, guid: 25efcb558585a4ef08d22d4292f50225,
     type: 2}
   m_PrefabInternal: {fileID: 314773078}
---- !u!21 &1190809172
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: Mobile/Particles/Additive
-  m_Shader: {fileID: 10720, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 5
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  m_SavedProperties:
-    serializedVersion: 2
-    m_TexEnvs:
-    - first:
-        name: _MainTex
-      second:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats: []
-    m_Colors: []
 --- !u!4 &1205025687 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: e6e923c80d8ec4f92bf51314bd736187, type: 3}
@@ -10190,6 +10144,29 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 25efcb558585a4ef08d22d4292f50225, type: 2}
   m_IsPrefabParent: 0
+--- !u!21 &1461777165
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Mobile/Particles/Additive
+  m_Shader: {fileID: 10720, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  m_SavedProperties:
+    serializedVersion: 2
+    m_TexEnvs:
+    - first:
+        name: _MainTex
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats: []
+    m_Colors: []
 --- !u!4 &1466297573 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4296302545225562, guid: 25efcb558585a4ef08d22d4292f50225,
@@ -11668,7 +11645,7 @@ Prefab:
         type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 530976807}
+      objectReference: {fileID: 1461777165}
     - target: {fileID: 65452255249665274, guid: 6fe39e2f4ee975a4fa06f61d161b1f22,
         type: 2}
       propertyPath: m_Size.z
@@ -12606,29 +12583,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.027113652, y: 0.010217477, z: 0.038562726}
   m_Center: {x: 0.008448114, y: -0.000000042693436, z: 0.019168884}
---- !u!21 &1684142755
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: Mobile/Particles/Additive
-  m_Shader: {fileID: 10720, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 5
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  m_SavedProperties:
-    serializedVersion: 2
-    m_TexEnvs:
-    - first:
-        name: _MainTex
-      second:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats: []
-    m_Colors: []
 --- !u!1001 &1687491405
 Prefab:
   m_ObjectHideFlags: 0
@@ -12683,6 +12637,10 @@ Prefab:
     - target: {fileID: 4659727872893660, guid: d6478523949a63c469aee1e015665685, type: 2}
       propertyPath: m_LocalPosition.z
       value: -0.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 1620796316556850, guid: d6478523949a63c469aee1e015665685, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d6478523949a63c469aee1e015665685, type: 2}
@@ -15284,6 +15242,29 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3b8d7649f8140d545890d02975d22e70, type: 2}
   m_IsPrefabParent: 0
+--- !u!21 &1969839094
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Mobile/Particles/Additive
+  m_Shader: {fileID: 10720, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  m_SavedProperties:
+    serializedVersion: 2
+    m_TexEnvs:
+    - first:
+        name: _MainTex
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats: []
+    m_Colors: []
 --- !u!1001 &1970517424
 Prefab:
   m_ObjectHideFlags: 0
@@ -15736,6 +15717,29 @@ Transform:
   m_PrefabParentObject: {fileID: 4296302545225562, guid: 25efcb558585a4ef08d22d4292f50225,
     type: 2}
   m_PrefabInternal: {fileID: 341916777}
+--- !u!21 &2045896127
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Mobile/Particles/Additive
+  m_Shader: {fileID: 10720, guid: 0000000000000000f000000000000000, type: 0}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 5
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  m_SavedProperties:
+    serializedVersion: 2
+    m_TexEnvs:
+    - first:
+        name: _MainTex
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats: []
+    m_Colors: []
 --- !u!1001 &2046269125
 Prefab:
   m_ObjectHideFlags: 0
@@ -16924,7 +16928,7 @@ Prefab:
         type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 1190809172}
+      objectReference: {fileID: 2045896127}
     - target: {fileID: 65452255249665274, guid: 6fe39e2f4ee975a4fa06f61d161b1f22,
         type: 2}
       propertyPath: m_Size.z
