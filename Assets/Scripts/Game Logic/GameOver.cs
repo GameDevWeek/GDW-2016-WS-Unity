@@ -44,11 +44,25 @@ public class GameOver : MonoBehaviour {
         m_elephantMovement.GiveUp();
         Camera.main.GetComponent<TopDownCamera>().enabled = false;
         Camera.main.GetComponent<DeathCamera>().enabled = true;
-
+        DisableNemyViewCones();
         yield return new WaitForSecondsRealtime(m_sceneChangeDelay);
 
         m_sceneLoader.SetCurrentSceneAsPrefScene();
         m_sceneLoader.LoadSceneSingle(gameOverScene);
+    }
+
+    void DisableNemyViewCones() {
+        foreach (var v in GameObject.FindObjectsOfType<ViewCone>()) {
+            if (v.name == "PlayerViewCone") {
+                continue;
+            }
+
+            var renderer = v.GetComponent<MeshRenderer>();
+            if (renderer) {
+                renderer.enabled = false;
+            }
+            v.enabled = false;
+        }
     }
 
     public void WinGame() {
