@@ -10,8 +10,6 @@ public class Shoot_Peanuts : MonoBehaviour {
     public Vector3 m_offset;
     public bool m_destroy_Peanut_On_Collison;
 
-    private Rigidbody peanutRigidbody;
-
     public static event Action peanutWasShot;
 
     public Cooldown cooldown= new Cooldown(1f);
@@ -23,7 +21,6 @@ public class Shoot_Peanuts : MonoBehaviour {
 
     // Use this for initialization
     void Start() {
-        peanutRigidbody = m_peanutPrefab.GetComponent<Rigidbody>();
         m_elephantControl = GetComponent<ElephantControl>();
     }
 

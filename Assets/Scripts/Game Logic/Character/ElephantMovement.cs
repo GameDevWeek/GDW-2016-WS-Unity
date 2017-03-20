@@ -31,7 +31,6 @@ public class ElephantMovement : MonoBehaviour {
     Vector3 m_capsuleCenter;
     [SerializeField]
     CapsuleCollider m_sprintCapsule;
-    bool m_crouching;
     public bool allowToMove=true;
 
     void Start() {
@@ -126,7 +125,6 @@ public class ElephantMovement : MonoBehaviour {
 
         //m_rigidbody.velocity = transform.forward * m_forwardAmount * animSpeed;
         m_animator.SetFloat("Turn", m_turnAmount, 0.1f, Time.deltaTime);
-        m_animator.SetBool("Crouch", m_crouching);
         m_animator.SetBool("OnGround", true);
 
         // the anim speed multiplier allows the overall speed of walking/running to be tweaked in the inspector,

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Assets.Scripts.K.I_;
 using UnityEditor;
 using UnityEngine;
@@ -68,7 +68,7 @@ public class WaypointEditor : Editor {
     }
 
     public override void OnInspectorGUI() {
-        var waypoints = target as Waypoints;
+        //var waypoints = target as Waypoints;
 
         var spoints = serializedObject.FindProperty("points");
         EditorGUILayout.PropertyField(spoints, true);

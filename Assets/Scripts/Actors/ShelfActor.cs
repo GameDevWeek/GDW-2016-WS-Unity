@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using UnityEngine;
 #if UNITY_EDITOR
 using UnityEditor;
@@ -95,8 +95,8 @@ public sealed class ShelfActor : MonoBehaviour {
 
         Gizmos.DrawSphere(hingePosition-hingeXTranslation, 0.1f);
 
-        var pos = new Vector3(transform.position.x, collider.bounds.size.x / 2, transform.position.z);
-        var x_translatioin = transform.forward * (collider.bounds.size.y / 2 + collider.bounds.size.x/2); // TODO: change to right
+        //var pos = new Vector3(transform.position.x, collider.bounds.size.x / 2, transform.position.z);
+        //var x_translatioin = transform.forward * (collider.bounds.size.y / 2 + collider.bounds.size.x/2); // TODO: change to right
 
         if (forward) {
             var forward_hinge = (hingePosition - hingeXTranslation);

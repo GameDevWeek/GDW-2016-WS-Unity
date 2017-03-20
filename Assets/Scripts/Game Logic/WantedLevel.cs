@@ -13,7 +13,6 @@ public class WantedLevel : MonoBehaviour {
     [SerializeField] private float [] timeInTier = new []{ 2.5f, 2f, 1f };
     [SerializeField] private int currentTier = 0;
 
-    [SerializeField] private float timeBeforeReduction = 0.3f;
     private float currentTimeBeforeReduction = 0f;
 
     [Tooltip("Number of Guards that, after alerted hard-trigger stage 1")]

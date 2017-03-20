@@ -13,11 +13,7 @@ public class TrunkControll : MonoBehaviour {
     [SerializeField]
     private Animator m_animatorForTrunk;
 
-    private Animator m_animator;
     private ElephantMovement m_elefantmovement;
-
-    [SerializeField]
-    private float m_damping = 1.0f;
 
     [SerializeField]
     private Transform m_trunkRoot;
@@ -32,7 +28,6 @@ public class TrunkControll : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        m_animator = GetComponent<Animator>();
         m_elefantmovement = GetComponent<ElephantMovement>();
 
         foreach (var collisionNotfier in m_trunkRoot.GetComponentsInChildren<CollisionNotifier>()) {

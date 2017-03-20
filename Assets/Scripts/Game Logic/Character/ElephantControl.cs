@@ -33,7 +33,6 @@ public class ElephantControl : MonoBehaviour {
     [SerializeField, Tooltip("If a controller is connected then controller controls will be used otherwise Mouse-Keyboard.")]
     private bool m_autoDetectControlsMode = true;
     private HeadControl m_headControl;
-    private TrunkControll m_trunkControl;
     private bool m_isAiming = false;
     private PlayerActor m_playerActor;
 
@@ -48,7 +47,6 @@ public class ElephantControl : MonoBehaviour {
         m_sprintCooldown.End();
         m_sprintDurationAfterSprintStopped.End();
         m_shootPeanuts = GetComponent<Shoot_Peanuts>();
-        m_trunkControl = GetComponent<TrunkControll>();
 
         // get the transform of the main camera
         if (Camera.main != null) {

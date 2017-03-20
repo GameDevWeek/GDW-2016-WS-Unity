@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,7 +17,6 @@ public class SpeechBubbles : MonoBehaviour
 
     public bool m_isActiv = true;
     private ElephantMovement elephantMovement;
-    private ElephantControl elephantControl;
     private CameraController cameraController;
     private bool focusOnTarget=false;
    
@@ -25,7 +24,6 @@ public class SpeechBubbles : MonoBehaviour
 	{
 
         elephantMovement = m_player.GetComponent<ElephantMovement>();
-        elephantControl = m_player.GetComponent<ElephantControl>();
         cameraController = m_mainCamera.GetComponent<CameraController>();
     }
 	
