@@ -105,7 +105,7 @@ public class ScoreSystem: Singleton<ScoreSystem>
         int oldValue = m_destroyableScores[destructibleName];
         m_destroyableScores[destructibleName] += 1;
 
-        Debug.Log("[ScoreSystem] update Score for " + destructibleName + " from " + oldValue + " to " + m_destroyableScores[destructibleName]);
+        //Debug.Log("[ScoreSystem] update Score for " + destructibleName + " from " + oldValue + " to " + m_destroyableScores[destructibleName]);
     }
 
     private void OnLevelComplete(LevelCompleteZone.LevelCompleteZoneEventData data)
