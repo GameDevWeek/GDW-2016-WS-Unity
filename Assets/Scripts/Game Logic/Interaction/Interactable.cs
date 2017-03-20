@@ -47,4 +47,5 @@ public abstract class Interactable : MonoBehaviour {
     }
 
     public abstract void Interact(Interactor interactor);
+    public virtual bool CanInteract(Interactor interactor) { return true; }
 }

@@ -77,4 +77,13 @@ public class Util {
         float r = Mathf.Sqrt(v.x * v.x + v.y * v.y + v.z * v.z);
         return new Polar(r, Mathf.Asin(v.y / r), -Mathf.Atan2(v.x, v.z));
     }
+
+    /**
+     * <summary>Checks if a given point is in the field of view of an object with a position and viewing direction.</summary>
+     */
+    public static bool IsPointInFOV(Vector3 point, Vector3 position, Vector3 direction, float fieldOfViewInDeg, Vector3 projPlaneNormal) {
+        var dirP = Vector3.ProjectOnPlane(direction, projPlaneNormal);
+        var dP = Vector3.ProjectOnPlane(point - position, projPlaneNormal);
+        return Vector3.Angle(dirP, dP) <= fieldOfViewInDeg * 0.5f;
+    }
 }

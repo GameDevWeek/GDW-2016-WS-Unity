@@ -112,6 +112,7 @@ MonoBehaviour:
   interactionIconScale: 0.5
   useInteractionRangeOnly: 0
   ignoreRaycastVisibility: 0
-  ScoreValue: 200
+  ScoreValue: 1
   collectionSound: {fileID: 0}
   m_collectableName: Jade Elefant
+  isWinItem: 0

@@ -86,7 +86,7 @@ public class Interactor : MonoBehaviour {
         // Find closest match (smallest degree to interactable)
         foreach (Collider collider in colliders) {
             var interactable = collider.GetComponent<Interactable>();
-            if (interactable == null || !collider.gameObject) {
+            if (interactable == null || !collider.gameObject || !interactable.CanInteract(this)) {
                 continue;
             }
             

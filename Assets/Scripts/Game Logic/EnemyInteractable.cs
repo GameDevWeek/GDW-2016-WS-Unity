@@ -118,8 +118,12 @@ public class EnemyInteractable : Interactable {
         stunIndicatorDestroyComp = null;
     }
 
+    public override bool CanInteract(Interactor interactor) {
+        return IsStunPossible(interactor);
+    }
+
     public bool IsStunPossible(Interactor stunner) {
-        return Vector3.Angle(stunner.transform.forward, transform.forward) < m_backAngle &&
+        return Util.IsPointInFOV(stunner.position, position, -transform.forward, m_backAngle, Vector3.up) &&
             m_cooldown.IsOver() && m_stunRoutine == null && stunner.GetComponent<ElephantMovement>().CanMove();
     }
 
