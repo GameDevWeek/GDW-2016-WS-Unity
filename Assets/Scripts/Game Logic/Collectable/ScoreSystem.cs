@@ -56,8 +56,8 @@ public class ScoreSystem: Singleton<ScoreSystem>
         if (result == -1)
         {
             
-            Debug.LogError("[ScoreSystem]: " + scoreName + " not available or wrong typed!");
-            Debug.LogError("[ScoreSystem]: available Keys" + m_collectableScores.Keys.ToString() + "\n" + m_destroyableScores.Keys.ToString());
+            //Debug.LogError("[ScoreSystem]: " + scoreName + " not available or wrong typed!");
+            //Debug.LogError("[ScoreSystem]: available Keys" + m_collectableScores.Keys.ToString() + "\n" + m_destroyableScores.Keys.ToString());
             return 0;
         }
 
@@ -96,7 +96,7 @@ public class ScoreSystem: Singleton<ScoreSystem>
         int oldValue = m_collectableScores[collectableName];
         m_collectableScores[collectableName] += data.collected.GetComponent<Collectable>().ScoreValue;
 
-        Debug.Log("[ScoreSystem] update Score for "+ collectableName + " from " + oldValue + " to " + m_collectableScores[collectableName]);
+        //Debug.Log("[ScoreSystem] update Score for "+ collectableName + " from " + oldValue + " to " + m_collectableScores[collectableName]);
     }
 
     private void OnDestruction(DestructibleObject.DestructionEventData data)
