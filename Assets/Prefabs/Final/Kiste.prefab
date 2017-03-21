@@ -21,13 +21,13 @@ GameObject:
   - component: {fileID: 4096112107937006}
   - component: {fileID: 33284823182525228}
   - component: {fileID: 23820970966739158}
-  - component: {fileID: 65976445010878202}
+  - component: {fileID: 65633962657383468}
   m_Layer: 0
   m_Name: Kiste
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4096112107937006
 Transform:
@@ -35,9 +35,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1715101731587168}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 14.55567, y: 39.01005, z: -14.675187}
-  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
+  m_LocalPosition: {x: 8.42, y: 0.919, z: 26.43}
+  m_LocalScale: {x: 50, y: 49.999985, z: 49.999985}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -81,7 +81,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1715101731587168}
   m_Mesh: {fileID: 4300000, guid: 01c81a8b502c08c48b64276eb74d4a3f, type: 3}
---- !u!65 &65976445010878202
+--- !u!65 &65633962657383468
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -91,5 +91,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.02, y: 0.02, z: 0.01}
-  m_Center: {x: 0, y: 0, z: -0.005}
+  m_Size: {x: 0.020000005, y: 0.020000001, z: 0.019999998}
+  m_Center: {x: 0.000000029802322, y: -0.00000010430813, z: 0}

@@ -1598,6 +1598,11 @@ Prefab:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114853003198160608, guid: be08505d06a9244029ad0735c9ee6a7a,
+        type: 2}
+      propertyPath: m_finalDelay
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114959732321425854, guid: be08505d06a9244029ad0735c9ee6a7a, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: be08505d06a9244029ad0735c9ee6a7a, type: 2}

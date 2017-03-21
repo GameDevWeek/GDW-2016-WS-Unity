@@ -257,6 +257,7 @@ public class ElephantControl : MonoBehaviour {
     }
 
     private void HandleAiming() {
+        m_character.StopSprint();
         m_character.Move(Vector3.zero, false);
         m_character.LookTowards(desiredLookDir);
         var d = Vector3.ProjectOnPlane(transform.forward, Vector3.up);

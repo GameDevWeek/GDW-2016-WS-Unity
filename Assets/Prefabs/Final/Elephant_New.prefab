@@ -881,7 +881,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 4
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!82 &82974733735348492
 AudioSource:
   m_ObjectHideFlags: 1
@@ -1022,7 +1022,7 @@ MonoBehaviour:
   fullViewRadius: 20
   viewBlockingLayers:
     serializedVersion: 2
-    m_Bits: 2147416575
+    m_Bits: 2147416571
   nrOfRaycasts: 360
   fieldOfView: 360
   collisionOffset: -0.2
@@ -1060,7 +1060,7 @@ MonoBehaviour:
   m_destroy_Peanut_On_Collison: 1
   cooldown:
     m_timeInSeconds: 1
-  ammo: 30
+  ammo: 0
   m_shootOrigin: {fileID: 4967942519144176}
 --- !u!114 &114314892893392030
 MonoBehaviour:

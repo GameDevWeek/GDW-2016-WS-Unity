@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4768212700848352}
   - component: {fileID: 135040472729744480}
   - component: {fileID: 114819068350372660}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: DialogTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34,8 +34,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1954143847046512}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3, y: 1, z: -6.48}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -11.8966465, y: 1.8549232, z: -8.206077}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -62,7 +62,9 @@ MonoBehaviour:
     Maybe I''ll warm up here.'
   english_German: 1
   m_speaker: 0
-  m_isActiv: 1
+  m_rotateAroundDialogTarget: 1
+  invokeOnTriggerEnter: 1
+  focusOnTarget: 0
 --- !u!135 &135040472729744480
 SphereCollider:
   m_ObjectHideFlags: 1

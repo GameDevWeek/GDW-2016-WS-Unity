@@ -194,8 +194,8 @@ MonoBehaviour:
   m_positionOffset: {x: 0, y: 0, z: 0}
   m_useDefaultInteractionRange: 0
   m_interactionRange: 5
-  interactionIcon: {fileID: 21300000, guid: ad340378f5cdc9e4e843ffbf4a3859a9, type: 3}
-  interactionIconScale: 1
+  interactionIcon: {fileID: 21300000, guid: 426d7e352d13d92469b85bf7dd56183d, type: 3}
+  interactionIconScale: 0.25
   useInteractionRangeOnly: 0
   ignoreRaycastVisibility: 0
   m_message: Oh, it's that thing...

@@ -36,7 +36,7 @@ GameObject:
   - component: {fileID: 4349571412214300}
   - component: {fileID: 33868018276101586}
   - component: {fileID: 23866183029303464}
-  - component: {fileID: 136084128685405076}
+  - component: {fileID: 65565341467882314}
   m_Layer: 0
   m_Name: MOP_Eimer
   m_TagString: Untagged
@@ -53,7 +53,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4827006312565254}
   - component: {fileID: 33367287433168602}
-  - component: {fileID: 65728234671228608}
   - component: {fileID: 23281289875763966}
   m_Layer: 4
   m_Name: MOP_Water
@@ -72,7 +71,6 @@ GameObject:
   - component: {fileID: 4896517095328152}
   - component: {fileID: 33017201866182170}
   - component: {fileID: 23513186176859426}
-  - component: {fileID: 136707155424655014}
   m_Layer: 0
   m_Name: MOP
   m_TagString: Untagged
@@ -100,7 +98,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1389235277960304}
   m_LocalRotation: {x: 0.47993514, y: 0.6205695, z: 0.51929003, w: -0.33895975}
-  m_LocalPosition: {x: -13.749, y: 0.33, z: 13.117}
+  m_LocalPosition: {x: 3.923964, y: 0.41010916, z: -2.3879733}
   m_LocalScale: {x: 68.097565, y: 66.16292, z: 38.887737}
   m_Children:
   - {fileID: 4827006312565254}
@@ -249,20 +247,8 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1671767131715154}
   m_Mesh: {fileID: 4300000, guid: 681e5357c72c446fa9fc877f33ed491d, type: 3}
---- !u!65 &65728234671228608
+--- !u!65 &65565341467882314
 BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1773818971174836}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!136 &136084128685405076
-CapsuleCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -270,20 +256,6 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.010366008
-  m_Height: 0.028354093
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0.006657441}
---- !u!136 &136707155424655014
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1782531718092310}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.01
-  m_Height: 0.0063039795
-  m_Direction: 1
-  m_Center: {x: -0.00013432499, y: -0.0004117806, z: 0.02619654}
+  serializedVersion: 2
+  m_Size: {x: 0.015303909, y: 0.028354118, z: 0.020732034}
+  m_Center: {x: -0.0000000016996371, y: 0.0000000011904435, z: 0.006657442}
