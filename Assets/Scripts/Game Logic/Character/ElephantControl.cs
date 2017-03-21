@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 
@@ -8,6 +9,9 @@ public class ElephantControl : MonoBehaviour {
         KeyboardMouse,
         KeyboardMouseSpecial
     }
+
+    public static event Action OnAimStarted;
+    public static event Action OnAimEnded;
 
     private ElephantMovement m_character; // A reference to the ThirdPersonCharacter on the object
     private Transform m_cam;                  // A reference to the main camera in the scenes transform
@@ -102,12 +106,20 @@ public class ElephantControl : MonoBehaviour {
 
     private Vector3 desiredMouseLookDelta {
         get {
+            RaycastHit hit;
+
+            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit)) {
+                Vector3 projHit = Vector3.ProjectOnPlane(hit.point, Vector3.up);
+                Vector3 projCenter = Vector3.ProjectOnPlane(transform.position, Vector3.up);
+
+                return projHit - projCenter;
+            }
+
             Vector2 mp = Input.mousePosition;
             Vector2 center = Camera.main.WorldToScreenPoint(transform.position);
             var screenLookDelta = (center - mp);
             var desiredLookDelta = new Vector3(-screenLookDelta.x, 0.0f, -screenLookDelta.y);
             desiredLookDelta /= Screen.height * 0.5f;
-
             return desiredLookDelta;
         }
     }
@@ -198,8 +210,16 @@ public class ElephantControl : MonoBehaviour {
             case ControlsMode.Controller:
             case ControlsMode.KeyboardMouse:
                 if (Input.GetButton("TargetMode")) {
+                    if (!m_isAiming && OnAimStarted != null) {
+                        OnAimStarted();
+                    }
+
                     HandleAiming();
                 } else {
+                    if (m_isAiming && OnAimEnded != null) {
+                        OnAimEnded();
+                    }
+
                     HandleControllerMovement();
                     m_headControl.updateHeadRotation = false;
                     m_isAiming = false;

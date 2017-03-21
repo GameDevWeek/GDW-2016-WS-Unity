@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System;
 
 //Dieses Script gehört in die IngameMenuScene
 
@@ -19,6 +20,8 @@ public class InGameMenu : MonoBehaviour {
 
     private float[] wantedLimits = new[] { 0f, 0.38f, 0.72f, 1f, 1f };
 
+    public static event Action OnGamePaused;
+    public static event Action OnGameResumed;
 
     private bool m_paused;
     private PlayerActor m_playerActor;
@@ -69,5 +72,15 @@ public class InGameMenu : MonoBehaviour {
         m_paused = paused;
         Time.timeScale = paused ? 0.0f : 1.0f;
         PauseMenu.gameObject.SetActive(paused);
+
+        if (m_paused) {
+            if (OnGamePaused != null) {
+                OnGamePaused();
+            }
+        }  else {
+            if (OnGameResumed != null) {
+                OnGameResumed();
+            }
+        }
     }
 }

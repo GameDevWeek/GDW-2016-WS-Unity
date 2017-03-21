@@ -75,6 +75,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1753674619701794
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4599505473548104}
+  - component: {fileID: 114665502755843106}
+  m_Layer: 0
+  m_Name: CursorManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1850200478566116
 GameObject:
   m_ObjectHideFlags: 0
@@ -178,8 +194,22 @@ Transform:
   - {fileID: 4813842351078768}
   - {fileID: 4439994389348352}
   - {fileID: 4404798360917732}
+  - {fileID: 4599505473548104}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4599505473548104
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1753674619701794}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4468021204416460}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4813842351078768
 Transform:
@@ -232,6 +262,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOverScene: GameOverScreen
+  winScene: VictoryScreen
   m_sceneChangeDelay: 5
 --- !u!114 &114321288207058062
 MonoBehaviour:
@@ -260,7 +291,6 @@ MonoBehaviour:
   - 2
   - 1
   currentTier: 0
-  timeBeforeReduction: 0.3
   alertedGuardsLimit: 3
 --- !u!114 &114540687856062104
 MonoBehaviour:
@@ -285,6 +315,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c67b978a638198740a238415d5d98fd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114665502755843106
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1753674619701794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9219dae0344fd414090df6ab5293d97f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_cursors:
+  - name: Default
+    texture: {fileID: 0}
+    hotSpot: {x: 0, y: 0}
+    mode: 0
+  - name: Game
+    texture: {fileID: 0}
+    hotSpot: {x: 0, y: 0}
+    mode: 0
+  - name: Aim
+    texture: {fileID: 2800000, guid: 231da7a4641759640a0c6f95ceb1dfd7, type: 3}
+    hotSpot: {x: 200, y: 196}
+    mode: 0
+  - name: Menu
+    texture: {fileID: 2800000, guid: 231da7a4641759640a0c6f95ceb1dfd7, type: 3}
+    hotSpot: {x: 200, y: 196}
+    mode: 0
 --- !u!114 &114906708259965052
 MonoBehaviour:
   m_ObjectHideFlags: 1
