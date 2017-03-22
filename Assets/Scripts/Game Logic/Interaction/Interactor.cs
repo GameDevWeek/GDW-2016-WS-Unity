@@ -21,6 +21,7 @@ public class Interactor : MonoBehaviour {
     [SerializeField]
     private float m_interactionRange = 3.0f;
     private Interactable m_curInteractable;
+    private Interactable m_lastInteractable;
     [SerializeField]
     private bool m_use2DDistance = true;
     [SerializeField]
@@ -112,6 +113,7 @@ public class Interactor : MonoBehaviour {
     }
 
     void Update() {
+        m_lastInteractable = m_curInteractable;
         m_curInteractable = FindMinInteractable();
 
         if (m_curInteractable) {
@@ -147,10 +149,17 @@ public class Interactor : MonoBehaviour {
             if (!interactionIcon)
             {
                 interactionIcon = Instantiate(interactionIconPrefab.gameObject).GetComponent<SpriteRenderer>();
+                SetIconScale();
             }
+
+            if (m_curInteractable != m_lastInteractable) {
+                SetIconScale();
+            }
+  
+            //interactionIcon.transform.localScale = interactionIconPrefab.transform.localScale * m_curInteractable.IconScale;
             interactionIcon.transform.position = Camera.main.transform.position + ((m_curInteractable.position + new Vector3(0.9f, 0, 0.9f)) - Camera.main.transform.position).normalized * 1f;
             interactionIcon.sprite = m_curInteractable.Icon;
-            interactionIcon.transform.localScale = interactionIconPrefab.transform.localScale * m_curInteractable.IconScale;
+            
         }
         else
         {
@@ -159,6 +168,13 @@ public class Interactor : MonoBehaviour {
                 Destroy(interactionIcon.gameObject);
                 interactionIcon = null;
             }
+        }
+    }
+
+    private void SetIconScale() {
+        interactionIcon.transform.localScale = interactionIconPrefab.transform.localScale * m_curInteractable.IconScale;
+        if (interactionIcon.GetComponent<BeatEffect>()) {
+            interactionIcon.GetComponent<BeatEffect>().startScale = interactionIcon.transform.localScale;
         }
     }
 }

@@ -14,6 +14,15 @@ public class BeatEffect : MonoBehaviour {
     private float m_shrinkProportion = 0.8f;
     private Coroutine m_coroutine;
 
+    public Vector3 startScale {
+        set {
+            m_startScale = value;
+        }
+        get {
+            return m_startScale;
+        }
+    }
+
     // Use this for initialization
     void Start () {
         m_startScale = transform.localScale;
