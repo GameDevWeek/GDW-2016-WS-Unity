@@ -15,6 +15,7 @@ public abstract class Interactable : MonoBehaviour {
     protected Sprite interactionIcon;
     [SerializeField]
     protected float interactionIconScale = 1f;
+    public Vector3 interactionIconOffset;
 
     [Tooltip("Line of sight and view angle of the interactor will be ignored.")]
     public bool useInteractionRangeOnly = false;

@@ -89,7 +89,7 @@ public class GameOver : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        if (m_wantedLevel.currentWantedStage == 2) {
+        if (m_wantedLevel.currentWantedStage == 2 && m_wantedLevel.currentTierPercent >= 1.0f) {
             EndGame();
         }
     }

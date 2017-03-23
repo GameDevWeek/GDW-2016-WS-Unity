@@ -144,7 +144,7 @@ public class Interactor : MonoBehaviour {
 
     private void UpdateInteractionIcon()
     {
-        if (m_curInteractable)
+        if (m_curInteractable && Camera.main.GetComponent<TopDownCamera>().enabled)
         {
             if (!interactionIcon)
             {
@@ -157,7 +157,9 @@ public class Interactor : MonoBehaviour {
             }
   
             //interactionIcon.transform.localScale = interactionIconPrefab.transform.localScale * m_curInteractable.IconScale;
-            interactionIcon.transform.position = Camera.main.transform.position + ((m_curInteractable.position + new Vector3(0.9f, 0, 0.9f)) - Camera.main.transform.position).normalized * 1f;
+            interactionIcon.transform.position = Camera.main.transform.position + 
+                ((m_curInteractable.position + new Vector3(0.9f, 0, 0.9f)) - Camera.main.transform.position).normalized * 1f +
+                m_curInteractable.interactionIconOffset;
             interactionIcon.sprite = m_curInteractable.Icon;
             
         }

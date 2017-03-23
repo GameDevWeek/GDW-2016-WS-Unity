@@ -192,6 +192,7 @@ GameObject:
   - component: {fileID: 136219029376806026}
   - component: {fileID: 114364450268544510}
   - component: {fileID: 82464276560407240}
+  - component: {fileID: 136129582248065614}
   m_Layer: 17
   m_Name: Zebra_Enemy
   m_TagString: Enemy
@@ -579,8 +580,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1410314156727270}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.343964, y: -1.1783265e-16, z: 5.766775}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 7.6252785, y: 0, z: 39.039635}
   m_LocalScale: {x: 1.25, y: 1.25, z: 1.25}
   m_Children:
   - {fileID: 4845387258763008}
@@ -865,8 +866,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ec7412f597304a41b58b9c84a6188fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  standartSpeed: 1.8
-  chaseSpeed: 2.2
+  standartSpeed: 1.5
+  chaseSpeed: 2
   searchingTurnSpeed: 120
   searchingDuration: 4
   sightRange: 10
@@ -874,7 +875,7 @@ MonoBehaviour:
   fieldOfView: 90
   stoppingTime: 2
   playerIsCaughtDistance: 4
-  wayPoints: {fileID: 11400000, guid: df9a606266622f543a401169ab25c72d, type: 2}
+  wayPoints: {fileID: 11400000, guid: 34d52800b1ebc5141af4ba743e65784c, type: 2}
   currentWaypoint: 0
   eyes: {fileID: 4601993321777874}
   viewCone: {fileID: 114481833139721180}
@@ -913,9 +914,22 @@ MonoBehaviour:
   fieldOfView: 90
   collisionOffset: 0.025
   colorAlarmed: {r: 1, g: 0, b: 0, a: 1}
-  colorDefault: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  colorDefault: {r: 0.17647058, g: 0.17647058, b: 0.17647058, a: 1}
   colorOuterAlarmed: {r: 1, g: 1, b: 0, a: 0.5}
-  colorOuterDefault: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
+  colorOuterDefault: {r: 0.3455882, g: 0.3455882, b: 0.3455882, a: 1}
+--- !u!136 &136129582248065614
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1410314156727270}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.41, z: 0}
 --- !u!136 &136219029376806026
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -1001,6 +1015,6 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 4
-  m_BaseOffset: 0.5
+  m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4

@@ -169,7 +169,7 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
     }
 
     private void OnTriggerEnter(Collider other) {
-        if (caughtThePlayer) {
+        if (caughtThePlayer || currentState == null) {
             return;
         }
         currentState.OnTriggerEnter(other);

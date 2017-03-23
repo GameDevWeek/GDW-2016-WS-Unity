@@ -253,7 +253,8 @@ public class ElephantControl : MonoBehaviour {
     public bool CanInteract() {
         return !m_character.IsStunned() &&
             !sprinting &&
-            !m_character.IsPunching();
+            !m_character.IsPunching() &&
+            Camera.main.GetComponent<TopDownCamera>().enabled;
     }
 
     private void HandleAiming() {
