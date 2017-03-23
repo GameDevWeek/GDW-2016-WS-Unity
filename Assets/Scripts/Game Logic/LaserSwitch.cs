@@ -52,6 +52,10 @@ public class LaserSwitch : Interactable
     {
         foreach (var laser in m_laserBarriers)
         {
+            if (!laser) {
+                continue;
+            }
+
             laser.Toggle();
             //laser.SetActivation(m_switchPoweredOn);
         }

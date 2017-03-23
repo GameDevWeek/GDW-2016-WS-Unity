@@ -318,8 +318,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeInTier:
   - 2.5
-  - 2
-  - 1
+  - 5
+  - 2.5
   currentTier: 0
   alertedGuardsLimit: 3
 --- !u!114 &114540687856062104
