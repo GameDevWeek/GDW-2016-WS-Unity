@@ -62,7 +62,7 @@ public class WantedLevel : MonoBehaviour {
 
     public void TriggerLaserAlert() {
         if(currentTier >= 2) return;
-        timeInCurrentTier = 0f;
+        timeInCurrentTier = timeInTier[2] + 1.0f;
         currentTier = 2;
     }
 

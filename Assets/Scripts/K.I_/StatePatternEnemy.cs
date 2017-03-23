@@ -168,11 +168,30 @@ public class StatePatternEnemy : MonoBehaviour, INoiseListener {
         enemyAnimator.SetFloat("BlendSpeed", -1.0f);
     }
 
+    private void OnTriggerStay(Collider other) {
+        if (caughtThePlayer) {
+            return;
+        }
+
+        if (other.GetComponent<PlayerActor>() && Util.IsPointInFOV(other.transform.position, transform.position, transform.forward, 165.0f, Vector3.up)) {
+            caughtPlayer();
+        }
+    }
+
     private void OnTriggerEnter(Collider other) {
         if (caughtThePlayer || currentState == null) {
             return;
         }
+
         currentState.OnTriggerEnter(other);
+    }
+
+    private float DegreeTo(GameObject go) {
+        Vector3 otherPos = go.transform.position + go.GetComponent<Interactable>().positionOffset;
+
+        Vector3 delta = Vector3.ProjectOnPlane(otherPos - transform.position, Vector3.up);
+
+        return Vector3.Angle(transform.forward, delta);
     }
 
     public void WantedLvlUp() {

@@ -92,19 +92,7 @@ public class EnemyInteractable : Interactable {
         navMeshAgent.enabled = false;
         interactor.GetComponent<AudioSource>().PlayOneShot(stunEnemyHitSound);
 
-        if (stunIndicatorDestroyComp == null)
-        {
-            // Spawn stun indicator
-            GameObject go = Instantiate<GameObject>(stunIndicatorPrefab);
-            go.transform.parent = transform;
-            go.transform.localPosition = stunIndicatorOffset;
-            stunIndicatorDestroyComp = go.GetComponent<FadeAndDestroy>();
-            stunIndicatorDestroyComp.FadeInOutAndDestroy(0.15f, m_stunDuration.timeInSeconds - 0.5f, 0.35f);
-        }
-        else
-        {
-            stunIndicatorDestroyComp.ResetDuration();
-        }
+        ShowStunIndicator();
 
         while (!m_stunDuration.IsOver()) {
             m_stunDuration.Update(Time.deltaTime);
@@ -116,6 +104,25 @@ public class EnemyInteractable : Interactable {
         navMeshAgent.enabled = true;
         m_stunRoutine = null;
         stunIndicatorDestroyComp = null;
+    }
+
+    public void ShowStunIndicator() {
+        if (stunIndicatorDestroyComp == null) {
+            // Spawn stun indicator
+            GameObject go = Instantiate<GameObject>(stunIndicatorPrefab);
+            go.transform.parent = transform;
+            go.transform.localPosition = stunIndicatorOffset;
+            stunIndicatorDestroyComp = go.GetComponent<FadeAndDestroy>();
+            stunIndicatorDestroyComp.FadeInOutAndDestroy(0.15f, m_stunDuration.timeInSeconds - 0.5f, 0.35f);
+        } else {
+            stunIndicatorDestroyComp.ResetDuration();
+        }
+    }
+
+    public void StopStunRoutine() {
+        if (m_stunRoutine != null) {
+            StopCoroutine(m_stunRoutine);
+        }
     }
 
     public override bool CanInteract(Interactor interactor) {

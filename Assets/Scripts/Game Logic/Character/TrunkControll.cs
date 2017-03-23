@@ -44,6 +44,9 @@ public class TrunkControll : MonoBehaviour {
     }
 
     private void OnTriggerStayNotification(Collider other) {
+        if (other.isTrigger) {
+            return;
+        }
         m_stiffnessChangeCooldown.Start();
     }
 
